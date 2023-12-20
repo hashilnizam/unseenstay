@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{{asset ('user/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{asset ('user/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{asset ('user/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
   
   </head>
 
@@ -36,3 +39,5 @@
   @include('user.common.footer')
   </body>
   </html>
+
+  

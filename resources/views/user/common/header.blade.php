@@ -8,14 +8,30 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+           
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="{{ route('unseen.rooms') }}" class="nav-link">Rooms</a></li>
             <li class="nav-item"><a href="{{ route('unseen.resorts') }}" class="nav-link">Resorts</a></li>
             <li class="nav-item"><a href="{{ route('unseen.about') }}" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{{ route('unseen.blog') }}" class="nav-link">Blog</a></li>
             <li class="nav-item"><a href="{{ route('unseen.contact') }}" class="nav-link">Contact</a></li>
-            <li class="nav-item"><a href="{{ route('unseen.login') }}" class="nav-link">Login</a></li>
-          </ul>
+            @if(Auth::check())
+            <li class="nav-item"><a href="{{ route('unseen.rooms') }}" class="nav-link">My Profile</a></li>
+            <li class="nav-item"><a href="{{ route('user.logout') }}" class="nav-link">Logout</a></li>  
+            @else
+            <li class="nav-item"><a href="{{ route('sign_in') }}" class="nav-link">Login</a></li>
+
+            @endif
+            <li class="nav-item active"><a href="/" class="nav-link ">
+              @if(Auth::check())
+                {{Auth::user()->username}}
+              @endif</a>
+            </li>
+            
+          </ul>                           
         </div>
       </div>
     </nav>
+
+
+
