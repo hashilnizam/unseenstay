@@ -10,7 +10,8 @@ use App\Http\Middleware\IsAdmin;
 include('admin.php');
 include('userid.php');
 
-//users
+
+//view
 
 Route::get('/',[HomeController::class,'index'])->name('unseen.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('unseen.contact');
@@ -21,4 +22,3 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
 
 
 
-// Route::get('/test', [HomeController::class, 'testQueryBuilder'])->name('unseen.test');

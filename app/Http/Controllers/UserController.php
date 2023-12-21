@@ -20,7 +20,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-         
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $request->session()->regenerate();
@@ -61,7 +61,7 @@ class UserController extends Controller
           $user->password = $hashedPassword;
 
           $user->save();
-         
+
           return redirect()->route('unseen.index')->with('sucess', 'You have successfully registered, please login agin with new password!');
           //->with('success', 'You have successfully regist;
       }
@@ -75,7 +75,7 @@ class UserController extends Controller
       }
 
       public function login(Request $request)
-      {   
+      {
       $credentials = $request->validate([
           'username' => 'required',
           'password' => 'required|min:6'
@@ -92,6 +92,12 @@ class UserController extends Controller
       public function signin()
       {
         return view('user.userlogin');
+      }
+
+      public function user_datatable()
+      {
+          return view('admin.dashboard.userdatatable');
+
       }
 
 }
