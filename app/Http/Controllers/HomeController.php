@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\unseen;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
     {
 
         return view('user.index');
-        
+
     }
 
     public function contact()
@@ -44,48 +46,36 @@ class HomeController extends Controller
 
         return view('user.blog');
     }
+    public function login_page()
+      {
+        return view('user.userlogin');
+      }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //admin side
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function unseenadmin_dashboard()
+     public function Admin_Dashboard()
     {
         return view('admin.dashboard.index');
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(){
-        
+     public function admin_index(){
+
+            return view('admin.dashboard.login');
+       }
+
+    //user datatable
+
+    public function showUser()
+    {
+        $users = User::get();
+        return view('admin.dashboard.userDatatable', ['users' => $users]);
+    }
+    
+    public function tableUserAdd()
+    {
+        return view('admin.useradd.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(unseen $unseen)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, unseen $unseen)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(unseen $unseen)
-    {
-        //
-    }
 }
+

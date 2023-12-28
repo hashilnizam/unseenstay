@@ -56,6 +56,16 @@
 <!-- Page level custom scripts -->
 <script src="/adminpanel/js/demo/chart-area-demo.js"></script>
 <script src="/adminpanel/js/demo/chart-pie-demo.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#myDataTable').DataTable({
+            // DataTables options and initialization code
+        });
+    });
+</script>
 

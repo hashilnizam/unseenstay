@@ -25,7 +25,7 @@
 	}
 
 	.next {
-	  background-color: #04AA6D;
+	  background-color: white;
 	  color: white;
 	}
 
@@ -36,6 +36,7 @@
 </head>
 <body>
 
+      
 	@if (session('error'))
 	<div class="alert alert-error">
 	  {{ session('error' ) }}
@@ -43,7 +44,7 @@
 	@endif
 
 
-<form class="user" method="post" action="{{ route('login') }}">
+<form class="user" method="post" action="{{ route('user_signin') }}">
     @csrf
     <div class="login-wrap">
         <div class="login-html">
@@ -77,7 +78,7 @@
                 </div>
             </form>
 
-			<form class="user" method="post" action="{{ route('sign_up') }}">
+			<form class="user" method="post" action="{{ route('user_signup') }}">
     		@csrf
                 <div class="sign-up-htm">
                     <div class="group">
@@ -99,7 +100,7 @@
                     <div class="group">
                        <button type="submit" class="button">Sign Up</button>
                     </div>
-                </form>	
+                </form>
 
 </body>
 </html>

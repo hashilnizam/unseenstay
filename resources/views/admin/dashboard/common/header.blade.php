@@ -17,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+            <a class="nav-link" href="{{ route('admin_dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -102,9 +102,9 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('userdatatable')  }}">
+            <a class="nav-link" href="{{ route('show')  }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Add Users</span></a>
+                <span>Users</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
