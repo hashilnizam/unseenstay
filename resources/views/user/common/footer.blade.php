@@ -17,7 +17,7 @@
               <h2 class="ftco-heading-2">Useful Links</h2>
               <ul class="list-unstyled">
                 <li><a href="{{ route('unseen.blog') }}" class="py-2 d-block">Blog</a></li>
-                <li><a href="{{ route('unseen.rooms') }}" class="py-2 d-block">Rooms</a></li>
+                <li><a href="{{ route('unseen.propertice') }}" class="py-2 d-block">Rooms</a></li>
                 <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">Instagram</a></li>
                 <li><a href="http://127.0.0.1:8000/wa.me/%2B919188165352" class="py-2 d-block">Whatsapp</a></li>
               </ul>

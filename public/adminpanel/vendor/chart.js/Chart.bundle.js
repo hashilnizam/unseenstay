@@ -208,7 +208,7 @@ var convert = module.exports = {
 	gray: {channels: 1, labels: ['gray']}
 };
 
-// hide .channels and .labels properties
+// hide .channels and .labels property
 for (var model in convert) {
 	if (convert.hasOwnProperty(model)) {
 		if (!('channels' in convert[model])) {
@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -2345,8 +2345,8 @@ var helpers = {
 	},
 
 	/**
-	 * Recursively deep copies `source` properties into `target` with the given `options`.
-	 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
+	 * Recursively deep copies `source` property into `target` with the given `options`.
+	 * IMPORTANT: `target` is not cloned and will be updated with `source` property.
 	 * @param {object} target - The target object in which all sources are merged into.
 	 * @param {object|object[]} source - Object(s) to merge into `target`.
 	 * @param {object} [options] - Merging options:
@@ -2381,8 +2381,8 @@ var helpers = {
 	},
 
 	/**
-	 * Recursively deep copies `source` properties into `target` *only* if not defined in target.
-	 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
+	 * Recursively deep copies `source` property into `target` *only* if not defined in target.
+	 * IMPORTANT: `target` is not cloned and will be updated with `source` property.
 	 * @param {object} target - The target object in which all sources are merged into.
 	 * @param {object|object[]} source - Object(s) to merge into `target`.
 	 * @returns {object} The `target` object.
@@ -2394,8 +2394,8 @@ var helpers = {
 	/**
 	 * Applies the contents of two or more objects together into the first object.
 	 * @param {object} target - The target object in which all objects are merged into.
-	 * @param {object} arg1 - Object containing additional properties to merge in target.
-	 * @param {object} argN - Additional objects containing properties to merge in target.
+	 * @param {object} arg1 - Object containing additional property to merge in target.
+	 * @param {object} argN - Additional objects containing property to merge in target.
 	 * @returns {object} The `target` object.
 	 */
 	extend: Object.assign || function(target) {
@@ -3061,7 +3061,7 @@ var helpers_options = {
 	/**
 	 * Converts the given value into a padding object with pre-computed width/height.
 	 * @param {number|object} value - If a number, set the value to all TRBL component,
-	 *  else, if and object, use defined properties and sets undefined ones to 0.
+	 *  else, if and object, use defined property and sets undefined ones to 0.
 	 * @returns {object} The padding values (top, right, bottom, left, width, height)
 	 * @since 2.7.0
 	 */
@@ -3606,7 +3606,7 @@ function listenArrayEvents(array, listener) {
 }
 
 /**
- * Removes the given array event listener and cleanup extra attached properties (such as
+ * Removes the given array event listener and cleanup extra attached property (such as
  * the _chartjs stub and overridden methods) if array doesn't have any more listeners.
  */
 function unlistenArrayEvents(array, listener) {
@@ -3884,7 +3884,7 @@ helpers$1.extend(DatasetController.prototype, {
 	},
 
 	/**
-	 * Returns a set of predefined style properties that should be used to represent the dataset
+	 * Returns a set of predefined style property that should be used to represent the dataset
 	 * or the data if the index is specified
 	 * @param {number} index - data index
 	 * @return {IStyleInterface} style object
@@ -5565,7 +5565,7 @@ var controller_doughnut = core_datasetController.extend({
 			_datasetIndex: me.index,
 			_index: index,
 
-			// Desired view properties
+			// Desired view property
 			_model: {
 				backgroundColor: options.backgroundColor,
 				borderColor: options.borderColor,
@@ -5902,7 +5902,7 @@ var controller_line = core_datasetController.extend({
 
 		// Update Line
 		if (showLine) {
-			// Compatibility: If the properties are defined with only the old name, use those values
+			// Compatibility: If the property are defined with only the old name, use those values
 			if (config.tension !== undefined && config.lineTension === undefined) {
 				config.lineTension = config.tension;
 			}
@@ -5957,7 +5957,7 @@ var controller_line = core_datasetController.extend({
 		point._datasetIndex = datasetIndex;
 		point._index = index;
 
-		// Desired view properties
+		// Desired view property
 		point._model = {
 			x: x,
 			y: y,
@@ -6349,7 +6349,7 @@ var controller_polarArea = core_datasetController.extend({
 			_index: index,
 			_scale: scale,
 
-			// Desired view properties
+			// Desired view property
 			_model: {
 				backgroundColor: options.backgroundColor,
 				borderColor: options.borderColor,
@@ -6514,7 +6514,7 @@ var controller_radar = core_datasetController.extend({
 		var config = me._config;
 		var i, ilen;
 
-		// Compatibility: If the properties are defined with only the old name, use those values
+		// Compatibility: If the property are defined with only the old name, use those values
 		if (config.tension !== undefined && config.lineTension === undefined) {
 			config.lineTension = config.tension;
 		}
@@ -6561,7 +6561,7 @@ var controller_radar = core_datasetController.extend({
 		point._datasetIndex = me.index;
 		point._index = index;
 
-		// Desired view properties
+		// Desired view property
 		point._model = {
 			x: x, // value not used in dataset scale, but we want a consistent API between scales
 			y: y,
@@ -8706,7 +8706,7 @@ var exports$4 = core_element.extend({
 		var opts = me._options;
 
 		// Need to regenerate the model because its faster than using extend and it is necessary due to the optimization in Chart.Element.transition
-		// that does _view = _model if ease === 1. This causes the 2nd tooltip update to set properties in both the view and model at the same time
+		// that does _view = _model if ease === 1. This causes the 2nd tooltip update to set property in both the view and model at the same time
 		// which breaks any animations.
 		var existingModel = me._model;
 		var model = me._model = getBaseModel(opts);
@@ -9226,7 +9226,7 @@ function mergeScaleConfig(/* config objects ... */) {
 
 /**
  * Recursively merge the given config objects as the root options by handling
- * default scale options for the `scales` and `scale` properties, then returns
+ * default scale options for the `scales` and `scale` property, then returns
  * a deep copy of the result, thus doesn't alter inputs.
  */
 function mergeConfig(/* config objects ... */) {
@@ -9367,7 +9367,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 		if (!context || !canvas) {
 			// The given item is not a compatible context2d element, let's return before finalizing
-			// the chart initialization but after setting basic chart / controller properties that
+			// the chart initialization but after setting basic chart / controller property that
 			// can help to figure out that the chart is not valid (e.g chart.canvas !== null);
 			// https://github.com/chartjs/Chart.js/issues/2807
 			console.error("Failed to create chart: can't acquire context from the given item");
@@ -10545,7 +10545,7 @@ var core_helpers = function() {
 			}
 		}
 
-		// Adjust tangents to ensure monotonic properties
+		// Adjust tangents to ensure monotonic property
 		var alphaK, betaK, tauK, squaredMagnitude;
 		for (i = 0; i < pointsLen - 1; ++i) {
 			pointCurrent = pointsWithTangents[i];
@@ -13619,7 +13619,7 @@ function drawPointLabels(scale) {
 		var extra = (i === 0 ? tickBackdropHeight / 2 : 0);
 		var pointLabelPosition = scale.getPointPosition(i, outerDistance + extra + 5);
 
-		// Keep this in loop since we may support array properties here
+		// Keep this in loop since we may support array property here
 		var pointLabelFontColor = valueAtIndexOrDefault$1(pointLabelOpts.fontColor, i, core_defaults.global.defaultFontColor);
 		ctx.fillStyle = pointLabelFontColor;
 
@@ -14887,7 +14887,7 @@ var moment = createCommonjsModule(function (module, exports) {
         return m;
     }
 
-    // Plugins that add properties should also add the key here (null value),
+    // Plugins that add property should also add the key here (null value),
     // so we can properly clone ourselves.
     var momentProperties = hooks.momentProperties = [];
 
@@ -15089,7 +15089,7 @@ var moment = createCommonjsModule(function (module, exports) {
             if (hasOwnProp(parentConfig, prop) &&
                     !hasOwnProp(childConfig, prop) &&
                     isObject(parentConfig[prop])) {
-                // make sure changes to properties don't modify parent config
+                // make sure changes to property don't modify parent config
                 res[prop] = extend({}, res[prop]);
             }
         }
@@ -19779,7 +19779,7 @@ core_defaults._set('global', {
 			boxWidth: 40,
 			padding: 10,
 			// Generates labels shown in the legend
-			// Valid properties to return:
+			// Valid property to return:
 			// text : text to display
 			// fillStyle : fill of coloured box
 			// strokeStyle: stroke of coloured box

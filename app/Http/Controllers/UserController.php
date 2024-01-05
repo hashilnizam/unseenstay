@@ -1,15 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
 {
 
-   
+
     //Admin SignUp
     public function Admin_Login(Request $request){
          $credentials = $request->validate([
@@ -27,7 +27,7 @@ class UserController extends Controller
         }
 
       }
-     
+
      //Admin Logout
       public function Admin_Logout(){
 
@@ -43,7 +43,7 @@ class UserController extends Controller
               'username' => 'required|unique:users',
               'email' => 'required|email|unique:users',
               'password' => 'required|min:6',
-              'cpassword' => 'required|same:password',          
+              'cpassword' => 'required|same:password',
           ]);
 
           if ($validatedData['password'] !== $request->input('cpassword')) {
@@ -55,7 +55,7 @@ class UserController extends Controller
           $user->username = $validatedData['username'];
           $user->email = $validatedData['email'];
           $user->password = $hashedPassword;
-        
+
 
 
           $user->save();
@@ -105,7 +105,7 @@ class UserController extends Controller
         ]);
 
 
-        if ($validatedData['password'] !== $request->input('cpassword')) 
+        if ($validatedData['password'] !== $request->input('cpassword'))
         {
             return back()->with('error', "User doesn't exist!");
 
@@ -132,8 +132,48 @@ class UserController extends Controller
           return back()->withSuccess("User Deleted Successfully");
       }
 
+      //property add
 
-      
+    public function create()
+    {
+        return view('admin.propertiesUpdate.create');
+    }
+
+    public function categoryStore(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'category' => 'required', // Add specific rules for category
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $properies = new property();
+            $properies->image = $imageName;
+            $properies->name = $validatedData['name'];
+            $properies->category = $validatedData['category'];
+            $properies->description = $validatedData['description'];
+            $properies->price = $validatedData['price'];
+
+            $properies->save();
+
+        }
+
+
+        return redirect()->route('properties_add')->withSuccess('Property added successfully!');
+    }
+    public function destroy_property($id)
+    {
+        $property = Property::findOrFail($id);
+        $property->delete();
+        return back()->withSuccess("Property Deleted Successfully");
+    }
+
 }
 
 
