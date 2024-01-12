@@ -132,47 +132,7 @@ class UserController extends Controller
           return back()->withSuccess("User Deleted Successfully");
       }
 
-      //property add
 
-    public function create()
-    {
-        return view('admin.propertiesUpdate.create');
-    }
-
-    public function categoryStore(Request $request)
-    {
-
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'category' => 'required', // Add specific rules for category
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $properies = new property();
-            $properies->image = $imageName;
-            $properies->name = $validatedData['name'];
-            $properies->category = $validatedData['category'];
-            $properies->description = $validatedData['description'];
-            $properies->price = $validatedData['price'];
-
-            $properies->save();
-
-        }
-
-
-        return redirect()->route('properties_add')->withSuccess('Property added successfully!');
-    }
-    public function destroy_property($id)
-    {
-        $property = Property::findOrFail($id);
-        $property->delete();
-        return back()->withSuccess("Property Deleted Successfully");
-    }
 
 }
 

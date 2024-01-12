@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\unseen;
-use Illuminate\Http\Request;
+use App\Models\PropertyType;
 use App\Models\User;
-use App\Models\property;
-
 
 class HomeController extends Controller
 {
@@ -26,10 +23,10 @@ class HomeController extends Controller
         return view('user.contact');
     }
 
-    public function propertice()
+    public function properties()
     {
-        $properties = property::get();
-        return view('user.propertice',['properties' => $properties]);
+        $property_types = PropertyType::get();
+        return view('user.propertice',['$property_types' => $property_types]);
     }
 
     public function resorts()
@@ -76,15 +73,6 @@ class HomeController extends Controller
     {
         return view('admin.useradd.index');
     }
-
-    // resort add
-    public function propertiesUpdate()
-    {
-        $properties = property::get();
-        return view('admin.propertiesUpdate.index',['properties' => $properties]);
-    }
-
-
 
 }
 

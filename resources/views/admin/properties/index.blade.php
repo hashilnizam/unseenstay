@@ -18,9 +18,9 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary" style="text-align: center">Property List</h6>
+                <h1 class="m-0 font-weight-bold text-primary" style="text-align: center">Property List</h1>
                 <div class="text-right mb-2">
-                    <a href="{{ route('properties_add') }}" class="btn btn-primary">Add</a>
+                    <a href="{{ route('property_add') }}" class="btn btn-primary">Add</a>
                 </div>
             </div>
             <div class="card-body">
@@ -30,11 +30,13 @@
                         <tr>
                             <th>S/L No.</th>
                             <th>Name</th>
-                            <th>Category</th>
+                            <th>Property Type</th>
+                            <th>Logo</th>
                             <th>Image</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th>Location</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,7 +44,14 @@
                             <tr>
                                 <td>{{ $property->id }}</td>
                                 <td>{{ $property->name }}</td>
-                                <td>{{ $property->category }}</td>
+                                <td>{{ $property->property_types->property_type }}</td>
+                                <td>
+                                    @if($property->logo)
+                                        <img src="{{ asset('images/'. $property->logo) }}" alt="logo" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Logo
+                                    @endif
+                                </td>
                                 <td>
                                     @if($property->image)
                                         <img src="{{ asset('images/'. $property->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
@@ -50,15 +59,10 @@
                                         No Image
                                     @endif
                                 </td>
-                                <td>{{ $property->description }}</td>
-                                <td>{{ $property->price }}</td>
-                                <td>
-                                    <form method="POST" action="{{ url('property/' . $property->id) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
+                                <td>{{ $property->location }}</td>
+                                <td>{{ $property->email }}</td>
+                                <td>{{ $property->mobile }}</td>
+                                <td>{{ $property->address }}</td>
                             </tr>
                         @endforeach
                         </tbody>
