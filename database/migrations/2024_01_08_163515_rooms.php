@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('room_type_id');
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('property_id');
             $table->string('description');
             $table->string('image');
             $table->string('price');
@@ -24,7 +24,7 @@ return new class extends Migration
 
 //foreign key constraints
             $table->foreign('room_type_id')->references('id')->on('room_types');
-            $table->foreign('product_id')->references('id')->on('properties');
+            $table->foreign('property_id')->references('id')->on('properties');
 
         });
     }

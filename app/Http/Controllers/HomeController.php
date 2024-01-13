@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PropertyType;
+use App\Models\Property;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -25,8 +25,8 @@ class HomeController extends Controller
 
     public function properties()
     {
-        $property_types = PropertyType::get();
-        return view('user.propertice',['$property_types' => $property_types]);
+        $properties = Property::get();
+        return view('user.properties',['properties' => $properties]);
     }
 
     public function resorts()
@@ -71,7 +71,7 @@ class HomeController extends Controller
 
     public function tableUserAdd()
     {
-        return view('admin.useradd.index');
+        return view('admin.useradd.user_login_form');
     }
 
 }

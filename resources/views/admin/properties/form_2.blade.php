@@ -57,7 +57,7 @@
                 <form method="POST" action="{{ route('room_store') }}" enctype="multipart/form-data">
                     @csrf
                     @foreach($Properties as $Property)
-                        <input type="hidden" name="productId" value="{{ $Property->id }}">
+                        <input type="hidden" name="property_id" value="{{ $Property->id }}">
                     @endforeach
 
                     <div class="form-group">

@@ -38,10 +38,17 @@ Route::middleware([IsAdmin::class])->group(function ()
 
     Route::get('/propertiesIndex', [PropertyController::class, 'propertiesList'])->name('properties_list');
     Route::get('/property/add', [PropertyController::class, 'propertyAdd'])->name('property_add');
+    Route::delete('/property/{id}', [PropertyController::class, 'destroy']);
+
     Route::get('/property/add/form2', [PropertyController::class, 'propertyAdd2'])->name('property_add_form_2');
     Route::post('/property/store', [PropertyController::class, 'propertyStore'])->name('property_store');
     Route::post('/property/room/store', [PropertyController::class, 'roomStore'])->name('room_store');
     Route::get('/property/room_list', [PropertyController::class, 'roomList'])->name('room_list');
+    Route::delete('/room/{room}', [PropertyController::class, 'delete'])->name('room.delete');
+
+
+    
+
 });
 
 

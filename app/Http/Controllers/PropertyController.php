@@ -74,8 +74,16 @@ class PropertyController extends Controller
 
         $properties->save();
 
-        return redirect()->route('property_add_form_2')->withSuccess('Next Step!');
+        return redirect()->route('property_add_form_2')->withSuccess('Add Room Details!');
     }
+    public function destroy($id)
+    {
+        $property = Property::findOrFail($id);
+        $property->delete();
+
+        return back()->withSuccess("Property Deleted Successfully");
+    }
+
     public function propertyAdd2()
     {
         $PropertyTypes = PropertyType::get();
@@ -95,11 +103,10 @@ class PropertyController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'price' => 'required|string',
             'room_type' => 'required|exists:room_types,id',
-            'productId' => 'required|exists:properties,id'
+            'property_id' => 'required|exists:properties,id'
         ]);
 
         $rooms = new Room();
-
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
@@ -111,28 +118,31 @@ class PropertyController extends Controller
         $rooms->price = $validatedData['price'];
         $rooms->room_type_id = $request->room_type;
         $rooms->status = 1;
-        $rooms->product_id = $validatedData['productId'];
+        $rooms->property_id = $validatedData['property_id'];
 
 
         $rooms->save();
 
-        return redirect()->route('properties_list')->withSuccess('Success !');
+        return redirect()->route('properties_list')->withSuccess('Property added Successfully !');
     }
+    public function delete(Room $room)
+    {
+        abort_if(!$room, 404);
+
+        $room->delete();
+
+        return back()->withSuccess("Room Deleted Successfully");
+    }
+
     public function roomList()
     {
         $rooms = room::get();
-        return view('admin.properties.room_index', ['rooms' => $rooms]);
 
+        return view('admin.properties.room_index', ['rooms' => $rooms]);
     }
 
 
 
 }
 
-//    public function destroy_property($id)
-//    {
-//        $property = Property::findOrFail($id);
-//        $property->delete();
-//        return back()->withSuccess("Property Deleted Successfully");
-//    }
 
