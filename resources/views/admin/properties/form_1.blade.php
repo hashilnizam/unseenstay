@@ -84,6 +84,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label">Description:</label>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label">Location:</label>
                         <input type="text" name="location" class="form-control">
                     </div>

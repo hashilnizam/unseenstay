@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('logo'); // Assuming the image path will be stored
             $table->string('image'); // Assuming the image path will be stored
+            $table->string('description');
             $table->string('location');
             $table->string('email');
             $table->string('mobile');

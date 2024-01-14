@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Property;
+use App\Models\Room;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -12,8 +12,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('user.index');
+        $properties = Property::get();
+        $rooms = Room::get();
+        return view('user.index',['properties' => $properties,'rooms' => $rooms]);
 
     }
 
@@ -26,13 +27,10 @@ class HomeController extends Controller
     public function properties()
     {
         $properties = Property::get();
-        return view('user.properties',['properties' => $properties]);
+        $rooms = Room::get();
+        return view('user.properties',['properties' => $properties,'rooms' => $rooms]);
     }
 
-    public function resorts()
-    {
-        return view('user.resorts');
-    }
     public function about()
     {
 
@@ -43,6 +41,13 @@ class HomeController extends Controller
 
         return view('user.blog');
     }
+    public function rooms_single($propertyId)
+    {
+        $properties = Property::with('rooms')->find($propertyId);
+        return view('user.rooms_single', ['properties' => $properties]);
+
+    }
+
     public function login_page()
       {
         return view('user.userlogin');

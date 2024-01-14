@@ -22,6 +22,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('unseen.contact
 Route::get('/properties', [HomeController::class, 'properties'])->name('unseen.properties');
 Route::get('/about', [HomeController::class, 'about'])->name('unseen.about');
 Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
+Route::get('/rooms_single/{id}', [HomeController::class, 'rooms_single'])->name('rooms_single');
 
 
 
@@ -47,7 +48,7 @@ Route::middleware([IsAdmin::class])->group(function ()
     Route::delete('/room/{room}', [PropertyController::class, 'delete'])->name('room.delete');
 
 
-    
+
 
 });
 

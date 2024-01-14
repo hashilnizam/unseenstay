@@ -66,6 +66,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label">Person:</label>
+                        <input type="number" name="person" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">View:</label>
+                        <input type="text" name="view" class="form-control">
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label">Room Type</label>
                         <select class="form-select" id="room_type" name="room_type">
                             @foreach($RoomTypes as $RoomType)

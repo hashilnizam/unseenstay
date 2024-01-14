@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('room_type_id');
             $table->unsignedBigInteger('property_id');
             $table->string('description');
+            $table->int('person');
+            $table->string('view');
             $table->string('image');
             $table->string('price');
             $table->string('status');

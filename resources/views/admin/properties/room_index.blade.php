@@ -33,6 +33,8 @@
                             <th>Image</th>
                             <th>Price</th>
                             <th>Description</th>
+                            <th>Person</th>
+                            <th>View</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -50,6 +52,8 @@
                                 </td>
                                 <td>{{ $room->price }}</td>
                                 <td>{{ $room->description }}</td>
+                                <td>{{ $room->person }}</td>
+                                <td>{{ $room->view }}</td>
                                 <td>
                                     <form method="POST" action="{{ url('/room/' . $room->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this room?')">
                                         @csrf

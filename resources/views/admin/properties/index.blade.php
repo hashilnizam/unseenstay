@@ -38,6 +38,7 @@
                             <th>Property Type</th>
                             <th>Logo</th>
                             <th>Image</th>
+                            <th>Description</th>
                             <th>Location</th>
                             <th>Email</th>
                             <th>Mobile</th>
@@ -65,6 +66,7 @@
                                         No Image
                                     @endif
                                 </td>
+                                <td>{{ $property->description }}</td>
                                 <td>{{ $property->location }}</td>
                                 <td>{{ $property->email }}</td>
                                 <td>{{ $property->mobile }}</td>

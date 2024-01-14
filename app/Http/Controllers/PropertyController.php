@@ -34,6 +34,7 @@ class PropertyController extends Controller
             'name' => 'required|string',
             'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
             'location' => 'required|string',
             'email' => 'required|email',
             'mobile' => 'required|string',
@@ -64,6 +65,7 @@ class PropertyController extends Controller
 
 
         $properties->name = $validatedData['name'];
+        $properties->description = $validatedData['description'];
         $properties->location = $validatedData['location'];
         $properties->email = $validatedData['email'];
         $properties->mobile = $validatedData['mobile'];
@@ -100,6 +102,8 @@ class PropertyController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required|string',
+            'person' => 'required|int',
+            'view' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'price' => 'required|string',
             'room_type' => 'required|exists:room_types,id',
@@ -115,6 +119,8 @@ class PropertyController extends Controller
         }
 
         $rooms->description = $validatedData['description'];
+        $rooms->person = $validatedData['person'];
+        $rooms->view = $validatedData['view'];
         $rooms->price = $validatedData['price'];
         $rooms->room_type_id = $request->room_type;
         $rooms->status = 1;
