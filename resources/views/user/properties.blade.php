@@ -2,7 +2,18 @@
 
  @section('content')
 
- <div class="hero-wrap" style="background-image: url('user/images/bg_1.jpg');">
+     @if ($errors->any())
+         <div class="alert alert-danger">
+             <ul>
+                 @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                 @endforeach
+             </ul>
+         </div>
+     @endif
+
+
+     <div class="hero-wrap" style="background-image: url('user/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">

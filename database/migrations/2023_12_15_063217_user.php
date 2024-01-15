@@ -15,9 +15,10 @@ return new class extends Migration
            $table->id();
            $table->string('username', 256);
            $table->string('email', 256);
+           $table->integer('mobile', 15);
            $table->string('password', 256);
            $table->enum('user_type', ['admin', 'accountant', 'user'])->default('user');
-           $table->timestamps(); 
+           $table->timestamps();
        });
     }
 

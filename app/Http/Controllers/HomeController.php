@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
         $properties = Property::get();
         $rooms = Room::get();
+        $users = User::get();
         return view('user.properties',['properties' => $properties,'rooms' => $rooms]);
     }
 
@@ -44,8 +45,18 @@ class HomeController extends Controller
     public function rooms_single($propertyId)
     {
         $properties = Property::with('rooms')->find($propertyId);
-        return view('user.rooms_single', ['properties' => $properties]);
+        $users = User::get();
 
+        return view('user.rooms_single', ['properties' => $properties,
+            'user' => $users]);
+
+    }
+    public function rooms_book_now($id,$user_id)
+    {
+        $room = Room::find($id);
+        $user = User::with('bookings')->find($user_id);
+        return view('user.rooms_book_now', ['room' => $room,
+            'user' => $user]);
     }
 
     public function login_page()

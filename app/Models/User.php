@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->user_type === 'admin';
     }
+    public function bookings()
+    {
+        return $this->belongsTo(Booking::class,'user_id');
+    }
 }

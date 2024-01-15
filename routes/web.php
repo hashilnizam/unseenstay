@@ -23,8 +23,8 @@ Route::get('/properties', [HomeController::class, 'properties'])->name('unseen.p
 Route::get('/about', [HomeController::class, 'about'])->name('unseen.about');
 Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
 Route::get('/rooms_single/{id}', [HomeController::class, 'rooms_single'])->name('rooms_single');
-
-
+Route::get('/rooms_book_now/{id}/{user_id}', [HomeController::class, 'rooms_book_now'])->name('rooms_book_now');
+Route::post('/reservation', [PropertyController::class, 'reservation'])->name('reservation');
 
 //admin
 
@@ -45,8 +45,6 @@ Route::middleware([IsAdmin::class])->group(function ()
     Route::post('/property/store', [PropertyController::class, 'propertyStore'])->name('property_store');
     Route::post('/property/room/store', [PropertyController::class, 'roomStore'])->name('room_store');
     Route::get('/property/room_list', [PropertyController::class, 'roomList'])->name('room_list');
-    Route::delete('/room/{room}', [PropertyController::class, 'delete'])->name('room.delete');
-
 
 
 

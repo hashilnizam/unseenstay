@@ -74,18 +74,20 @@
                                                 <li><span>View:</span> {{ $room->view }} </li>
                                             </ul>
                                             <hr>
-                                            <a href="room-single.html" style="display: inline-block;
-                                    padding: 15px 30px;
-                                    font-size: 18px;
-                                    text-decoration: none;
-                                    background-color: #3498db;
-                                    color: #fff;
-                                    border-radius: 5px;
-                                    transition: background-color 0.3s ease;"
-                                               onmouseover="this.style.backgroundColor='#2980b9'"
-                                               onmouseout="this.style.backgroundColor='#3498db'">
-                                                Book Now
-                                            </a>
+
+                                                <a href="{{ route('rooms_book_now', ['id' => $room->id, 'user_id' => Auth::id()]) }}" style="display: inline-block;
+                                        padding: 15px 30px;
+                                        font-size: 18px;
+                                        text-decoration: none;
+                                        background-color: #3498db;
+                                        color: #fff;
+                                        border-radius: 5px;
+                                        transition: background-color 0.3s ease;"
+                                                   onmouseover="this.style.backgroundColor='#2980b9'"
+                                                   onmouseout="this.style.backgroundColor='#3498db'">
+                                                    Book Now
+                                                </a>
+
 
 
                                         </div>

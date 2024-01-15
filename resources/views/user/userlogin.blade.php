@@ -36,7 +36,7 @@
 </head>
 <body>
 
-      
+
 	@if (session('error'))
 	<div class="alert alert-error">
 	  {{ session('error' ) }}
@@ -86,6 +86,14 @@
                         <input id="user" type="text" class="input" placeholder="username" name="username">
                     </div>
                     <div class="group">
+                        <label for="pass" class="label">Email Address</label>
+                        <input id="pass" type="text" class="input" placeholder="email id" name="email">
+                    </div>
+                    <div class="group">
+                        <label for="mobile" class="label">Mobile</label>
+                        <input id="mobile" type="text" class="input" placeholder="mobile number" name="mobile">
+                    </div>
+                    <div class="group">
                         <label for="pass" class="label">Password</label>
                         <input id="pass" type="password" class="input" data-type="password" name="password">
                     </div>
@@ -93,10 +101,7 @@
                         <label for="pass" class="label">Repeat Password</label>
                         <input id="pass" type="password" class="input" data-type="password" name="cpassword">
                     </div>
-                    <div class="group">
-                        <label for="pass" class="label">Email Address</label>
-                        <input id="pass" type="text" class="input" placeholder="email id" name="email">
-                    </div>
+
                     <div class="group">
                        <button type="submit" class="button">Sign Up</button>
                     </div>

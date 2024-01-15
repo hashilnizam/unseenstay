@@ -42,6 +42,7 @@ class UserController extends Controller
           $validatedData = $request->validate([
               'username' => 'required|unique:users',
               'email' => 'required|email|unique:users',
+              'mobile' => 'required|unique:users',
               'password' => 'required|min:6',
               'cpassword' => 'required|same:password',
           ]);
@@ -54,6 +55,7 @@ class UserController extends Controller
           $user = new User();
           $user->username = $validatedData['username'];
           $user->email = $validatedData['email'];
+          $user->mobile = $validatedData['mobile'];
           $user->password = $hashedPassword;
 
 

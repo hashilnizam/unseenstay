@@ -26,8 +26,17 @@
       <link rel="stylesheet" href="{{ asset('user/css/flaticon.css') }}">
       <link rel="stylesheet" href="{{ asset('user/css/icomoon.css') }}">
       <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
+
+{{--      <link rel="stylesheet" href="{{ asset('user/booking/css/bootstrap.min.css') }}">--}}
+      <link rel="stylesheet" href="{{ asset('user/booking/css/style.css') }}">
+
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      <link href="http://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet" type="text/css" />
+      <link href="http://fonts.googleapis.com/css?family=Alice:400,700" rel="stylesheet" type="text/css" />
+
+      <!-- Booking -->
+
 
   </head>
 

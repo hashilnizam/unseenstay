@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Property;
 use App\Models\Room;
 use App\Models\RoomType;
+use App\Models\Booking;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 
@@ -146,6 +147,32 @@ class PropertyController extends Controller
 
         return view('admin.properties.room_index', ['rooms' => $rooms]);
     }
+
+    public function reservation(Request $request)
+    {
+        $min = 1000000;
+        $max = 9999999;
+
+        $order_id = random_int($min, $max);
+
+        $validatedData = $request->validate([
+            'check_in' => 'required|date',
+            'check_out' => 'required|date',
+        ]);
+
+        $bookings = new Booking();
+
+        $bookings->check_in = $validatedData['check_in'];
+        $bookings->room_id = $request->room_id;
+        $bookings->user_id = $request->user_id;
+        $bookings->order_id = $order_id;
+        $bookings->check_out = $validatedData['check_out'];
+        $bookings->status = 1;
+        $bookings->save();
+
+        return redirect()->route('unseen.properties')->with('success', 'Booked');
+    }
+
 
 
 
