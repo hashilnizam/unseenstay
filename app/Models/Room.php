@@ -13,13 +13,14 @@ class Room extends Model
         return $this->belongsTo(RoomType::class, 'room_type_id');
     }
 
-        public function property()
-        {
-            return $this->belongsTo(Property::class, 'property_id');
-        }
-
-    public function booking()
+    public function property()
     {
-        return $this->belongsTo(Booking::class, 'room_id');
+        return $this->belongsTo(Property::class, 'property_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasOne(Booking::class, 'room_id');
+    }
+
 }

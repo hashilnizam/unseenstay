@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\property;
+
+use App\Models\Blog;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Room;
 
 class UserController extends Controller
 {
@@ -134,7 +137,65 @@ class UserController extends Controller
           return back()->withSuccess("User Deleted Successfully");
       }
 
+    public function my_profile()
+    {
+        $users = User::get();
+        return view('user.user_profile', ['users' => $users]);
+    }
 
+    public function bookings()
+    {
+        $user_id = auth()->user()->id;
+        $my_bookings=Booking::where('user_id',$user_id)
+                            ->with('room')
+                            ->get();
+        return view('user.bookings',
+            ['my_bookings' => $my_bookings]);
+    }
+
+
+    //blog
+
+    public function blog_form()
+    {
+        return view('admin.dashboard.blog_form');
+    }
+    public function blog_form_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'heading' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $blogs = new Blog();
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $blogs->image = $imageName;
+        }
+
+        $blogs->heading = $validatedData['heading'];
+        $blogs->description = $validatedData['description'];
+        $blogs->save();
+
+        return redirect()->route('unseen.blog')->withSuccess('Blog added Successfully !');
+    }
+    public function delete_blog(Blog $blog)
+    {
+        abort_if(!$blog, 404);
+
+        $blog->delete();
+
+        return back()->withSuccess("Room Deleted Successfully");
+    }
+
+    public function blog_form_index()
+    {
+        $blogs = Blog::get();
+        return view('admin.dashboard.blog_index',['blogs' => $blogs]);
+    }
 
 }
 

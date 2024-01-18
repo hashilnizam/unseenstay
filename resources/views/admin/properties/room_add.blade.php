@@ -51,6 +51,7 @@
             </div>
         </nav>
 
+
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
@@ -59,6 +60,18 @@
                     @foreach($Properties as $Property)
                         <input type="hidden" name="property_id" value="{{ $Property->id }}">
                     @endforeach
+
+                    <div class="form-group">
+                        <label class="form-label">Properties</label>
+                        <select class="form-select" id="name" name="name">
+                            @foreach($Properties as $Property)
+                                <option value="{{ $Property->id }}" {{ old('name') == $Property->id ? 'selected' : '' }}>
+                                    {{ $Property->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
 
                     <div class="form-group">
                         <label class="form-label">Room Category:</label>
@@ -96,7 +109,8 @@
                         <input type="text" id="price" name="price" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
                 </form>
             </div>
         </div>

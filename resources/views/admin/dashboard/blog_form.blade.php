@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('properties_list') }}">Properties List</a>
+                            <a class="btn btn-primary" href="{{ route('blog_form_index') }}">Blogs List</a>
                         </li>
                     </ul>
                 </div>
@@ -54,36 +54,18 @@
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
-                <form method="POST" action="{{ route('room_store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('blog_form_store') }}" enctype="multipart/form-data">
                     @csrf
-                    @foreach($Properties as $Property)
-                        <input type="hidden" name="property_id" value="{{ $Property->id }}">
-                    @endforeach
 
+                    <!-- Property Details -->
                     <div class="form-group">
-                        <label class="form-label">Room Category:</label>
-                        <input type="text"  name="description" class="form-control">
+                        <label class="form-label">Heading:</label>
+                        <input type="text" name="heading" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Person:</label>
-                        <input type="number" name="person" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">View:</label>
-                        <input type="text" name="view" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Room Type</label>
-                        <select class="form-select" id="room_type" name="room_type">
-                            @foreach($RoomTypes as $RoomType)
-                                <option value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
-                                    {{ $RoomType->room_type  }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <label class="form-label">Description:</label>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -91,15 +73,10 @@
                         <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="price" class="form-label">Price:</label>
-                        <input type="text" id="price" name="price" class="form-control">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
             </div>
         </div>
     </div>
-
 @endsection

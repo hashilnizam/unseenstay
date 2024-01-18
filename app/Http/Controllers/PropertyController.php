@@ -130,7 +130,7 @@ class PropertyController extends Controller
 
         $rooms->save();
 
-        return redirect()->route('properties_list')->withSuccess('Property added Successfully !');
+        return redirect()->route('properties_list')->withSuccess('Added Successfully !');
     }
     public function delete(Room $room)
     {
@@ -171,6 +171,19 @@ class PropertyController extends Controller
         $bookings->save();
 
         return redirect()->route('unseen.properties')->with('success', 'Booked');
+    }
+
+    public function roomAdd()
+    {
+        $PropertyTypes = PropertyType::get();
+        $RoomTypes = RoomType::get();
+        $Properties = Property::get();
+        return view('admin.properties.room_add', [
+            'PropertyTypes' => $PropertyTypes,
+            'RoomTypes' => $RoomTypes,
+            'Properties' => $Properties
+        ]);
+
     }
 
 

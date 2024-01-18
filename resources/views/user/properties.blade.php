@@ -19,12 +19,11 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <h1 class="mb-4 bread">Propertice</h1>
+	            <h1 class="mb-4 bread">Properties</h1>
                 <p class="breadcrumbs mb-8">
                     <span class="mr-5"><a href="index.html" style="font-size: 18px;">Resort</a></span>
                     <span class="mr-2"><a href="index.html" style="font-size: 18px;">Home Stay</a></span>
                 </p>
-
             </div>
           </div>
         </div>
@@ -118,3 +117,4 @@
     </section>
 
 @endsection
+

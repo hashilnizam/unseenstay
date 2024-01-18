@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Blog;
 use App\Models\Property;
+use App\Models\PropertyType;
 use App\Models\Room;
 use App\Models\User;
 
@@ -27,6 +29,7 @@ class HomeController extends Controller
     public function properties()
     {
         $properties = Property::get();
+        $property_types = PropertyType::get();
         $rooms = Room::get();
         $users = User::get();
         return view('user.properties',['properties' => $properties,'rooms' => $rooms]);
@@ -39,17 +42,19 @@ class HomeController extends Controller
     }
     public function blog()
     {
-
-        return view('user.blog');
+        $blogs = Blog::get();
+        return view('user.blog',['blogs' => $blogs]);
+    }
+    public function blog_single()
+    {
+        $blogs = Blog::get();
+        return view('user.blog_single',['blogs' => $blogs]);
     }
     public function rooms_single($propertyId)
     {
         $properties = Property::with('rooms')->find($propertyId);
         $users = User::get();
-
-        return view('user.rooms_single', ['properties' => $properties,
-            'user' => $users]);
-
+        return view('user.rooms_single', ['properties' => $properties, 'user' => $users]);
     }
     public function rooms_book_now($id,$user_id)
     {

@@ -48,13 +48,15 @@
 	            </div>
 	          </div>
 	          <div class="pb-md-5">
-							<p>On his way Jeseem Khan met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince his and so it didn’t take long until a few insidious Copy Writers ambushed his, made his drunk with Longe and Parole and dragged his into their agency, where they abused his for their.</p>
-							<p>When Jeseem Khan reached the first hills of the Italic Mountains, Jeseem Khan had a last view back on the skyline of his hometown Bookmarksgrove, the headline of Alphabet Village and the subline of his own road, the Line Lane. Pityful a rethoric question ran over his cheek, then Jeseem Khan continued his way.</p>
+							<p>Welcome to Unseen Stay, where luxury meets seclusion, and every moment is a hidden gem waiting to be discovered. Nestled in the heart of nature, our resort is a haven of tranquility, promising an escape from the ordinary. As you step into the embrace of Unseen Stay, you'll find a harmonious blend of opulence and the untouched beauty of the surroundings. Our accommodations are designed to provide a retreat for the soul, allowing you to unwind in style and comfort. Whether you're seeking a romantic getaway, a family adventure, or a solo retreat, Unseen Stay is your sanctuary. Immerse yourself in the unseen wonders that await, where each stay is a unique and unforgettable experience, leaving you refreshed, rejuvenated, and longing to return to the hidden paradise we proudly call home.</p>
 							<ul class="ftco-social d-flex">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.facebook.com/p/THE-UNSEEN-100083043322137/" target="_blank"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate">
+                                    <a href="mailto:unseenstay@gmail.com?subject=Hi%20How%20Here" target="_blank">
+                                        <span class="fas fa-envelope"></span>
+                                    </a>
+                                </li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>
 						</div>
 					</div>

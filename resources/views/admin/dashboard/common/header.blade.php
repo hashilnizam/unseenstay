@@ -1,6 +1,6 @@
 <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('unseen.index')  }}">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -17,23 +17,63 @@
             Interface
         </div>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('unseen.index') }}" target="_blank">
+                <i class="fas fa-arrow-left"></i>
+                <span>View Site</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('show')  }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Users</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUpdates"
-               aria-expanded="true" aria-controls="collapseUpdates">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProperties"
+               aria-expanded="true" aria-controls="collapseProperties">
                 <i class="fas fa-building"></i>
                 <span>Properties</span>
             </a>
-            <div id="collapseUpdates" class="collapse" aria-labelledby="headingUpdates"
+            <div id="collapseProperties" class="collapse" aria-labelledby="headingProperties"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Updates:</h6>
                     <a class="collapse-item" href="{{ route('properties_list') }}">Properties List</a>
                     <a class="collapse-item" href="{{ route('room_list') }}">Room List</a>
+                </div>
+            </div>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserProfile"
+               aria-expanded="true" aria-controls="collapseUserProfile">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Bookings</span>
+            </a>
+            <div id="collapseUserProfile" class="collapse" aria-labelledby="headingUserProfile"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Bookings:</h6>
+                    <a class="collapse-item" href="{{ route('properties_list') }}">User Bookings</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
+               aria-expanded="true" aria-controls="collapseBlogs">
+                <i class="fas fa-blog"></i>
+                <span>Blogs</span>
+            </a>
+            <div id="collapseBlogs" class="collapse" aria-labelledby="headingBlogs"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Blogs:</h6>
+                    <a class="collapse-item" href="{{ route('blog_form') }}">Blog</a>
+                    <a class="collapse-item" href="{{ route('blog_form_index') }}">Blog List</a>
                 </div>
             </div>
         </li>

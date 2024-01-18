@@ -4,11 +4,13 @@
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">UNSEEN STAY</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Design your dream stay
+                  Explore and discover with unseenstay.
+              </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -17,9 +19,9 @@
               <h2 class="ftco-heading-2">Useful Links</h2>
               <ul class="list-unstyled">
                 <li><a href="{{ route('unseen.blog') }}" class="py-2 d-block">Blog</a></li>
-                <li><a href="{{ route('unseen.properties') }}" class="py-2 d-block">Rooms</a></li>
+                <li><a href="{{ route('unseen.properties') }}" class="py-2 d-block">Properties</a></li>
                 <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">Instagram</a></li>
-                <li><a href="http://127.0.0.1:8000/wa.me/%2B919188165352" class="py-2 d-block">Whatsapp</a></li>
+                <li><a href="https://wa.me/+917561845352?text=Hello%20there" class="py-2 d-block">Whatsapp</a></li>
               </ul>
             </div>
           </div>
@@ -27,10 +29,8 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Privacy</h2>
               <ul class="list-unstyled">
-                <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">Career</a></li>
-                <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">About Us</a></li>
+                <li><a href="{{ route('unseen.about') }}" class="py-2 d-block">About Us</a></li>
                 <li><a href="{{ route('unseen.contact') }}">Contact Us</a></li>
-                <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">Services</a></li>
               </ul>
             </div>
           </div>
@@ -41,7 +41,7 @@
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">Wayanad-Kerala-India</span></li>
 	                <li><a href="http://127.0.0.1:8000/wa.me/%2B919188165352"><span class="icon icon-phone"></span><span class="text">+91 9188165352</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">unseenstay@gmail.com</span></a></li>
+	                <li><a href="mailto:hashilnizam@gmail.com?subject=Subject%20Here&body=Hi%20World""><span class="icon icon-envelope"></span><span class="text">unseenstay@gmail.com</span></a></li>
 	              </ul>
 	            </div>
             </div>

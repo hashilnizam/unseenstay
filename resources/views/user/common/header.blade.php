@@ -14,18 +14,35 @@
             <li class="nav-item"><a href="{{ route('unseen.about') }}" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{{ route('unseen.blog') }}" class="nav-link">Blog</a></li>
             <li class="nav-item"><a href="{{ route('unseen.contact') }}" class="nav-link">Contact</a></li>
-            @if(Auth::check())
-            <li class="nav-item"><a href="{{ route('unseen.properties') }}" class="nav-link">My Profile</a></li>
-            <li class="nav-item"><a href="{{ route('user_logout') }}" class="nav-link">Logout</a></li>
-            @else
-            <li class="nav-item"><a href="{{ route('index_login') }}" class="nav-link">Login</a></li>
-
-            @endif
-            <li class="nav-item active"><a href="/" class="nav-link ">
               @if(Auth::check())
-                {{Auth::user()->username}}
-              @endif</a>
-            </li>
+                  <li class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          @if(Auth::check())
+                              {{ Auth::user()->username }}
+                          @endif
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="userDropdown">
+                          <a class="dropdown-item" href="{{ route('my_profile') }}">
+                              <i class="fas fa-user"></i>  My Profile
+                          </a>
+                          <a class="dropdown-item" href="{{ route('bookings') }}">
+                              <i class="fas fa-shopping-cart"></i>  My Bookings
+                          </a>
+                          <div class="dropdown-divider"></div>
+                          @if(Auth::check())
+                              <a class="dropdown-item" href="{{ route('user_logout') }}">
+                                  <i class="fas fa-sign-out-alt"></i>  Logout
+                              </a>
+                          @endif
+                      </div>
+
+                  </li>
+              @else
+                  <li class="nav-item"><a href="{{ route('index_login') }}" class="nav-link">Login</a></li>
+              @endif
+
+
+
 
           </ul>
         </div>

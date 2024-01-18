@@ -23,43 +23,31 @@
 
     <div class="container mt-5">
         <div class="row cen_al">
-            <h1 class="m-0 font-weight-bold text-primary" style="text-align: center">Room List</h1>
-            <div class="text-right">
-            <a href="{{ route('room_Add') }}" class="btn btn-primary">Add Room</a>
-            </div>
             <div class="col-md-8 offset-md-2 shadow-border">
                 <div class="table-responsive">
                     <table id="roomDataTable" class="display">
                         <thead>
                         <tr>
-                            <th>Property</th>
-                            <th>Room Type</th>
+                            <th>Heading</th>
+                            <th>Description</th>
                             <th>Image</th>
-                            <th>Price</th>
-                            <th>Room Category</th>
-                            <th>Person</th>
-                            <th>View</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($rooms as $room)
+                        @foreach($blogs as $blog)
                             <tr>
-                                <td>{{ $room->property->name }}</td>
-                                <td>{{ $room->room_types->room_type }}</td>
+                                <td>{{ $blog->heading }}</td>
+                                <td>{{ $blog->description }}</td>
                                 <td>
-                                    @if($room->image)
-                                        <img src="{{ asset('images/'. $room->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @if($blog->image)
+                                        <img src="{{ asset('images/'. $blog->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
-                                <td>{{ $room->price }}</td>
-                                <td>{{ $room->description }}</td>
-                                <td>{{ $room->person }}</td>
-                                <td>{{ $room->view }}</td>
                                 <td>
-                                    <form method="POST" action="{{ url('/room/' . $room->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this room?')">
+                                    <form method="POST" action="{{ url('/room/' . $blog->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this blog?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

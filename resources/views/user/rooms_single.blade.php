@@ -24,35 +24,33 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
-                        @foreach($properties->rooms as $room)
                         <div class="col-md-12 ftco-animate">
-                            <h2 class="mb-4">{{ $room->property->name }}</h2>
+                            <h2 class="mb-4">{{ $properties['name'] }}</h2>
                             <div class="single-slider owl-carousel">
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $room->property->image) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image) }}');"></div>
                                 </div>
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $room->property->logo) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->logo) }}');"></div>
                                 </div>
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $room->property->image) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image) }}');"></div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
-                            <p>{{ $room->property->description }}</p>
+                            <p>{{ $properties->description }}</p>
                             <div class="d-md-flex mt-5 mb-5">
                                 <ul class="list">
-                                    <li><span><i class="fa-solid fa-house"></i></span> {{ $room->property->property_types->property_type }}</li>
-                                    <li><span><i class="fas fa-map-marker-alt"></i></span> {{ $room->property->location }}</li>
+                                    <li><span><i class="fa-solid fa-house"></i></span> {{ $properties->property_types->property_type }}</li>
+                                    <li><span><i class="fas fa-map-marker-alt"></i></span> {{ $properties->location }}</li>
                                 </ul>
                                 <ul class="list ml-md-5">
-                                    <li><span><i class="fas fa-envelope"></i></span> {{ $room->property->email }}</li>
-                                    <li><span><i class="fas fa-mobile"></i></span> {{ $room->property->mobile }}</li>
+                                    <li><span><i class="fas fa-envelope"></i></span> {{ $properties->email }}</li>
+                                    <li><span><i class="fas fa-mobile"></i></span> {{ $properties->mobile }}</li>
                                 </ul>
                             </div>
-                            @endforeach
                         </div>
 
                         <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -61,7 +59,7 @@
                                 @foreach($properties->rooms as $room)
                                 <div class="col-sm col-md-6 ftco-animate">
                                     <div class="room">
-                                        <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/room-1.jpg') }}');">
+                                        <a href="{{ route('rooms_book_now', ['id' => $room->id, 'user_id' => Auth::id()]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/' . $room->image) }}');">
                                             <div class="icon d-flex justify-content-center align-items-center">
                                                 <span class="icon-search2"></span>
                                             </div>
@@ -88,15 +86,12 @@
                                                     Book Now
                                                 </a>
 
-
-
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
-
                     </div>
                 </div> <!-- .col-md-8 -->
                 <div class="col-lg-4 sidebar ftco-animate">
