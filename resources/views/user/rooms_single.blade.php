@@ -2,14 +2,13 @@
 
 @section('content')
 
-    <body>
-    <div class="hero-wrap" style="background-image: url('{{ asset('images/bg_1.jpg') }}');">
+    <div class="hero-wrap" style="background-image: url('/user/images/bg_1.jpg');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
                 <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                     <div class="text">
-                        <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="rooms.html">Room</a></span> <span>Room Single</span></p>
+                        <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{ route('unseen.index') }}">Home</a></span><span>Room Single</span></p>
                         <h1 class="mb-4 bread">Room Single</h1>
                     </div>
                 </div>
@@ -99,24 +98,23 @@
                     <div class="sidebar-box ftco-animate">
                         <div class="categories">
                             <h3>Categories</h3>
-                            <li><a href="#">Resort <span>(12)</span></a></li>
-                            <li><a href="#">Homestay <span>(22)</span></a></li>
+                            <li><a href="{{ route('unseen.properties') }}">Resort</a></li>
+                            <li><a href="{{ route('unseen.properties') }}">Homestay</a></li>
                         </div>
                     </div>
 
                     <div class="sidebar-box ftco-animate">
                         <h3>Recent Blog</h3>
                         <div class="sidebar-box ftco-animate">
-                            @foreach($blogs as $blog)
+                            @foreach($blogs->take(10) as $blog)
                                 <!-- Consider using a loop for dynamic recent blog posts -->
                                 <div class="block-21 mb-4 d-flex">
-                                    <a class="blog-img mr-4" style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
+                                    <a href="{{ route('blog_single',['id' => $blog->id]) }}" class="blog-img mr-4" style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
                                     <div class="text">
                                         <h3 class="heading"><a href="{{ route('blog_single',['id' => $blog->id]) }}">{{ $blog->heading }}</a></h3>
                                         <div class="meta">
                                             <div><a><span class="icon-calendar"></span>{{ $blog->created_at->format('M d, Y') }}</a></div>
                                             <div><a><span class="icon-person"></span> Admin</a></div>
-                                            <div><><span class="icon-chat"></span> 19</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +128,7 @@
         </div>
     </section> <!-- .section -->
 
-    <section class="instagram pt-5">
+    <section class="instagram">
         <div class="container-fluid">
             <div class="row no-gutters justify-content-center pb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
@@ -138,44 +136,17 @@
                 </div>
             </div>
             <div class="row no-gutters">
-                <div class="col-sm-12 col-md ftco-animate">
-                    <a href="{{ asset('images/insta-1.jpg') }}" class="insta-img image-popup" style="background-image: url('{{ asset('images/insta-1.jpg') }}');">
-                        <div class="icon d-flex justify-content-center">
-                            <span class="icon-instagram align-self-center"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md ftco-animate">
-                    <a href="{{ asset('images/insta-2.jpg') }}" class="insta-img image-popup" style="background-image: url('{{ asset('images/insta-2.jpg') }}');">
-                        <div class="icon d-flex justify-content-center">
-                            <span class="icon-instagram align-self-center"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md ftco-animate">
-                    <a href="{{ asset('images/insta-3.jpg') }}" class="insta-img image-popup" style="background-image: url('{{ asset('images/insta-3.jpg') }}');">
-                        <div class="icon d-flex justify-content-center">
-                            <span class="icon-instagram align-self-center"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md ftco-animate">
-                    <a href="{{ asset('images/insta-4.jpg') }}" class="insta-img image-popup" style="background-image: url('{{ asset('images/insta-4.jpg') }}');">
-                        <div class="icon d-flex justify-content-center">
-                            <span class="icon-instagram align-self-center"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md ftco-animate">
-                    <a href="{{ asset('images/insta-5.jpg') }}" class="insta-img image-popup" style="background-image: url('{{ asset('images/insta-5.jpg') }}');">
-                        <div class="icon d-flex justify-content-center">
-                            <span class="icon-instagram align-self-center"></span>
-                        </div>
-                    </a>
-                </div>
+                @foreach($instagrams->take(5) as $instagram)
+                    <div class="col-sm-12 col-md ftco-animate">
+                        <a href="https://www.instagram.com/unseenstay/" target="_blank">
+                            <img src="{{ asset('images/' . $instagram->image) }}" class="img-fluid">
+                        </a>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </section>
-    </body>
+
 
 @endsection

@@ -98,7 +98,11 @@ class HomeController extends Controller
         $properties = Property::with('rooms')->find($propertyId);
         $users = User::get();
         $blogs = Blog::get();
-        return view('user.rooms_single', ['properties' => $properties, 'user' => $users, 'blogs' => $blogs]);
+        $instagrams = Instagram::get();
+        return view('user.rooms_single', ['properties' => $properties,
+            'user' => $users,
+            'blogs' => $blogs,
+            'instagrams' => $instagrams]);
     }
     public function rooms_book_now($id,$user_id)
     {

@@ -7,7 +7,7 @@
             <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
                 <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                     <div class="text">
-                        <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+                        <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{ route('unseen.index') }}">Home</a></span> <span>Blog</span></p>
                         <h1 class="mb-4 bread">Blog</h1>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 @foreach($blogs->take(5) as $blog)
                                     <!-- Consider using a loop for dynamic recent blog posts -->
                                     <div class="block-21 mb-4 d-flex">
-                                        <a class="blog-img mr-4" style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
+                                        <a href="{{ route('blog_single',['id' => $blog->id]) }}" class="blog-img mr-4" style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
                                         <div class="text">
                                             <h3 class="heading"><a href="{{ route('blog_single',['id' => $blog->id]) }}">{{ $blog->heading }}</a></h3>
                                             <div class="meta">

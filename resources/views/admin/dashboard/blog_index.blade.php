@@ -21,6 +21,18 @@
         }
     </style>
 
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ route('blog_form') }}">Add Blogs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
