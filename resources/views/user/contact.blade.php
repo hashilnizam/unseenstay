@@ -72,7 +72,8 @@
                 <input type="text" class="form-control" placeholder="Subject" name="subject">
               </div>
                   <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              <div class="form-group">
+              <br>
+                  <div class="form-group">
                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
               </div>
             </form>

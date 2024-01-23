@@ -3,7 +3,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2021</span>
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
         </div>
     </div>
 </footer>
