@@ -15,10 +15,9 @@
     </div>
 
     <div class="container-fluid">
-
+        <h2 class="m-0 font-weight-bold text-primary" style="text-align: center">Property List</h2>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h1 class="m-0 font-weight-bold text-primary" style="text-align: center">Property List</h1>
                 <div class="text-right mb-2">
                     <a href="{{ route('property_add') }}" class="btn btn-primary">Add Property</a>
                     <button class="btn btn-secondary buttons-copy buttons-html5">Copy</button>

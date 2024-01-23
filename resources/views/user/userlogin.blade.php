@@ -37,11 +37,31 @@
 <body>
 
 
-	@if (session('error'))
-	<div class="alert alert-error">
-	  {{ session('error' ) }}
-	</div>
-	@endif
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if(session('warning'))
+    <div class="alert alert-warning">
+        {{ session('warning') }}
+    </div>
+@endif
+
+@if(session('info'))
+    <div class="alert alert-info">
+        {{ session('info') }}
+    </div>
+@endif
+
+
 
 
 <form class="user" method="post" action="{{ route('user_signin') }}">
@@ -56,6 +76,15 @@
 
             <div class="login-form">
                 <div class="sign-in-htm">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="group">
                         <label for="user" class="label">Username</label>
                         <input id="user" type="text" class="input" placeholder="username" name="username">
@@ -81,6 +110,18 @@
 			<form class="user" method="post" action="{{ route('user_signup') }}">
     		@csrf
                 <div class="sign-up-htm">
+                    @if ($errors->has('username') || $errors->has('email') || $errors->has('mobile') || $errors->has('password') || $errors->has('cpassword'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->getMessages() as $field => $messages)
+                                    @foreach ($messages as $message)
+                                        <li>{{ $message }}</li>
+                                    @endforeach
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="group">
                         <label for="user" class="label">Username</label>
                         <input id="user" type="text" class="input" placeholder="username" name="username">

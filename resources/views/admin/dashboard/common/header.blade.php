@@ -23,11 +23,20 @@
             </a>
         </li>
 
-
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('show')  }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+               aria-expanded="true" aria-controls="collapseProperties">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Users</span></a>
+                <span>User</span>
+            </a>
+            <div id="collapseUser" class="collapse" aria-labelledby="headingProperties"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">User Settings:</h6>
+                    <a class="collapse-item" href="{{ route('show') }}">Users</a>
+                    <a class="collapse-item" href="{{ route('user_feedback') }}">Feedback</a>
+                </div>
+            </div>
         </li>
 
         <li class="nav-item">
@@ -57,7 +66,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Bookings:</h6>
-                    <a class="collapse-item" href="{{ route('properties_list') }}">User Bookings</a>
+                    <a class="collapse-item" href="{{ route('bookings_table') }}">User Bookings</a>
                 </div>
             </div>
         </li>
@@ -77,6 +86,39 @@
                 </div>
             </div>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBanner"
+               aria-expanded="true" aria-controls="collapseBanner">
+                <i class="fas fa-flag"></i>
+                <span>Banner</span>
+            </a>
+            <div id="collapseBanner" class="collapse" aria-labelledby="headingProperties"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Banner Settings:</h6>
+                    <a class="collapse-item" href="{{ route('banner') }}">Banner</a>
+                    <a class="collapse-item" href="{{ route('banner_index') }}">Show Current Banner</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsta"
+               aria-expanded="true" aria-controls="collapseInsta">
+                <i class="fas fa-file-image"></i>
+                <span>Images</span>
+            </a>
+            <div id="collapseInsta" class="collapse" aria-labelledby="collapseInsta"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Image Settings:</h6>
+                    <a class="collapse-item" href="{{ route('insta_image') }}">Instagram Image</a>
+                    <a class="collapse-item" href="{{ route('insta_index') }}">Show Instagram Images</a>
+                </div>
+            </div>
+        </li>
+
         <hr class="sidebar-divider">
         <hr class="sidebar-divider d-none d-md-block">
     </ul>

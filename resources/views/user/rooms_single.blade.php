@@ -106,39 +106,24 @@
 
                     <div class="sidebar-box ftco-animate">
                         <h3>Recent Blog</h3>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url('{{ asset('images/image_1.jpg') }}');"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                        <div class="sidebar-box ftco-animate">
+                            @foreach($blogs as $blog)
+                                <!-- Consider using a loop for dynamic recent blog posts -->
+                                <div class="block-21 mb-4 d-flex">
+                                    <a class="blog-img mr-4" style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
+                                    <div class="text">
+                                        <h3 class="heading"><a href="{{ route('blog_single',['id' => $blog->id]) }}">{{ $blog->heading }}</a></h3>
+                                        <div class="meta">
+                                            <div><a><span class="icon-calendar"></span>{{ $blog->created_at->format('M d, Y') }}</a></div>
+                                            <div><a><span class="icon-person"></span> Admin</a></div>
+                                            <div><><span class="icon-chat"></span> 19</a></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
+
                         </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url('{{ asset('images/image_2.jpg') }}');"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url('{{ asset('images/image_3.jpg') }}');"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

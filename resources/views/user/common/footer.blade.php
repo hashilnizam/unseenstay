@@ -8,9 +8,9 @@
                   Explore and discover with unseenstay.
               </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><span class="icon-instagram"></span></a></li>
+                  <li class="ftco-animate"><a href="https://www.facebook.com/p/THE-UNSEEN-100083043322137/" target="_blank"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><span class="icon-instagram"></span></a></li>
+                  <li><a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?" target="_blank"><span class="fa-brands fa-whatsapp"></span></a></li>
               </ul>
             </div>
           </div>
@@ -20,8 +20,6 @@
               <ul class="list-unstyled">
                 <li><a href="{{ route('unseen.blog') }}" class="py-2 d-block">Blog</a></li>
                 <li><a href="{{ route('unseen.properties') }}" class="py-2 d-block">Properties</a></li>
-                <li><a href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" class="py-2 d-block">Instagram</a></li>
-                <li><a href="https://wa.me/+917561845352?text=Hello%20there" class="py-2 d-block">Whatsapp</a></li>
               </ul>
             </div>
           </div>
@@ -40,8 +38,8 @@
             	<div class="block-23 mb-3">
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">Wayanad-Kerala-India</span></li>
-	                <li><a href="http://127.0.0.1:8000/wa.me/%2B919188165352"><span class="icon icon-phone"></span><span class="text">+91 9188165352</span></a></li>
-	                <li><a href="mailto:hashilnizam@gmail.com?subject=Subject%20Here&body=Hi%20World""><span class="icon icon-envelope"></span><span class="text">unseenstay@gmail.com</span></a></li>
+	                <li><a href="tel:+919188165352"><span class="icon icon-phone"></span><span class="text">+91 9188165352</span></a></li>
+	                <li><a href="mailto:unseenstay@gmail.com?subject=Subject%20Here&body=Hi%20World"><span class="icon icon-envelope"></span><span class="text">unseenstay@gmail.com</span></a></li>
 	              </ul>
 	            </div>
             </div>
@@ -72,8 +70,9 @@
   <script src="{{ asset('user/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('user/js/jquery.timepicker.min.js') }}"></script>
   <script src="{{ asset('user/js/scrollax.min.js') }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&sensor=false"></script>
-  <script src="{{ asset('user/js/google-map.js') }}"></script>
   <script src="{{ asset('user/js/main.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
 

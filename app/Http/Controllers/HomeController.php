@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Models\Blog;
+use App\Models\Booking;
+use App\Models\Instagram;
 use App\Models\Property;
+use App\Models\Banner;
 use App\Models\PropertyType;
 use App\Models\Room;
 use App\Models\User;
+use App\Models\UserMessage;
 
 class HomeController extends Controller
 {
@@ -15,8 +19,13 @@ class HomeController extends Controller
     public function index()
     {
         $properties = Property::get();
+        $instagrams = Instagram::get();
         $rooms = Room::get();
-        return view('user.index',['properties' => $properties,'rooms' => $rooms]);
+        $blogs = Blog::get();
+        return view('user.index',['properties' => $properties,
+            'rooms' => $rooms,
+            'blogs' => $blogs,
+            'instagrams' => $instagrams]);
 
     }
 
@@ -30,31 +39,66 @@ class HomeController extends Controller
     {
         $properties = Property::get();
         $property_types = PropertyType::get();
+        $instagrams = Instagram::get();
         $rooms = Room::get();
         $users = User::get();
-        return view('user.properties',['properties' => $properties,'rooms' => $rooms]);
+        return view('user.properties',['properties' => $properties,
+            'rooms' => $rooms,
+            'instagrams' => $instagrams]);
     }
 
     public function about()
     {
-
-        return view('user.about');
+        $instagrams = Instagram::get();
+        return view('user.about',
+        ['instagrams' => $instagrams]);
     }
     public function blog()
     {
         $blogs = Blog::get();
-        return view('user.blog',['blogs' => $blogs]);
+        return view('user.blog', ['blogs' => $blogs]);
     }
-    public function blog_single()
+
+    public function banner()
     {
-        $blogs = Blog::get();
-        return view('user.blog_single',['blogs' => $blogs]);
+        return view('admin.dashboard.banner_form');
     }
+
+    public function banner_index()
+    {
+        $banners = Banner::get();
+        return view('admin.dashboard.banner_index', ['banners' => $banners]);
+    }
+
+    public function insta_image()
+    {
+        return view('admin.dashboard.instagram_image_form');
+    }
+
+    public function insta_index()
+    {
+        $instagrams = Instagram::get();
+        return view('admin.dashboard.instagram_image_index', ['instagrams' => $instagrams]);
+    }
+    public function user_feedback()
+    {
+        $user_messages = UserMessage::get();
+        return view('admin.dashboard.user_massage', ['user_messages' => $user_messages]);
+    }
+
+    public function blog_single($id)
+    {
+        $blog = Blog::where('id', $id)->first();
+        $blogs = Blog::get();
+        return view('user.blog_single', ['blog' => $blog , 'blogs' => $blogs]);
+    }
+
     public function rooms_single($propertyId)
     {
         $properties = Property::with('rooms')->find($propertyId);
         $users = User::get();
-        return view('user.rooms_single', ['properties' => $properties, 'user' => $users]);
+        $blogs = Blog::get();
+        return view('user.rooms_single', ['properties' => $properties, 'user' => $users, 'blogs' => $blogs]);
     }
     public function rooms_book_now($id,$user_id)
     {
@@ -63,6 +107,16 @@ class HomeController extends Controller
         return view('user.rooms_book_now', ['room' => $room,
             'user' => $user]);
     }
+
+    public function bookings_table()
+    {
+        $userBookings = Booking::with('room','userOrder')
+            ->get();
+        return view('admin.bookings.bookings',
+            ['userBookings'=> $userBookings]);
+    }
+
+
 
     public function login_page()
       {

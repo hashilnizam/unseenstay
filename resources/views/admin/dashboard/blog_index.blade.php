@@ -47,7 +47,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <form method="POST" action="{{ url('/room/' . $blog->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this blog?')">
+                                    <form method="POST" action="{{ url('/blog/' . $blog->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this blog?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

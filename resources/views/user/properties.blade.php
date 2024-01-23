@@ -19,11 +19,10 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <h1 class="mb-4 bread">Properties</h1>
-                <p class="breadcrumbs mb-8">
-                    <span class="mr-5"><a href="index.html" style="font-size: 18px;">Resort</a></span>
-                    <span class="mr-2"><a href="index.html" style="font-size: 18px;">Home Stay</a></span>
-                </p>
+                <div class="text">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{ route('unseen.index') }}">Home</a></span> <span>Properties</span></p>
+                    <h1 class="mb-4 bread">Properties</h1>
+                </div>
             </div>
           </div>
         </div>
@@ -66,55 +65,6 @@
          </div>
      </div>
  </section>
-
-
-
- <section class="instagram pt-5">
-      <div class="container-fluid">
-        <div class="row no-gutters justify-content-center pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2><span>Instagram</span></h2>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-sm-12 col-md ftco-animate">
-            <a href="user/images/insta-1.png" class="insta-img image-popup" style="background-image: url(user/images/insta-1.png);">
-              <div class="icon d-flex justify-content-center">
-                <span class="icon-instagram align-self-center"></span>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-12 col-md ftco-animate">
-            <a href="user/images/insta-2.png" class="insta-img image-popup" style="background-image: url(user/images/insta-2.png);">
-              <div class="icon d-flex justify-content-center">
-                <span class="icon-instagram align-self-center"></span>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-12 col-md ftco-animate">
-            <a href="user/images/insta-3.png" class="insta-img image-popup" style="background-image: url(user/images/insta-3.png);">
-              <div class="icon d-flex justify-content-center">
-                <span class="icon-instagram align-self-center"></span>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-12 col-md ftco-animate">
-            <a href="user/images/insta-4.png" class="insta-img image-popup" style="background-image: url(user/images/insta-4.png);">
-              <div class="icon d-flex justify-content-center">
-                <span class="icon-instagram align-self-center"></span>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-12 col-md ftco-animate">
-            <a href="user/images/insta-5.png" class="insta-img image-popup" style="background-image: url(user/images/insta-5.png);">
-              <div class="icon d-flex justify-content-center">
-                <span class="icon-instagram align-self-center"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
 @endsection
 

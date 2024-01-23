@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Instagram;
 use App\Models\Property;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Booking;
+use App\Models\Banner;
 use App\Models\PropertyType;
+use App\Models\UserMessage;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -87,6 +90,15 @@ class PropertyController extends Controller
         return back()->withSuccess("Property Deleted Successfully");
     }
 
+    public function delete_feedback($id)
+    {
+        $user_messages = UserMessage::findOrFail($id);
+        $user_messages->delete();
+
+        return back()->withSuccess("Feedback Deleted Successfully");
+    }
+
+
     public function propertyAdd2()
     {
         $PropertyTypes = PropertyType::get();
@@ -148,6 +160,7 @@ class PropertyController extends Controller
         return view('admin.properties.room_index', ['rooms' => $rooms]);
     }
 
+
     public function reservation(Request $request)
     {
         $min = 1000000;
@@ -186,8 +199,110 @@ class PropertyController extends Controller
 
     }
 
+    public function user_messages(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        $user_messages = new UserMessage();
+        $user_messages->name = $validatedData['name'];
+        $user_messages->email = $validatedData['email'];
+        $user_messages->subject = $validatedData['subject'];
+        $user_messages->message = $validatedData['message'];
 
 
+        $user_messages->save();
+
+        return redirect()->route('unseen.contact')->withSuccess('Thank you for your feedback !');
+    }
+
+    public function banner_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'heading' => 'required|string',
+            'sub_heading' => 'required|string',
+            'image_1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $banners = new Banner();
+
+        if ($request->hasFile('image_1')) {
+            $image_1Name = time() . '_image_1.' . $request->image_1->extension();
+            $request->image_1->move(public_path('images'), $image_1Name);
+            $banners->image_1 = $image_1Name;
+        } else {
+            // Add some debugging output
+            dd('No logo file provided');
+        }
+
+        if ($request->hasFile('image_2')) {
+            $image_2Name = time() . '_image_2.' . $request->image_2->extension();
+            $request->image_2->move(public_path('images'), $image_2Name);
+            $banners->image_2 = $image_2Name;
+        } else {
+            // Add some debugging output
+            dd('No logo file provided');
+        }
+
+        if ($request->hasFile('image_3')) {
+            $image_3Name = time() . '_image_3.' . $request->image_3->extension();
+            $request->image_3->move(public_path('images'), $image_3Name);
+            $banners->image_3 = $image_3Name;
+        } else {
+            // Add some debugging output
+            dd('No logo file provided');
+        }
+
+        if ($request->hasFile('image_4')) {
+            $image_4Name = time() . '_image_4.' . $request->image_4->extension();
+            $request->image_4->move(public_path('images'), $image_4Name);
+            $banners->image_4 = $image_4Name;
+        } else {
+            // Add some debugging output
+            dd('No logo file provided');
+        }
+
+
+        $banners->heading = $validatedData['heading'];
+        $banners->sub_heading = $validatedData['sub_heading'];
+        $banners->save();
+        return redirect()->route('banner_index')->withSuccess('Banner Added Successfully');
+    }
+
+
+    public function insta_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $instagrams = new Instagram();
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . 'image.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $instagrams->image = $imageName;
+        }
+
+        $instagrams->save();
+        return redirect()->route('insta_index')->withSuccess('Insta Image Added Successfully');
+    }
+
+    public function instagram_delete($id)
+    {
+
+        $instagrams = Instagram::findOrFail($id);
+        $instagrams->delete();
+
+        return back()->withSuccess("Instagram Image Deleted Successfully");
+    }
 
 }
 

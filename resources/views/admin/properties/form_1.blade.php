@@ -38,9 +38,6 @@
 
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a href="/">
-                    <img src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon" width="80px">
-                </a>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsLogin;
 
@@ -23,10 +24,16 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('unseen.contact
 Route::get('/properties', [HomeController::class, 'properties'])->name('unseen.properties');
 Route::get('/about', [HomeController::class, 'about'])->name('unseen.about');
 Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
-Route::get('/blog_single', [HomeController::class, 'blog_single'])->name('blog_single');
+
+
+
+Route::get('/blog_single/{id}', [HomeController::class, 'blog_single'])->name('blog_single');
 
 Route::get('/rooms_book_now/{id}/{user_id}', [HomeController::class, 'rooms_book_now'])->name('rooms_book_now');
 Route::post('/reservation', [PropertyController::class, 'reservation'])->name('reservation');
+Route::post('/user_messages', [PropertyController::class, 'user_messages'])->name('user_messages');
+
+Route::post('/check_availability', [ReservationController::class, 'checkAvailability'])->name('check-availability');
 
 //user
 
@@ -62,6 +69,20 @@ Route::middleware([IsAdmin::class])->group(function ()
     Route::post('/blog/form/submit', [UserController::class, 'blog_form_store'])->name('blog_form_store');
     Route::get('/blog/form/index', [UserController::class, 'blog_form_index'])->name('blog_form_index');
     Route::delete('/blog/{id}', [UserController::class, 'delete_blog']);
+
+    Route::get('admin/bookings_table', [HomeController::class, 'bookings_table'])->name('bookings_table');
+    Route::get('admin/user_feedback', [HomeController::class, 'user_feedback'])->name('user_feedback');
+    Route::delete('/feedback/{id}', [PropertyController::class, 'delete_feedback']);
+
+    Route::get('admin/banners', [HomeController::class, 'banner'])->name('banner');
+    Route::post('admin/banner/store', [PropertyController::class, 'banner_store'])->name('banner_store');
+    Route::get('admin/banner/index', [HomeController::class, 'banner_index'])->name('banner_index');
+
+    Route::get('admin/insta/image', [HomeController::class, 'insta_image'])->name('insta_image');
+    Route::post('admin/insta/store', [PropertyController::class, 'insta_store'])->name('insta_store');
+    Route::get('admin/insta/index', [HomeController::class, 'insta_index'])->name('insta_index');
+    Route::delete('/admin/instagram_delete/{id}', [PropertyController::class, 'instagram_delete']);
+
 
 });
 

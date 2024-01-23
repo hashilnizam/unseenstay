@@ -12,8 +12,11 @@
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="{{ route('unseen.properties') }}" class="nav-link">Properties</a></li>
             <li class="nav-item"><a href="{{ route('unseen.about') }}" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="{{ route('unseen.blog') }}" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="{{ route('unseen.contact') }}" class="nav-link">Contact</a></li>
+              <li class="nav-item">
+                  <a href="{{ route('unseen.blog') }}" class="nav-link">Blog</a>
+              </li>
+
+              <li class="nav-item"><a href="{{ route('unseen.contact') }}" class="nav-link">Contact</a></li>
               @if(Auth::check())
                   <li class="nav-item dropdown">
                       <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

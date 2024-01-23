@@ -6,6 +6,9 @@ use App\Models\Blog;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 use App\Models\User;
 use App\Models\Room;
 
@@ -40,36 +43,82 @@ class UserController extends Controller
 
 
       //user SignUp
-      public function userSignup(Request $request)
-      {
-          $validatedData = $request->validate([
-              'username' => 'required|unique:users',
-              'email' => 'required|email|unique:users',
-              'mobile' => 'required|unique:users',
-              'password' => 'required|min:6',
-              'cpassword' => 'required|same:password',
-          ]);
-
-          if ($validatedData['password'] !== $request->input('cpassword')) {
-              return redirect()->route('index_login')->with('error', 'Password confirmation does not match!');
-          } else {
-
-          $hashedPassword = bcrypt($validatedData['password']);
-          $user = new User();
-          $user->username = $validatedData['username'];
-          $user->email = $validatedData['email'];
-          $user->mobile = $validatedData['mobile'];
-          $user->password = $hashedPassword;
 
 
+    public function userSignup(Request $request)
+    {
+        // Input Sanitization
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'mobile' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'cpassword' => 'required|same:password',
+        ], [
+            'username.required' => 'Username is required.',
+            'username.unique' => 'Username is already taken.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email format.',
+            'email.unique' => 'Email is already registered.',
+            'mobile.required' => 'Mobile number is required.',
+            'mobile.unique' => 'Mobile number is already registered.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least :min characters.',
+            'cpassword.required' => 'Confirm password is required.',
+            'cpassword.same' => 'The password and confirm password must match.',
+        ]);
 
-          $user->save();
+        if ($validator->fails()) {
+            return redirect()->route('index_login')->withErrors($validator)->withInput();
+        }
 
-         return redirect()->route('unseen.index')->with('success', 'You have successfully registered, please login again with the new password!');
+        $validatedData = $validator->validated();
+
+        $validatedData['username'] = trim(strip_tags($validatedData['username']));
+        $validatedData['email'] = trim(strip_tags($validatedData['email']));
+        $validatedData['mobile'] = trim(strip_tags($validatedData['mobile']));
+
+        try {
+            // Email Verification (Optional)
+            // Implement Laravel's MustVerifyEmail interface if needed
+
+            // Custom User Validation Rules (Example: Mobile number format)
+            // Add your own validation logic here
+
+            // Password Strength Validation
+            // Add your own password strength validation logic here
+
+            // Creating a hashed password
+            $hashedPassword = bcrypt($validatedData['password']);
+
+            // Creating a new User instance
+            $user = new User();
+            $user->username = $validatedData['username'];
+            $user->email = $validatedData['email'];
+            $user->mobile = $validatedData['mobile'];
+            $user->password = $hashedPassword;
+
+            // Save user
+            $user->save();
+
+            // Logging successful registration
+            \Log::info('User registered: ' . $user->id);
+
+            // Notification System (Optional)
+            // Implement Laravel's notification system to send welcome emails or SMS messages
+
+            return redirect()->route('index_login')->with('success', 'You have successfully registered. Please login again with the new password!');
+        } catch (\Exception $e) {
+            // Logging registration error
+            \Log::error('Registration failed: ' . $e->getMessage());
+
+            return redirect()->route('index_login')->with('error', 'An error occurred during registration. Please try again.');
         }
     }
 
-      //user SignIn
+
+
+    //user SignIn
       public function userSignIn(Request $request)
       {
       $credentials = $request->validate([
@@ -180,15 +229,22 @@ class UserController extends Controller
         $blogs->description = $validatedData['description'];
         $blogs->save();
 
-        return redirect()->route('unseen.blog')->withSuccess('Blog added Successfully !');
+        return redirect()->route('blog_form_index')->withSuccess('Blog added Successfully !');
     }
-    public function delete_blog(Blog $blog)
+    public function delete_blog($id)
     {
-        abort_if(!$blog, 404);
+        $blogs = Blog::findOrFail($id);
+        $blogs->delete();
 
-        $blog->delete();
+        return back()->withSuccess("Blog Deleted Successfully");
+    }
 
-        return back()->withSuccess("Room Deleted Successfully");
+    public function delete_feedback($id)
+    {
+        $user_messages = UserMessage::findOrFail($id);
+        $user_messages->delete();
+
+        return back()->withSuccess("Feedback Deleted Successfully");
     }
 
     public function blog_form_index()

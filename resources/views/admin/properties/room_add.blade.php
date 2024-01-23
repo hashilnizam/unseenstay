@@ -38,9 +38,6 @@
 
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a href="/">
-                    <img src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon" width="80px">
-                </a>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -52,9 +49,11 @@
         </nav>
 
 
+
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2 class="m-0 font-weight-bold text-primary" style="text-align: center">Add Rooms</h2>
                 <form method="POST" action="{{ route('room_store') }}" enctype="multipart/form-data">
                     @csrf
                     @foreach($Properties as $Property)
