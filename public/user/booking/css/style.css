@@ -185,8 +185,9 @@
 
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
-	background-color: rgba(133, 104, 73, 1);
+    background-color: #2aa369;
 }
+
 
 @media only screen and (max-width: 768px) {
 	.booking-form .booking-bg {

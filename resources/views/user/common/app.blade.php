@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+
       <link rel="icon" href="{{ asset('user/images/icon.png') }}" type="image/png">
       <title>Unseenstay</title>
       <meta charset="utf-8">
@@ -35,7 +37,6 @@
       <link href="http://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet" type="text/css" />
       <link href="http://fonts.googleapis.com/css?family=Alice:400,700" rel="stylesheet" type="text/css" />
 
-      <!-- Booking -->
 
 
   </head>

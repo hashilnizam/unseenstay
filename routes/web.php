@@ -33,7 +33,8 @@ Route::get('/rooms_book_now/{id}/{user_id}', [HomeController::class, 'rooms_book
 Route::post('/reservation', [PropertyController::class, 'reservation'])->name('reservation');
 Route::post('/user_messages', [PropertyController::class, 'user_messages'])->name('user_messages');
 
-Route::post('/check_availability', [ReservationController::class, 'checkAvailability'])->name('check-availability');
+Route::post('/check-availability', [ReservationController::class, 'checkAvailability'])->name('check-availability');
+Route::post('/bookings_store', [ReservationController::class, 'bookings_store'])->name('bookings_store');
 
 //user
 
