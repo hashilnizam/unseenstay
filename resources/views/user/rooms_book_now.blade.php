@@ -33,10 +33,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="order_id">
+
+                            <div class="row">
+
+                                <div class="col-md-12" id="check_error" style="color:#ba4343">
+                                    <span></span>
+                                </div>
+
+                            </div>
+
+                    <input type="hidden" name="order_id">
                             <input type="hidden" name="room_id" value="{{$room->id}}">
                             <input type="hidden" name="user_id" value="{{ auth()->check() ? auth()->user()->id : '' }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
                             <div class="form-btn">
                                 <button type="button" class="submit-btn proceed-btn" id="proceedReservation" style="display: none;">Proceed</button>
@@ -58,10 +68,21 @@
 
                 if (checkInDateTime >= new Date() && checkOutDateTime > checkInDateTime) {
                     $('#proceedReservation').show();
+                    $('#check_error').hide();
                     submitReservation();
                 } else {
-                    alert('Invalid date and time selection. Please choose a future date and time.');
+                    $('#check_error').text('Invalid date and time selection. Please choose a future date and time.');
                     $('#proceedReservation').hide();
+
+                }
+
+
+                if (checkInDateTime != null) {
+                    $('#check_error').text('Kindly choose the check-in date.');
+                    $('#proceedReservation').hide();
+                } else {
+                    $('#proceedReservation').show();
+                    submitReservation();
                 }
             });
 
@@ -87,7 +108,8 @@
                         }
                     },
                     error: function () {
-                        alert('An error occurred while checking availability. Please try again.');
+                        $('#check_error').text('An error occurred while checking availability. Please try again..');
+
                     }
                 });
             }
