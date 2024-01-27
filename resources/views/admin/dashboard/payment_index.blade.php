@@ -2,39 +2,39 @@
 
 @section('content')
 
+
+
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Manage Users</h2>
-            <a href="{{ route('table_user_add') }}" class="btn btn-primary">Add User</a>
+            <h2>Payment Details</h2>
         </div>
 
         <div class="table-responsive">
             <table id="myDataTable" class="table table-striped table-bordered" style="width:100%">
                 <thead class="thead-dark">
                 <tr>
-                    <th>User Name</th>
+                    <th>Username</th>
                     <th>Email</th>
-                    <th>Mobile Number</th>
-                    <th>User Type</th>
-                    <th>Action</th>
+                    <th>Mobile</th>
+                    <th>Order Id</th>
+                    <th>Razorpay Payment Id</th>
+                    <th>Razorpay</th>
+                    <th>status</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
+                @foreach($payments as $index => $payment)
                     <tr>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->mobile }}</td>
-                        <td>{{ $user->user_type }}</td>
-                        <td>
-                            <form method="POST" action="{{ url('user/' . $user->id) }}" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </td>
+                        <td>{{ $userBookings[$index]->userOrder->username }}</td>
+                        <td>{{ $userBookings[$index]->userOrder->email }}</td>
+                        <td>{{ $userBookings[$index]->userOrder->mobile }}</td>
+                        <td>{{ $payment->order_id }}</td>
+                        <td>{{ $payment->razorpay_payment_id }}</td>
+                        <td>{{ $payment->razorpay_order_id }}</td>
+                        <td>{{ $payment->status }}</td>
                     </tr>
                 @endforeach
+
                 </tbody>
             </table>
         </div>

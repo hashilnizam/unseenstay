@@ -3,6 +3,23 @@
 	height: 100vh;
 }
 
+.mpoly-social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    bottom: 1em; /* Adjust as needed */
+    right: 1em; /* Adjust as needed */
+    z-index: 999999999;
+}
+
+.sbuttons {
+    position: fixed;
+    bottom: 15%;
+    right: 5px !important;
+    z-index: 999999999;
+}
+
 .section .section-center {
 	position: absolute;
 	top: 50%;
@@ -194,11 +211,31 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		top: 10px;
+		top: -25px;
 		width: 95%;
 		margin: auto;
 	}
 	.booking-form>form {
 		margin-left: 0px;
 	}
+
+    .mpoly-social-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: fixed;
+        bottom: 1em; /* Adjust as needed */
+        right: 1em; /* Adjust as needed */
+        z-index: 999999999;
+    }
+
+    .sbuttons {
+        position: fixed;
+        bottom: 15%;
+        right: 5px !important;
+        z-index: 999999999;
+    }
+
+
+
 }

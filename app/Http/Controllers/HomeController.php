@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Booking;
 use App\Models\Instagram;
+use App\Models\Payment;
 use App\Models\Property;
 use App\Models\Banner;
 use App\Models\PropertyType;
@@ -151,6 +152,14 @@ class HomeController extends Controller
     public function tableUserAdd()
     {
         return view('admin.useradd.user_login_form');
+    }
+
+    public function user_payment_index()
+    {
+        $payments = Payment::get();
+        $userBookings = Booking::with('room','userOrder')
+            ->get();
+        return view('admin.dashboard.payment_index', ['payments' => $payments, 'userBookings' => $userBookings]);
     }
 
 }

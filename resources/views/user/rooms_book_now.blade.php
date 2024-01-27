@@ -26,7 +26,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">Check Out</span>
-                                        <input class="form-control" type="date" name="check_out"  id="check_out" required>
+                                        <input class="form-control" type="date" name="check_out" id="check_out"
+                                               required>
                                         @if($errors->has('check_out'))
                                             <span class="text-danger">{{$errors->first('check_out')}}</span>
                                         @endif
@@ -42,14 +43,17 @@
 
                             </div>
 
-                    <input type="hidden" name="order_id">
+                            <input type="hidden" name="order_id">
                             <input type="hidden" name="room_id" value="{{$room->id}}">
                             <input type="hidden" name="user_id" value="{{ auth()->check() ? auth()->user()->id : '' }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="price" value="{{$room->price}}">
 
 
                             <div class="form-btn">
-                                <button type="button" class="submit-btn proceed-btn" id="proceedReservation" style="display: none;">Proceed</button>
+                                <button type="button" class="submit-btn proceed-btn" id="proceedReservation"
+                                        style="display: none;">Proceed
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -59,6 +63,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Your other scripts -->
 
     <script>
         $(document).ready(function () {
@@ -113,47 +119,118 @@
                     }
                 });
             }
-        });
-
-        $("#proceedReservation").click(function () {
-            var checkInDate = $('input[name="check_in"]').val();
-            var checkOutDate = $('input[name="check_out"]').val();
-            var roomId = $('input[name="room_id"]').val();
-            var userId = $('input[name="user_id"]').val();
-
-            saveDataToDataTable(checkInDate, checkOutDate, roomId, userId);
-
- // Retrieving values from input fields with IDs "check_in" and "check_Out"
-
-        });
 
 
-        function saveDataToDataTable(checkInDate, checkOutDate, roomId, userId) {
-            $.ajax({
-                url: '/bookings_store',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    check_in: checkInDate,
-                    check_out: checkOutDate,
-                    room_id: roomId,
-                    user_id: userId,
-                    _token: '{{ csrf_token() }}'
-                },
+            $("#proceedReservation").click(function () {
+                var checkInDate = $('input[name="check_in"]').val();
+                var checkOutDate = $('input[name="check_out"]').val();
+                var roomId = $('input[name="room_id"]').val();
+                var userId = $('input[name="user_id"]').val();
+                var price = $('input[name="price"]').val();
 
-                success: function(response) {
-                    console.log('Data saved successfully:', response);
-                },
-                error: function(error) {
-                    console.error('Error saving data:', error);
-                    console.log('Full error response:', error.responseText);
+                saveDataToDataTable(checkInDate, checkOutDate, roomId, userId, price);
 
-                    alert('Error saving data. Please try again.');
-                }
+                // Retrieving values from input fields with IDs "check_in" and "check_Out"
 
             });
 
-        }
+
+            function saveDataToDataTable(checkInDate, checkOutDate, roomId, userId, price) {
+                $.ajax({
+                    url: '/bookings_store',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        check_in: checkInDate,
+                        check_out: checkOutDate,
+                        room_id: roomId,
+                        user_id: userId,
+                        _token: '{{ csrf_token() }}',
+                        price: price,
+                    },
+
+                    success: function (response) {
+
+
+                        console.log('Success Response:', response);
+                        $('#successMessage').text(response.message).show().delay(3000).fadeOut();
+
+                        if (response.bookingId && response.razorpayOrderId) {
+                            initializeRazorpay(response.razorpayOrderId, response.bookingId);
+                        } else {
+                            // console.error('Invalid response format. Missing bookingId or razorpayOrderId.');
+                        }
+                    },
+                    error: function (xhr) {
+                        // console.error('Error placing order:', xhr);
+                        //
+                        // alert('Error placing order. Please try again.');
+                    }
+
+                });
+
+
+            }
+
+            function initializeRazorpay(razorpay_order_id, bookingId) {
+                var options = {
+                    "key": "{{ env('RZR_KEY') }}",
+                    "amount": "{{$room->price* 100}}",
+                    "order_id": razorpay_order_id,
+                    "currency": "INR",
+                    "name": "Unseenstay",
+                    "description": "Test Transaction",
+                    "image": "{{ asset('/user/images/icon.png') }}",
+                    "handler": function (response) {
+                        // alert("Payment Successful");
+                        // alert("all: " + JSON.stringify(response));
+                        $.ajax({
+                            url: '/handle-payment',
+                            method: 'POST',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                bookingId: bookingId,
+                                status: 2,
+                            },
+
+                            success: function (serverResponse) {
+                                // console.log('Payment details saved successfully');
+                                window.location.href = '/bookings';
+                            },
+                            error: function (xhr) {
+                                // console.error('Error saving payment details:', xhr);
+                            }
+                        });
+                    },
+                    "prefill": {
+                        "name": "{{$user->username}}",
+                        "email": "{{$user->email}}",
+                        "mobile": "{{$user->mobile}}"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3498db"
+                    }
+                };
+
+                var rzp1 = new Razorpay(options);
+
+                rzp1.on('payment.failed', function (response) {
+                    alert("Payment Failed");
+                    alert("Error Code: " + response.error.code);
+                    alert("Error Description: " + response.error.description);
+                    // Additional error information if needed
+                });
+
+                rzp1.open();
+            }
+        });
+
+
     </script>
 
 @endsection

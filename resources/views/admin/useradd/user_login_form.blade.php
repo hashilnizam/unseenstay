@@ -117,6 +117,14 @@
                                     <input class="input--style-4" type="email" name="email" required>
                                 </div>
                             </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Mobile Number</label>
+                                    <input class="input--style-4" type="text" name="mobile" required>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-2">

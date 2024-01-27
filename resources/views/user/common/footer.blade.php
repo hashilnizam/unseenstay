@@ -48,6 +48,15 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
+              <div class="sbuttons">
+                  <div class="copyright-cell">
+                      <ul class="mpoly-social-links">
+                          <li class="ftco-animate"><a style="color: #3d310e; font-size: 25px" href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?" target="_blank"><span class="fa-brands fa-whatsapp"></span></a></li>
+                          <li class="ftco-animate"><a style="color: #3d310e; font-size: 25px" href="https://www.instagram.com/unseenstay/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank"><span class="icon-instagram"></span></a></li>
+                      </ul>
+                  </div>
+              </div>
+
             <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
           </div>
         </div>

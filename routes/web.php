@@ -29,13 +29,13 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
 
 Route::get('/blog_single/{id}', [HomeController::class, 'blog_single'])->name('blog_single');
 
-Route::get('/rooms_book_now/{id}/{user_id}', [HomeController::class, 'rooms_book_now'])->name('rooms_book_now');
+
 Route::post('/reservation', [PropertyController::class, 'reservation'])->name('reservation');
 Route::post('/user_messages', [PropertyController::class, 'user_messages'])->name('user_messages');
 
 Route::post('/check-availability', [ReservationController::class, 'checkAvailability'])->name('check-availability');
 Route::post('/bookings_store', [ReservationController::class, 'bookings_store'])->name('bookings_store');
-
+Route::post('/handle-payment', [ReservationController::class, 'handlePayment']);
 //user
 
 Route::middleware([IsLogin::class])->group(function ()
@@ -43,6 +43,7 @@ Route::middleware([IsLogin::class])->group(function ()
     Route::get('/rooms_single/{id}', [HomeController::class, 'rooms_single'])->name('rooms_single');
     Route::get('/my_profile/', [UserController::class, 'my_profile'])->name('my_profile');
     Route::get('/bookings/', [UserController::class, 'bookings'])->name('bookings');
+    Route::get('/rooms_book_now/{id}/{user_id}', [HomeController::class, 'rooms_book_now'])->name('rooms_book_now');
 
 });
 //admin
@@ -83,9 +84,14 @@ Route::middleware([IsAdmin::class])->group(function ()
     Route::post('admin/insta/store', [PropertyController::class, 'insta_store'])->name('insta_store');
     Route::get('admin/insta/index', [HomeController::class, 'insta_index'])->name('insta_index');
     Route::delete('/admin/instagram_delete/{id}', [PropertyController::class, 'instagram_delete']);
+    Route::get('admin/payment', [HomeController::class, 'user_payment_index'])->name('user_payment_index');
+
+
 
 
 });
+
+
 
 
 

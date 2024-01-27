@@ -153,16 +153,15 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
+            'mobile' => 'required|unique:users,mobile',
             'password' => 'required|min:6',
             'cpassword' => 'required|same:password',
             'user_type' => 'required'
         ]);
 
-
         if ($validatedData['password'] !== $request->input('cpassword'))
         {
-            return back()->with('error', "User doesn't exist!");
-
+            return back()->with('error', 'Passwords do not match!');
         }
 
         $hashedPassword = bcrypt($validatedData['password']);
@@ -170,13 +169,14 @@ class UserController extends Controller
         $user = new User();
         $user->username = $validatedData['username'];
         $user->email = $validatedData['email'];
+        $user->mobile = $validatedData['mobile'];
         $user->password = $hashedPassword;
         $user->user_type = $validatedData['user_type'];
 
-
         $user->save();
-        return redirect()->route('show')->with('success', 'user added');
+        return redirect()->route('show')->with('success', 'User added successfully.');
     }
+
 
     //user datatable delete function
     public function destroy($id)
