@@ -57,22 +57,6 @@
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserProfile"
-               aria-expanded="true" aria-controls="collapseUserProfile">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Bookings</span>
-            </a>
-            <div id="collapseUserProfile" class="collapse" aria-labelledby="headingUserProfile"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Bookings:</h6>
-                    <a class="collapse-item" href="{{ route('bookings_table') }}">User Bookings</a>
-                    <a class="collapse-item" href="{{ route('user_payment_index') }}">Payments</a>
-                </div>
-            </div>
-        </li>
-
-        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
                aria-expanded="true" aria-controls="collapseBlogs">
                 <i class="fas fa-blog"></i>

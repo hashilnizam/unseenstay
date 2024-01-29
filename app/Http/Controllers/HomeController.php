@@ -21,12 +21,14 @@ class HomeController extends Controller
     {
         $properties = Property::get();
         $instagrams = Instagram::get();
+        $banners = Banner::get();
         $rooms = Room::get();
         $blogs = Blog::get();
         return view('user.index',['properties' => $properties,
             'rooms' => $rooms,
             'blogs' => $blogs,
-            'instagrams' => $instagrams]);
+            'instagrams' => $instagrams,
+            'banners' => $banners]);
 
     }
 
@@ -97,28 +99,22 @@ class HomeController extends Controller
     public function rooms_single($propertyId)
     {
         $properties = Property::with('rooms')->find($propertyId);
-        $users = User::get();
         $blogs = Blog::get();
         $instagrams = Instagram::get();
         return view('user.rooms_single', ['properties' => $properties,
-            'user' => $users,
             'blogs' => $blogs,
             'instagrams' => $instagrams]);
     }
-    public function rooms_book_now($id,$user_id)
+    public function rooms_book_now($id)
     {
         $room = Room::find($id);
-        $user = User::with('bookings')->find($user_id);
-        return view('user.rooms_book_now', ['room' => $room,
-            'user' => $user]);
+        return view('user.rooms_book_now', ['room' => $room]);
     }
 
     public function bookings_table()
     {
-        $userBookings = Booking::with('room','userOrder')
-            ->get();
-        return view('admin.bookings.bookings',
-            ['userBookings'=> $userBookings]);
+
+        return view('admin.bookings.bookings');
     }
 
 

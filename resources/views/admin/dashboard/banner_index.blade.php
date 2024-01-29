@@ -21,6 +21,18 @@
         }
     </style>
 
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ route('banner') }}">Add Banner</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
@@ -30,10 +42,7 @@
                         <tr>
                             <th>Heading</th>
                             <th>Sub Heading</th>
-                            <th>Image 1</th>
-                            <th>Image 2</th>
-                            <th>Image 3</th>
-                            <th>Image 4</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -43,43 +52,20 @@
                                 <td>{{ $banner->heading }}</td>
                                 <td>{{ $banner->sub_heading }}</td>
                                 <td>
-                                    @if($banner->image_1)
-                                        <img src="{{ asset('images/'. $banner->image_1) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @if($banner->image)
+                                        <img src="{{ asset('images/'. $banner->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
 
                                 <td>
-                                    @if($banner->image_2)
-                                        <img src="{{ asset('images/'. $banner->image_2) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-
-                                <td>
-                                    @if($banner->image_3)
-                                        <img src="{{ asset('images/'. $banner->image_3) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-
-                                <td>
-                                    @if($banner->image_4)
-                                        <img src="{{ asset('images/'. $banner->image_4) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-
-                                <td>
-                                    <form method="POST" action="{{ url('admin/banner_delete{id}' . $banner->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this banner?')">
+                                    <form method="POST" action="{{ url('/admin/banner_delete/' . $banner->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this banner?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
+
                                 </td>
                             </tr>
                         @endforeach

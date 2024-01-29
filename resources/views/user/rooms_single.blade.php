@@ -58,7 +58,7 @@
                                 @foreach($properties->rooms as $room)
                                 <div class="col-sm col-md-6 ftco-animate">
                                     <div class="room">
-                                        <a href="{{ route('rooms_book_now', ['id' => $room->id, 'user_id' => Auth::id()]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/' . $room->image) }}');">
+                                        <a href="{{ route('rooms_book_now', ['id' => $room->id]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/' . $room->image) }}');">
                                             <div class="icon d-flex justify-content-center align-items-center">
                                                 <span class="icon-search2"></span>
                                             </div>
@@ -72,7 +72,7 @@
                                             </ul>
                                             <hr>
 
-                                                <a href="{{ route('rooms_book_now', ['id' => $room->id, 'user_id' => Auth::id()]) }}" style="display: inline-block;
+                                                <a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?" target="_blank" style="display: inline-block;
                                         padding: 15px 30px;
                                         font-size: 18px;
                                         text-decoration: none;
@@ -82,7 +82,7 @@
                                         transition: background-color 0.3s ease;"
                                                    onmouseover="this.style.backgroundColor='#2980b9'"
                                                    onmouseout="this.style.backgroundColor='#3498db'">
-                                                    Book Now
+                                                    Enquiry
                                                 </a>
 
                                         </div>

@@ -65,25 +65,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Image 1:</label>
-                        <input type="file" class="form-control-file" name="image_1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <label class="form-label">Image :</label>
+                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 2:</label>
-                        <input type="file" class="form-control-file" name="image_2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 3:</label>
-                        <input type="file" class="form-control-file" name="image_3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 4:</label>
-                        <input type="file" class="form-control-file" name="image_4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                    </div>
-
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

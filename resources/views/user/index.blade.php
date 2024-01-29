@@ -3,61 +3,22 @@
 @section('content')
 <body>
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(user/images/bg_1.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-12 ftco-animate text-center">
-          	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Welcome to Unseenstay</h1>
-	            <h2>Design your dream stay</h2>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
+        @foreach($banners as $banner)
 
-        <div class="slider-item" style="background-image:url(user/images/bg_3.jpg);">
+        <div class="slider-item" style="background-image:url({{ asset('images/'. $banner->image) }});">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Unseenstay</h1>
-	            <h2>Reserve your most treasured memories here</h2>
+	            <h1 class="mb-3">{{ $banner->heading }}</h1>
+	            <h2>{{ $banner->sub_heading }}</h2>
             </div>
           </div>
         </div>
         </div>
       </div>
-
-      <div class="slider-item" style="background-image:url(user/images/bg_2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-12 ftco-animate text-center">
-          	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Unseenstay</h1>
-	            <h2>Book your fondest memories here</h2>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-
-       <div class="slider-item" style="background-image:url(user/images/bg_4.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-12 ftco-animate text-center">
-          	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Unseenstay</h1>
-	            <h2>Lock in your most beloved moments here</h2>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
+        @endforeach
     </section>
 
     <section class="ftco-section ftc-no-pb ftc-no-pt">

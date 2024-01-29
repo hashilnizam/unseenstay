@@ -144,10 +144,10 @@ class PropertyController extends Controller
 
         return redirect()->route('properties_list')->withSuccess('Added Successfully !');
     }
-    public function delete(Room $room)
-    {
-        abort_if(!$room, 404);
 
+    public function room_delete($id)
+    {
+        $room = Room::findOrFail($id);
         $room->delete();
 
         return back()->withSuccess("Room Deleted Successfully");
@@ -163,6 +163,7 @@ class PropertyController extends Controller
 
     public function reservation(Request $request)
     {
+//        dd("bkabd");
         $min = 1000000;
         $max = 9999999;
 
@@ -180,10 +181,10 @@ class PropertyController extends Controller
         $bookings->user_id = $request->user_id;
         $bookings->order_id = $order_id;
         $bookings->check_out = $validatedData['check_out'];
+        $bookings->price = $request->price;
         $bookings->status = 1;
         $bookings->save();
 
-        return redirect()->route('unseen.properties')->with('success', 'Booked');
     }
 
     public function roomAdd()
@@ -225,45 +226,16 @@ class PropertyController extends Controller
         $validatedData = $request->validate([
             'heading' => 'required|string',
             'sub_heading' => 'required|string',
-            'image_1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
 
         $banners = new Banner();
 
-        if ($request->hasFile('image_1')) {
-            $image_1Name = time() . '_image_1.' . $request->image_1->extension();
-            $request->image_1->move(public_path('images'), $image_1Name);
-            $banners->image_1 = $image_1Name;
-        } else {
-            // Add some debugging output
-            dd('No logo file provided');
-        }
-
-        if ($request->hasFile('image_2')) {
-            $image_2Name = time() . '_image_2.' . $request->image_2->extension();
-            $request->image_2->move(public_path('images'), $image_2Name);
-            $banners->image_2 = $image_2Name;
-        } else {
-            // Add some debugging output
-            dd('No logo file provided');
-        }
-
-        if ($request->hasFile('image_3')) {
-            $image_3Name = time() . '_image_3.' . $request->image_3->extension();
-            $request->image_3->move(public_path('images'), $image_3Name);
-            $banners->image_3 = $image_3Name;
-        } else {
-            // Add some debugging output
-            dd('No logo file provided');
-        }
-
-        if ($request->hasFile('image_4')) {
-            $image_4Name = time() . '_image_4.' . $request->image_4->extension();
-            $request->image_4->move(public_path('images'), $image_4Name);
-            $banners->image_4 = $image_4Name;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '_image.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $banners->image = $imageName;
         } else {
             // Add some debugging output
             dd('No logo file provided');
@@ -274,6 +246,14 @@ class PropertyController extends Controller
         $banners->sub_heading = $validatedData['sub_heading'];
         $banners->save();
         return redirect()->route('banner_index')->withSuccess('Banner Added Successfully');
+    }
+
+    public function banner_delete($id)
+    {
+        $banners = Banner::findOrFail($id);
+        $banners->delete();
+
+        return back()->withSuccess("Banner Deleted Successfully");
     }
 
 
