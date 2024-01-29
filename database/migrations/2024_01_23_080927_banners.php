@@ -15,10 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('heading');
             $table->string('sub_heading');
-            $table->string('image_1');
-            $table->string('image_2');
-            $table->string('image_3');
-            $table->string('image_4');
+            $table->string('image');
             $table->timestamps();
         });
     }
