@@ -48,7 +48,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/unseen_admin/admin_logout', [UserController::class, 'Admin_Logout'])->name('admin_logout');
     Route::get('/unseen_admin/dashboard', [HomeController::class, 'Admin_Dashboard'])->name('admin_dashboard');
     Route::get('/user_table', [HomeController::class, 'showUser'])->name('show');
-    Route::get('/user_table/useradd', [HomeController::class, 'tableUserAdd'])->name('table_user_add');
+    Route::get('/user_add/', [HomeController::class, 'tableUserAdd'])->name('table_user_add');
     Route::post('/user_registration', [UserController::class, 'addUser'])->name('add_User');
     Route::delete('user/{id}', [UserController::class, 'destroy']);
 

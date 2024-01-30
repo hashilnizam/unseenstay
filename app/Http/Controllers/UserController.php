@@ -150,6 +150,7 @@ class UserController extends Controller
       // admin user add
     public function addUser(Request $request)
     {
+
         $validatedData = $request->validate([
             'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -174,6 +175,7 @@ class UserController extends Controller
         $user->user_type = $validatedData['user_type'];
 
         $user->save();
+
         return redirect()->route('show')->with('success', 'User added successfully.');
     }
 

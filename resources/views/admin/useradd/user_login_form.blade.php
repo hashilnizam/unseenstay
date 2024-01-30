@@ -102,7 +102,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="title">Sign Up</h2>
-                    <form method="post" action="{{ route('reservation') }}">
+                    <form method="post" action="{{ route('add_User') }}">
                         @csrf
                         <div class="row">
                             <div class="col-2">
