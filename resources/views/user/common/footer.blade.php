@@ -66,14 +66,13 @@
 
   <!-- Include the latest version of jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <!-- Include the rest of the scripts from the second set -->
   <script src="{{ asset('user/js/jquery-migrate-3.0.1.min.js') }}"></script>
   <script src="{{ asset('user/js/popper.min.js') }}"></script>
   <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('user/js/jquery.easing.1.3.js') }}"></script>
   <script src="{{ asset('user/js/jquery.waypoints.min.js') }}"></script>
   <script src="{{ asset('user/js/jquery.stellar.min.js') }}"></script>
-  <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script> <!-- Include Owl Carousel script -->
   <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('user/js/aos.js') }}"></script>
   <script src="{{ asset('user/js/jquery.animateNumber.min.js') }}"></script>
@@ -82,5 +81,7 @@
   <script src="{{ asset('user/js/scrollax.min.js') }}"></script>
   <script src="{{ asset('user/js/main.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
 
 
