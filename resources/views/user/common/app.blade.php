@@ -6,7 +6,7 @@
       <link rel="icon" href="{{ asset('user/images/icon.png') }}" type="image/png">
       <title>Unseenstay</title>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700') }}" rel="stylesheet">
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i') }}" rel="stylesheet">
