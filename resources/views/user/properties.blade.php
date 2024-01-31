@@ -38,7 +38,7 @@
                      @foreach($properties as $property)
                          <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                              <div class="room">
-                                 <a href="{{ route('rooms_single', ['id' => $property->id]) }}" class="img d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/' . $property->image) }});">
+                                 <a href="{{ route('rooms_single', ['id' => $property->id]) }}" class="img d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/' . $property->image1) }});">
                                      <div class="icon d-flex justify-content-center align-items-center">
                                          <span class="icon-search2"></span>
                                      </div>

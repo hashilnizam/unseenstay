@@ -71,13 +71,23 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Logo:</label>
-                        <input type="file" class="form-control-file" name="logo" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <label class="form-label">Image 1:</label>
+                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Image:</label>
-                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <label class="form-label">Image 2:</label>
+                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 3:</label>
+                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 4:</label>
+                        <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">

@@ -35,8 +35,10 @@
                             <th>S/L No.</th>
                             <th>Name</th>
                             <th>Property Type</th>
-                            <th>Logo</th>
-                            <th>Image</th>
+                            <th>Image 1</th>
+                            <th>Image 2</th>
+                            <th>Image 3</th>
+                            <th>Image 4</th>
                             <th>Description</th>
                             <th>Location</th>
                             <th>Email</th>
@@ -52,15 +54,29 @@
                                 <td>{{ $property->name }}</td>
                                 <td>{{ $property->property_types->property_type }}</td>
                                 <td>
-                                    @if($property->logo)
-                                        <img src="{{ asset('images/'. $property->logo) }}" alt="logo" class="img-thumbnail" width="80" height="50"/>
+                                    @if($property->image1)
+                                        <img src="{{ asset('images/'. $property->image1) }}" alt="logo" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Logo
                                     @endif
                                 </td>
                                 <td>
-                                    @if($property->image)
-                                        <img src="{{ asset('images/'. $property->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @if($property->image2)
+                                        <img src="{{ asset('images/'. $property->image2) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($property->image3)
+                                        <img src="{{ asset('images/'. $property->image3) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($property->image4)
+                                        <img src="{{ asset('images/'. $property->image4) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif

@@ -27,13 +27,16 @@
                             <h2 class="mb-4">{{ $properties['name'] }}</h2>
                             <div class="single-slider owl-carousel">
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image1) }}');"></div>
                                 </div>
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->logo) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image2) }}');"></div>
                                 </div>
                                 <div class="item">
-                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image) }}');"></div>
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image3) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img" style="background-image: url('{{ asset('images/' . $properties->image4) }}');"></div>
                                 </div>
                             </div>
 

@@ -36,8 +36,10 @@ class PropertyController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'location' => 'required|string',
             'email' => 'required|email',
@@ -49,19 +51,37 @@ class PropertyController extends Controller
         $properties = new property();
 
 
-        if ($request->hasFile('logo')) {
-            $logoName = time() . '_logo.' . $request->logo->extension();
-            $request->logo->move(public_path('images'), $logoName);
-            $properties->logo = $logoName;
+        if ($request->hasFile('image1')) {
+            $image1Name = time() . '_image1.' . $request->image1->extension();
+            $request->image1->move(public_path('images'), $image1Name);
+            $properties->image1 = $image1Name;
         } else {
             // Add some debugging output
-            dd('No logo file provided');
+            dd('No image file provided');
         }
 
-        if ($request->hasFile('image')) {
-            $imageName = time() . '_image.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $properties->image = $imageName;
+        if ($request->hasFile('image2')) {
+            $image2Name = time() . '_image2.' . $request->image2->extension();
+            $request->image2->move(public_path('images'), $image2Name);
+            $properties->image2 = $image2Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image3')) {
+            $image3Name = time() . '_image3.' . $request->image3->extension();
+            $request->image3->move(public_path('images'), $image3Name);
+            $properties->image3 = $image3Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image4')) {
+            $image4Name = time() . '_image4.' . $request->image4->extension();
+            $request->image4->move(public_path('images'), $image4Name);
+            $properties->image4 = $image4Name;
         } else {
             // Add some debugging output
             dd('No image file provided');
