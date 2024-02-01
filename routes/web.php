@@ -82,6 +82,11 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/insta/index', [HomeController::class, 'insta_index'])->name('insta_index');
     Route::delete('/admin/instagram_delete/{id}', [PropertyController::class, 'instagram_delete']);
 
+    Route::get('admin/contact/index', [HomeController::class, 'contact_index'])->name('contact_index');
+    Route::get('admin/contact/contact_form', [HomeController::class, 'contact_form'])->name('contact_form');
+    Route::post('admin/contact/contact_store', [PropertyController::class, 'contact_store'])->name('contact_store');
+    Route::delete('/contact/{id}', [PropertyController::class, 'contact_delete']);
+
 
 });
 

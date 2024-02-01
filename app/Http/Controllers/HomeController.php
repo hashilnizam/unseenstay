@@ -7,6 +7,7 @@ use App\Models\Instagram;
 use App\Models\Payment;
 use App\Models\Property;
 use App\Models\Banner;
+use App\Models\Contact;
 use App\Models\PropertyType;
 use App\Models\Room;
 use App\Models\User;
@@ -24,18 +25,21 @@ class HomeController extends Controller
         $banners = Banner::get();
         $rooms = Room::get();
         $blogs = Blog::get();
+        $contacts = Contact::get();
         return view('user.index',['properties' => $properties,
             'rooms' => $rooms,
             'blogs' => $blogs,
             'instagrams' => $instagrams,
-            'banners' => $banners]);
+            'banners' => $banners,
+            'contacts' => $contacts]);
 
     }
 
     public function contact()
     {
-
-        return view('user.contact');
+        $contacts = Contact::get();
+        return view('user.contact',
+            ['contacts' => $contacts]);
     }
 
     public function properties()
@@ -82,6 +86,17 @@ class HomeController extends Controller
     {
         $instagrams = Instagram::get();
         return view('admin.dashboard.instagram_image_index', ['instagrams' => $instagrams]);
+    }
+
+    public function contact_index()
+    {
+        $contacts = Contact::get();
+        return view('admin.dashboard.contact_index', ['contacts' => $contacts]);
+    }
+
+    public function contact_form()
+    {
+        return view('admin.dashboard.contact_form');
     }
     public function user_feedback()
     {

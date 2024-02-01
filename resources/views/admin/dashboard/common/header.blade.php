@@ -89,6 +89,22 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContacts"
+               aria-expanded="true" aria-controls="collapseContacts">
+                <i class="fas fa-address-book"></i>
+                <span>Contacts</span>
+            </a>
+            <div id="collapseContacts" class="collapse" aria-labelledby="collapseContacts"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Contact Settings:</h6>
+                    <a class="collapse-item" href="{{ route('contact_form') }}">Contact</a>
+                    <a class="collapse-item" href="{{ route('contact_index') }}">Show Current Banner</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInsta"
                aria-expanded="true" aria-controls="collapseInsta">
                 <i class="fas fa-file-image"></i>

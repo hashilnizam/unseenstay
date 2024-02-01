@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Booking;
 use App\Models\Banner;
+use App\Models\Contact;
 use App\Models\PropertyType;
 use App\Models\UserMessage;
 use Illuminate\Http\Request;
@@ -239,6 +240,40 @@ class PropertyController extends Controller
         $user_messages->save();
 
         return redirect()->route('unseen.contact')->withSuccess('Thank you for your feedback !');
+    }
+
+    public function contact_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'address' => 'required|string',
+            'mobile_1' => 'required|string',
+            'mobile_2' => 'required|string',
+            'email' => 'required|string',
+            'website' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $contacts = new Contact();
+
+
+        $contacts->address = $validatedData['address'];
+        $contacts->mobile_1 = $validatedData['mobile_1'];
+        $contacts->mobile_2 = $validatedData['mobile_2'];
+        $contacts->email = $validatedData['email'];
+        $contacts->website = $validatedData['website'];
+        $contacts->description = $validatedData['description'];
+
+        $contacts->save();
+
+        return redirect()->route('contact_index')->with('success', 'Contact information saved successfully');
+    }
+
+    public function contact_delete($id)
+    {
+        $contacts = Contact::findOrFail($id);
+        $contacts->delete();
+
+        return back()->withSuccess("Contact Deleted Successfully");
     }
 
     public function banner_store(Request $request)

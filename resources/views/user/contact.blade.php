@@ -30,6 +30,7 @@
 
 
     <section class="ftco-section contact-section bg-light">
+        @foreach($contacts->take(1) as $contact)
       <div class="container">
         <div class="row d-flex mb-5 contact-info">
           <div class="col-md-12 mb-4">
@@ -38,23 +39,23 @@
           <div class="w-100"></div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Address:</span> Wayanad, Kerala, India</p>
+	            <p><span>Address:</span>{{ $contact->address }}</p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Phone:</span> <a href="tel://+919188165352" target="_blank">+91 9188165352</a></p>
-	            <p><span>Phone:</span> <a href="tel://+919562658093" target="_blank">+91 9562658093</a></p>
+	            <p><span>Phone:</span> <a href="tel://+919188165352" target="_blank">{{ $contact->mobile_1 }}</a></p>
+	            <p><span>Phone:</span> <a href="tel://+919562658093" target="_blank">{{ $contact->mobile_2 }}</a></p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Email:</span> <a href="mailto:unseenstay@gmail.com" target="_blank">unseenstay@gmail.com</a></p>
+	            <p><span>Email:</span> <a href="mailto:unseenstay@gmail.com" target="_blank">{{ $contact->email }}</a></p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Website</span> <a href="#">www.unseenstay.in</a></p>
+	            <p><span>Website</span> <a href="http://unseenstay.in" target="_blank">{{ $contact->website }}</a></p>
 	          </div>
           </div>
         </div>
@@ -82,7 +83,7 @@
 
             <div class="col-md-6 d-flex">
                 <div id="ma" class="bg-white">
-                    <p>Welcome to UnseenStay, your gateway to unforgettable travel experiences across India! As a premier travel company, we take pride in offering a diverse range of resort and homestay options that showcase the rich cultural tapestry and natural beauty of every corner of the country. Our commitment extends beyond accommodation – we also provide reliable cab services for seamless travel and thoughtfully curated tour packages that promise an immersive exploration of India's wonders. At UnseenStay, we prioritize your comfort and satisfaction, ensuring every aspect of your journey is meticulously planned and executed. We value your feedback, as it fuels our continuous effort to enhance our services and create lasting memories for every traveler. Your adventure begins with UnseenStay – discover the unseen, experience the extraordinary!</p>
+                    <p>{{ $contact -> description }}</p>
                 </div>
 
             </div>
@@ -92,6 +93,7 @@
 
         </div>
       </div>
+        @endforeach
     </section>
 
 
