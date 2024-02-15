@@ -143,6 +143,7 @@ class HomeController extends Controller
 
      public function Admin_Dashboard()
     {
+
         return view('admin.dashboard.index');
 
     }
@@ -172,6 +173,8 @@ class HomeController extends Controller
             ->get();
         return view('admin.dashboard.payment_index', ['payments' => $payments, 'userBookings' => $userBookings]);
     }
+
+
 
 }
 

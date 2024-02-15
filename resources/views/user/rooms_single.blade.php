@@ -61,7 +61,7 @@
                                 @foreach($properties->rooms as $room)
                                 <div class="col-sm col-md-6 ftco-animate">
                                     <div class="room">
-                                        <a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/' . $room->image) }}');">
+                                        <a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?" target="_blank" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('images/' . $room->image) }}');">
                                             <div class="icon d-flex justify-content-center align-items-center">
                                                 <span class="icon-search2"></span>
                                             </div>

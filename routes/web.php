@@ -27,7 +27,6 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('unseen.blog');
 
 Route::get('/blog_single/{id}', [HomeController::class, 'blog_single'])->name('blog_single');
 
-
 Route::post('/reservation', [PropertyController::class, 'reservation'])->name('reservation');
 Route::post('/user_messages', [PropertyController::class, 'user_messages'])->name('user_messages');
 
@@ -35,7 +34,6 @@ Route::post('/check-availability', [ReservationController::class, 'checkAvailabi
 Route::post('/bookings_store', [ReservationController::class, 'bookings_store'])->name('bookings_store');
 Route::post('/handle-payment', [ReservationController::class, 'handlePayment']);
 //user
-
 
 Route::get('/rooms_single/{id}', [HomeController::class, 'rooms_single'])->name('rooms_single');
 Route::get('/my_profile/', [UserController::class, 'my_profile'])->name('my_profile');

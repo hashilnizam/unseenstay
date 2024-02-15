@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Unseenstay Dashboard</title>
 
     <!-- Custom fonts for this template -->
     <link href="/adminpanel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,17 +21,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <!-- Add this in the head section of your HTML file -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
 </head>
 
 <body id="page-top">
 
-    @include('admin.dashboard.common.header')
-    @yield('content')
-    @include('admin.dashboard.common.footer')
+@include('admin.dashboard.common.header')
+@yield('content')
+@include('admin.dashboard.common.footer')
 
 </body>
 
