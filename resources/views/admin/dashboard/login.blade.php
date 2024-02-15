@@ -39,7 +39,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 style="font-size: 1.5em; color: #4e73df; margin-bottom: 10px;">Only for you</h1>
+                                        <h1 style="font-size: 1.5em; color: #4e73df; margin-bottom: 10px;">JK Official</h1>
                                     </div>
                                     <form class="user" method="post" action="{{ route('admin_login') }}">
 
