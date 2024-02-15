@@ -36,15 +36,17 @@
             </div>
         @endif
 
-        <nav class="navbar navbar-expand-sm navbar-dark">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="mynavbar">
-                    <ul class="navbar-nav ms-auto">
-
-                    </ul>
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="mynavbar">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="btn btn-primary" href="{{ route('insta_index') }}">View Image</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
 
         <div class="row cen_al">

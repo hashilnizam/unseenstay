@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('blog_form_index') }}">Banner Show</a>
+                            <a class="btn btn-primary" href="{{ route('banner_index') }}">Current Banner</a>
                         </li>
                     </ul>
                 </div>
