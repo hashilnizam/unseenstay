@@ -1,9 +1,9 @@
  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
 
-        <a href="/"> <img style="text-size: 10px" src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon" width="80px"> </a>
+        <a href="/"> <img style="text-size: 5px" src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon" width="50px"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
+          <span class="oi oi-menu"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
