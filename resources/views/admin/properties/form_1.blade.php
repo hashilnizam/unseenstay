@@ -51,6 +51,7 @@
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Add Property Details</h2>
                 <form method="POST" action="{{ route('property_store') }}" enctype="multipart/form-data">
                     @csrf
 
@@ -88,6 +89,36 @@
                     <div class="form-group">
                         <label class="form-label">Image 4:</label>
                         <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 5:</label>
+                        <input type="file" class="form-control-file" name="image5" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 6:</label>
+                        <input type="file" class="form-control-file" name="image6" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 7:</label>
+                        <input type="file" class="form-control-file" name="image7" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 8:</label>
+                        <input type="file" class="form-control-file" name="image8" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 9:</label>
+                        <input type="file" class="form-control-file" name="image9" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 10:</label>
+                        <input type="file" class="form-control-file" name="image10" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">

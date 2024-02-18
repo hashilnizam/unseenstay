@@ -39,6 +39,12 @@
                             <th>Image 2</th>
                             <th>Image 3</th>
                             <th>Image 4</th>
+                            <th>Image 5</th>
+                            <th>Image 6</th>
+                            <th>Image 7</th>
+                            <th>Image 8</th>
+                            <th>Image 9</th>
+                            <th>Image 10</th>
                             <th>Description</th>
                             <th>Location</th>
                             <th>Email</th>
@@ -77,6 +83,54 @@
                                 <td>
                                     @if($property->image4)
                                         <img src="{{ asset('images/'. $property->image4) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image5)
+                                        <img src="{{ asset('images/'. $property->image5) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image6)
+                                        <img src="{{ asset('images/'. $property->image6) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image7)
+                                        <img src="{{ asset('images/'. $property->image7) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image8)
+                                        <img src="{{ asset('images/'. $property->image8) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image9)
+                                        <img src="{{ asset('images/'. $property->image9) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if($property->image10)
+                                        <img src="{{ asset('images/'. $property->image10) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif

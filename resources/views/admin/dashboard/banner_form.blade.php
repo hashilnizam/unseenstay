@@ -51,6 +51,7 @@
 
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Add Banner</h2>
                 <form method="POST" action="{{ route('banner_store') }}" enctype="multipart/form-data">
                     @csrf
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instagram;
 use App\Models\Property;
+use App\Models\Review;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Booking;
@@ -41,6 +42,12 @@ class PropertyController extends Controller
             'image2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image5' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image6' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image7' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image8' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image9' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image10' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
             'location' => 'required|string',
             'email' => 'required|email',
@@ -83,6 +90,60 @@ class PropertyController extends Controller
             $image4Name = time() . '_image4.' . $request->image4->extension();
             $request->image4->move(public_path('images'), $image4Name);
             $properties->image4 = $image4Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image5')) {
+            $image5Name = time() . '_image5.' . $request->image5->extension();
+            $request->image5->move(public_path('images'), $image5Name);
+            $properties->image5 = $image5Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image6')) {
+            $image6Name = time() . '_image6.' . $request->image6->extension();
+            $request->image6->move(public_path('images'), $image6Name);
+            $properties->image6 = $image6Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image7')) {
+            $image7Name = time() . '_image7.' . $request->image7->extension();
+            $request->image7->move(public_path('images'), $image7Name);
+            $properties->image7 = $image7Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image8')) {
+            $image8Name = time() . '_image8.' . $request->image8->extension();
+            $request->image8->move(public_path('images'), $image8Name);
+            $properties->image8 = $image8Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image9')) {
+            $image9Name = time() . '_image9.' . $request->image9->extension();
+            $request->image9->move(public_path('images'), $image9Name);
+            $properties->image9 = $image9Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image10')) {
+            $image10Name = time() . '_image10.' . $request->image10->extension();
+            $request->image10->move(public_path('images'), $image10Name);
+            $properties->image10 = $image10Name;
         } else {
             // Add some debugging output
             dd('No image file provided');
@@ -146,10 +207,76 @@ class PropertyController extends Controller
 
         $rooms = new Room();
 
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $rooms->image = $imageName;
+        if ($request->hasFile('image1')) {
+            $image1Name = time() . '_image1.' . $request->image1->extension();
+            $request->image1->move(public_path('images'), $image1Name);
+            $rooms->image1 = $image1Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image2')) {
+            $image2Name = time() . '_image2.' . $request->image2->extension();
+            $request->image2->move(public_path('images'), $image2Name);
+            $rooms->image2 = $image2Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image3')) {
+            $image3Name = time() . '_image3.' . $request->image3->extension();
+            $request->image3->move(public_path('images'), $image3Name);
+            $rooms->image3 = $image3Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image4')) {
+            $image4Name = time() . '_image4.' . $request->image4->extension();
+            $request->image4->move(public_path('images'), $image4Name);
+            $rooms->image4 = $image4Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image5')) {
+            $image5Name = time() . '_image5.' . $request->image5->extension();
+            $request->image5->move(public_path('images'), $image5Name);
+            $rooms->image5 = $image5Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image6')) {
+            $image6Name = time() . '_image6.' . $request->image6->extension();
+            $request->image6->move(public_path('images'), $image6Name);
+            $rooms->image6 = $image6Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image7')) {
+            $image7Name = time() . '_image7.' . $request->image7->extension();
+            $request->image7->move(public_path('images'), $image7Name);
+            $rooms->image7 = $image7Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image8')) {
+            $image8Name = time() . '_image8.' . $request->image8->extension();
+            $request->image8->move(public_path('images'), $image8Name);
+            $rooms->image8 = $image8Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
         }
 
         $rooms->description = $validatedData['description'];
@@ -337,6 +464,37 @@ class PropertyController extends Controller
         $instagrams->delete();
 
         return back()->withSuccess("Instagram Image Deleted Successfully");
+    }
+
+    public function review_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $reviews = new Review();
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $reviews->image = $imageName;
+        }
+
+        $reviews->name = $validatedData['name'];
+        $reviews->description = $validatedData['description'];
+        $reviews->save();
+        return redirect()->route('review_index')->withSuccess('Review added Successfully !');
+    }
+
+    public function review_delete($id)
+    {
+
+        $reviews = Review::findOrFail($id);
+        $reviews->delete();
+
+        return back()->withSuccess("Review Deleted Successfully");
     }
 
 }

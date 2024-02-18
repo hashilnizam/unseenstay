@@ -54,6 +54,7 @@
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Add Room Details</h2>
                 <form method="POST" action="{{ route('room_store') }}" enctype="multipart/form-data">
                     @csrf
                     @foreach($Properties as $Property)
@@ -87,8 +88,43 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Image:</label>
-                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <label class="form-label">Image 1:</label>
+                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 2:</label>
+                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 3:</label>
+                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 4:</label>
+                        <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 5:</label>
+                        <input type="file" class="form-control-file" name="image5" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 6:</label>
+                        <input type="file" class="form-control-file" name="image6" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 7:</label>
+                        <input type="file" class="form-control-file" name="image7" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Image 8:</label>
+                        <input type="file" class="form-control-file" name="image8" accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">
@@ -96,7 +132,7 @@
                         <input type="text" id="price" name="price" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

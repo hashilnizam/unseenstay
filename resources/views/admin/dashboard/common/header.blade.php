@@ -120,6 +120,22 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReview"
+               aria-expanded="true" aria-controls="collapseReview">
+                <i class="fas fa-star"></i>
+                <span>Guest Review</span>
+            </a>
+            <div id="collapseReview" class="collapse" aria-labelledby="collapseReview"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Review Settings:</h6>
+                    <a class="collapse-item" href="{{ route('review_form') }}">Add Review</a>
+                    <a class="collapse-item" href="{{ route('review_index') }}">Show Show Review</a>
+                </div>
+            </div>
+        </li>
+
         <hr class="sidebar-divider">
         <hr class="sidebar-divider d-none d-md-block">
     </ul>

@@ -9150,3 +9150,26 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.ion-md-arrow-back {
+    display: none;
+}
+.owl-prev {
+    display: none;
+}
+.owl-next {
+    display: none;
+}
+
+@media screen {
+    .ion-md-arrow-back {
+        display: none;
+    }
+    .owl-prev {
+        display: none;
+    }
+    .owl-next {
+        display: none;
+    }
+
+}

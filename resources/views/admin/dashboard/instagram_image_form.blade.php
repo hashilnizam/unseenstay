@@ -51,6 +51,7 @@
 
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Add Instagram Images</h2>
                 <form method="POST" action="{{ route('insta_store') }}" enctype="multipart/form-data">
                     @csrf
 

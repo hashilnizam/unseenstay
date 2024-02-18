@@ -7,6 +7,21 @@
       <title>Unseenstay</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="og:title" content="Unseenstay" />
+      <meta property="og:description" content="Welcome to Unseenstay - where luxury and seclusion meet in nature's heart. Escape the ordinary with opulent accommodations designed for every traveler. Immerse yourself in hidden wonders and leave refreshed, ready to return to our hidden paradise." />
+      <meta property="og:image" content="https://www.unseenstay.in/user/images/meta-tag.jpg" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.unseenstay.in" />
+      <meta property="og:site_name" content="Unseenstay" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="article:publisher" content="https://www.unseenstay.in" />
+      <meta property="og:article:tag" content="Travel" />
+      <meta property="og:article:section" content="Travel" />
+      <meta property="og:article:published_time" content="2024-02-18T15:00:00+05:30" />
+      <meta property="og:article:modified_time" content="2024-02-18T18:00:00+05:30" />
+      <meta property="og:article:expiration_time" content="2025-02-18T00:00:00+05:30" />
+
+
 
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700') }}" rel="stylesheet">
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i') }}" rel="stylesheet">
@@ -31,7 +46,7 @@
 
 {{--      <link rel="stylesheet" href="{{ asset('/user/booking/css/bootstrap.min.css') }}">--}}
       <link rel="stylesheet" href="{{ asset('/user/booking/css/style.css') }}">
-
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
       <link href="http://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet" type="text/css" />

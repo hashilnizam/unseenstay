@@ -9,6 +9,7 @@ use App\Models\Property;
 use App\Models\Banner;
 use App\Models\Contact;
 use App\Models\PropertyType;
+use App\Models\Review;
 use App\Models\Room;
 use App\Models\User;
 use App\Models\UserMessage;
@@ -26,12 +27,14 @@ class HomeController extends Controller
         $rooms = Room::get();
         $blogs = Blog::get();
         $contacts = Contact::get();
+        $reviews = Review::get();
         return view('user.index',['properties' => $properties,
             'rooms' => $rooms,
             'blogs' => $blogs,
             'instagrams' => $instagrams,
             'banners' => $banners,
-            'contacts' => $contacts]);
+            'contacts' => $contacts,
+            'reviews' => $reviews]);
 
     }
 
@@ -64,6 +67,18 @@ class HomeController extends Controller
     {
         $blogs = Blog::get();
         return view('user.blog', ['blogs' => $blogs]);
+    }
+
+    public function review_form()
+    {
+        return view('admin.dashboard.review_form');
+    }
+
+    public function review_index()
+    {
+        $reviews = Review::get();
+        return view('admin.dashboard.review_index',
+        ['reviews' => $reviews]);
     }
 
     public function banner()

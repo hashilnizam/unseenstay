@@ -158,7 +158,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		                <strong class="number" data-number="14500">0</strong>
+		                <strong class="number" data-number="8800">0</strong>
 		                <span>Happy Guests</span>
 		              </div>
 		            </div>
@@ -166,7 +166,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		                <strong class="number" data-number="250">0</strong>
+		                <strong class="number" data-number="88">0</strong>
 		                <span>Rooms</span>
 		              </div>
 		            </div>
@@ -174,7 +174,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		                <strong class="number" data-number="25">0</strong>
+		                <strong class="number" data-number="10">0</strong>
 		                <span>Staffs</span>
 		              </div>
 		            </div>
@@ -195,88 +195,34 @@
 
 
     <section class="ftco-section testimony-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8 ftco-animate">
-          	<div class="row ftco-animate">
-		          <div class="col-md-12">
-		            <div class="carousel-testimony owl-carousel ftco-owl">
-		              <div class="item">
-		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(user/images/person_1.png)">
-		                    <span class="quote d-flex align-items-center justify-content-center">
-		                      <i class="icon-quote-left"></i>
-		                    </span>
-		                  </div>
-		                  <div class="text text-center">
-		                    <p class="mb-4">I recently had the pleasure of staying at Unseenstay Resorts, and it was nothing short of a fantastic experience. From the moment I arrived until my departure, the resort exceeded my expectations in every aspect.</p>
-		                    <p class="name">Hashil Nisam</p>
-		                    <span class="position">Guests</span>
-		                  </div>
-		                </div>
-		              </div>
-		              <div class="item">
-		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(user/images/person_2.png)">
-		                    <span class="quote d-flex align-items-center justify-content-center">
-		                      <i class="icon-quote-left"></i>
-		                    </span>
-		                  </div>
-		                  <div class="text text-center">
-		                    <p class="mb-4">My recent stay at Unseenstay Resorts left me with memories that will last a lifetime. While there were a few minor hiccups, the overall experience was delightful.</p>
-		                    <p class="name">Salman Faris</p>
-		                    <span class="position">Guests</span>
-		                  </div>
-		                </div>
-		              </div>
-		              <div class="item">
-		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(user/images/person_3.png)">
-		                    <span class="quote d-flex align-items-center justify-content-center">
-		                      <i class="icon-quote-left"></i>
-		                    </span>
-		                  </div>
-		                  <div class="text text-center">
-		                    <p class="mb-4">Unseenstay Resorts provided an absolutely enchanting escape from reality. From the moment I stepped onto the property, I was captivated by the beauty and serenity that surrounded me.</p>
-		                    <p class="name">Jeseem Khan</p>
-		                    <span class="position">Guests</span>
-		                  </div>
-		                </div>
-		              </div>
-		              <div class="item">
-		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(user/images/person_4.png)">
-		                    <span class="quote d-flex align-items-center justify-content-center">
-		                      <i class="icon-quote-left"></i>
-		                    </span>
-		                  </div>
-		                  <div class="text text-center">
-		                    <p class="mb-4">Unseenstay Resorts offered a charming escape into nature, creating a picturesque backdrop for a relaxing getaway.</p>
-		                    <p class="name">Sachin Mohan</p>
-		                    <span class="position">Guests</span>
-		                  </div>
-		                </div>
-		              </div>
-		              <div class="item">
-		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(user/images/person_5.png)">
-		                    <span class="quote d-flex align-items-center justify-content-center">
-		                      <i class="icon-quote-left"></i>
-		                    </span>
-		                  </div>
-		                  <div class="text text-center">
-		                    <p class="mb-4">My recent stay at Unseenstay Resorts had its highs and lows, providing a mix of relaxation and a few hurdles to overcome.</p>
-		                    <p class="name">Althaf PC</p>
-		                    <span class="position">Guests</span>
-		                  </div>
-		                </div>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-          </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 ftco-animate">
+                    <div class="row ftco-animate">
+                        <div class="col-md-12">
+                            <div class="carousel-testimony owl-carousel ftco-owl">
+                                @foreach($reviews as $review)
+                                    <div class="item">
+                                        <div class="testimony-wrap py-4 pb-5">
+                                            <div class="user-img mb-4" style="background-image: url('images/<?php echo $review->image; ?>');">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                            </div>
+                                            <div class="text text-center">
+                                                <p class="mb-4">{{ $review->description }}</p>
+                                                <p class="name">{{ $review->name }}</p>
+                                                <span class="position">Guests</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
 
@@ -317,17 +263,46 @@
                 </div>
             </div>
             <div class="row no-gutters">
-                @foreach($instagrams->take(5) as $instagram)
-                    <div class="col-sm-12 col-md ftco-animate">
-                        <a href="https://www.instagram.com/unseenstay/" target="_blank">
-                            <img src="{{ asset('images/' . $instagram->image) }}" class="img-fluid">
-                        </a>
+                <div class="col-sm-12 col-md ftco-animate" style="overflow: hidden;">
+                    <div class="instagram-slider">
+                        @foreach($instagrams as $instagram)
+                            <a href="{{ asset('images/' . $instagram->image) }}" class="insta-img image-popup" style="background-image: url({{ asset('images/' . $instagram->image) }});">
+                                <div class="icon d-flex justify-content-center">
+                                    <span class="icon-instagram align-self-center"></span>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
-                @endforeach
-
+                </div>
             </div>
         </div>
     </section>
+
+    <style>
+        /* Define the styles for the slider */
+        .instagram-slider {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .insta-img {
+            flex: 0 0 auto;
+            margin-right: 15px; /* Adjust the spacing between images */
+            width: 300px; /* Set the width of each image */
+            height: 200px; /* Set the height of each image */
+        }
+
+        /* Define the media query for desktop screens */
+        @media screen and (min-width: 1024px) {
+            .instagram {
+                display: none; /* Hide the Instagram section on desktop screens */
+            }
+        }
+    </style>
+
+
+
 
 
 

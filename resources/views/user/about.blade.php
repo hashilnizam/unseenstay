@@ -23,7 +23,7 @@
                      <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                          <div class="block-18 text-center">
                              <div class="text">
-                                 <strong class="number" data-number="14500">0</strong>
+                                 <strong class="number" data-number="8800">0</strong>
                                  <span>Happy Guests</span>
                              </div>
                          </div>
@@ -31,7 +31,7 @@
                      <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                          <div class="block-18 text-center">
                              <div class="text">
-                                 <strong class="number" data-number="250">0</strong>
+                                 <strong class="number" data-number="88">0</strong>
                                  <span>Rooms</span>
                              </div>
                          </div>
@@ -39,7 +39,7 @@
                      <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                          <div class="block-18 text-center">
                              <div class="text">
-                                 <strong class="number" data-number="25">0</strong>
+                                 <strong class="number" data-number="10">0</strong>
                                  <span>Staffs</span>
                              </div>
                          </div>
@@ -156,16 +156,42 @@
              </div>
          </div>
          <div class="row no-gutters">
-             @foreach($instagrams->take(5) as $instagram)
-                 <div class="col-sm-12 col-md ftco-animate">
-                     <a href="https://www.instagram.com/unseenstay/" target="_blank">
-                         <img src="{{ asset('images/' . $instagram->image) }}" class="img-fluid">
-                     </a>
+             <div class="col-sm-12 col-md ftco-animate" style="overflow: hidden;">
+                 <div class="instagram-slider">
+                     @foreach($instagrams as $instagram)
+                         <a href="{{ asset('images/' . $instagram->image) }}" class="insta-img image-popup" style="background-image: url({{ asset('images/' . $instagram->image) }});">
+                             <div class="icon d-flex justify-content-center">
+                                 <span class="icon-instagram align-self-center"></span>
+                             </div>
+                         </a>
+                     @endforeach
                  </div>
-             @endforeach
-
+             </div>
          </div>
      </div>
  </section>
+
+ <style>
+     /* Define the styles for the slider */
+     .instagram-slider {
+         display: flex;
+         overflow-x: auto;
+         -webkit-overflow-scrolling: touch;
+     }
+
+     .insta-img {
+         flex: 0 0 auto;
+         margin-right: 15px; /* Adjust the spacing between images */
+         width: 300px; /* Set the width of each image */
+         height: 200px; /* Set the height of each image */
+     }
+
+     /* Define the media query for desktop screens */
+     @media screen and (min-width: 1024px) {
+         .instagram {
+             display: none; /* Hide the Instagram section on desktop screens */
+         }
+     }
+ </style>
 
  @endsection

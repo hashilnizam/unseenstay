@@ -36,6 +36,7 @@
     <div class="container mt-4">
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Contact Details</h2>
                 <div class="table-responsive"> <!-- Add this class for responsiveness -->
                     <table id="roomDataTable" class="display">
                         <thead>

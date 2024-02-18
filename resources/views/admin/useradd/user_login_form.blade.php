@@ -96,12 +96,11 @@
             background-color: #154aa3;
         }
     </style>
-
     <div class="page-wrapper">
         <div class="wrapper">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="title">Sign Up</h2>
+                    <h2 class="title">Add User</h2>
                     <form method="post" action="{{ route('add_User') }}">
                         @csrf
                         <div class="row">

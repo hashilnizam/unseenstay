@@ -36,6 +36,7 @@
     <div class="container mt-5">
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
+                <h2>Banner List</h2>
                 <div class="table-responsive">
                     <table id="roomDataTable" class="display">
                         <thead>
