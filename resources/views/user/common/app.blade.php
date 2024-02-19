@@ -8,7 +8,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta property="og:title" content="Unseenstay" />
-      <meta property="og:description" content="Welcome to Unseenstay - where luxury and seclusion meet in nature's heart. Escape the ordinary with opulent accommodations designed for every traveler. Immerse yourself in hidden wonders and leave refreshed, ready to return to our hidden paradise." />
+      <meta name="author" content="Hashil Nisam">
+      <meta property="og:description" content="Discover UnseenStay: Book resorts, homestays, and tour packages for your next adventure. Explore unique accommodations and plan your perfect getaway with us." />
       <meta property="og:image" content="https://www.unseenstay.in/user/images/meta-tag.jpg" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.unseenstay.in" />

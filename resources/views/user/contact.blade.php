@@ -64,15 +64,23 @@
               <form class="user" method="post" action="{{ route('user_messages') }}">
                   @csrf
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name" name="name">
+                <input type="text" class="form-control" placeholder="Your Name" name="name" required>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email" name="email">
+                <input type="text" class="form-control" placeholder="Your Email" name="email" required>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" name="subject">
+                <input type="text" class="form-control" placeholder="Subject" name="subject" required>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
               </div>
-                  <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                  <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
               <br>
                   <div class="form-group">
                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">

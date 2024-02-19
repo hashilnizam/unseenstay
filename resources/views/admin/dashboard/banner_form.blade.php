@@ -57,17 +57,23 @@
 
                     <div class="form-group">
                         <label class="form-label">Heading:</label>
-                        <input type="text" name="heading" class="form-control">
+                        <input type="text" name="heading" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Sub Heading:</label>
-                        <input type="text" name="sub_heading" class="form-control">
+                        <input type="text" name="sub_heading" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image :</label>
                         <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

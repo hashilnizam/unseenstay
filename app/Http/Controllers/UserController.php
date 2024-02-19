@@ -216,7 +216,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'heading' => 'required|string',
             'description' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
         $blogs = new Blog();

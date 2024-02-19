@@ -58,7 +58,9 @@
                     <!-- Property Details -->
                     <div class="form-group">
                         <label class="form-label">Name:</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
@@ -74,76 +76,106 @@
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
                         <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
                         <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
                         <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 4:</label>
                         <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 5:</label>
                         <input type="file" class="form-control-file" name="image5" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 6:</label>
                         <input type="file" class="form-control-file" name="image6" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 7:</label>
                         <input type="file" class="form-control-file" name="image7" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 8:</label>
                         <input type="file" class="form-control-file" name="image8" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 9:</label>
                         <input type="file" class="form-control-file" name="image9" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 10:</label>
                         <input type="file" class="form-control-file" name="image10" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Description:</label>
-                        <textarea class="form-control" name="description" rows="3"></textarea>
+                        <textarea class="form-control" name="description" rows="3" required></textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Location:</label>
-                        <input type="text" name="location" class="form-control">
+                        <input type="text" name="location" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Email:</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Mobile:</label>
-                        <input type="text" name="mobile" class="form-control">
+                        <input type="text" name="mobile" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Address:</label>
-                        <textarea class="form-control" name="address" rows="3"></textarea>
+                        <textarea class="form-control" name="address" rows="3" required></textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Next</button>

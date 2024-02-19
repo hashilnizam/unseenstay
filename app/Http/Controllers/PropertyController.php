@@ -38,16 +38,16 @@ class PropertyController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string',
-            'image1' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image3' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image4' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image5' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image6' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image7' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image8' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image9' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image10' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image1' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image2' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image3' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image4' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image5' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image6' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image7' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image8' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image9' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image10' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
             'description' => 'required|string',
             'location' => 'required|string',
             'email' => 'required|email',
@@ -197,9 +197,16 @@ class PropertyController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required|string',
-            'person' => 'required|int',
+            'person' => 'required|string',
             'view' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image1' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image2' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image3' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image4' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image5' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image6' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image7' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image8' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
             'price' => 'required|string',
             'room_type' => 'required|exists:room_types,id',
             'property_id' => 'required|exists:properties,id'
@@ -286,10 +293,7 @@ class PropertyController extends Controller
         $rooms->room_type_id = $request->room_type;
         $rooms->status = 1;
         $rooms->property_id = $validatedData['property_id'];
-
-
         $rooms->save();
-
         return redirect()->route('properties_list')->withSuccess('Added Successfully !');
     }
 
@@ -311,7 +315,7 @@ class PropertyController extends Controller
 
     public function reservation(Request $request)
     {
-//        dd("bkabd");
+
         $min = 1000000;
         $max = 9999999;
 
@@ -408,7 +412,7 @@ class PropertyController extends Controller
         $validatedData = $request->validate([
             'heading' => 'required|string',
             'sub_heading' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
 
         ]);
 
@@ -442,7 +446,7 @@ class PropertyController extends Controller
     public function insta_store(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
         $instagrams = new Instagram();
@@ -471,7 +475,7 @@ class PropertyController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
         $reviews = new Review();

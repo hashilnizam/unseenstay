@@ -58,17 +58,25 @@
                     <!-- Property Details -->
                     <div class="form-group">
                         <label class="form-label">Name:</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Description:</label>
-                        <textarea class="form-control" name="description" rows="3"></textarea>
+                        <textarea class="form-control" name="description" rows="3" required></textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image:</label>
-                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <span class="invalid-feedback" role="alert">
+        <strong>Please select an image.</strong>
+    </span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

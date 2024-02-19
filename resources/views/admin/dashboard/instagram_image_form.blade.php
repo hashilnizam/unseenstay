@@ -36,17 +36,17 @@
             </div>
         @endif
 
-            <nav class="navbar navbar-expand-sm navbar-dark">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="mynavbar">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="{{ route('insta_index') }}">View Image</a>
-                            </li>
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{{ route('insta_index') }}">View Image</a>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
 
         <div class="row cen_al">
@@ -57,7 +57,11 @@
 
                     <div class="form-group">
                         <label class="form-label">Image</label>
-                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <span class="invalid-feedback" role="alert">
+        <strong>Please select an image.</strong>
+    </span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

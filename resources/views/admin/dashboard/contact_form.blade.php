@@ -58,33 +58,45 @@
 
                     <div class="form-group">
                         <label class="form-label">Address:</label>
-                        <input type="text" name="address" class="form-control">
+                        <input type="text" name="address" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Mobile 1:</label>
-                        <input type="text" name="mobile_1" class="form-control">
+                        <input type="text" name="mobile_1" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Mobile 2:</label>
-                        <input type="text" name="mobile_2" class="form-control">
+                        <input type="text" name="mobile_2" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Email:</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Website:</label>
-                        <input type="text" name="website" class="form-control">
+                        <input type="text" name="website" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
 
                     <div class="form-group">
                         <label class="form-label">Description:</label>
-                        <textarea class="form-control" name="description" rows="3"></textarea>
+                        <textarea class="form-control" name="description" rows="3" required></textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
 
