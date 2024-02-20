@@ -111,32 +111,6 @@
                                                     <!-- Image content here -->
                                                 </a>
 
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image4) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
-
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image5) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
-
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image6) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
-
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image7) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
-
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image8) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
-
-
                                             </div>
                                             <div class="text p-3 text-center">
                                                 <h3 class="mb-3"><a href="rooms.html">{{ $room->description }}</a></h3>

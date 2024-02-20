@@ -37,11 +37,6 @@
                             <th>Image 1</th>
                             <th>Image 2</th>
                             <th>Image 3</th>
-                            <th>Image 4</th>
-                            <th>Image 5</th>
-                            <th>Image 6</th>
-                            <th>Image 7</th>
-                            <th>Image 8</th>
                             <th>Price</th>
                             <th>Room Category</th>
                             <th>Person</th>
@@ -71,41 +66,6 @@
                                 <td>
                                     @if($room->image3)
                                         <img src="{{ asset('images/'. $room->image3) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($room->image4)
-                                        <img src="{{ asset('images/'. $room->image4) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($room->image5)
-                                        <img src="{{ asset('images/'. $room->image5) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($room->image6)
-                                        <img src="{{ asset('images/'. $room->image6) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($room->image7)
-                                        <img src="{{ asset('images/'. $room->image7) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($room->image8)
-                                        <img src="{{ asset('images/'. $room->image8) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
