@@ -71,46 +71,47 @@
                                     <div class="col-sm col-md-6 ftco-animate">
                                         <div class="room">
                                             <div class="single-slider owl-carousel">
-                                                <a href="{{ asset('images/' . $room->image1) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image1) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image2) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image2) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image3) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image3) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image4) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image4) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image5) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image5) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image6) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image6) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image7) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image7) }}');">
                                                     <!-- Image content here -->
                                                 </a>
-                                                <a href="{{ asset('images/' . $room->image8) }}"
-                                                   class="insta-img image-popup img img-2 d-flex justify-content-center align-items-center"
+
+                                                <a class="insta-img img img-2 d-flex justify-content-center align-items-center"
                                                    style="background-image: url('{{ asset('images/' . $room->image8) }}');">
                                                     <!-- Image content here -->
                                                 </a>
+
+
                                             </div>
                                             <div class="text p-3 text-center">
                                                 <h3 class="mb-3"><a href="rooms.html">{{ $room->description }}</a></h3>
