@@ -44,6 +44,30 @@
                                     <div class="room-img"
                                          style="background-image: url('{{ asset('images/' . $properties->image4) }}');"></div>
                                 </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image5) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image6) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image7) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image8) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image9) }}');"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="room-img"
+                                         style="background-image: url('{{ asset('images/' . $properties->image10) }}');"></div>
+                                </div>
                             </div>
 
                         </div>
@@ -65,8 +89,9 @@
                         </div>
 
                         <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
-                            <h4 class="mb-4">Available Room</h4>
+                            <h4 class="mb-4">Available Rooms</h4>
                             <div class="row">
+
                                 @foreach($properties->rooms as $room)
                                     <div class="col-sm col-md-6 ftco-animate">
                                         <div class="room">
@@ -138,6 +163,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 @endforeach
                             </div>
                         </div>
