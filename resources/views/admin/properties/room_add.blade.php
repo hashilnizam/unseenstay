@@ -129,41 +129,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Image 4:</label>
-                        <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please upload an image.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 5:</label>
-                        <input type="file" class="form-control-file" name="image5" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please upload an image.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 6:</label>
-                        <input type="file" class="form-control-file" name="image6" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please upload an image.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 7:</label>
-                        <input type="file" class="form-control-file" name="image7" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please upload an image.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Image 8:</label>
-                        <input type="file" class="form-control-file" name="image8" accept="image/jpeg, image/png, image/jpg, image/gif" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please upload an image.</div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="price" class="form-label">Price:</label>
                         <input type="text" id="price" name="price" class="form-control" required>
                         <div class="valid-feedback">Valid.</div>
