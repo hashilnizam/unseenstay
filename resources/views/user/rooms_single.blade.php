@@ -70,59 +70,60 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
-                            <p>{{ $properties->description }}</p>
-                            <div class="d-md-flex mt-5 mb-5">
-                                <ul class="list">
-                                    <li><span><i
-                                                class="fa-solid fa-house"></i></span> {{ $properties->property_types->property_type }}
-                                    </li>
-                                    <li><span><i class="fas fa-map-marker-alt"></i></span> {{ $properties->location }}
-                                    </li>
-                                </ul>
-                                <ul class="list ml-md-5">
-                                    <li><span><i class="fas fa-envelope"></i></span> {{ $properties->email }}</li>
-                                    <li><span><i class="fas fa-mobile"></i></span> {{ $properties->mobile }}</li>
-                                </ul>
+                            <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                                <p>{{ $properties->description }}</p>
+                                <div class="d-md-flex mt-5 mb-5">
+                                    <ul class="list">
+                                        <li><span><i
+                                                    class="fa-solid fa-house"></i></span> {{ $properties->property_types->property_type }}
+                                        </li>
+                                        <li><span><i
+                                                    class="fas fa-map-marker-alt"></i></span> {{ $properties->location }}
+                                        </li>
+                                    </ul>
+                                    <ul class="list ml-md-5">
+                                        <li><span><i class="fas fa-envelope"></i></span> {{ $properties->email }}</li>
+                                        <li><span><i class="fas fa-mobile"></i></span> {{ $properties->mobile }}</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
-                            <h4 class="mb-4">Available Rooms</h4>
-                            <div class="row">
+                            <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
+                                <h4 class="mb-4">Available Rooms</h4>
+                                <div class="row">
 
-                                @foreach($properties->rooms as $room)
-                                    <div class="col-sm col-md-6 ftco-animate">
-                                        <div class="room">
-                                            <div class="single-slider owl-carousel">
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image1) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
+                                    @foreach($properties->rooms as $room)
+                                        <div class="col-sm col-md-6 ftco-animate">
+                                            <div class="room">
+                                                <div class="single-slider owl-carousel">
+                                                    <a class="img img-2 d-flex justify-content-center align-items-center"
+                                                       style="background-image: url('{{ asset('images/' . $room->image1) }}');">
+                                                        <!-- Image content here -->
+                                                    </a>
 
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image2) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
+                                                    <a class="img img-2 d-flex justify-content-center align-items-center"
+                                                       style="background-image: url('{{ asset('images/' . $room->image2) }}');">
+                                                        <!-- Image content here -->
+                                                    </a>
 
-                                                <a class="img img-2 d-flex justify-content-center align-items-center"
-                                                   style="background-image: url('{{ asset('images/' . $room->image3) }}');">
-                                                    <!-- Image content here -->
-                                                </a>
+                                                    <a class="img img-2 d-flex justify-content-center align-items-center"
+                                                       style="background-image: url('{{ asset('images/' . $room->image3) }}');">
+                                                        <!-- Image content here -->
+                                                    </a>
 
-                                            </div>
-                                            <div class="text p-3 text-center">
-                                                <h3 class="mb-3"><a href="rooms.html">{{ $room->description }}</a></h3>
-                                                <p><span class="price mr-2">₹ {{ $room->price }}</span> <span
-                                                        class="per">per night</span></p>
-                                                <ul class="list">
-                                                    <li><span>Max:</span> {{ $room->person }} Persons</li>
-                                                    <li><span>View:</span> {{ $room->view }} </li>
-                                                </ul>
-                                                <hr>
-                                                <a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?"
-                                                   target="_blank" style="display: inline-block;
+                                                </div>
+                                                <div class="text p-3 text-center">
+                                                    <h3 class="mb-3"><a href="rooms.html">{{ $room->description }}</a>
+                                                    </h3>
+                                                    <p><span class="price mr-2">₹ {{ $room->price }}</span> <span
+                                                            class="per">per night</span></p>
+                                                    <ul class="list">
+                                                        <li><span>Max:</span> {{ $room->person }} Persons</li>
+                                                        <li><span>View:</span> {{ $room->view }} </li>
+                                                    </ul>
+                                                    <hr>
+                                                    <a href="https://wa.me/+919188165352?text=Hello!%20I%20have%20a%20question%20and%20could%20use%20your%20assistance.%20Can%20you%20please%20help?"
+                                                       target="_blank" style="display: inline-block;
                         padding: 15px 30px;
                         font-size: 18px;
                         text-decoration: none;
@@ -130,55 +131,56 @@
                         color: #fff;
                         border-radius: 5px;
                         transition: background-color 0.3s ease;"
-                                                   onmouseover="this.style.backgroundColor='#2980b9'"
-                                                   onmouseout="this.style.backgroundColor='#3498db'">
-                                                    Enquiry
-                                                </a>
+                                                       onmouseover="this.style.backgroundColor='#2980b9'"
+                                                       onmouseout="this.style.backgroundColor='#3498db'">
+                                                        Enquiry
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                @endforeach
+                                    @endforeach
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div> <!-- .col-md-8 -->
+                    <div class="col-lg-4 sidebar ftco-animate">
+
+                        <div class="sidebar-box ftco-animate">
+                            <div class="categories">
+                                <h3>Categories</h3>
+                                <li><a href="{{ route('unseen.properties') }}">Resort</a></li>
+                                <li><a href="{{ route('unseen.properties') }}">Homestay</a></li>
                             </div>
                         </div>
 
-
-                    </div>
-                </div> <!-- .col-md-8 -->
-                <div class="col-lg-4 sidebar ftco-animate">
-
-                    <div class="sidebar-box ftco-animate">
-                        <div class="categories">
-                            <h3>Categories</h3>
-                            <li><a href="{{ route('unseen.properties') }}">Resort</a></li>
-                            <li><a href="{{ route('unseen.properties') }}">Homestay</a></li>
-                        </div>
-                    </div>
-
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Recent Blog</h3>
                         <div class="sidebar-box ftco-animate">
-                            @foreach($blogs->take(10) as $blog)
-                                <!-- Consider using a loop for dynamic recent blog posts -->
-                                <div class="block-21 mb-4 d-flex">
-                                    <a href="{{ route('blog_single',['id' => $blog->id]) }}" class="blog-img mr-4"
-                                       style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
-                                    <div class="text">
-                                        <h3 class="heading"><a
-                                                href="{{ route('blog_single',['id' => $blog->id]) }}">{{ $blog->heading }}</a>
-                                        </h3>
-                                        <div class="meta">
-                                            <div><a><span
-                                                        class="icon-calendar"></span>{{ $blog->created_at->format('M d, Y') }}
-                                                </a></div>
-                                            <div><a><span class="icon-person"></span> Admin</a></div>
+                            <h3>Recent Blog</h3>
+                            <div class="sidebar-box ftco-animate">
+                                @foreach($blogs->take(10) as $blog)
+                                    <!-- Consider using a loop for dynamic recent blog posts -->
+                                    <div class="block-21 mb-4 d-flex">
+                                        <a href="{{ route('blog_single',['id' => $blog->id]) }}" class="blog-img mr-4"
+                                           style="background-image: url({{ asset('images/' . $blog->image) }});"></a>
+                                        <div class="text">
+                                            <h3 class="heading"><a
+                                                    href="{{ route('blog_single',['id' => $blog->id]) }}">{{ $blog->heading }}</a>
+                                            </h3>
+                                            <div class="meta">
+                                                <div><a><span
+                                                            class="icon-calendar"></span>{{ $blog->created_at->format('M d, Y') }}
+                                                    </a></div>
+                                                <div><a><span class="icon-person"></span> Admin</a></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -196,7 +198,8 @@
                 <div class="col-sm-12 col-md ftco-animate" style="overflow: hidden;">
                     <div class="instagram-slider">
                         @foreach($instagrams as $instagram)
-                            <a href="{{ asset('images/' . $instagram->image) }}" class="insta-img image-popup" style="background-image: url({{ asset('images/' . $instagram->image) }});">
+                            <a href="{{ asset('images/' . $instagram->image) }}" class="insta-img image-popup"
+                               style="background-image: url({{ asset('images/' . $instagram->image) }});">
                                 <div class="icon d-flex justify-content-center">
                                     <span class="icon-instagram align-self-center"></span>
                                 </div>
@@ -230,6 +233,5 @@
             }
         }
     </style>
-
 
 @endsection

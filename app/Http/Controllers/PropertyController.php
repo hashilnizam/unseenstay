@@ -164,6 +164,148 @@ class PropertyController extends Controller
 
         return redirect()->route('property_add_form_2')->withSuccess('Add Room Details!');
     }
+
+    public function property_edit($id)
+    {
+        $Property = Property::findOrFail($id);
+        $PropertyTypes = PropertyType::get();
+        $RoomTypes = RoomType::get();
+
+        return view('admin.properties.property_edit', [
+            'Property' => $Property,
+            'PropertyTypes' => $PropertyTypes,
+            'RoomTypes' => $RoomTypes
+        ]);
+    }
+
+    public function property_edit_store(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'property_type' => 'required|exists:property_types,id',
+            'description' => 'required',
+            'location' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'address' => 'required',
+            'image1' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image2' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image3' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image4' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image5' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image6' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image7' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image8' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image9' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image10' => 'nullable|mimes:jpeg,png,gif|max:5120',
+        ]);
+
+        $property = Property::findOrFail($id);
+
+        $property->name = $validatedData['name'];
+        $property->property_type_id = $request->property_type;
+        $property->description = $validatedData['description'];
+        $property->location = $validatedData['location'];
+        $property->email = $validatedData['email'];
+        $property->mobile = $validatedData['mobile'];
+        $property->address = $validatedData['address'];
+
+        if ($request->hasFile('image1')) {
+            $image1Name = time() . '_image1.' . $request->image1->extension();
+            $request->image1->move(public_path('images'), $image1Name);
+            $property->image1 = $image1Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image2')) {
+            $image2Name = time() . '_image2.' . $request->image2->extension();
+            $request->image2->move(public_path('images'), $image2Name);
+            $property->image2 = $image2Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image3')) {
+            $image3Name = time() . '_image3.' . $request->image3->extension();
+            $request->image3->move(public_path('images'), $image3Name);
+            $property->image3 = $image3Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image4')) {
+            $image4Name = time() . '_image4.' . $request->image4->extension();
+            $request->image4->move(public_path('images'), $image4Name);
+            $property->image4 = $image4Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image5')) {
+            $image5Name = time() . '_image5.' . $request->image5->extension();
+            $request->image5->move(public_path('images'), $image5Name);
+            $property->image5 = $image5Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image6')) {
+            $image6Name = time() . '_image6.' . $request->image6->extension();
+            $request->image6->move(public_path('images'), $image6Name);
+            $property->image6 = $image6Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image7')) {
+            $image7Name = time() . '_image7.' . $request->image7->extension();
+            $request->image7->move(public_path('images'), $image7Name);
+            $property->image7 = $image7Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image8')) {
+            $image8Name = time() . '_image8.' . $request->image8->extension();
+            $request->image8->move(public_path('images'), $image8Name);
+            $property->image8 = $image8Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image9')) {
+            $image9Name = time() . '_image9.' . $request->image9->extension();
+            $request->image9->move(public_path('images'), $image9Name);
+            $property->image9 = $image9Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image10')) {
+            $image10Name = time() . '_image10.' . $request->image10->extension();
+            $request->image10->move(public_path('images'), $image10Name);
+            $property->image10 = $image10Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        $property->save();
+        return redirect()->route('properties_list')->withSuccess('Property Edited Successfully');
+    }
+
+
     public function destroy($id)
     {
         $property = Property::findOrFail($id);
@@ -193,6 +335,7 @@ class PropertyController extends Controller
         ]);
 
     }
+
     public function roomStore(Request $request)
     {
         $validatedData = $request->validate([
@@ -254,6 +397,71 @@ class PropertyController extends Controller
 
         return back()->withSuccess("Room Deleted Successfully");
     }
+
+    public function room_edit($id)
+    {
+        $rooms = Room::findorFail($id);
+        $PropertyTypes = PropertyType::get();
+        $RoomTypes = RoomType::get();
+        return view('admin.properties.room_edit', [
+            'rooms' => $rooms,
+            'PropertyTypes' => $PropertyTypes,
+            'RoomTypes' => $RoomTypes
+        ]);
+    }
+
+    public function room_edit_store(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'description' => 'required',
+            'person' => 'required',
+            'view' => 'required',
+            'price' => 'required',
+            'room_type' => 'required',
+            'image1' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image2' => 'nullable|mimes:jpeg,png,gif|max:5120',
+            'image3' => 'nullable|mimes:jpeg,png,gif|max:5120',
+        ]);
+
+        $rooms = Room::findOrFail($id);
+
+        $rooms->description = $validatedData['description'];
+        $rooms->person = $validatedData['person'];
+        $rooms->view = $validatedData['view'];
+        $rooms->price = $validatedData['price'];
+        $rooms->room_type_id = $validatedData['room_type'];
+
+        if ($request->hasFile('image1')) {
+            $image1Name = time() . '_image1.' . $request->image1->extension();
+            $request->image1->move(public_path('images'), $image1Name);
+            $rooms->image1 = $image1Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image2')) {
+            $image2Name = time() . '_image2.' . $request->image2->extension();
+            $request->image2->move(public_path('images'), $image2Name);
+            $rooms->image2 = $image2Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        if ($request->hasFile('image3')) {
+            $image3Name = time() . '_image3.' . $request->image3->extension();
+            $request->image3->move(public_path('images'), $image3Name);
+            $rooms->image3 = $image3Name;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        $rooms->save();
+        return redirect()->route('room_list')->withSuccess('Room Edited successfully');
+    }
+
 
     public function roomList()
     {

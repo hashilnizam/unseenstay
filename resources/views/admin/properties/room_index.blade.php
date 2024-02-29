@@ -41,7 +41,8 @@
                             <th>Room Category</th>
                             <th>Person</th>
                             <th>View</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -74,6 +75,9 @@
                                 <td>{{ $room->description }}</td>
                                 <td>{{ $room->person }}</td>
                                 <td>{{ $room->view }}</td>
+                                <td>
+                                    <a href="{{ route('room_edit', ['id' => $room->id]) }}" class="btn btn-dark btn-sm">Edit</a>
+                                </td>
                                 <td>
                                     <form method="POST" action="{{ url('/room/' . $room->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this room?')">
                                         @csrf

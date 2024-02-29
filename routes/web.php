@@ -60,6 +60,11 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/property/room_list', [PropertyController::class, 'roomList'])->name('room_list');
     Route::get('/property/room_Add', [PropertyController::class, 'roomAdd'])->name('room_Add');
     Route::delete('/room/{id}', [PropertyController::class, 'room_delete']);
+    Route::get('/property/edit/{id}', [PropertyController::class, 'property_edit'])->name('property_edit');
+    Route::put('/property_edit/{property_id}/{property_type_id}/update', [PropertyController::class, 'property_edit_store'])->name('property_edit_store');
+
+    Route::get('/room_edit/{id}', [PropertyController::class, 'room_edit'])->name('room_edit');
+    Route::put('/room_edit_store/{room_id}/update', [PropertyController::class, 'room_edit_store'])->name('room_edit_store');
 
     Route::get('/blog/form', [UserController::class, 'blog_form'])->name('blog_form');
     Route::post('/blog/form/submit', [UserController::class, 'blog_form_store'])->name('blog_form_store');
@@ -91,7 +96,6 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::delete('/admin/review_delete/{id}', [PropertyController::class, 'review_delete']);
 
 });
-
 
 
 

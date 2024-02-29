@@ -50,7 +50,8 @@
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>Address</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,28 +62,32 @@
                                 <td>{{ $property->property_types->property_type }}</td>
                                 <td>
                                     @if($property->image1)
-                                        <img src="{{ asset('images/'. $property->image1) }}" alt="logo" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image1) }}" alt="logo"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Logo
                                     @endif
                                 </td>
                                 <td>
                                     @if($property->image2)
-                                        <img src="{{ asset('images/'. $property->image2) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image2) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
                                 <td>
                                     @if($property->image3)
-                                        <img src="{{ asset('images/'. $property->image3) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image3) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
                                 <td>
                                     @if($property->image4)
-                                        <img src="{{ asset('images/'. $property->image4) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image4) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -90,7 +95,8 @@
 
                                 <td>
                                     @if($property->image5)
-                                        <img src="{{ asset('images/'. $property->image5) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image5) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -98,7 +104,8 @@
 
                                 <td>
                                     @if($property->image6)
-                                        <img src="{{ asset('images/'. $property->image6) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image6) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -106,7 +113,8 @@
 
                                 <td>
                                     @if($property->image7)
-                                        <img src="{{ asset('images/'. $property->image7) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image7) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -114,7 +122,8 @@
 
                                 <td>
                                     @if($property->image8)
-                                        <img src="{{ asset('images/'. $property->image8) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image8) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -122,7 +131,8 @@
 
                                 <td>
                                     @if($property->image9)
-                                        <img src="{{ asset('images/'. $property->image9) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image9) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -130,7 +140,8 @@
 
                                 <td>
                                     @if($property->image10)
-                                        <img src="{{ asset('images/'. $property->image10) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $property->image10) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
@@ -141,7 +152,11 @@
                                 <td>{{ $property->mobile }}</td>
                                 <td>{{ $property->address }}</td>
                                 <td>
-                                    <form method="POST" action="{{ url('/property/' . $property->id) }}" class="d-inline">
+                                    <a href="{{ route('property_edit', ['id' => $property->id]) }}" class="btn btn-dark btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ url('/property/' . $property->id) }}"
+                                          class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

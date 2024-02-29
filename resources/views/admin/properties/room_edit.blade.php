@@ -50,37 +50,48 @@
                 </div>
             </div>
         </nav>
-
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
-                <h2>Add Room Details</h2>
-                <form method="POST" action="{{ route('room_store') }}" enctype="multipart/form-data">
+                <h2>Edit Room Details</h2>
+                <form method="POST" action="{{ route('room_edit_store', ['room_id' => $rooms -> id]) }}" enctype="multipart/form-data">
                     @csrf
-                    @foreach($Properties as $Property)
-                        <input type="hidden" name="property_id" value="{{ $Property->id }}">
-                    @endforeach
+                    @method('PUT')
+
 
                     <div class="form-group">
                         <label class="form-label">Room Category:</label>
-                        <input type="text"  name="description" class="form-control">
+                        <input type="text" name="description" class="form-control"
+                               value="{{ old('description', $rooms -> description) }}"
+                               required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
+
 
                     <div class="form-group">
                         <label class="form-label">Person:</label>
-                        <input type="text" name="person" class="form-control">
+                        <input type="text" name="person" class="form-control"
+                               value="{{ old('person', $rooms -> person) }}"
+                               required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">View:</label>
-                        <input type="text" name="view" class="form-control">
+                        <input type="text" name="view" class="form-control"
+                               value="{{ old('view', $rooms -> view) }}"
+                               required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Room Type</label>
                         <select class="form-select" id="room_type" name="room_type">
                             @foreach($RoomTypes as $RoomType)
-                                <option value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
                                     {{ $RoomType->room_type  }}
                                 </option>
                             @endforeach
@@ -89,22 +100,32 @@
 
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
-                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image1"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
-                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image2"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
-                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image3"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label for="price" class="form-label">Price:</label>
-                        <input type="text" id="price" name="price" class="form-control">
+                        <input type="text" id="price" name="price" class="form-control"
+                               value="{{ old('price', $rooms -> price) }}">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
