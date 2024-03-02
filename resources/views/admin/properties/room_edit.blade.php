@@ -54,10 +54,11 @@
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
                 <h2>Edit Room Details</h2>
-                <form method="POST" action="{{ route('room_edit_store', ['room_id' => $rooms -> id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('room_edit_store', ['room_id' => $rooms -> id]) }}"
+                      enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
-
 
                     <div class="form-group">
                         <label class="form-label">Room Category:</label>
@@ -86,6 +87,7 @@
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
+
                     <div class="form-group">
                         <label class="form-label">Room Type</label>
                         <select class="form-select" id="room_type" name="room_type">

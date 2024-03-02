@@ -9,6 +9,7 @@ use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Booking;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\PropertyType;
 use App\Models\UserMessage;
@@ -510,6 +511,40 @@ class PropertyController extends Controller
 
     }
 
+    public function blog_edit($id)
+    {
+        $blog = Blog::findorFail($id);
+        return view('admin.dashboard.blog_edit', [
+            'blog' => $blog
+        ]);
+    }
+
+    public function blog_edit_store(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'heading' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+        ]);
+
+        $blog = Blog::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '_image.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $blog->image = $imageName;
+        } else {
+            // Add some debugging output
+            dd('No logo file provided');
+        }
+
+        $blog->heading = $validatedData['heading'];
+        $blog->description = $validatedData['description'];
+        $blog->save();
+        return redirect()->route('blog_form_index')->withSuccess('Blog Edited Successfully');
+    }
+
+
     public function user_messages(Request $request)
     {
         $validatedData = $request->validate([
@@ -565,6 +600,36 @@ class PropertyController extends Controller
         return back()->withSuccess("Contact Deleted Successfully");
     }
 
+    public function contact_edit($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return view('admin.dashboard.contact_edit', ['contact' => $contact]);
+    }
+
+    public function contact_edit_store(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            'address' => 'required|string',
+            'mobile_1' => 'required|string',
+            'mobile_2' => 'required|string',
+            'email' => 'required|string',
+            'website' => 'required|string',
+        ]);
+
+
+        $contact = Contact::findOrFail($id);
+
+
+        $contact->address = $validatedData['address'];
+        $contact->mobile_1 = $validatedData['mobile_1'];
+        $contact->mobile_2 = $validatedData['mobile_2'];
+        $contact->email = $validatedData['email'];
+        $contact->website = $validatedData['website'];
+        $contact->save();
+        return redirect()->route('contact_index')->withSuccess('Contact Edited Successfully');
+    }
+
     public function banner_store(Request $request)
     {
         $validatedData = $request->validate([
@@ -600,6 +665,38 @@ class PropertyController extends Controller
         return back()->withSuccess("Banner Deleted Successfully");
     }
 
+    public function banner_edit($id)
+    {
+        $banner = Banner::findOrFail($id);
+
+        return view('admin.dashboard.banner_edit', ['banner' => $banner]);
+    }
+
+    public function banner_edit_store(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'heading' => 'required|string',
+            'sub_heading' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+        ]);
+
+        $banner = Banner::findOrFail($id);
+        $banner->heading = $validatedData['heading'];
+        $banner->sub_heading = $validatedData['sub_heading'];
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '_image.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $banner->image = $imageName;
+        } else {
+            // Add some debugging output
+            dd('No image file provided');
+        }
+
+        $banner->save();
+
+        return redirect()->route('banner_index')->withSuccess('Banner Edited Successfully');
+    }
 
     public function insta_store(Request $request)
     {

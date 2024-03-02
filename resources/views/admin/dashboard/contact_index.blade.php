@@ -47,7 +47,8 @@
                             <th>Email</th>
                             <th>Website</th>
                             <th>Description</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,9 +60,14 @@
                                 <td>{{ $contact->email }}</td>
                                 <td>{{ $contact->website }}</td>
                                 <td>{{ $contact->description }}</td>
-
+                        
                                 <td>
-                                    <form method="POST" action="{{ url('/contact/' . $contact->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this contact info?')">
+                                    <a href="{{ route('contact_edit', ['id' => $contact->id]) }}"
+                                       class="btn btn-dark btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ url('/contact/' . $contact->id) }}" class="d-inline"
+                                          onsubmit="return confirm('Are you sure you want to delete this contact info?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -77,7 +83,8 @@
     </div>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

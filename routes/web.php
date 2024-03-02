@@ -70,6 +70,8 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/blog/form/submit', [UserController::class, 'blog_form_store'])->name('blog_form_store');
     Route::get('/blog/form/index', [UserController::class, 'blog_form_index'])->name('blog_form_index');
     Route::delete('/blog/{id}', [UserController::class, 'delete_blog']);
+    Route::get('/blog/edit/{id}', [PropertyController::class, 'blog_edit'])->name('blog_edit');
+    Route::put('/blog/{blog_id}/update', [PropertyController::class, 'blog_edit_store'])->name('blog_edit_store');
 
     Route::get('/admin/bookings_table', [HomeController::class, 'bookings_table'])->name('bookings_table');
     Route::get('/admin/user_feedback', [HomeController::class, 'user_feedback'])->name('user_feedback');
@@ -79,6 +81,8 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/admin/banner/store', [PropertyController::class, 'banner_store'])->name('banner_store');
     Route::get('/admin/banner/index', [HomeController::class, 'banner_index'])->name('banner_index');
     Route::delete('/admin/banner_delete/{id}', [PropertyController::class, 'banner_delete']);
+    Route::get('admin/banner_edit/{id}', [PropertyController::class, 'banner_edit'])->name('banner_edit');
+    Route::put('/banner_edit/{banner_id}/update', [PropertyController::class, 'banner_edit_store'])->name('banner_edit_store');
 
     Route::get('/admin/insta/image', [HomeController::class, 'insta_image'])->name('insta_image');
     Route::post('/admin/insta/store', [PropertyController::class, 'insta_store'])->name('insta_store');
@@ -89,6 +93,8 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('admin/contact/contact_form', [HomeController::class, 'contact_form'])->name('contact_form');
     Route::post('admin/contact/contact_store', [PropertyController::class, 'contact_store'])->name('contact_store');
     Route::delete('/contact/{id}', [PropertyController::class, 'contact_delete']);
+    Route::get('admin/contact_edit/{id}', [PropertyController::class, 'contact_edit'])->name('contact_edit');
+    Route::put('admin/contact_edit/{contact_id}/update', [PropertyController::class, 'contact_edit_store'])->name('contact_edit_store');
 
     Route::get('admin/review/index', [HomeController::class, 'review_index'])->name('review_index');
     Route::get('admin/review/form', [HomeController::class, 'review_form'])->name('review_form');

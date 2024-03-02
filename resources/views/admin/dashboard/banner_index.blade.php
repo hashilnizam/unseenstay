@@ -1,3 +1,5 @@
+
+
 @extends('admin.dashboard.common.app')
 
 @section('content')
@@ -44,7 +46,8 @@
                             <th>Heading</th>
                             <th>Sub Heading</th>
                             <th>Image</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,14 +57,21 @@
                                 <td>{{ $banner->sub_heading }}</td>
                                 <td>
                                     @if($banner->image)
-                                        <img src="{{ asset('images/'. $banner->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $banner->image) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
 
                                 <td>
-                                    <form method="POST" action="{{ url('/admin/banner_delete/' . $banner->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this banner?')">
+                                    <a href="{{ route('banner_edit', ['id' => $banner->id]) }}"
+                                       class="btn btn-dark btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ url('/admin/banner_delete/' . $banner->id) }}"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Are you sure you want to delete this banner?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -78,7 +88,8 @@
     </div>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

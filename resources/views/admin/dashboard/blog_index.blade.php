@@ -44,7 +44,8 @@
                             <th>Heading</th>
                             <th>Description</th>
                             <th>Image</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,13 +55,21 @@
                                 <td>{{ $blog->description }}</td>
                                 <td>
                                     @if($blog->image)
-                                        <img src="{{ asset('images/'. $blog->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $blog->image) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif
                                 </td>
+
                                 <td>
-                                    <form method="POST" action="{{ url('/blog/' . $blog->id) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this blog?')">
+                                    <a href="{{ route('blog_edit', ['id' => $blog->id]) }}"
+                                       class="btn btn-dark btn-sm">Edit</a>
+                                </td>
+
+                                <td>
+                                    <form method="POST" action="{{ url('/blog/' . $blog->id) }}" class="d-inline"
+                                          onsubmit="return confirm('Are you sure you want to delete this blog?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -76,7 +85,8 @@
     </div>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
