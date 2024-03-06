@@ -615,6 +615,7 @@ class PropertyController extends Controller
             'mobile_2' => 'required|string',
             'email' => 'required|string',
             'website' => 'required|string',
+            'description' => 'required|string',
         ]);
 
 
@@ -626,6 +627,7 @@ class PropertyController extends Controller
         $contact->mobile_2 = $validatedData['mobile_2'];
         $contact->email = $validatedData['email'];
         $contact->website = $validatedData['website'];
+        $contact->description = $validatedData['description'];
         $contact->save();
         return redirect()->route('contact_index')->withSuccess('Contact Edited Successfully');
     }
@@ -754,6 +756,37 @@ class PropertyController extends Controller
         $reviews->delete();
 
         return back()->withSuccess("Review Deleted Successfully");
+    }
+
+    public function review_edit($id)
+    {
+        $review = Review::findOrFail($id);
+        return view('admin.dashboard.review_edit', ['review' => $review]);
+    }
+
+    public function review_edit_store(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240',
+        ]);
+
+        $review = Review::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '_image.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $review->image = $imageName;
+        } else {
+            // Add some debugging output
+            dd('No Image file provided');
+        }
+
+        $review->name = $validatedData['name'];
+        $review->description = $validatedData['description'];
+        $review->save();
+        return redirect()->route('review_index')->withSuccess('Review Edited Successfully');
     }
 
 }

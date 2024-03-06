@@ -60,7 +60,7 @@
                                 <td>{{ $contact->email }}</td>
                                 <td>{{ $contact->website }}</td>
                                 <td>{{ $contact->description }}</td>
-                        
+
                                 <td>
                                     <a href="{{ route('contact_edit', ['id' => $contact->id]) }}"
                                        class="btn btn-dark btn-sm">Edit</a>

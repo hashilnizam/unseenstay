@@ -99,7 +99,9 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('admin/review/index', [HomeController::class, 'review_index'])->name('review_index');
     Route::get('admin/review/form', [HomeController::class, 'review_form'])->name('review_form');
     Route::post('admin/review/store', [PropertyController::class, 'review_store'])->name('review_store');
+    Route::get('admin/review_edit/{id}', [PropertyController::class, 'review_edit'])->name('review_edit');
     Route::delete('/admin/review_delete/{id}', [PropertyController::class, 'review_delete']);
+    Route::put('/admin/review_update/{review_id}/update', [PropertyController::class, 'review_edit_store'])->name('review_edit_store');
 
 });
 

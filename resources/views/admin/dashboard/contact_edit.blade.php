@@ -107,7 +107,12 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
-
+                    <div class="form-group">
+                        <label class="form-label">Description:</label>
+                        <textarea class="form-control" name="description" rows="3" required>{{ old('description', $contact->description) }}</textarea>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

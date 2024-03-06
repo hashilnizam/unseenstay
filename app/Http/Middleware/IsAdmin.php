@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class IsAdmin{
 
-    
+
 public function handle(Request $request, Closure $next)
-    {   
+    {
         if(Auth::check()){
             $userType = auth()->user()->user_type;
             if ($userType === 'admin'){
@@ -21,7 +21,6 @@ public function handle(Request $request, Closure $next)
             }           
         }else{
 
-        //dd("hhhuh");
                 return redirect()->route('index_login')->with('error', "You don't have admin access.");
         }
     }
