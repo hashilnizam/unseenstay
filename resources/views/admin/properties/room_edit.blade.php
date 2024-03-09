@@ -1,3 +1,5 @@
+
+
 @extends('admin.dashboard.common.app')
 
 @section('content')
@@ -103,26 +105,50 @@
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
                         <input type="file" class="form-control-file" name="image1"
-                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                               accept="image/jpeg, image/png, image/jpg, image/gif" >
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
+                        <td>
+                            @if($rooms->image1)
+                                <img src="{{ asset('images/'. $rooms->image1) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                            @else
+                                No Image
+                            @endif
+                        </td>
                     </div>
+                    <hr>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
                         <input type="file" class="form-control-file" name="image2"
-                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                               accept="image/jpeg, image/png, image/jpg, image/gif" >
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
+                        <td>
+                            @if($rooms->image2)
+                                <img src="{{ asset('images/'. $rooms->image2) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                            @else
+                                No Image
+                            @endif
+                        </td>
                     </div>
+                    <hr>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
                         <input type="file" class="form-control-file" name="image3"
-                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                               accept="image/jpeg, image/png, image/jpg, image/gif" >
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
+                        <td>
+                            @if($rooms->image3)
+                                <img src="{{ asset('images/'. $rooms->image3) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                            @else
+                                No Image
+                            @endif
+                        </td>
                     </div>
+                    <hr>
 
                     <div class="form-group">
                         <label for="price" class="form-label">Price:</label>

@@ -1,3 +1,5 @@
+
+
 @extends('admin.dashboard.common.app')
 
 @section('content')
@@ -84,82 +86,173 @@
                         <div class="form-group">
                             <label class="form-label">Image 1:</label>
                             <input type="file" class="form-control-file" name="image1"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image1)
+                                    <img src="{{ asset('images/'. $Property->image1) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
+
 
                         <div class="form-group">
                             <label class="form-label">Image 2:</label>
                             <input type="file" class="form-control-file" name="image2"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image2)
+                                    <img src="{{ asset('images/'. $Property->image2) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 3:</label>
                             <input type="file" class="form-control-file" name="image3"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image3)
+                                    <img src="{{ asset('images/'. $Property->image3) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 4:</label>
                             <input type="file" class="form-control-file" name="image4"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image4)
+                                    <img src="{{ asset('images/'. $Property->image4) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 5:</label>
                             <input type="file" class="form-control-file" name="image5"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image5)
+                                    <img src="{{ asset('images/'. $Property->image5) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 6:</label>
                             <input type="file" class="form-control-file" name="image6"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image6)
+                                    <img src="{{ asset('images/'. $Property->image6) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 7:</label>
                             <input type="file" class="form-control-file" name="image7"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image7)
+                                    <img src="{{ asset('images/'. $Property->image7) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 8:</label>
                             <input type="file" class="form-control-file" name="image8"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image8)
+                                    <img src="{{ asset('images/'. $Property->image8) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 9:</label>
                             <input type="file" class="form-control-file" name="image9"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif" >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image9)
+                                    <img src="{{ asset('images/'. $Property->image9) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Image 10:</label>
                             <input type="file" class="form-control-file" name="image10"
-                                   accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                                   accept="image/jpeg, image/png, image/jpg, image/gif"  >
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please select an image.</div>
+                            <td>
+                                @if($Property->image10)
+                                    <img src="{{ asset('images/'. $Property->image10) }}" alt="property_image"
+                                         class="img-thumbnail" width="80" height="50"/>
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                         </div>
+                        <hr>
 
                         <div class="form-group">
                             <label class="form-label">Description:</label>

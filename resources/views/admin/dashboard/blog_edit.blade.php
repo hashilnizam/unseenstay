@@ -82,9 +82,18 @@
                     <div class="form-group">
                         <label class="form-label">Image:</label>
                         <input type="file" class="form-control-file" name="image"
-                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                               accept="image/jpeg, image/png, image/jpg, image/gif">
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
+                        <td>
+                            @if($blog->image)
+                                <img src="{{ asset('images/'. $blog->image) }}" alt="property"
+                                     class="img-thumbnail" width="80" height="50"/>
+                            @else
+                                No Image
+                            @endif
+                        </td>
+                        <hr>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -218,7 +218,7 @@ class PropertyController extends Controller
             $property->image1 = $image1Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image2')) {
@@ -227,7 +227,7 @@ class PropertyController extends Controller
             $property->image2 = $image2Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image3')) {
@@ -236,7 +236,7 @@ class PropertyController extends Controller
             $property->image3 = $image3Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image4')) {
@@ -245,7 +245,7 @@ class PropertyController extends Controller
             $property->image4 = $image4Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image5')) {
@@ -254,7 +254,7 @@ class PropertyController extends Controller
             $property->image5 = $image5Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image6')) {
@@ -263,7 +263,7 @@ class PropertyController extends Controller
             $property->image6 = $image6Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image7')) {
@@ -272,7 +272,7 @@ class PropertyController extends Controller
             $property->image7 = $image7Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image8')) {
@@ -281,7 +281,7 @@ class PropertyController extends Controller
             $property->image8 = $image8Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image9')) {
@@ -290,7 +290,7 @@ class PropertyController extends Controller
             $property->image9 = $image9Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image10')) {
@@ -299,7 +299,7 @@ class PropertyController extends Controller
             $property->image10 = $image10Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         $property->save();
@@ -438,7 +438,7 @@ class PropertyController extends Controller
             $rooms->image1 = $image1Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image2')) {
@@ -447,7 +447,7 @@ class PropertyController extends Controller
             $rooms->image2 = $image2Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         if ($request->hasFile('image3')) {
@@ -456,7 +456,7 @@ class PropertyController extends Controller
             $rooms->image3 = $image3Name;
         } else {
             // Add some debugging output
-            dd('No image file provided');
+
         }
 
         $rooms->save();
@@ -534,8 +534,7 @@ class PropertyController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $blog->image = $imageName;
         } else {
-            // Add some debugging output
-            dd('No logo file provided');
+
         }
 
         $blog->heading = $validatedData['heading'];
@@ -692,7 +691,6 @@ class PropertyController extends Controller
             $banner->image = $imageName;
         } else {
             // Add some debugging output
-            dd('No image file provided');
         }
 
         $banner->save();
