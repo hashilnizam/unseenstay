@@ -54,7 +54,7 @@
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
-                <h2>Edit Blog Details</h2>
+                <h2>Edit Review Details</h2>
                 <form method="POST" action="{{ route('review_edit_store', ['review_id' => $review -> id]) }}"
                       enctype="multipart/form-data">
                     @csrf
