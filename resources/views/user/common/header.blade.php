@@ -1,27 +1,38 @@
- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
 
-        <a href="/"> <img style="text-size: 5px" src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon" width="50px"> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span>
+        <a href="/"> <img style="text-size: 5px" src="{{ asset('user/images/icon.png') }}" alt="Icon" class="icon"
+                          width="50px"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="{{ route('unseen.properties') }}" class="nav-link">Properties</a></li>
-            <li class="nav-item"><a href="{{ route('unseen.about') }}" class="nav-link">About</a></li>
-              <li class="nav-item">
-                  <a href="{{ route('unseen.blog') }}" class="nav-link">Blog</a>
-              </li>
-
-              <li class="nav-item"><a href="{{ route('unseen.contact') }}" class="nav-link">Contact</a></li>
-
-          </ul>
+            <ul class="navbar-nav ml-auto">
+                <?php
+                $current_url = $_SERVER['REQUEST_URI'];
+                ?>
+                <li class="nav-item <?php if ($current_url == "/") echo 'active'; ?>">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item <?php if ($current_url == "/properties") echo 'active'; ?>">
+                    <a class="nav-link" href="{{ route('unseen.properties') }}">Properties</a>
+                </li>
+                <li class="nav-item <?php if ($current_url == "/about") echo 'active'; ?>">
+                    <a class="nav-link" href="{{ route('unseen.about') }}">About</a>
+                </li>
+                <li class="nav-item <?php if ($current_url == "/blog") echo 'active'; ?>">
+                    <a class="nav-link" href="{{ route('unseen.blog') }}">Blog</a>
+                </li>
+                <li class="nav-item <?php if ($current_url == "/contact") echo 'active'; ?>">
+                    <a class="nav-link" href="{{ route('unseen.contact') }}">Contact</a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>
+
+    </div>
+</nav>
 
 
 
