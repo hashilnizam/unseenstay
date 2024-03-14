@@ -49,7 +49,6 @@
         </nav>
 
 
-
         <!-- Add Resort Form -->
         <div class="row cen_al">
             <div class="col-md-8 offset-md-2 shadow-border">
@@ -64,7 +63,8 @@
                         <label class="form-label">Properties</label>
                         <select class="form-select" id="name" name="name">
                             @foreach($Properties as $Property)
-                                <option value="{{ $Property->id }}" {{ old('name') == $Property->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $Property->id }}" {{ old('name') == $Property->id ? 'selected' : '' }}>
                                     {{ $Property->name }}
                                 </option>
                             @endforeach
@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Room Category:</label>
-                        <input type="text"  name="description" class="form-control" required>
+                        <input type="text" name="description" class="form-control" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
 
@@ -98,7 +98,8 @@
                         <label class="form-label">Room Type</label>
                         <select class="form-select" id="room_type" name="room_type">
                             @foreach($RoomTypes as $RoomType)
-                                <option value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
                                     {{ $RoomType->room_type  }}
                                 </option>
                             @endforeach
@@ -109,21 +110,24 @@
 
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
-                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image1"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please upload an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
-                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image2"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please upload an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
-                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image3"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please upload an image.</div>
                     </div>

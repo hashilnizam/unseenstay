@@ -52,7 +52,8 @@
                                 <td>{{ $room->room_types->room_type }}</td>
                                 <td>
                                     @if($room->image1)
-                                        <img src="{{ asset('images/'. $room->image1) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $room->image1) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif

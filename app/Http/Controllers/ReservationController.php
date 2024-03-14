@@ -93,7 +93,7 @@ class ReservationController extends Controller
 
 
         return response()->json(['message' => 'Room Booked Successfully',
-            'razorpayOrderId' => $razorpayOrderId,'bookingId'=> $bookingId]);
+            'razorpayOrderId' => $razorpayOrderId, 'bookingId' => $bookingId]);
 
     }
 

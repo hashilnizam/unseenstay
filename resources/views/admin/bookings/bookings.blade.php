@@ -1,7 +1,6 @@
 @extends('admin.dashboard.common.app')
 @section('content')
 
-
     <div class="container-fluid">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -50,7 +49,8 @@
                                 <td>{{ $userBooking->room->description }}</td>
                                 <td>
                                     @if($userBooking->room->image)
-                                        <img src="{{ asset('images/'. $userBooking->room->image) }}" alt="property" class="img-thumbnail" width="80" height="50"/>
+                                        <img src="{{ asset('images/'. $userBooking->room->image) }}" alt="property"
+                                             class="img-thumbnail" width="80" height="50"/>
                                     @else
                                         No Image
                                     @endif

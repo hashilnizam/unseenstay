@@ -1,5 +1,3 @@
-
-
 @extends('admin.dashboard.common.app')
 
 @section('content')
@@ -69,7 +67,8 @@
                         <label class="form-label">Property Type</label>
                         <select name="property_type" id="property_type" class="form-select">
                             @foreach($PropertyTypes as $PropertyType)
-                                <option value="{{ $PropertyType->id }}" {{ old('property_type') == $PropertyType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $PropertyType->id }}" {{ old('property_type') == $PropertyType->id ? 'selected' : '' }}>
                                     {{ $PropertyType->property_type  }}
                                 </option>
                             @endforeach
@@ -77,70 +76,80 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
-                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image1"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
-                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image2"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
-                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image3"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 4:</label>
-                        <input type="file" class="form-control-file" name="image4" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image4"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 5:</label>
-                        <input type="file" class="form-control-file" name="image5" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image5"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 6:</label>
-                        <input type="file" class="form-control-file" name="image6" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image6"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 7:</label>
-                        <input type="file" class="form-control-file" name="image7" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image7"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 8:</label>
-                        <input type="file" class="form-control-file" name="image8" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image8"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 9:</label>
-                        <input type="file" class="form-control-file" name="image9" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image9"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 10:</label>
-                        <input type="file" class="form-control-file" name="image10" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image10"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>

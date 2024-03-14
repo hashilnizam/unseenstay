@@ -1,4 +1,3 @@
-
 @extends('admin.dashboard.common.app')
 
 @section('content')
@@ -109,7 +108,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Description:</label>
-                        <textarea class="form-control" name="description" rows="3" required>{{ old('description', $contact->description) }}</textarea>
+                        <textarea class="form-control" name="description" rows="3"
+                                  required>{{ old('description', $contact->description) }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>

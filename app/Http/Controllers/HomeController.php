@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Blog;
 use App\Models\Booking;
 use App\Models\Instagram;
@@ -28,7 +29,7 @@ class HomeController extends Controller
         $blogs = Blog::get();
         $contacts = Contact::get();
         $reviews = Review::get();
-        return view('user.index',['properties' => $properties,
+        return view('user.index', ['properties' => $properties,
             'rooms' => $rooms,
             'blogs' => $blogs,
             'instagrams' => $instagrams,
@@ -52,7 +53,7 @@ class HomeController extends Controller
         $instagrams = Instagram::get();
         $rooms = Room::get();
         $users = User::get();
-        return view('user.properties',['properties' => $properties,
+        return view('user.properties', ['properties' => $properties,
             'rooms' => $rooms,
             'instagrams' => $instagrams]);
     }
@@ -61,8 +62,9 @@ class HomeController extends Controller
     {
         $instagrams = Instagram::get();
         return view('user.about',
-        ['instagrams' => $instagrams]);
+            ['instagrams' => $instagrams]);
     }
+
     public function blog()
     {
         $blogs = Blog::get();
@@ -78,7 +80,7 @@ class HomeController extends Controller
     {
         $reviews = Review::get();
         return view('admin.dashboard.review_index',
-        ['reviews' => $reviews]);
+            ['reviews' => $reviews]);
     }
 
     public function banner()
@@ -113,6 +115,7 @@ class HomeController extends Controller
     {
         return view('admin.dashboard.contact_form');
     }
+
     public function user_feedback()
     {
         $user_messages = UserMessage::get();
@@ -123,7 +126,7 @@ class HomeController extends Controller
     {
         $blog = Blog::where('id', $id)->first();
         $blogs = Blog::get();
-        return view('user.blog_single', ['blog' => $blog , 'blogs' => $blogs]);
+        return view('user.blog_single', ['blog' => $blog, 'blogs' => $blogs]);
     }
 
     public function rooms_single($propertyId)
@@ -135,6 +138,7 @@ class HomeController extends Controller
             'blogs' => $blogs,
             'instagrams' => $instagrams]);
     }
+
     public function rooms_book_now($id)
     {
         $room = Room::find($id);
@@ -148,25 +152,25 @@ class HomeController extends Controller
     }
 
 
-
     public function login_page()
-      {
+    {
         return view('user.userlogin');
-      }
+    }
 
     //admin side
 
-     public function Admin_Dashboard()
+    public function Admin_Dashboard()
     {
 
         return view('admin.dashboard.index');
 
     }
 
-     public function admin_index(){
+    public function admin_index()
+    {
 
-            return view('admin.dashboard.login');
-       }
+        return view('admin.dashboard.login');
+    }
 
     //user datatable
 
@@ -184,11 +188,10 @@ class HomeController extends Controller
     public function user_payment_index()
     {
         $payments = Payment::get();
-        $userBookings = Booking::with('room','userOrder')
+        $userBookings = Booking::with('room', 'userOrder')
             ->get();
         return view('admin.dashboard.payment_index', ['payments' => $payments, 'userBookings' => $userBookings]);
     }
-
 
 
 }

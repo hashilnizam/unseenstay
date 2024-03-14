@@ -143,9 +143,13 @@
                             <label class="label">User Type</label>
                             <div class="form-group">
                                 <select class="form-control" id="user_type" name="user_type">
-                                    <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Admin</option>
-                                    <option value="accountant" {{ old('user_type') == 'accountant' ? 'selected' : '' }}>Accountant</option>
-                                    <option value="user" {{ old('user_type') == 'user' ? 'selected' : '' }}>User</option>
+                                    <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Admin
+                                    </option>
+                                    <option value="accountant" {{ old('user_type') == 'accountant' ? 'selected' : '' }}>
+                                        Accountant
+                                    </option>
+                                    <option value="user" {{ old('user_type') == 'user' ? 'selected' : '' }}>User
+                                    </option>
                                 </select>
                             </div>
                         </div>

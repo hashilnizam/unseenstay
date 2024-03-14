@@ -63,7 +63,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Room Category:</label>
-                        <input type="text"  name="description" class="form-control">
+                        <input type="text" name="description" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -80,7 +80,8 @@
                         <label class="form-label">Room Type</label>
                         <select class="form-select" id="room_type" name="room_type">
                             @foreach($RoomTypes as $RoomType)
-                                <option value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $RoomType->id }}" {{ old('room_type') == $RoomType->id ? 'selected' : '' }}>
                                     {{ $RoomType->room_type  }}
                                 </option>
                             @endforeach
@@ -89,17 +90,20 @@
 
                     <div class="form-group">
                         <label class="form-label">Image 1:</label>
-                        <input type="file" class="form-control-file" name="image1" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image1"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 2:</label>
-                        <input type="file" class="form-control-file" name="image2" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image2"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Image 3:</label>
-                        <input type="file" class="form-control-file" name="image3" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image3"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                     </div>
 
                     <div class="form-group">

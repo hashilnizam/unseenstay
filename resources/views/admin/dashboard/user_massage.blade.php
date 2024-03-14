@@ -47,7 +47,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#myDataTable').DataTable({
                 "paging": true,
                 "searching": true,

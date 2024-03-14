@@ -2,7 +2,9 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                All rights reserved
+            </p>
         </div>
     </div>
 </footer>
@@ -32,7 +34,7 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#myDataTable').DataTable({
             // DataTables options and initialization code
         });

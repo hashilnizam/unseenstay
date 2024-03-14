@@ -71,7 +71,8 @@
 
                     <div class="form-group">
                         <label class="form-label">Image :</label>
-                        <input type="file" class="form-control-file" name="image" accept="image/jpeg, image/png, image/jpg, image/gif" required>
+                        <input type="file" class="form-control-file" name="image"
+                               accept="image/jpeg, image/png, image/jpg, image/gif" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please select an image.</div>
                     </div>

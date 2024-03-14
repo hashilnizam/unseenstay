@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 
@@ -17,8 +18,9 @@ class UserController extends Controller
 
 
     //Admin SignUp
-    public function Admin_Login(Request $request){
-         $credentials = $request->validate([
+    public function Admin_Login(Request $request)
+    {
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
@@ -28,21 +30,22 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             return redirect()->route('admin_dashboard')->withSuccess('You have successfully logged in!');
-        }else {
-            return redirect()->route('unseen.index')->with('error',"User doesn't exist!");
+        } else {
+            return redirect()->route('unseen.index')->with('error', "User doesn't exist!");
         }
 
-      }
+    }
 
-     //Admin Logout
-      public function Admin_Logout(){
+    //Admin Logout
+    public function Admin_Logout()
+    {
 
         Auth::logout();
         return view('admin.dashboard.login');
-      }
+    }
 
 
-      //user SignUp
+    //user SignUp
 
 
     public function userSignup(Request $request)
@@ -117,37 +120,35 @@ class UserController extends Controller
     }
 
 
-
     //user SignIn
-      public function userSignIn(Request $request)
-      {
-      $credentials = $request->validate([
-          'username' => 'required',
-          'password' => 'required|min:6'
-      ]);
+    public function userSignIn(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6'
+        ]);
 
-      if (Auth::attempt($credentials)) {
-          $user = Auth::user();
-          $request->session()->regenerate();
-          return redirect()->route('unseen.index')->withSuccess('You have successfully logged in!');
-      } else {
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $request->session()->regenerate();
+            return redirect()->route('unseen.index')->withSuccess('You have successfully logged in!');
+        } else {
 
-           return back()->with('error', "User doesn't exist!");
-      }
+            return back()->with('error', "User doesn't exist!");
+        }
 
-      }
-
-
-      // logout
-      public function userLogout()
-      {
-         Auth::logout();
-         return redirect()->route('unseen.index')->with('success', 'You have been logged out!');
-      }
+    }
 
 
+    // logout
+    public function userLogout()
+    {
+        Auth::logout();
+        return redirect()->route('unseen.index')->with('success', 'You have been logged out!');
+    }
 
-      // admin user add
+
+    // admin user add
     public function addUser(Request $request)
     {
 
@@ -160,8 +161,7 @@ class UserController extends Controller
             'user_type' => 'required'
         ]);
 
-        if ($validatedData['password'] !== $request->input('cpassword'))
-        {
+        if ($validatedData['password'] !== $request->input('cpassword')) {
             return back()->with('error', 'Passwords do not match!');
         }
 
@@ -182,11 +182,11 @@ class UserController extends Controller
 
     //user datatable delete function
     public function destroy($id)
-      {
-          $user = User::findOrFail($id);
-          $user->delete();
-          return back()->withSuccess("User Deleted Successfully");
-      }
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return back()->withSuccess("User Deleted Successfully");
+    }
 
     public function my_profile()
     {
@@ -197,9 +197,9 @@ class UserController extends Controller
     public function bookings()
     {
         $user_id = auth()->user()->id;
-        $my_bookings=Booking::where('user_id',$user_id)
-                            ->with('room')
-                            ->get();
+        $my_bookings = Booking::where('user_id', $user_id)
+            ->with('room')
+            ->get();
         return view('user.bookings',
             ['my_bookings' => $my_bookings]);
     }
@@ -211,6 +211,7 @@ class UserController extends Controller
     {
         return view('admin.dashboard.blog_form');
     }
+
     public function blog_form_store(Request $request)
     {
         $validatedData = $request->validate([
@@ -233,6 +234,7 @@ class UserController extends Controller
 
         return redirect()->route('blog_form_index')->withSuccess('Blog added Successfully !');
     }
+
     public function delete_blog($id)
     {
         $blogs = Blog::findOrFail($id);
@@ -252,7 +254,7 @@ class UserController extends Controller
     public function blog_form_index()
     {
         $blogs = Blog::get();
-        return view('admin.dashboard.blog_index',['blogs' => $blogs]);
+        return view('admin.dashboard.blog_index', ['blogs' => $blogs]);
     }
 
 }
