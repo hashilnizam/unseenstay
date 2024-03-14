@@ -1,3 +1,19 @@
+<!-- Ensure you have included Bootstrap and jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        // Add JavaScript code here
+        $('.navbar-toggler').click(function(event){
+            event.stopPropagation(); // Prevent automatic opening
+            $('#ftco-nav').toggleClass('show');
+        });
+    });
+</script>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 
@@ -7,6 +23,7 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span>
         </button>
+
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
