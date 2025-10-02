@@ -167,8 +167,7 @@ MODAL STRUCTURE & ANIMATIONS (iOS Style)
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
     width: min(900px, 90vw);
-    max-height: 85vh;
-    /* Clean, light background */
+    max-height: 85vh; /* Limits the modal height to 85% of viewport */
     background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 32px;
     box-shadow: 
@@ -176,11 +175,25 @@ MODAL STRUCTURE & ANIMATIONS (iOS Style)
         0 20px 60px rgba(0, 0, 0, 0.2),
         0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     z-index: 9999;
-    overflow: hidden;
+    overflow-y: auto; 
+    overflow-x: hidden;
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     pointer-events: none;
+    display: flex; 
+    flex-direction: column;
+    
+    /* --- KEY SCROLLBAR HIDING: Firefox --- */
+    scrollbar-width: none;
 }
+
+/* --- KEY SCROLLBAR HIDING: Webkit (Chrome, Safari) --- */
+.ios26-modal::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 
 .ios26-modal.active {
     opacity: 1;
@@ -232,20 +245,64 @@ MODAL STRUCTURE & ANIMATIONS (iOS Style)
 }
 
 /* ============================================
+ENQUIRY BUTTON STYLE 
+============================================ 
+*/
+.ios26-enquiry-button {
+    /* Base styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin-left: auto; /* Pushes the button to the right */
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 24px;
+    
+    /* iOS 26 Gradient Style */
+    color: white;
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%); /* WhatsApp colors */
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ios26-enquiry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.ios26-enquiry-button svg {
+    margin-right: 8px;
+    fill: white;
+    width: 18px;
+    height: 18px;
+}
+
+/* ============================================
 SLIDER STYLES
 ============================================ 
 */
 .ios26-modal-slider {
     position: relative;
     width: 100%;
-    height: 450px;
+    /* 16:9 aspect ratio */
+    padding-bottom: 56.25%; 
+    height: 0; 
+    flex-shrink: 0; 
     overflow: hidden;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .ios26-modal-slides {
-    display: flex;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
+    display: flex;
     transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
@@ -363,34 +420,27 @@ SLIDER STYLES
 CONTENT AREA & TYPOGRAPHY
 ============================================ 
 */
+.ios26-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
 .ios26-modal-content {
     padding: 40px;
-    max-height: calc(85vh - 450px);
-    overflow-y: auto;
+    overflow-y: visible; 
+    flex-grow: 1; 
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-.ios26-modal-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.ios26-modal-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.ios26-modal-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
 }
 
 .ios26-modal-title {
     font-size: 32px;
     font-weight: 700;
-    margin: 0 0 12px 0;
+    margin: 0; /* Important: Remove default margin */
     color: #1a1a1a;
     letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .ios26-modal-category {
@@ -413,11 +463,9 @@ CONTENT AREA & TYPOGRAPHY
 }
 
 /* ============================================
-UPDATED MODERN DETAILS STYLES (iOS 26 Look)
+MODERN DETAILS STYLES (iOS 26 Look)
 ============================================ 
 */
-
-/* 1. New style for the main section title (cleaner border) */
 .ios26-modal-section-title {
     font-size: 20px;
     font-weight: 700; 
@@ -426,7 +474,6 @@ UPDATED MODERN DETAILS STYLES (iOS 26 Look)
     border-bottom: none; 
     display: block; 
     padding-bottom: 0;
-    /* Adding a subtle separator below the title group */
     position: relative;
 }
 
@@ -435,25 +482,23 @@ UPDATED MODERN DETAILS STYLES (iOS 26 Look)
     position: absolute;
     bottom: -10px;
     left: 0;
-    width: 50px; /* Short, subtle line */
+    width: 50px;
     height: 3px;
-    background: rgba(102, 126, 234, 0.2); /* Light blue separator */
+    background: rgba(102, 126, 234, 0.2);
     border-radius: 1.5px;
 }
 
-
-/* 2. Style for the Pill-Shaped Room Details (like data chips) */
 .ios26-modal-room-details {
     margin-bottom: 30px;
-    display: flex; /* Use flex for horizontal layout */
+    display: flex; 
     flex-wrap: wrap;
-    gap: 10px; /* Space between pills */
+    gap: 10px;
 }
 
 .ios26-detail-item {
     padding: 8px 15px;
-    background: rgba(102, 126, 234, 0.1); /* Very light background for the pill */
-    border-radius: 20px; /* Pill shape */
+    background: rgba(102, 126, 234, 0.1); 
+    border-radius: 20px; 
     font-size: 15px;
     line-height: 1;
     display: flex;
@@ -467,20 +512,18 @@ UPDATED MODERN DETAILS STYLES (iOS 26 Look)
 
 .ios26-detail-label {
     font-weight: 500;
-    color: #667eea; /* Primary color label */
+    color: #667eea;
     margin-right: 6px;
 }
 
 .ios26-detail-value {
     font-weight: 700;
-    color: #333; /* Darker value */
+    color: #333;
 }
 
-
-/* 3. Style for the Room Features List (iconic list style with checkmarks) */
 .ios26-modal-features-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Wider columns */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px 25px;
     list-style: none;
     padding: 0;
@@ -491,14 +534,13 @@ UPDATED MODERN DETAILS STYLES (iOS 26 Look)
     font-size: 16px;
     color: #4a4a4a;
     position: relative;
-    padding-left: 28px; /* More space for the icon */
+    padding-left: 28px;
     font-weight: 500;
 }
 
 .ios26-modal-features-list li::before {
-    /* Checkmark icon for a cleaner look */
     content: '✓'; 
-    color: #667eea; /* Primary color */
+    color: #667eea; 
     font-weight: 900; 
     font-size: 18px;
     display: inline-block;
@@ -555,19 +597,30 @@ FALLBACK/META & RESPONSIVENESS
         width: 95vw;
         max-height: 90vh;
         border-radius: 24px;
+        overflow-y: auto; 
     }
     
     .ios26-modal-slider {
-        height: 300px;
+        padding-bottom: 66.66%; 
     }
     
     .ios26-modal-content {
         padding: 24px;
-        max-height: calc(90vh - 300px);
     }
     
+    .ios26-modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
     .ios26-modal-title {
         font-size: 24px;
+    }
+
+    .ios26-enquiry-button {
+        width: 100%;
+        margin-left: 0;
     }
     
     .ios26-modal-nav {
@@ -576,7 +629,6 @@ FALLBACK/META & RESPONSIVENESS
     }
     
     .ios26-modal-room-details {
-        /* On small screens, keep pills stacking horizontally if possible, but adjust font */
         grid-template-columns: none; 
         gap: 8px;
     }
@@ -593,7 +645,7 @@ FALLBACK/META & RESPONSIVENESS
 </style>
 `;
 
-// Insert styles if not already present
+// Insert CSS styles into the document
 function injectStyles() {
     if (!document.getElementById('ios26-modal-styles')) {
         const styleContainer = document.createElement('div');
@@ -605,7 +657,17 @@ function injectStyles() {
 
 // Create modal HTML structure
 function createModalHTML() {
-    if (document.getElementById('ios26-modal-container')) return;
+    // Check if the container already exists to prevent duplication
+    if (document.getElementById('ios26-modal-container')) {
+        // Clear existing modal content for reuse
+        const modal = document.getElementById('ios26-modal');
+        if (modal) {
+            document.getElementById('ios26-modal-slides').innerHTML = '';
+            document.getElementById('ios26-modal-content').innerHTML = '';
+            document.getElementById('ios26-modal-indicators').innerHTML = '';
+        }
+        return;
+    }
     
     const modalHTML = `
         <div id="ios26-modal-overlay" class="ios26-modal-overlay"></div>
@@ -631,7 +693,10 @@ function createModalHTML() {
 // Global keyboard handler reference
 let modalKeyboardHandler = null;
 
-// Open modal function - MODIFIED
+/**
+ * Opens the iOS-style modal with the provided property data.
+ * @param {object} data - The property data, including images, content, and contact info.
+ */
 function openModal(data) {
     injectStyles();
     createModalHTML();
@@ -644,6 +709,18 @@ function openModal(data) {
     const counter = document.getElementById('ios26-modal-counter');
     
     let currentSlide = 0;
+
+    // --- CRITICAL NEW LOGIC: Extract phone number and construct WhatsApp link ---
+    const rawPhoneNumber = (data.contact && data.contact.phone) ? 
+                           data.contact.phone.replace(/[\s-()]/g, '') : 
+                           ''; // Cleans number for wa.me
+    
+    // Construct the detailed message using data.fullPathName for maximum detail
+    const propertyName = data.fullPathName || data.name || 'a property';
+    const messageText = encodeURIComponent(`Hello, I'm interested in the property: ${propertyName}. Could you provide more details?`);
+    const whatsappLink = rawPhoneNumber ? 
+                         `https://wa.me/${rawPhoneNumber}?text=${messageText}` : 
+                         '#'; // Fallback if no number is found
     
     // Get images array - support both 'images' and 'image' property
     let images = [];
@@ -683,12 +760,24 @@ function openModal(data) {
     }
     
     // --- START: MODAL CONTENT GENERATION ---
+
+    // 1. Header with Title and Enquiry Button
     let contentHTML = `
-        <h2 class="ios26-modal-title">${data.name || 'Untitled'}</h2>
+        <div class="ios26-modal-header">
+            <h2 class="ios26-modal-title">${data.name || 'Untitled'}</h2>
+            ${rawPhoneNumber ? `
+                <a href="${whatsappLink}" target="_blank" class="ios26-enquiry-button">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 3.313 1.258 6.313 3.308 8.44l-1.025 3.321 3.55-1.16c1.94 1.056 4.156 1.699 6.167 1.699 5.523 0 10-4.477 10-10S17.523 2 12 2zm4.493 11.233c-.156-.078-.967-.477-1.115-.53s-.254-.078-.36.078c-.105.156-.408.53-.5.636s-.194.116-.36.038c-.166-.078-.727-.267-1.382-.852-.51-.453-.855-1.015-.959-1.18-.103-.165-.01-.153.07-.232s.193-.203.284-.303c.09-.099.12-.169.18-.284.06-.115.03-.165-.015-.232s-.36-.855-.494-1.16c-.134-.305-.27-.26-.36-.264s-.186-.005-.285-.005c-.105 0-.256.038-.393.194-.136.156-.519.507-.519 1.235 0 .728.532 1.433.608 1.539.076.105 1.045 1.61 2.534 2.215 1.264.493 1.583.473 1.956.447.373-.027.967-.393 1.1-.767s.136-.714.097-.79z"/>
+                    </svg>
+                    Enquire Now
+                </a>
+            ` : ''}
+        </div>
         ${data.category ? `<span class="ios26-modal-category">${data.category}</span>` : ''}
     `;
 
-    // 1. Room Details Section (Now using the pill/flex layout)
+    // 2. Room Details Section 
     if (data.roomDetails && Object.keys(data.roomDetails).length > 0) {
         contentHTML += `
             <h3 class="ios26-modal-section-title">ROOM DETAILS</h3>
@@ -703,12 +792,12 @@ function openModal(data) {
         `;
     }
 
-    // 2. Description (If present)
+    // 3. Description (If present)
     if (data.description) {
         contentHTML += `<p class="ios26-modal-description">${data.description}</p>`;
     }
 
-    // 3. Room Features Section (Now using the checkmark list)
+    // 4. Room Features Section
     if (data.roomFeatures && Array.isArray(data.roomFeatures) && data.roomFeatures.length > 0) {
         contentHTML += `
             <h3 class="ios26-modal-section-title">Room Features</h3>
@@ -718,7 +807,7 @@ function openModal(data) {
         `;
     }
 
-    // 4. Fallback/Original Meta (Optional, kept for flexibility)
+    // 5. Fallback/Original Meta (Optional, kept for flexibility)
     if (data.meta) {
            contentHTML += `
              <div class="ios26-modal-meta">
@@ -818,7 +907,10 @@ function openModal(data) {
     document.addEventListener('keydown', modalKeyboardHandler);
 }
 
-// Updated renderPortfolio function with dynamic headings and paragraphs for all sections
+/**
+ * Renders the portfolio structure and attaches click handlers for modal and drill-down.
+ * @param {object} data - The main JSON data structure containing destinations and contact info.
+ */
 function renderPortfolio(data) {
     const portfolioContainer = document.getElementById("destinations-cards");
     const destHeading = document.getElementById("dest-heading");
@@ -826,16 +918,19 @@ function renderPortfolio(data) {
 
     if (!portfolioContainer) return;
 
+    // --- CRITICAL: Get top-level contact info ---
+    const contactInfo = data.contact || {};
+
     // Sub-Section References
     const subSection = document.getElementById("sub-destinations-section");
     const subHeading = document.getElementById("sub-dest-heading");
-    const subParagraph = document.getElementById("sub-dest-paragraph"); // Used for sub-section text
+    const subParagraph = document.getElementById("sub-dest-paragraph"); 
     const subContainer = document.getElementById("sub-destinations-cards");
     
     // Sub-Sub-Section References
     const subSubSection = document.getElementById("subsub-destinations-section");
     const subSubHeading = document.getElementById("subsub-dest-heading");
-    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); // Used for sub-sub-section text
+    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); 
     const subSubContainer = document.getElementById("subsub-destinations-cards");
 
     // --- Main Section Content ---
@@ -866,6 +961,7 @@ function renderPortfolio(data) {
     });
 
 
+    // Attach click listeners to all main cards
     document.querySelectorAll(".nk-portfolio-item[data-card-id]").forEach(cardElem => {
         cardElem.addEventListener("click", function () {
             const cardId = this.getAttribute("data-card-id");
@@ -883,7 +979,6 @@ function renderPortfolio(data) {
 
             // --- Sub Section Content Update (Heading and Paragraph) ---
             if (subHeading) subHeading.innerText = mainCard.name;
-            // Use 'paragraph' or fallback to 'description' from the main card
             const subSectionText = mainCard.paragraph || mainCard.description || '';
             if (subParagraph) subParagraph.innerHTML = subSectionText; 
 
@@ -912,11 +1007,13 @@ function renderPortfolio(data) {
                 subDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
                     e.stopPropagation();
                     
+                    // Path 1 name (e.g., "Maldives Atoll Retreat")
+                    const path1 = mainCard.name;
+
                     // Check if this sub card has subSubCards
                     if (sub.subSubCards && sub.subSubCards.length > 0) {
                         // --- Sub-Sub Section Content Update (Heading and Paragraph) ---
                         if (subSubHeading) subSubHeading.innerText = sub.name;
-                        // Use 'paragraph' or fallback to 'description' from the sub card
                         const subSubSectionText = sub.paragraph || sub.description || '';
                         if (subSubParagraph) subSubParagraph.innerHTML = subSubSectionText;
 
@@ -945,7 +1042,20 @@ function renderPortfolio(data) {
                             // SubSub-card click -> open modal with multiple images
                             subSubDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
                                 e.stopPropagation();
-                                openModal(subSub);
+                                
+                                // Path 2 name (e.g., "Overwater Bungalows")
+                                const path2 = sub.name;
+                                
+                                // Path 3 name (e.g., "Sunset View Suite")
+                                const path3 = subSub.name;
+                                
+                                // Construct the data payload for the modal
+                                const modalData = {
+                                    ...subSub,
+                                    contact: contactInfo, // Pass the top-level contact info
+                                    fullPathName: `${path1} > ${path2} > ${path3}` // Full property name path
+                                };
+                                openModal(modalData);
                             });
                         });
                         
@@ -954,8 +1064,17 @@ function renderPortfolio(data) {
                         // Hide subsub section and clear text
                         if (subSubSection) subSubSection.style.display = "none";
                         if (subSubParagraph) subSubParagraph.innerHTML = ''; 
+                        
+                        // Path 2 name (final name)
+                        const path2 = sub.name;
+
                         // No subSubCards, open modal directly
-                        openModal(sub);
+                        const modalData = {
+                            ...sub,
+                            contact: contactInfo, // Pass the top-level contact info
+                            fullPathName: `${path1} > ${path2}` // Full property name path
+                        };
+                        openModal(modalData);
                     }
                 });
             });
@@ -965,7 +1084,7 @@ function renderPortfolio(data) {
     });
 }
 
-// Export functions for use
+// Export functions for use (assuming this is part of a larger system/file)
 window.openModal = openModal;
 window.renderPortfolio = renderPortfolio;
 // ---------------- CONTACT ----------------
