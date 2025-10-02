@@ -129,6 +129,633 @@ function openModal(sub) {
 }
 
 // ---------------- PORTFOLIO PAGE ----------------
+// ============================================
+// iOS 26 INSPIRED MODAL SYSTEM - COMPLETE JS
+// With Multiple Images Slider Support
+// ============================================
+
+// Inject CSS styles into the document
+const modalStyles = `
+<style>
+/* ... (Existing CSS from your prompt remains unchanged) ... */
+.ios26-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.ios26-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ios26-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: min(900px, 90vw);
+    max-height: 85vh;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 32px;
+    box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.3),
+        0 20px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    z-index: 9999;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.ios26-modal.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.ios26-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ios26-modal-close:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ios26-modal-close::before,
+.ios26-modal-close::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background: #333;
+    border-radius: 1px;
+}
+
+.ios26-modal-close::before {
+    transform: rotate(45deg);
+}
+
+.ios26-modal-close::after {
+    transform: rotate(-45deg);
+}
+
+.ios26-modal-slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.ios26-modal-slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.ios26-modal-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    animation: slideZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideZoom {
+    from {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ios26-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.ios26-modal-nav:hover {
+    transform: translateY(-50%) scale(1.1);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ios26-modal-nav.prev {
+    left: 20px;
+}
+
+.ios26-modal-nav.next {
+    right: 20px;
+}
+
+.ios26-modal-nav::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+}
+
+.ios26-modal-nav.prev::after {
+    transform: rotate(-135deg);
+    margin-left: 3px;
+}
+
+.ios26-modal-nav.next::after {
+    transform: rotate(45deg);
+    margin-right: 3px;
+}
+
+.ios26-modal-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.ios26-modal-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ios26-modal-indicator.active {
+    background: rgba(255, 255, 255, 1);
+    width: 24px;
+    border-radius: 4px;
+}
+
+.ios26-modal-slide-counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 5;
+}
+
+.ios26-modal-content {
+    padding: 40px;
+    max-height: calc(85vh - 450px);
+    overflow-y: auto;
+    scroll-behavior: smooth; /* Added for smoother scrolling after sub-card click */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.ios26-modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ios26-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ios26-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.ios26-modal-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.ios26-modal-category {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.3px;
+}
+
+.ios26-modal-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin: 0 0 24px 0;
+}
+
+/* Custom Styles for Room Details/Features */
+.ios26-modal-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 24px 0 15px 0;
+    border-bottom: 2px solid #667eea;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.ios26-modal-room-details {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.ios26-detail-item {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.ios26-detail-label {
+    font-weight: 600;
+    color: #667eea;
+    margin-right: 8px;
+}
+
+.ios26-detail-value {
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.ios26-modal-features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ios26-modal-features-list li {
+    font-size: 15px;
+    color: #4a4a4a;
+    position: relative;
+    padding-left: 20px;
+}
+
+.ios26-modal-features-list li::before {
+    content: '•'; /* Simple bullet point */
+    color: #764ba2;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+/* End Custom Styles */
+
+.ios26-modal-meta { /* Kept for compatibility, though custom fields are preferred */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ios26-modal-meta-item {
+    padding: 16px;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ios26-modal-meta-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.ios26-modal-meta-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.ios26-modal-meta-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+    .ios26-modal {
+        width: 95vw;
+        max-height: 90vh;
+        border-radius: 24px;
+    }
+    
+    .ios26-modal-slider {
+        height: 300px;
+    }
+    
+    .ios26-modal-content {
+        padding: 24px;
+        max-height: calc(90vh - 300px);
+    }
+    
+    .ios26-modal-title {
+        font-size: 24px;
+    }
+    
+    .ios26-modal-nav {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .ios26-modal-room-details {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+`;
+
+// Insert styles if not already present
+function injectStyles() {
+    if (!document.getElementById('ios26-modal-styles')) {
+        const styleContainer = document.createElement('div');
+        styleContainer.id = 'ios26-modal-styles';
+        styleContainer.innerHTML = modalStyles;
+        document.head.appendChild(styleContainer);
+    }
+}
+
+// Create modal HTML structure
+function createModalHTML() {
+    if (document.getElementById('ios26-modal-container')) return;
+    
+    const modalHTML = `
+        <div id="ios26-modal-overlay" class="ios26-modal-overlay"></div>
+        <div id="ios26-modal" class="ios26-modal">
+            <button class="ios26-modal-close" id="ios26-modal-close"></button>
+            <div class="ios26-modal-slider">
+                <div class="ios26-modal-slide-counter" id="ios26-modal-counter">1 / 1</div>
+                <div class="ios26-modal-slides" id="ios26-modal-slides"></div>
+                <button class="ios26-modal-nav prev" id="ios26-modal-prev"></button>
+                <button class="ios26-modal-nav next" id="ios26-modal-next"></button>
+                <div class="ios26-modal-indicators" id="ios26-modal-indicators"></div>
+            </div>
+            <div class="ios26-modal-content" id="ios26-modal-content"></div>
+        </div>
+    `;
+    
+    const container = document.createElement('div');
+    container.id = 'ios26-modal-container';
+    container.innerHTML = modalHTML;
+    document.body.appendChild(container);
+}
+
+// Global keyboard handler reference
+let modalKeyboardHandler = null;
+
+// Open modal function - MODIFIED
+function openModal(data) {
+    injectStyles();
+    createModalHTML();
+    
+    const overlay = document.getElementById('ios26-modal-overlay');
+    const modal = document.getElementById('ios26-modal');
+    const slidesContainer = document.getElementById('ios26-modal-slides');
+    const content = document.getElementById('ios26-modal-content');
+    const indicators = document.getElementById('ios26-modal-indicators');
+    const counter = document.getElementById('ios26-modal-counter');
+    
+    let currentSlide = 0;
+    
+    // Get images array - support both 'images' and 'image' property
+    let images = [];
+    if (data.images && Array.isArray(data.images)) {
+        images = data.images;
+    } else if (data.image) {
+        images = [data.image];
+    } else {
+        images = ['https://via.placeholder.com/900x450?text=No+Image'];
+    }
+    
+    // Create slides
+    slidesContainer.innerHTML = images.map(img => 
+        `<div class="ios26-modal-slide" style="background-image: url('${img}');"></div>`
+    ).join('');
+    
+    // Update counter
+    function updateCounter() {
+        counter.textContent = `${currentSlide + 1} / ${images.length}`;
+    }
+    updateCounter();
+    
+    // Create indicators
+    if (images.length > 1) {
+        indicators.innerHTML = images.map((_, i) => 
+            `<div class="ios26-modal-indicator ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`
+        ).join('');
+        
+        indicators.querySelectorAll('.ios26-modal-indicator').forEach(ind => {
+            ind.addEventListener('click', () => {
+                currentSlide = parseInt(ind.dataset.index);
+                updateSlider();
+            });
+        });
+    } else {
+        indicators.innerHTML = '';
+    }
+    
+    // --- START: MODAL CONTENT GENERATION ---
+    let contentHTML = `
+        <h2 class="ios26-modal-title">${data.name || 'Untitled'}</h2>
+        ${data.category ? `<span class="ios26-modal-category">${data.category}</span>` : ''}
+    `;
+
+    // 1. Room Details Section (Replaces Meta)
+    if (data.roomDetails && Object.keys(data.roomDetails).length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">ROOM DETAILS</h3>
+            <div class="ios26-modal-room-details">
+                ${Object.entries(data.roomDetails).map(([key, value]) => `
+                    <div class="ios26-detail-item">
+                        <span class="ios26-detail-label">${key} :</span>
+                        <span class="ios26-detail-value">${value}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // 2. Description (If present)
+    if (data.description) {
+        contentHTML += `<p class="ios26-modal-description">${data.description}</p>`;
+    }
+
+    // 3. Room Features Section
+    if (data.roomFeatures && Array.isArray(data.roomFeatures) && data.roomFeatures.length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">Room Features</h3>
+            <ul class="ios26-modal-features-list">
+                ${data.roomFeatures.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        `;
+    }
+
+    // 4. Fallback/Original Meta (Optional, kept for flexibility but can be removed)
+    if (data.meta) {
+           contentHTML += `
+             <div class="ios26-modal-meta">
+                 ${Object.entries(data.meta).map(([key, value]) => `
+                     <div class="ios26-modal-meta-item">
+                         <div class="ios26-modal-meta-label">${key}</div>
+                         <div class="ios26-modal-meta-value">${value}</div>
+                     </div>
+                 `).join('')}
+             </div>
+           `;
+    }
+
+    content.innerHTML = contentHTML;
+    // --- END: MODAL CONTENT GENERATION ---
+
+    // Update slider function
+    function updateSlider() {
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        indicators.querySelectorAll('.ios26-modal-indicator').forEach((ind, i) => {
+            ind.classList.toggle('active', i === currentSlide);
+        });
+        updateCounter();
+    }
+    
+    // Navigation
+    const prevBtn = document.getElementById('ios26-modal-prev');
+    const nextBtn = document.getElementById('ios26-modal-next');
+    
+    prevBtn.onclick = () => {
+        currentSlide = (currentSlide - 1 + images.length) % images.length;
+        updateSlider();
+    };
+    
+    nextBtn.onclick = () => {
+        currentSlide = (currentSlide + 1) % images.length;
+        updateSlider();
+    };
+    
+    // Hide nav buttons and counter if only one image
+    if (images.length <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        counter.style.display = 'none';
+    } else {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+        counter.style.display = 'block';
+    }
+    
+    // Close modal function
+    function closeModal() {
+        modal.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Remove keyboard listener
+        if (modalKeyboardHandler) {
+            document.removeEventListener('keydown', modalKeyboardHandler);
+            modalKeyboardHandler = null;
+        }
+    }
+    
+    // Close button
+    document.getElementById('ios26-modal-close').onclick = closeModal;
+    
+    // Click overlay to close
+    overlay.onclick = closeModal;
+    
+    // Prevent modal content click from closing
+    modal.onclick = (e) => {
+        e.stopPropagation();
+    };
+    
+    // Open modal with animation
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+        overlay.classList.add('active');
+        modal.classList.add('active');
+    }, 10);
+    
+    // Keyboard navigation
+    modalKeyboardHandler = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+        if (e.key === 'ArrowLeft' && images.length > 1) {
+            currentSlide = (currentSlide - 1 + images.length) % images.length;
+            updateSlider();
+        }
+        if (e.key === 'ArrowRight' && images.length > 1) {
+            currentSlide = (currentSlide + 1) % images.length;
+            updateSlider();
+        }
+    };
+    
+    document.addEventListener('keydown', modalKeyboardHandler);
+}
+
+// Updated renderPortfolio function with dynamic headings and paragraphs for all sections
 function renderPortfolio(data) {
     const portfolioContainer = document.getElementById("destinations-cards");
     const destHeading = document.getElementById("dest-heading");
@@ -136,6 +763,19 @@ function renderPortfolio(data) {
 
     if (!portfolioContainer) return;
 
+    // Sub-Section References
+    const subSection = document.getElementById("sub-destinations-section");
+    const subHeading = document.getElementById("sub-dest-heading");
+    const subParagraph = document.getElementById("sub-dest-paragraph"); // Added
+    const subContainer = document.getElementById("sub-destinations-cards");
+    
+    // Sub-Sub-Section References
+    const subSubSection = document.getElementById("subsub-destinations-section");
+    const subSubHeading = document.getElementById("subsub-dest-heading");
+    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); // Added
+    const subSubContainer = document.getElementById("subsub-destinations-cards");
+
+    // --- Main Section Content ---
     if (destHeading) destHeading.innerText = data.destinations.intro.heading;
     if (destParagraph) destParagraph.innerText = data.destinations.intro.paragraph;
 
@@ -162,21 +802,28 @@ function renderPortfolio(data) {
         portfolioContainer.appendChild(div);
     });
 
-    const subSection = document.getElementById("sub-destinations-section");
-    const subHeading = document.getElementById("sub-dest-heading");
-    const subContainer = document.getElementById("sub-destinations-cards");
 
     document.querySelectorAll(".nk-portfolio-item[data-card-id]").forEach(cardElem => {
         cardElem.addEventListener("click", function () {
             const cardId = this.getAttribute("data-card-id");
             const mainCard = data.destinations.cards.find(c => c.id === cardId);
 
+            // Hide/clear subsub section when main card is clicked
+            if (subSubSection) subSubSection.style.display = "none";
+            if (subSubParagraph) subSubParagraph.innerHTML = ''; 
+            
             if (!mainCard || !mainCard.subCards) {
                 if(subSection) subSection.style.display = "none";
+                if(subParagraph) subParagraph.innerHTML = '';
                 return;
             }
 
+            // --- Sub Section Content Update (Heading and Paragraph) ---
             if (subHeading) subHeading.innerText = mainCard.name;
+            // Use 'paragraph' or fallback to 'description' from the main card
+            const subSectionText = mainCard.paragraph || mainCard.description || '';
+            if (subParagraph) subParagraph.innerHTML = subSectionText; 
+
             if(subSection) subSection.style.display = "block";
             if(subContainer) subContainer.innerHTML = "";
 
@@ -198,10 +845,55 @@ function renderPortfolio(data) {
                 `;
                 subContainer.appendChild(subDiv);
 
-                // Sub-card click -> open modal
+                // Sub-card click handler
                 subDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
                     e.stopPropagation();
-                    openModal(sub);
+                    
+                    // Check if this sub card has subSubCards
+                    if (sub.subSubCards && sub.subSubCards.length > 0) {
+                        // --- Sub-Sub Section Content Update (Heading and Paragraph) ---
+                        if (subSubHeading) subSubHeading.innerText = sub.name;
+                        // Use 'paragraph' or fallback to 'description' from the sub card
+                        const subSubSectionText = sub.paragraph || sub.description || '';
+                        if (subSubParagraph) subSubParagraph.innerHTML = subSubSectionText;
+
+                        if (subSubSection) subSubSection.style.display = "block";
+                        if (subSubContainer) subSubContainer.innerHTML = "";
+                        
+                        sub.subSubCards.forEach(subSub => {
+
+                            const subSubDiv = document.createElement("div");
+                            subSubDiv.className = "nk-isotope-item";
+                            subSubDiv.innerHTML = `
+                                <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
+                                    <div class="nk-portfolio-item-image">
+                                        <div style="background-image: url('${subSub.images ? subSub.images[0] : subSub.image}');"></div>
+                                    </div>
+                                    <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
+                                        <div>
+                                            <h4 class="portfolio-item-title">${subSub.name}</h4>
+                                            ${subSub.category ? `<div class="portfolio-item-category">${subSub.category}</div>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            subSubContainer.appendChild(subSubDiv);
+                            
+                            // SubSub-card click -> open modal with multiple images
+                            subSubDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
+                                e.stopPropagation();
+                                openModal(subSub);
+                            });
+                        });
+                        
+                        subSubSection.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                        // Hide subsub section and clear text
+                        if (subSubSection) subSubSection.style.display = "none";
+                        if (subSubParagraph) subSubParagraph.innerHTML = ''; 
+                        // No subSubCards, open modal directly
+                        openModal(sub);
+                    }
                 });
             });
 
@@ -209,6 +901,10 @@ function renderPortfolio(data) {
         });
     });
 }
+
+// Export functions for use
+window.openModal = openModal;
+window.renderPortfolio = renderPortfolio;
 
 // ---------------- CONTACT ----------------
 function renderContact(data) {

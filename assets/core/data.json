@@ -21,54 +21,71 @@
   },
   "destinations": {
     "intro": {
-      "heading": "Destination",
-      "paragraph": "Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
+      "heading": "Luxury Resort Destinations",
+      "paragraph": "Explore our curated collection of exclusive resorts and unique travel experiences, from tropical escapes to mountain retreats. Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
     },
     "cards": [
       {
         "id": "dest1",
         "image": "assets/images/portfolio-7-sm.jpg",
-        "name": "Vinyl Record",
-        "category": "Mockup",
-        "url": "portfolio-single.html",
+        "name": "Maldives Atoll Retreat",
+        "category": "Tropical Island",
+        "cardHeading": "The Ultimate Ocean Escape",
+        "cardParagraph": "Experience paradise with crystalline waters and vibrant coral reefs. Our overwater bungalows offer unparalleled privacy and luxury.",
         "subCards": [
           {
             "id": "sub1",
             "image": "assets/images/portfolio-7-sm.jpg",
-            "name": "Vinyl Accessories",
-            "category": "Mockup",
-            "description": "High-quality accessories for your vinyl collection.",
-            "price": "$120",
+            "name": "Overwater Bungalows",
+            "category": "Accommodation",
+            "description": "Luxurious villas suspended over clear blue lagoons.",
+            "price": "$1200/night",
             "subSubCards": [
               {
                 "id": "subsub1",
-                "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Accessory Detail 1"
+                "images": [
+                  "assets/images/portfolio-7-sm.jpg",
+                  "assets/images/portfolio-7a-sm.jpg",
+                  "assets/images/portfolio-7b-sm.jpg"
+                ],
+                "name": "Sunset View Suite",
+                "description": "A rare indulgence blending coziness, amenities, and views.",
+                "roomDetails": {
+                  "No. of Rooms": "12",
+                  "Adults": "2",
+                  "Children": "2"
+                },
+                "roomFeatures": [
+                  "Attached Bathroom",
+                  "TV & Theatre",
+                  "Balcony / Sitout"
+                ]
               },
               {
                 "id": "subsub2",
                 "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Accessory Detail 2"
+                "name": "Glass Floor Detail",
+                "description": "Unique glass floor design offering underwater views."
               }
             ]
           },
           {
             "id": "sub2",
             "image": "assets/images/portfolio-7-sm.jpg",
-            "name": "Record Player",
-            "category": "Mockup",
-            "description": "Premium record player for audiophiles.",
-            "price": "$350",
+            "name": "Private Yacht Tour",
+            "category": "Activities",
+            "description": "Exclusive sailing and snorkeling adventures.",
+            "price": "$3500/day",
             "subSubCards": [
               {
                 "id": "subsub3",
                 "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Player Detail 1"
+                "name": "Yacht Interior"
               },
               {
                 "id": "subsub4",
                 "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Player Detail 2"
+                "name": "Dolphin Watching"
               }
             ]
           }
@@ -77,22 +94,24 @@
       {
         "id": "dest2",
         "image": "assets/images/portfolio-4-sm.jpg",
-        "name": "Modern T-Shirt",
-        "category": "Print",
-        "url": "portfolio-single.html",
+        "name": "Swiss Alps Chalet",
+        "category": "Mountain Retreat",
+        "cardHeading": "Skiing and Serenity",
+        "cardParagraph": "A cozy, high-altitude chalet offering breathtaking views and immediate access to world-class ski trails and winter activities.",
         "subCards": [
           {
             "id": "sub3",
             "image": "assets/images/portfolio-4-sm.jpg",
-            "name": "T-Shirt Design Mockup",
-            "category": "Print",
-            "description": "Stylish modern T-shirt design for casual wear.",
-            "price": "$25",
+            "name": "Ski & Snowboard Passes",
+            "category": "Winter Sports",
+            "description": "All-inclusive access to premium slopes.",
+            "price": "$250/day",
             "subSubCards": [
               {
                 "id": "subsub5",
                 "image": "assets/images/portfolio-4-sm.jpg",
-                "name": "Design Detail 1"
+                "name": "Slope Conditions",
+                "description": "Daily updates and guided recommendations for the best runs."
               }
             ]
           }
@@ -101,49 +120,53 @@
       {
         "id": "dest3",
         "image": "assets/images/portfolio-5-sm.jpg",
-        "name": "Minimal Bag",
-        "category": "Branding",
-        "url": "portfolio-single.html"
+        "name": "Kyoto Zen Gardens",
+        "category": "Cultural Immersion",
+        "cardHeading": "A Journey into Tradition",
+        "cardParagraph": "Find peace and reflection in the ancient temples and meticulously maintained gardens of Japan's cultural heart.",
+        "subCards": []
       },
       {
         "id": "dest4",
         "image": "assets/images/portfolio-9-sm.jpg",
-        "name": "Clean & Groovy",
-        "category": "Design",
-        "url": "portfolio-single.html",
+        "name": "Safari Lodge, Kenya",
+        "category": "Wildlife Adventure",
+        "cardHeading": "The Call of the Wild",
+        "cardParagraph": "An authentic luxury safari experience, putting you in the center of the Maasai Mara ecosystem and the Great Migration.",
         "subCards": [
           {
             "id": "sub4",
             "image": "assets/images/portfolio-9-sm.jpg",
-            "name": "Bag Packaging",
-            "category": "Design",
-            "description": "Creative packaging design for minimal bags.",
-            "price": "$80",
+            "name": "Sunrise Game Drive",
+            "category": "Excursion",
+            "description": "Morning tours to spot the Big Five.",
+            "price": "$800/person",
             "subSubCards": [
               {
                 "id": "subsub6",
                 "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Packaging Detail 1"
+                "name": "Jeep Setup",
+                "description": "Customized open-roof jeep for wildlife photography."
               }
             ]
           },
           {
             "id": "sub5",
             "image": "assets/images/portfolio-9-sm.jpg",
-            "name": "Stationery Design",
-            "category": "Design",
-            "description": "Elegant stationery design set.",
-            "price": "$50",
+            "name": "Hot Air Balloon Safari",
+            "category": "Excursion",
+            "description": "Panoramic view of the savanna at dawn.",
+            "price": "$500/person",
             "subSubCards": [
               {
                 "id": "subsub7",
                 "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Stationery Detail 1"
+                "name": "Balloon Launch Site"
               },
               {
                 "id": "subsub8",
                 "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Stationery Detail 2"
+                "name": "Breakfast Landing"
               }
             ]
           }
@@ -152,16 +175,132 @@
       {
         "id": "dest5",
         "image": "assets/images/portfolio-3-sm.jpg",
-        "name": "Minimal Mobile App",
-        "category": "Design",
-        "url": "portfolio-single.html"
+        "name": "Antarctica Expedition",
+        "category": "Polar Cruise",
+        "cardHeading": "The White Continent",
+        "cardParagraph": "Embark on an epic voyage to the Earth's southernmost point, encountering icebergs, penguins, and dramatic frozen landscapes.",
+        "subCards": []
       },
       {
         "id": "dest6",
         "image": "assets/images/portfolio-8-sm.jpg",
-        "name": "White T-Shirt",
-        "category": "Print",
-        "url": "portfolio-single.html"
+        "name": "Bali Yoga Sanctuary",
+        "category": "Wellness Retreat",
+        "cardHeading": "Mind, Body, and Spirit",
+        "cardParagraph": "Rejuvenate in the peaceful rice paddies of Ubud with daily yoga, organic cuisine, and holistic spa treatments.",
+        "subCards": []
+      },
+      {
+        "id": "dest7",
+        "image": "assets/images/portfolio-7-sm.jpg",
+        "name": "Tuscan Vineyard Villa",
+        "category": "Agriturismo",
+        "cardHeading": "Taste of Italy",
+        "cardParagraph": "Stay in a beautiful 16th-century villa surrounded by rolling vineyards, complete with wine tasting and authentic Italian cooking.",
+        "subCards": [
+          {
+            "id": "sub6",
+            "image": "assets/images/portfolio-7-sm.jpg",
+            "name": "Wine Tasting Class",
+            "category": "Experience",
+            "description": "Sampling local Chianti and olive oil.",
+            "price": "$150/person",
+            "subSubCards": [
+              {
+                "id": "subsub9",
+                "images": [
+                  "assets/images/portfolio-7-sm.jpg",
+                  "assets/images/portfolio-7a-sm.jpg"
+                ],
+                "name": "Cellar Tour",
+                "description": "Explore historic wine cellars and learn traditional aging methods."
+              }
+            ]
+          },
+          {
+            "id": "sub7",
+            "image": "assets/images/portfolio-4-sm.jpg",
+            "name": "Cooking Masterclass",
+            "category": "Experience",
+            "description": "Learn traditional Italian pasta making.",
+            "price": "$300/couple"
+          }
+        ]
+      },
+      {
+        "id": "dest8",
+        "image": "assets/images/portfolio-9-sm.jpg",
+        "name": "Dubai Sky Residences",
+        "category": "Urban Luxury",
+        "cardHeading": "Modern Metropolis",
+        "cardParagraph": "Experience life in the fast lane with exclusive penthouse accommodations and access to high-end shopping and entertainment.",
+        "subCards": [
+          {
+            "id": "sub8",
+            "image": "assets/images/portfolio-9-sm.jpg",
+            "name": "Penthouse Suite",
+            "category": "Accommodation",
+            "description": "Apartment with panoramic city skyline views.",
+            "subSubCards": [
+              {
+                "id": "subsub10",
+                "images": [
+                  "assets/images/portfolio-9-sm.jpg",
+                  "assets/images/portfolio-7b-sm.jpg"
+                ],
+                "name": "Private Pool Deck",
+                "description": "Rooftop infinity pool with stunning night views."
+              },
+              {
+                "id": "subsub11",
+                "image": "assets/images/portfolio-9-sm.jpg",
+                "name": "Butler Service",
+                "description": "24/7 private butler ensuring a seamless stay."
+              }
+            ]
+          },
+          {
+            "id": "sub9",
+            "image": "assets/images/portfolio-3-sm.jpg",
+            "name": "Desert Dune Bashing",
+            "category": "Excursion",
+            "description": "High-octane drive through the Arabian dunes."
+          }
+        ]
+      },
+      {
+        "id": "dest9",
+        "image": "assets/images/portfolio-5-sm.jpg",
+        "name": "Amazon River Cruise",
+        "category": "Ecotourism",
+        "cardHeading": "The Lungs of the World",
+        "cardParagraph": "Navigate the mighty Amazon, discovering incredible biodiversity, remote tribes, and the raw beauty of the rainforest.",
+        "subCards": [
+          {
+            "id": "sub10",
+            "image": "assets/images/portfolio-5-sm.jpg",
+            "name": "Jungle Canopy Zipline",
+            "category": "Activity",
+            "description": "Aerial tour high above the rainforest floor.",
+            "subSubCards": [
+              {
+                "id": "subsub12",
+                "image": "assets/images/portfolio-5-sm.jpg",
+                "name": "Safety Briefing",
+                "description": "Certified guides ensure maximum safety before your adventure."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dest10",
+        "image": "assets/images/portfolio-4-sm.jpg",
+        "name": "Iceland Northern Lights",
+        "category": "Natural Wonders",
+        "cardHeading": "Aurora Borealis Hunt",
+        "cardParagraph": "Chase the celestial glow across Iceland's volcanic landscapes, combined with glacial hikes and hot spring visits.",
+        "subCards": []
       }
     ]
   },
@@ -175,10 +314,22 @@
   },
   "footer": {
     "social": [
-      { "platform": "twitter", "url": "https://twitter.com/nkdevv" },
-      { "platform": "facebook", "url": "https://www.facebook.com/unvabdesign/" },
-      { "platform": "dribbble", "url": "https://dribbble.com/_nK" },
-      { "platform": "instagram", "url": "https://www.instagram.com/unvab/" }
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/nkdevv"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/unvabdesign/"
+      },
+      {
+        "platform": "dribbble",
+        "url": "https://dribbble.com/_nK"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/unvab/"
+      }
     ],
     "text": "2016 &copy; Design by Unvab. Code by nK"
   }
