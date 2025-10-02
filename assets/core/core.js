@@ -137,7 +137,10 @@ function openModal(sub) {
 // Inject CSS styles into the document
 const modalStyles = `
 <style>
-/* ... (Existing CSS from your prompt remains unchanged) ... */
+/* ============================================
+MODAL STRUCTURE & ANIMATIONS (iOS Style)
+============================================ 
+*/
 .ios26-modal-overlay {
     position: fixed;
     top: 0;
@@ -165,6 +168,7 @@ const modalStyles = `
     transform: translate(-50%, -50%) scale(0.9);
     width: min(900px, 90vw);
     max-height: 85vh;
+    /* Clean, light background */
     background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 32px;
     box-shadow: 
@@ -227,6 +231,10 @@ const modalStyles = `
     transform: rotate(-45deg);
 }
 
+/* ============================================
+SLIDER STYLES
+============================================ 
+*/
 .ios26-modal-slider {
     position: relative;
     width: 100%;
@@ -351,11 +359,15 @@ const modalStyles = `
     z-index: 5;
 }
 
+/* ============================================
+CONTENT AREA & TYPOGRAPHY
+============================================ 
+*/
 .ios26-modal-content {
     padding: 40px;
     max-height: calc(85vh - 450px);
     overflow-y: auto;
-    scroll-behavior: smooth; /* Added for smoother scrolling after sub-card click */
+    scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
@@ -400,69 +412,109 @@ const modalStyles = `
     margin: 0 0 24px 0;
 }
 
-/* Custom Styles for Room Details/Features */
+/* ============================================
+UPDATED MODERN DETAILS STYLES (iOS 26 Look)
+============================================ 
+*/
+
+/* 1. New style for the main section title (cleaner border) */
 .ios26-modal-section-title {
     font-size: 20px;
-    font-weight: 600;
-    color: #333;
-    margin: 24px 0 15px 0;
-    border-bottom: 2px solid #667eea;
-    display: inline-block;
-    padding-bottom: 5px;
+    font-weight: 700; 
+    color: #1a1a1a; 
+    margin: 30px 0 20px 0; 
+    border-bottom: none; 
+    display: block; 
+    padding-bottom: 0;
+    /* Adding a subtle separator below the title group */
+    position: relative;
 }
 
+.ios26-modal-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px; /* Short, subtle line */
+    height: 3px;
+    background: rgba(102, 126, 234, 0.2); /* Light blue separator */
+    border-radius: 1.5px;
+}
+
+
+/* 2. Style for the Pill-Shaped Room Details (like data chips) */
 .ios26-modal-room-details {
-    margin-bottom: 25px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    margin-bottom: 30px;
+    display: flex; /* Use flex for horizontal layout */
+    flex-wrap: wrap;
+    gap: 10px; /* Space between pills */
 }
 
 .ios26-detail-item {
-    font-size: 16px;
-    line-height: 1.6;
+    padding: 8px 15px;
+    background: rgba(102, 126, 234, 0.1); /* Very light background for the pill */
+    border-radius: 20px; /* Pill shape */
+    font-size: 15px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.ios26-detail-item:hover {
+    background: rgba(102, 126, 234, 0.2);
 }
 
 .ios26-detail-label {
-    font-weight: 600;
-    color: #667eea;
-    margin-right: 8px;
+    font-weight: 500;
+    color: #667eea; /* Primary color label */
+    margin-right: 6px;
 }
 
 .ios26-detail-value {
-    font-weight: 500;
-    color: #1a1a1a;
+    font-weight: 700;
+    color: #333; /* Darker value */
 }
 
+
+/* 3. Style for the Room Features List (iconic list style with checkmarks) */
 .ios26-modal-features-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Wider columns */
+    gap: 15px 25px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .ios26-modal-features-list li {
-    font-size: 15px;
+    font-size: 16px;
     color: #4a4a4a;
     position: relative;
-    padding-left: 20px;
+    padding-left: 28px; /* More space for the icon */
+    font-weight: 500;
 }
 
 .ios26-modal-features-list li::before {
-    content: '•'; /* Simple bullet point */
-    color: #764ba2;
-    font-weight: bold;
+    /* Checkmark icon for a cleaner look */
+    content: '✓'; 
+    color: #667eea; /* Primary color */
+    font-weight: 900; 
+    font-size: 18px;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
     position: absolute;
     left: 0;
+    top: -1px; 
 }
-/* End Custom Styles */
 
-.ios26-modal-meta { /* Kept for compatibility, though custom fields are preferred */
+
+/* ============================================
+FALLBACK/META & RESPONSIVENESS
+============================================ 
+*/
+.ios26-modal-meta { 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
@@ -524,6 +576,17 @@ const modalStyles = `
     }
     
     .ios26-modal-room-details {
+        /* On small screens, keep pills stacking horizontally if possible, but adjust font */
+        grid-template-columns: none; 
+        gap: 8px;
+    }
+    
+    .ios26-detail-item {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .ios26-modal-features-list {
         grid-template-columns: 1fr;
     }
 }
@@ -625,7 +688,7 @@ function openModal(data) {
         ${data.category ? `<span class="ios26-modal-category">${data.category}</span>` : ''}
     `;
 
-    // 1. Room Details Section (Replaces Meta)
+    // 1. Room Details Section (Now using the pill/flex layout)
     if (data.roomDetails && Object.keys(data.roomDetails).length > 0) {
         contentHTML += `
             <h3 class="ios26-modal-section-title">ROOM DETAILS</h3>
@@ -645,7 +708,7 @@ function openModal(data) {
         contentHTML += `<p class="ios26-modal-description">${data.description}</p>`;
     }
 
-    // 3. Room Features Section
+    // 3. Room Features Section (Now using the checkmark list)
     if (data.roomFeatures && Array.isArray(data.roomFeatures) && data.roomFeatures.length > 0) {
         contentHTML += `
             <h3 class="ios26-modal-section-title">Room Features</h3>
@@ -655,7 +718,7 @@ function openModal(data) {
         `;
     }
 
-    // 4. Fallback/Original Meta (Optional, kept for flexibility but can be removed)
+    // 4. Fallback/Original Meta (Optional, kept for flexibility)
     if (data.meta) {
            contentHTML += `
              <div class="ios26-modal-meta">
@@ -766,13 +829,13 @@ function renderPortfolio(data) {
     // Sub-Section References
     const subSection = document.getElementById("sub-destinations-section");
     const subHeading = document.getElementById("sub-dest-heading");
-    const subParagraph = document.getElementById("sub-dest-paragraph"); // Added
+    const subParagraph = document.getElementById("sub-dest-paragraph"); // Used for sub-section text
     const subContainer = document.getElementById("sub-destinations-cards");
     
     // Sub-Sub-Section References
     const subSubSection = document.getElementById("subsub-destinations-section");
     const subSubHeading = document.getElementById("subsub-dest-heading");
-    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); // Added
+    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); // Used for sub-sub-section text
     const subSubContainer = document.getElementById("subsub-destinations-cards");
 
     // --- Main Section Content ---
@@ -905,7 +968,6 @@ function renderPortfolio(data) {
 // Export functions for use
 window.openModal = openModal;
 window.renderPortfolio = renderPortfolio;
-
 // ---------------- CONTACT ----------------
 function renderContact(data) {
     if (!data.contact) return;
