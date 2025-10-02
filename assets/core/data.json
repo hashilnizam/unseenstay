@@ -1,77 +1,185 @@
 {
-    "logo": {
-        "light": "assets/images/logo-light.svg",
-        "dark": "assets/images/logo.svg",
-        "width": 85,
-        "alt": "Brand Logo"
+  "site": {
+    "title": "Snow | One Page Agency"
+  },
+  "logo": {
+    "light": "assets/images/logo-light.svg",
+    "dark": "assets/images/logo.svg",
+    "width": 85,
+    "alt": "Brand Logo"
+  },
+  "header": {
+    "backgroundImage": "assets/images/home-7.jpg",
+    "subtitle": "New Branding Agency",
+    "title": "We are about to change the way<br><em class='fw-400'>you publish on the web</em>",
+    "paragraph": "Your adventure starts here. Discover breathtaking destinations and unique travel experiences curated just for you."
+  },
+  "about": {
+    "heading": "About Our Agency",
+    "paragraph": "We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps. Clever use of technology and lean processes enable us to work faster and smarter.",
+    "image": "assets/images/about-me-signature.png"
+  },
+  "destinations": {
+    "intro": {
+      "heading": "Destination",
+      "paragraph": "Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
     },
-    "header": {
-        "backgroundImage": "assets/images/home-7.jpg",
-        "subtitle": "New Branding Agency",
-        "title": "We are about to change the way<br><em class='fw-400'>you publish on the web</em>",
-        "paragraph": "Your adventure starts here. Discover breathtaking destinations and unique travel experiences curated just for you."
-    },
-    "about": {
-        "heading": "About Our Agency",
-        "paragraph": "We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps. Clever use of technology and lean processes enable us to work faster and smarter.",
-        "image": "assets/images/about-me-signature.png"
-    },
-    "destinations": {
-        "intro": {
-            "heading": "Destination",
-            "paragraph": "Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
-        },
-        "cards": [
-            {
-                "id": "dest1",
+    "cards": [
+      {
+        "id": "dest1",
+        "image": "assets/images/portfolio-7-sm.jpg",
+        "name": "Vinyl Record",
+        "category": "Mockup",
+        "url": "portfolio-single.html",
+        "subCards": [
+          {
+            "id": "sub1",
+            "image": "assets/images/portfolio-7-sm.jpg",
+            "name": "Vinyl Accessories",
+            "category": "Mockup",
+            "description": "High-quality accessories for your vinyl collection.",
+            "price": "$120",
+            "subSubCards": [
+              {
+                "id": "subsub1",
                 "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Vinyl Record",
-                "category": "Mockup",
-                "url": "portfolio-single.html"
-            },
-            {
-                "id": "dest2",
-                "image": "assets/images/portfolio-4-sm.jpg",
-                "name": "Modern T-Shirt",
-                "category": "Print",
-                "url": "portfolio-single.html"
-            },
-            {
-                "id": "dest3",
-                "image": "assets/images/portfolio-5-sm.jpg",
-                "name": "Minimal Bag",
-                "category": "Branding",
-                "url": "portfolio-single.html"
-            },
-            {
-                "id": "dest4",
-                "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Clean & Groovy",
-                "category": "Design",
-                "url": "portfolio-single.html"
-            },
-            {
-                "id": "dest5",
-                "image": "assets/images/portfolio-3-sm.jpg",
-                "name": "Minimal Mobile App",
-                "category": "Design",
-                "url": "portfolio-single.html"
-            },
-            {
-                "id": "dest6",
-                "image": "assets/images/portfolio-8-sm.jpg",
-                "name": "White T-Shirt",
-                "category": "Print",
-                "url": "portfolio-single.html"
-            }
+                "name": "Accessory Detail 1"
+              },
+              {
+                "id": "subsub2",
+                "image": "assets/images/portfolio-7-sm.jpg",
+                "name": "Accessory Detail 2"
+              }
+            ]
+          },
+          {
+            "id": "sub2",
+            "image": "assets/images/portfolio-7-sm.jpg",
+            "name": "Record Player",
+            "category": "Mockup",
+            "description": "Premium record player for audiophiles.",
+            "price": "$350",
+            "subSubCards": [
+              {
+                "id": "subsub3",
+                "image": "assets/images/portfolio-7-sm.jpg",
+                "name": "Player Detail 1"
+              },
+              {
+                "id": "subsub4",
+                "image": "assets/images/portfolio-7-sm.jpg",
+                "name": "Player Detail 2"
+              }
+            ]
+          }
         ]
-    },
-    "contact": {
-        "heading": "Contact Info:",
-        "info": "Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, conse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.",
-        "address": "10111 Santa Monica Boulevard, LA",
-        "phone": "+44 987 065 908",
-        "email": "info@Example.com",
-        "fax": "+44 987 065 909"
-    }
+      },
+      {
+        "id": "dest2",
+        "image": "assets/images/portfolio-4-sm.jpg",
+        "name": "Modern T-Shirt",
+        "category": "Print",
+        "url": "portfolio-single.html",
+        "subCards": [
+          {
+            "id": "sub3",
+            "image": "assets/images/portfolio-4-sm.jpg",
+            "name": "T-Shirt Design Mockup",
+            "category": "Print",
+            "description": "Stylish modern T-shirt design for casual wear.",
+            "price": "$25",
+            "subSubCards": [
+              {
+                "id": "subsub5",
+                "image": "assets/images/portfolio-4-sm.jpg",
+                "name": "Design Detail 1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dest3",
+        "image": "assets/images/portfolio-5-sm.jpg",
+        "name": "Minimal Bag",
+        "category": "Branding",
+        "url": "portfolio-single.html"
+      },
+      {
+        "id": "dest4",
+        "image": "assets/images/portfolio-9-sm.jpg",
+        "name": "Clean & Groovy",
+        "category": "Design",
+        "url": "portfolio-single.html",
+        "subCards": [
+          {
+            "id": "sub4",
+            "image": "assets/images/portfolio-9-sm.jpg",
+            "name": "Bag Packaging",
+            "category": "Design",
+            "description": "Creative packaging design for minimal bags.",
+            "price": "$80",
+            "subSubCards": [
+              {
+                "id": "subsub6",
+                "image": "assets/images/portfolio-9-sm.jpg",
+                "name": "Packaging Detail 1"
+              }
+            ]
+          },
+          {
+            "id": "sub5",
+            "image": "assets/images/portfolio-9-sm.jpg",
+            "name": "Stationery Design",
+            "category": "Design",
+            "description": "Elegant stationery design set.",
+            "price": "$50",
+            "subSubCards": [
+              {
+                "id": "subsub7",
+                "image": "assets/images/portfolio-9-sm.jpg",
+                "name": "Stationery Detail 1"
+              },
+              {
+                "id": "subsub8",
+                "image": "assets/images/portfolio-9-sm.jpg",
+                "name": "Stationery Detail 2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dest5",
+        "image": "assets/images/portfolio-3-sm.jpg",
+        "name": "Minimal Mobile App",
+        "category": "Design",
+        "url": "portfolio-single.html"
+      },
+      {
+        "id": "dest6",
+        "image": "assets/images/portfolio-8-sm.jpg",
+        "name": "White T-Shirt",
+        "category": "Print",
+        "url": "portfolio-single.html"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Contact Info:",
+    "info": "Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, conse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.",
+    "address": "10111 Santa Monica Boulevard, LA",
+    "phone": "+44 987 065 908",
+    "email": "info@Example.com",
+    "fax": "+44 987 065 909"
+  },
+  "footer": {
+    "social": [
+      { "platform": "twitter", "url": "https://twitter.com/nkdevv" },
+      { "platform": "facebook", "url": "https://www.facebook.com/unvabdesign/" },
+      { "platform": "dribbble", "url": "https://dribbble.com/_nK" },
+      { "platform": "instagram", "url": "https://www.instagram.com/unvab/" }
+    ],
+    "text": "2016 &copy; Design by Unvab. Code by nK"
+  }
 }
