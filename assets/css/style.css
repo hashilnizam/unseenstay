@@ -1,4 +1,106 @@
 /* ============================================
+   CONTACT FORM STYLING
+   ============================================ */
+
+/* Date input styling for better visibility */
+input[type="date"].form-control {
+    position: relative;
+    padding: 16px 22px;
+    font-size: 0.95rem;
+    color: #858585;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    filter: invert(0.5);
+}
+
+input[type="date"].form-control:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+}
+
+/* Mobile specific improvements */
+@media (max-width: 768px) {
+    /* Better input styling on mobile */
+    .form-control {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 6px !important;
+        padding: 14px 18px !important;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        background-color: #fff !important;
+    }
+    
+    /* Date inputs on mobile */
+    input[type="date"].form-control {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 6px !important;
+        padding: 14px 18px !important;
+        font-size: 16px !important;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+    }
+    
+    input[type="date"].form-control::-webkit-calendar-picker-indicator {
+        opacity: 1;
+        filter: invert(0.3);
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Select dropdown on mobile */
+    select.form-control {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 6px !important;
+        padding: 14px 18px !important;
+        font-size: 16px !important;
+        min-height: 50px;
+        background-color: #fff !important;
+    }
+    
+    /* Number input on mobile */
+    input[type="number"].form-control {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 6px !important;
+        padding: 14px 18px !important;
+        font-size: 16px !important;
+        min-height: 50px;
+    }
+    
+    /* Text input on mobile */
+    input[type="text"].form-control {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 6px !important;
+        padding: 14px 18px !important;
+        font-size: 16px !important;
+        min-height: 50px;
+    }
+    
+    /* Focus state on mobile */
+    .form-control:focus {
+        border-color: #66afe9 !important;
+        box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.15) !important;
+    }
+    
+    /* Button styling on mobile */
+    .nk-btn {
+        width: 100%;
+        padding: 16px !important;
+        font-size: 16px !important;
+        border-radius: 6px !important;
+    }
+}
+
+/* ============================================
    SCROLL-BASED CARD TITLE REVEAL ANIMATION
    ============================================ */
 
