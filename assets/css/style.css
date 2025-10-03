@@ -1,0 +1,58 @@
+/* ============================================
+   SCROLL-BASED CARD TITLE REVEAL ANIMATION
+   ============================================ */
+
+/* Reduce portfolio card height (override square aspect) */
+#destinations-cards .nk-portfolio-item a.nk-portfolio-item-image,
+#destinations-cards .nk-portfolio-item div.nk-portfolio-item-image,
+#sub-destinations-cards .nk-portfolio-item a.nk-portfolio-item-image,
+#sub-destinations-cards .nk-portfolio-item div.nk-portfolio-item-image,
+#subsub-destinations-cards .nk-portfolio-item a.nk-portfolio-item-image,
+#subsub-destinations-cards .nk-portfolio-item div.nk-portfolio-item-image {
+    padding-bottom: 60% !important; /* adjust this (e.g., 50-70%) to taste */
+}
+
+/* Desktop: Keep original hover behavior - no scroll reveal interference */
+@media (min-width: 769px) {
+    /* Reduce black shade opacity on desktop */
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1 .nk-portfolio-item-info {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1:hover .nk-portfolio-item-info,
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1.hover .nk-portfolio-item-info {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+}
+
+/* Mobile-specific scroll reveal animation */
+@media (max-width: 768px) {
+    /* Hide titles by default on mobile */
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1 .portfolio-item-title,
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1 .portfolio-item-category {
+        opacity: 0 !important;
+        transform: translateY(30px) scale(0.95) !important;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* Show titles when card is revealed (centered on screen) */
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1.reveal .portfolio-item-title,
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1.reveal .portfolio-item-category {
+        opacity: 1 !important;
+        transform: translateY(0) scale(1) !important;
+    }
+
+    /* Reduce black shade opacity on mobile */
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1 .nk-portfolio-item-info {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                    background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* Show the info overlay on mobile when revealed */
+    .nk-portfolio-list .nk-portfolio-item.nk-portfolio-item-info-style-1.reveal .nk-portfolio-item-info {
+        opacity: 1 !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+}

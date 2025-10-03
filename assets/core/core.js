@@ -799,9 +799,34 @@ function openModal(data) {
         data.contact.phone.replace(/[\s-()]/g, '') :
         ''; // Cleans number for wa.me
 
-    // Construct the detailed message using data.fullPathName for maximum detail
-    const propertyName = data.fullPathName || data.name || 'a property';
-    const messageText = encodeURIComponent(`Hello, I'm interested in the property: ${propertyName}. Could you provide more details?`);
+    // Construct professional WhatsApp message
+    const propertyName = data.fullPathName || data.name || 'Property';
+    let whatsappMessage = `━━━━━━━━━━━━━━━━━━━━\n`;
+    whatsappMessage += `  *PROPERTY INQUIRY*\n`;
+    whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+    whatsappMessage += `  *PROPERTY DETAILS*\n`;
+    whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n`;
+    whatsappMessage += `  Property: *${propertyName}*\n`;
+    if (data.category) {
+        whatsappMessage += `  Category: *${data.category}*\n`;
+    }
+    if (data.price) {
+        whatsappMessage += `  Price: *${data.price}*\n`;
+    }
+    whatsappMessage += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+    whatsappMessage += `  *INQUIRY MESSAGE*\n\n`;
+    whatsappMessage += `Hello Team,\n\n`;
+    whatsappMessage += `I am interested in this property and would like to know more details.\n\n`;
+    whatsappMessage += `Please provide:\n`;
+    whatsappMessage += `• Availability\n`;
+    whatsappMessage += `• Complete pricing\n`;
+    whatsappMessage += `• Booking process\n`;
+    whatsappMessage += `• Additional amenities\n\n`;
+    whatsappMessage += `Looking forward to your response.\n\n`;
+    whatsappMessage += `Thank you!\n`;
+    whatsappMessage += `━━━━━━━━━━━━━━━━━━━━`;
+    
+    const messageText = encodeURIComponent(whatsappMessage);
     const whatsappLink = rawPhoneNumber ?
         `https://wa.me/${rawPhoneNumber}?text=${messageText}` :
         '#'; // Fallback if no number is found
@@ -861,14 +886,21 @@ function openModal(data) {
         ${data.category ? `<span class="ios26-modal-category">${data.category}</span>` : ''}
     `;
 
-    // 2. Room Details Section 
-    if (data.roomDetails && Object.keys(data.roomDetails).length > 0) {
+    // 2. Location Section
+    if (data.location) {
         contentHTML += `
-            <h3 class="ios26-modal-section-title">ROOM DETAILS</h3>
+            <h3 class="ios26-modal-section-title">📍 ${data.location}</h3>
+        `;
+    }
+
+    // 3. Property Details Section
+    if (data.propertyDetails && Object.keys(data.propertyDetails).length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">Property Details</h3>
             <div class="ios26-modal-room-details">
-                ${Object.entries(data.roomDetails).map(([key, value]) => `
+                ${Object.entries(data.propertyDetails).map(([key, value]) => `
                     <div class="ios26-detail-item">
-                        <span class="ios26-detail-label">${key} :</span>
+                        <span class="ios26-detail-label">${key}:</span>
                         <span class="ios26-detail-value">${value}</span>
                     </div>
                 `).join('')}
@@ -876,17 +908,42 @@ function openModal(data) {
         `;
     }
 
-    // 3. Description (If present)
-    if (data.description) {
-        contentHTML += `<p class="ios26-modal-description">${data.description}</p>`;
+    // 4. Inclusions Section
+    if (data.inclusions && Array.isArray(data.inclusions) && data.inclusions.length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">Inclusions</h3>
+            <ul class="ios26-modal-features-list">
+                ${data.inclusions.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        `;
     }
 
-    // 4. Room Features Section
-    if (data.roomFeatures && Array.isArray(data.roomFeatures) && data.roomFeatures.length > 0) {
+    // 5. Check-in & Check-out Section
+    if (data.checkInOut && Object.keys(data.checkInOut).length > 0) {
         contentHTML += `
-            <h3 class="ios26-modal-section-title">Room Features</h3>
+            <h3 class="ios26-modal-section-title">Check-in & Check-out</h3>
             <ul class="ios26-modal-features-list">
-                ${data.roomFeatures.map(feature => `<li>${feature}</li>`).join('')}
+                ${Object.entries(data.checkInOut).map(([key, value]) => `<li>${key}: ${value}</li>`).join('')}
+            </ul>
+        `;
+    }
+
+    // 6. Add-On Experiences Section
+    if (data.addOnExperiences && Array.isArray(data.addOnExperiences) && data.addOnExperiences.length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">Add-On Experiences</h3>
+            <ul class="ios26-modal-features-list">
+                ${data.addOnExperiences.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        `;
+    }
+
+    // 7. Nearby Attractions Section
+    if (data.nearbyAttractions && Array.isArray(data.nearbyAttractions) && data.nearbyAttractions.length > 0) {
+        contentHTML += `
+            <h3 class="ios26-modal-section-title">Nearby Attractions (15-18 km radius)</h3>
+            <ul class="ios26-modal-features-list">
+                ${data.nearbyAttractions.map(item => `<li>${item}</li>`).join('')}
             </ul>
         `;
     }
@@ -1072,10 +1129,14 @@ function renderPortfolio(data) {
             mainCard.subCards.forEach(sub => {
                 const subDiv = document.createElement("div");
                 subDiv.className = "nk-isotope-item";
+                
+                // Get the first image from images array or fallback to image property
+                const subImage = (sub.images && sub.images.length > 0) ? sub.images[0] : sub.image;
+                
                 subDiv.innerHTML = `
                     <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1" data-sub-id="${sub.id}">
                         <div class="nk-portfolio-item-image">
-                            <div style="background-image: url('${sub.image}');"></div>
+                            <div style="background-image: url('${subImage}');"></div>
                         </div>
                         <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
                             <div>
@@ -1087,81 +1148,26 @@ function renderPortfolio(data) {
                 `;
                 subContainer.appendChild(subDiv);
 
-                // Sub-card click handler
+                // Sub-card click handler - Open modal directly
                 subDiv.querySelector(".nk-portfolio-item").addEventListener("click", function (e) {
                     e.stopPropagation();
 
+                    // Hide subsub section
+                    if (subSubSection) subSubSection.style.display = "none";
+                    if (subSubParagraph) subSubParagraph.innerHTML = '';
+
                     // Path 1 name (e.g., "Maldives Atoll Retreat")
                     const path1 = mainCard.name;
+                    // Path 2 name (e.g., "Overwater Bungalows")
+                    const path2 = sub.name;
 
-                    // Check if this sub card has subSubCards
-                    if (sub.subSubCards && sub.subSubCards.length > 0) {
-                        // --- Sub-Sub Section Content Update (Heading and Paragraph) ---
-                        if (subSubHeading) subSubHeading.innerText = sub.name;
-                        const subSubSectionText = sub.paragraph || sub.description || '';
-                        if (subSubParagraph) subSubParagraph.innerHTML = subSubSectionText;
-
-                        if (subSubSection) subSubSection.style.display = "block";
-                        if (subSubContainer) subSubContainer.innerHTML = "";
-
-                        sub.subSubCards.forEach(subSub => {
-
-                            const subSubDiv = document.createElement("div");
-                            subSubDiv.className = "nk-isotope-item";
-                            subSubDiv.innerHTML = `
-                                <div class="nk-portfolio-item nk-portfolio-item-square nk-portfolio-item-info-style-1">
-                                    <div class="nk-portfolio-item-image">
-                                        <div style="background-image: url('${subSub.images ? subSub.images[0] : subSub.image}');"></div>
-                                    </div>
-                                    <div class="nk-portfolio-item-info nk-portfolio-item-info-center text-xs-center">
-                                        <div>
-                                            <h4 class="portfolio-item-title">${subSub.name}</h4>
-                                            ${subSub.category ? `<div class="portfolio-item-category">${subSub.category}</div>` : ''}
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                            subSubContainer.appendChild(subSubDiv);
-
-                            // SubSub-card click -> open modal with multiple images
-                            subSubDiv.querySelector(".nk-portfolio-item").addEventListener("click", function (e) {
-                                e.stopPropagation();
-
-                                // Path 2 name (e.g., "Overwater Bungalows")
-                                const path2 = sub.name;
-
-                                // Path 3 name (e.g., "Sunset View Suite")
-                                const path3 = subSub.name;
-
-                                // Construct the data payload for the modal
-                                const modalData = {
-                                    ...subSub,
-                                    contact: contactInfo, // Pass the top-level contact info
-                                    // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
-                                    fullPathName: `${path3} in ${path2} in ${path1}`
-                                };
-                                openModal(modalData);
-                            });
-                        });
-
-                        subSubSection.scrollIntoView({ behavior: "smooth" });
-                    } else {
-                        // Hide subsub section and clear text
-                        if (subSubSection) subSubSection.style.display = "none";
-                        if (subSubParagraph) subSubParagraph.innerHTML = '';
-
-                        // Path 2 name (final name)
-                        const path2 = sub.name;
-
-                        // No subSubCards, open modal directly
-                        const modalData = {
-                            ...sub,
-                            contact: contactInfo, // Pass the top-level contact info
-                            // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
-                            fullPathName: `${path2} in ${path1}`
-                        };
-                        openModal(modalData);
-                    }
+                    // Open modal directly with sub card data
+                    const modalData = {
+                        ...sub,
+                        contact: contactInfo, // Pass the top-level contact info
+                        fullPathName: `${path2} in ${path1}`
+                    };
+                    openModal(modalData);
                 });
             });
 
@@ -1180,23 +1186,122 @@ function renderContact(data) {
     if (document.getElementById("contact-heading")) {
         document.getElementById("contact-heading").innerText = data.contact.heading;
         document.getElementById("contact-info").innerText = data.contact.info;
-        document.getElementById("contact-address").innerText = data.contact.address;
         document.getElementById("contact-phone").innerText = data.contact.phone;
         document.getElementById("contact-email").innerText = data.contact.email;
-        document.getElementById("contact-fax").innerText = data.contact.fax;
     }
 
     const contactForm = document.querySelector("#contact form");
     if (contactForm) {
+        // Get date input elements
+        const checkinInput = contactForm.querySelector("input[name='checkin']");
+        const checkoutInput = contactForm.querySelector("input[name='checkout']");
+
+        // Set minimum date for check-in to today (fix timezone issue)
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const todayFormatted = `${year}-${month}-${day}`;
+        
+        checkinInput.setAttribute('min', todayFormatted);
+
+        // Update checkout minimum date when checkin changes
+        checkinInput.addEventListener('change', function() {
+            const checkinValue = this.value; // YYYY-MM-DD format
+            const [year, month, day] = checkinValue.split('-').map(Number);
+            
+            // Create date for next day (minimum checkout)
+            const minCheckout = new Date(year, month - 1, day + 1);
+            const minYear = minCheckout.getFullYear();
+            const minMonth = String(minCheckout.getMonth() + 1).padStart(2, '0');
+            const minDay = String(minCheckout.getDate()).padStart(2, '0');
+            const minCheckoutFormatted = `${minYear}-${minMonth}-${minDay}`;
+            
+            checkoutInput.setAttribute('min', minCheckoutFormatted);
+            
+            // Reset checkout if it's before the new minimum
+            if (checkoutInput.value && checkoutInput.value <= checkinValue) {
+                checkoutInput.value = '';
+            }
+        });
+
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
+            // Get all form values
             const name = contactForm.querySelector("input[name='name']").value.trim();
-            const email = contactForm.querySelector("input[name='email']").value.trim();
-            const title = contactForm.querySelector("input[name='title']").value.trim();
-            const message = contactForm.querySelector("textarea[name='message']").value.trim();
+            const members = contactForm.querySelector("input[name='members']").value.trim();
+            const checkin = checkinInput.value.trim();
+            const checkout = checkoutInput.value.trim();
+            const type = contactForm.querySelector("select[name='type']").value.trim();
+            const location = contactForm.querySelector("input[name='location']").value.trim();
+            const budget = contactForm.querySelector("input[name='budget']").value.trim();
 
-            let whatsappMessage = `Hello, my name is ${name}.\n\nEmail: ${email}\nSubject: ${title}\n\n${message}`;
+            // Validate all required fields
+            if (!name || !members || !checkin || !checkout || !type || !location || !budget) {
+                alert("⚠️ Please fill in all required fields before submitting.");
+                return;
+            }
+
+            // Validate and calculate dates
+            const checkinDate = new Date(checkin);
+            const checkoutDate = new Date(checkout);
+            const todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+            
+            // Validate checkin is not in the past
+            if (checkinDate < todayDate) {
+                alert("⚠️ Check-in date cannot be in the past.\n\nPlease select a future date.");
+                return;
+            }
+            
+            // Validate checkout date is after checkin date
+            if (checkoutDate <= checkinDate) {
+                alert("⚠️ Check-out date must be at least 1 day after check-in date.\n\nPlease select a valid check-out date.");
+                return;
+            }
+
+            // Calculate number of nights
+            const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+
+            // Format dates for display
+            const formatDate = (dateStr) => {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+            };
+
+            // Create a professional 5-star hotel style WhatsApp message
+            let whatsappMessage = `━━━━━━━━━━━━━━━━━━━━\n`;
+            whatsappMessage += `  *BOOKING FROM WEBSITE*\n`;
+            whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+            
+            whatsappMessage += `  *GUEST INFORMATION*\n`;
+            whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n`;
+            whatsappMessage += `  Guest Name: *${name}*\n`;
+            whatsappMessage += `  Party Size: *${members} ${members > 1 ? 'Guests' : 'Guest'}*\n`;
+            whatsappMessage += `  Group Type: *${type}*\n\n`;
+            
+            whatsappMessage += `  *RESERVATION DETAILS*\n`;
+            whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n`;
+            whatsappMessage += `  Destination: *${location}*\n`;
+            whatsappMessage += `  Check-in: *${formatDate(checkin)}*\n`;
+            whatsappMessage += `  Check-out: *${formatDate(checkout)}*\n`;
+            whatsappMessage += `  Duration: *${nights} ${nights > 1 ? 'Nights' : 'Night'}*\n`;
+            whatsappMessage += `  Budget: *${budget}/-*\n\n`;
+            
+            whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n`;
+            whatsappMessage += `  *REQUEST FOR QUOTATION*\n\n`;
+            whatsappMessage += `Dear Team,\n\n`;
+            whatsappMessage += `I would like to request a personalized quote for the above reservation. Please provide:\n\n`;
+            whatsappMessage += `• Available accommodation options\n`;
+            whatsappMessage += `• Package inclusions & amenities\n`;
+            whatsappMessage += `• Special offers or promotions\n`;
+            whatsappMessage += `• Cancellation policy\n\n`;
+            whatsappMessage += `Looking forward to your prompt response.\n\n`;
+            whatsappMessage += `Best Regards,\n`;
+            whatsappMessage += `*${name}*\n`;
+            whatsappMessage += `━━━━━━━━━━━━━━━━━━━━`;
+
             const phoneNumber = data.contact.phone.replace(/\D/g, "");
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -1248,3 +1353,91 @@ if (document.readyState === "loading") {
 } else {
     loadData();
 }
+
+// ---------------- SCROLL REVEAL ANIMATION ----------------
+function initScrollReveal() {
+    // Only run on mobile devices (screen width <= 768px)
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    function checkCardsInView() {
+        // Skip if not on mobile
+        if (!isMobile()) {
+            // Remove all reveal classes on desktop
+            document.querySelectorAll('.nk-portfolio-item.reveal').forEach(card => {
+                card.classList.remove('reveal');
+            });
+            return;
+        }
+        
+        const cards = document.querySelectorAll('.nk-portfolio-item');
+        const windowHeight = window.innerHeight;
+        const centerPoint = windowHeight / 2;
+        
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + (rect.height / 2);
+            
+            // Check if card center is near viewport center (with tolerance)
+            const tolerance = windowHeight * 0.15; // 15% tolerance - shows only 1 card
+            const isInCenter = Math.abs(cardCenter - centerPoint) < tolerance;
+            
+            if (isInCenter) {
+                card.classList.add('reveal');
+            } else {
+                // Remove class when card leaves center
+                card.classList.remove('reveal');
+            }
+        });
+    }
+    
+    // Throttle scroll event for better performance
+    let scrollTimeout;
+    function handleScroll() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(checkCardsInView);
+    }
+    
+    // Listen to scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', checkCardsInView, { passive: true });
+    
+    // Initial check
+    checkCardsInView();
+}
+
+// Initialize after DOM is loaded and cards are rendered
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initScrollReveal, 500);
+    });
+} else {
+    setTimeout(initScrollReveal, 500);
+}
+
+// Re-initialize when new cards are added dynamically
+const scrollRevealObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+            setTimeout(initScrollReveal, 100);
+        }
+    });
+});
+
+// Observe the destinations containers
+setTimeout(() => {
+    const containers = [
+        document.getElementById('destinations-cards'),
+        document.getElementById('sub-destinations-cards'),
+        document.getElementById('subsub-destinations-cards')
+    ];
+    
+    containers.forEach(container => {
+        if (container) {
+            scrollRevealObserver.observe(container, { childList: true, subtree: true });
+        }
+    });
+}, 1000);

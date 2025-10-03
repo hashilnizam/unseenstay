@@ -1,13 +1,21 @@
 {
+  "_comment_site": "========== SITE CONFIGURATION ==========",
+  "_comment_site_desc": "Basic site metadata and title",
   "site": {
     "title": "Snow | One Page Agency"
   },
+
+  "_comment_logo": "========== LOGO SETTINGS ==========",
+  "_comment_logo_desc": "Logo images for light/dark themes",
   "logo": {
     "light": "assets/images/logo-light.svg",
     "dark": "assets/images/logo.svg",
     "width": 85,
     "alt": "Brand Logo"
   },
+
+  "_comment_navbar": "========== NAVIGATION MENU ==========",
+  "_comment_navbar_desc": "Top navigation menu items",
   "navbar": {
     "menu": [
       {
@@ -20,85 +28,172 @@
       }
     ]
   },
+
+  "_comment_header": "========== HERO SECTION ==========",
+  "_comment_header_desc": "Main banner with video background and hero text",
   "header": {
     "backgroundVideo": "assets/banner/unseenstay.mp4",
     "subtitle": "New Branding Agency",
     "title": "We are about to change the way<br><em class='fw-400'>you publish on the web</em>",
     "paragraph": "Your adventure starts here. Discover breathtaking destinations and unique travel experiences curated just for you."
   },
+
+  "_comment_about": "========== ABOUT SECTION ==========",
+  "_comment_about_desc": "About us section content",
   "about": {
     "heading": "About Our Agency",
     "paragraph": "We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps. Clever use of technology and lean processes enable us to work faster and smarter.",
     "image": "assets/images/about-me-signature.png"
   },
+
+  "_comment_destinations": "========== DESTINATIONS / PORTFOLIO ==========",
+  "_comment_destinations_desc": "Main portfolio section with destination cards and sub-properties",
+  "_comment_destinations_structure": "Structure: Main Cards -> SubCards (click main card to show subcards, click subcard to open modal)",
   "destinations": {
     "intro": {
       "heading": "Luxury Resort Destinations",
       "paragraph": "Explore our curated collection of exclusive resorts and unique travel experiences, from tropical escapes to mountain retreats. Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
     },
+    "_comment_cards": "---------- MAIN DESTINATION CARDS ----------",
+    "_comment_cards_desc": "Each card represents a main destination. Click to reveal subCards below",
     "cards": [
       {
         "id": "dest1",
-        "image": "assets/images/portfolio-7-sm.jpg",
+        "image": "assets/images/portfolio-3-sm.jpg",
         "name": "Maldives Atoll Retreat",
         "category": "Tropical Island",
         "cardHeading": "The Ultimate Ocean Escape",
         "cardParagraph": "Experience paradise with crystalline waters and vibrant coral reefs. Our overwater bungalows offer unparalleled privacy and luxury.",
+        "_comment_subCards": "--- SubCards: Properties/Rooms within this destination (shown when main card is clicked) ---",
         "subCards": [
           {
+            "_comment": "SubCard properties: id, images (array), name, category, location, propertyDetails, inclusions, checkInOut, addOnExperiences, nearbyAttractions",
             "id": "sub1",
-            "image": "assets/images/portfolio-7-sm.jpg",
+            "images": [
+              "assets/images/portfolio-5-sm.jpg",
+              "assets/images/portfolio-8-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg"
+            ],
             "name": "Overwater Bungalows",
             "category": "Accommodation",
-            "description": "Luxurious villas suspended over clear blue lagoons.",
-            "price": "$1200/night",
-            "subSubCards": [
-              {
-                "id": "subsub1",
-                "images": [
-                  "assets/images/portfolio-7-sm.jpg",
-                  "assets/images/portfolio-7a-sm.jpg",
-                  "assets/images/portfolio-7b-sm.jpg"
-                ],
-                "name": "Sunset View Suite",
-                "description": "A rare indulgence blending coziness, amenities, and views.",
-                "roomDetails": {
-                  "No. of Rooms": "12",
-                  "Adults": "2",
-                  "Children": "2"
-                },
-                "roomFeatures": [
-                  "Attached Bathroom",
-                  "TV & Theatre",
-                  "Balcony / Sitout"
-                ]
-              },
-              {
-                "id": "subsub2",
-                "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Glass Floor Detail",
-                "description": "Unique glass floor design offering underwater views."
-              }
+            "location": "Valliyakolli, Wayanad",
+            "propertyDetails": {
+              "BHK": "3 BHK",
+              "Resort": "Luxury Beach Resort",
+              "Max Guests": "6 People",
+              "Area": "2500 sq ft"
+            },
+            "inclusions": [
+              "Luxe Swimming Pool",
+              "Breakfast (2 Varieties)",
+              "Welcome Drink",
+              "Campfire (Chargeable)",
+              "Stream Hiking",
+              "Table Soccer",
+              "Chess",
+              "Barbeque Facility",
+              "Free Wi-Fi",
+              "Badminton",
+              "Carroms",
+              "Swing",
+              "Kids Play Area"
+            ],
+            "checkInOut": {
+              "Check-in": "2:00 PM - 3:00 PM",
+              "Check-out": "11:00 AM - 11:30AM"
+            },
+            "addOnExperiences": [
+              "Campfire with music (Extra charge)",
+              "Customized BBQ options",
+              "Guided Plantation / Nature Walk",
+              "Celebration Add-ons (Cake, Decoration, Candle Light Dinner)",
+              "Pick-up & Drop Facility"
+            ],
+            "nearbyAttractions": [
+              "Banasura Sagar Dam",
+              "Meenmutty Waterfalls",
+              "Komachi Park",
+              "Kuruva Dweep",
+              "Karlad Lake",
+              "Chembra Peak"
             ]
           },
           {
             "id": "sub2",
-            "image": "assets/images/portfolio-7-sm.jpg",
+            "images": [
+              "assets/images/portfolio-9-sm.jpg",
+              "assets/images/portfolio-4-sm.jpg"
+            ],
             "name": "Private Yacht Tour",
-            "category": "Activities",
-            "description": "Exclusive sailing and snorkeling adventures.",
-            "price": "$3500/day",
-            "subSubCards": [
-              {
-                "id": "subsub3",
-                "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Yacht Interior"
-              },
-              {
-                "id": "subsub4",
-                "image": "assets/images/portfolio-7-sm.jpg",
-                "name": "Dolphin Watching"
-              }
+            "category": "Experience",
+            "location": "Maldives Lagoon",
+            "propertyDetails": {
+              "Duration": "4 Hours",
+              "Capacity": "8 People",
+              "Type": "Private Charter"
+            },
+            "inclusions": [
+              "Professional Crew",
+              "Snorkeling Equipment",
+              "Refreshments & Drinks",
+              "Safety Gear",
+              "Underwater Photography"
+            ],
+            "checkInOut": {
+              "Departure": "9:00 AM or 2:00 PM",
+              "Return": "1:00 PM or 6:00 PM"
+            },
+            "addOnExperiences": [
+              "Sunset Cruise (Extra charge)",
+              "Fishing Equipment",
+              "Champagne Service",
+              "Private Chef on Board"
+            ],
+            "nearbyAttractions": [
+              "Coral Reefs",
+              "Dolphin Watching Spots",
+              "Sandbank Islands",
+              "Marine Reserve"
+            ]
+          },
+          {
+            "id": "sub3",
+            "images": [
+              "assets/images/portfolio-6-sm.jpg",
+              "assets/images/portfolio-2-sm.jpg",
+              "assets/images/portfolio-7-sm.jpg"
+            ],
+            "name": "Spa & Wellness Center",
+            "category": "Wellness",
+            "location": "Resort Spa, Maldives",
+            "propertyDetails": {
+              "Treatment Rooms": "6 Rooms",
+              "Therapists": "Professional Certified",
+              "Session Duration": "60-90 mins"
+            },
+            "inclusions": [
+              "Massage Therapy",
+              "Sauna & Steam Room",
+              "Yoga Sessions",
+              "Meditation Area",
+              "Herbal Tea Service",
+              "Relaxation Lounge"
+            ],
+            "checkInOut": {
+              "Opening Hours": "8:00 AM - 10:00 PM",
+              "Booking": "Advance reservation required"
+            },
+            "addOnExperiences": [
+              "Couples Massage Package",
+              "Hot Stone Therapy",
+              "Aromatherapy Sessions",
+              "Beauty Treatments"
+            ],
+            "nearbyAttractions": [
+              "Beach Access",
+              "Infinity Pool",
+              "Sunset Deck",
+              "Yoga Pavilion"
             ]
           }
         ]
@@ -112,19 +207,47 @@
         "cardParagraph": "A cozy, high-altitude chalet offering breathtaking views and immediate access to world-class ski trails and winter activities.",
         "subCards": [
           {
-            "id": "sub3",
-            "image": "assets/images/portfolio-4-sm.jpg",
-            "name": "Ski & Snowboard Passes",
+            "id": "sub4",
+            "images": [
+              "assets/images/portfolio-12-sm.jpg",
+              "assets/images/portfolio-3-sm.jpg"
+            ],
+            "name": "Luxury Mountain Suite",
+            "category": "Accommodation",
+            "description": "Spacious alpine suite with panoramic mountain views and modern amenities.",
+            "roomDetails": {
+              "No. of Rooms": "8",
+              "Adults": "4",
+              "Children": "2"
+            },
+            "roomFeatures": [
+              "Fireplace",
+              "Mountain View Balcony",
+              "Heated Floors",
+              "Ski Storage",
+              "Private Jacuzzi"
+            ]
+          },
+          {
+            "id": "sub5",
+            "images": [
+              "assets/images/portfolio-8-sm.jpg",
+              "assets/images/portfolio-5-sm.jpg",
+              "assets/images/portfolio-9-sm.jpg"
+            ],
+            "name": "Ski & Snowboard Package",
             "category": "Winter Sports",
-            "description": "All-inclusive access to premium slopes.",
-            "price": "$250/day",
-            "subSubCards": [
-              {
-                "id": "subsub5",
-                "image": "assets/images/portfolio-4-sm.jpg",
-                "name": "Slope Conditions",
-                "description": "Daily updates and guided recommendations for the best runs."
-              }
+            "description": "All-inclusive access to premium slopes with equipment rental and lessons.",
+            "roomDetails": {
+              "Duration": "Full Day",
+              "Skill Level": "All Levels",
+              "Equipment": "Included"
+            },
+            "roomFeatures": [
+              "Ski Lift Pass",
+              "Equipment Rental",
+              "Professional Instructor",
+              "Safety Gear"
             ]
           }
         ]
@@ -136,7 +259,52 @@
         "category": "Cultural Immersion",
         "cardHeading": "A Journey into Tradition",
         "cardParagraph": "Find peace and reflection in the ancient temples and meticulously maintained gardens of Japan's cultural heart.",
-        "subCards": []
+        "subCards": [
+          {
+            "id": "sub6",
+            "images": [
+              "assets/images/portfolio-2-sm.jpg",
+              "assets/images/portfolio-6-sm.jpg"
+            ],
+            "name": "Traditional Ryokan Stay",
+            "category": "Accommodation",
+            "description": "Experience authentic Japanese hospitality in a traditional inn with tatami rooms.",
+            "roomDetails": {
+              "No. of Rooms": "6",
+              "Adults": "2",
+              "Style": "Traditional"
+            },
+            "roomFeatures": [
+              "Tatami Flooring",
+              "Futon Bedding",
+              "Tea Ceremony Room",
+              "Japanese Bath",
+              "Garden View"
+            ]
+          },
+          {
+            "id": "sub7",
+            "images": [
+              "assets/images/portfolio-9-sm.jpg",
+              "assets/images/portfolio-4-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg"
+            ],
+            "name": "Temple & Garden Tour",
+            "category": "Cultural Experience",
+            "description": "Guided tour of historic temples and zen gardens with tea ceremony.",
+            "roomDetails": {
+              "Duration": "6 Hours",
+              "Group Size": "Small Groups",
+              "Guide": "English Speaking"
+            },
+            "roomFeatures": [
+              "Temple Access",
+              "Tea Ceremony",
+              "Traditional Lunch",
+              "Photo Opportunities"
+            ]
+          }
+        ]
       },
       {
         "id": "dest4",
@@ -147,51 +315,124 @@
         "cardParagraph": "An authentic luxury safari experience, putting you in the center of the Maasai Mara ecosystem and the Great Migration.",
         "subCards": [
           {
-            "id": "sub4",
-            "image": "assets/images/portfolio-9-sm.jpg",
-            "name": "Sunrise Game Drive",
-            "category": "Excursion",
-            "description": "Morning tours to spot the Big Five.",
-            "price": "$800/person",
-            "subSubCards": [
-              {
-                "id": "subsub6",
-                "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Jeep Setup",
-                "description": "Customized open-roof jeep for wildlife photography."
-              }
+            "id": "sub8",
+            "images": [
+              "assets/images/portfolio-7-sm.jpg",
+              "assets/images/portfolio-3-sm.jpg",
+              "assets/images/portfolio-8-sm.jpg"
+            ],
+            "name": "Luxury Safari Tent",
+            "category": "Accommodation",
+            "description": "Spacious tented suite with modern amenities and wildlife viewing deck.",
+            "roomDetails": {
+              "No. of Rooms": "10",
+              "Adults": "2",
+              "View": "Savanna"
+            },
+            "roomFeatures": [
+              "King Size Bed",
+              "Private Deck",
+              "En-suite Bathroom",
+              "Wildlife Viewing",
+              "24/7 Security"
             ]
           },
           {
-            "id": "sub5",
-            "image": "assets/images/portfolio-9-sm.jpg",
+            "id": "sub9",
+            "images": [
+              "assets/images/portfolio-5-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg"
+            ],
+            "name": "Sunrise Game Drive",
+            "category": "Safari Experience",
+            "description": "Early morning safari to spot the Big Five with professional guides.",
+            "roomDetails": {
+              "Duration": "4 Hours",
+              "Group Size": "6 People",
+              "Guide": "Professional"
+            },
+            "roomFeatures": [
+              "Open-roof Jeep",
+              "Binoculars Provided",
+              "Refreshments",
+              "Photography Assistance"
+            ]
+          },
+          {
+            "id": "sub10",
+            "images": [
+              "assets/images/portfolio-2-sm.jpg",
+              "assets/images/portfolio-6-sm.jpg"
+            ],
             "name": "Hot Air Balloon Safari",
-            "category": "Excursion",
-            "description": "Panoramic view of the savanna at dawn.",
-            "price": "$500/person",
-            "subSubCards": [
-              {
-                "id": "subsub7",
-                "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Balloon Launch Site"
-              },
-              {
-                "id": "subsub8",
-                "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Breakfast Landing"
-              }
+            "category": "Adventure",
+            "description": "Panoramic aerial view of the savanna at dawn with champagne breakfast.",
+            "roomDetails": {
+              "Duration": "3 Hours",
+              "Capacity": "8 People",
+              "Meal": "Included"
+            },
+            "roomFeatures": [
+              "Sunrise Flight",
+              "Champagne Breakfast",
+              "Certificate",
+              "Professional Pilot"
             ]
           }
         ]
       },
       {
         "id": "dest5",
-        "image": "assets/images/portfolio-3-sm.jpg",
+        "image": "assets/images/portfolio-12-sm.jpg",
         "name": "Antarctica Expedition",
         "category": "Polar Cruise",
         "cardHeading": "The White Continent",
         "cardParagraph": "Embark on an epic voyage to the Earth's southernmost point, encountering icebergs, penguins, and dramatic frozen landscapes.",
-        "subCards": []
+        "subCards": [
+          {
+            "id": "sub11",
+            "images": [
+              "assets/images/portfolio-4-sm.jpg",
+              "assets/images/portfolio-9-sm.jpg"
+            ],
+            "name": "Expedition Cruise Cabin",
+            "category": "Accommodation",
+            "description": "Comfortable ocean-view cabin on ice-strengthened expedition vessel.",
+            "roomDetails": {
+              "Cabin Type": "Ocean View",
+              "Capacity": "2 People",
+              "Deck": "Upper"
+            },
+            "roomFeatures": [
+              "Ocean View Window",
+              "Private Bathroom",
+              "Climate Control",
+              "Storage Space"
+            ]
+          },
+          {
+            "id": "sub12",
+            "images": [
+              "assets/images/portfolio-3-sm.jpg",
+              "assets/images/portfolio-8-sm.jpg",
+              "assets/images/portfolio-5-sm.jpg"
+            ],
+            "name": "Zodiac Landing Excursion",
+            "category": "Expedition",
+            "description": "Daily zodiac boat landings to explore ice formations and wildlife.",
+            "roomDetails": {
+              "Duration": "2-3 Hours",
+              "Frequency": "Daily",
+              "Guide": "Expert Naturalist"
+            },
+            "roomFeatures": [
+              "Zodiac Boats",
+              "Polar Gear Provided",
+              "Wildlife Viewing",
+              "Photography Opportunities"
+            ]
+          }
+        ]
       },
       {
         "id": "dest6",
@@ -200,7 +441,52 @@
         "category": "Wellness Retreat",
         "cardHeading": "Mind, Body, and Spirit",
         "cardParagraph": "Rejuvenate in the peaceful rice paddies of Ubud with daily yoga, organic cuisine, and holistic spa treatments.",
-        "subCards": []
+        "subCards": [
+          {
+            "id": "sub13",
+            "images": [
+              "assets/images/portfolio-6-sm.jpg",
+              "assets/images/portfolio-2-sm.jpg"
+            ],
+            "name": "Garden Villa",
+            "category": "Accommodation",
+            "description": "Private villa surrounded by tropical gardens with outdoor shower.",
+            "roomDetails": {
+              "No. of Rooms": "15",
+              "Adults": "2",
+              "View": "Garden"
+            },
+            "roomFeatures": [
+              "Outdoor Shower",
+              "Private Terrace",
+              "Yoga Mat",
+              "Meditation Corner",
+              "Air Conditioning"
+            ]
+          },
+          {
+            "id": "sub14",
+            "images": [
+              "assets/images/portfolio-12-sm.jpg",
+              "assets/images/portfolio-4-sm.jpg",
+              "assets/images/portfolio-9-sm.jpg"
+            ],
+            "name": "Wellness Package",
+            "category": "Wellness",
+            "description": "Daily yoga classes, meditation sessions, and spa treatments.",
+            "roomDetails": {
+              "Duration": "Full Day",
+              "Sessions": "3 per day",
+              "Instructor": "Certified"
+            },
+            "roomFeatures": [
+              "Morning Yoga",
+              "Meditation Class",
+              "Spa Treatment",
+              "Healthy Meals"
+            ]
+          }
+        ]
       },
       {
         "id": "dest7",
@@ -211,96 +497,154 @@
         "cardParagraph": "Stay in a beautiful 16th-century villa surrounded by rolling vineyards, complete with wine tasting and authentic Italian cooking.",
         "subCards": [
           {
-            "id": "sub6",
-            "image": "assets/images/portfolio-7-sm.jpg",
-            "name": "Wine Tasting Class",
-            "category": "Experience",
-            "description": "Sampling local Chianti and olive oil.",
-            "price": "$150/person",
-            "subSubCards": [
-              {
-                "id": "subsub9",
-                "images": [
-                  "assets/images/portfolio-7-sm.jpg",
-                  "assets/images/portfolio-7a-sm.jpg"
-                ],
-                "name": "Cellar Tour",
-                "description": "Explore historic wine cellars and learn traditional aging methods."
-              }
+            "id": "sub15",
+            "images": [
+              "assets/images/portfolio-5-sm.jpg",
+              "assets/images/portfolio-3-sm.jpg"
+            ],
+            "name": "Historic Villa Suite",
+            "category": "Accommodation",
+            "description": "Elegant suite in restored 16th-century villa with vineyard views.",
+            "roomDetails": {
+              "No. of Rooms": "8",
+              "Adults": "2",
+              "Style": "Historic"
+            },
+            "roomFeatures": [
+              "Antique Furnishings",
+              "Vineyard View",
+              "En-suite Bathroom",
+              "Wine Cellar Access",
+              "Terrace"
             ]
           },
           {
-            "id": "sub7",
-            "image": "assets/images/portfolio-4-sm.jpg",
-            "name": "Cooking Masterclass",
-            "category": "Experience",
-            "description": "Learn traditional Italian pasta making.",
-            "price": "$300/couple"
+            "id": "sub16",
+            "images": [
+              "assets/images/portfolio-8-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg",
+              "assets/images/portfolio-2-sm.jpg"
+            ],
+            "name": "Wine & Cooking Experience",
+            "category": "Culinary",
+            "description": "Wine tasting tour and Italian cooking class with local chef.",
+            "roomDetails": {
+              "Duration": "5 Hours",
+              "Group Size": "Small",
+              "Chef": "Professional"
+            },
+            "roomFeatures": [
+              "Cellar Tour",
+              "Wine Tasting",
+              "Cooking Class",
+              "Traditional Lunch"
+            ]
           }
         ]
       },
       {
         "id": "dest8",
-        "image": "assets/images/portfolio-9-sm.jpg",
+        "image": "assets/images/portfolio-6-sm.jpg",
         "name": "Dubai Sky Residences",
         "category": "Urban Luxury",
         "cardHeading": "Modern Metropolis",
         "cardParagraph": "Experience life in the fast lane with exclusive penthouse accommodations and access to high-end shopping and entertainment.",
         "subCards": [
           {
-            "id": "sub8",
-            "image": "assets/images/portfolio-9-sm.jpg",
-            "name": "Penthouse Suite",
+            "id": "sub17",
+            "images": [
+              "assets/images/portfolio-9-sm.jpg",
+              "assets/images/portfolio-4-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg"
+            ],
+            "name": "Luxury Penthouse",
             "category": "Accommodation",
-            "description": "Apartment with panoramic city skyline views.",
-            "subSubCards": [
-              {
-                "id": "subsub10",
-                "images": [
-                  "assets/images/portfolio-9-sm.jpg",
-                  "assets/images/portfolio-7b-sm.jpg"
-                ],
-                "name": "Private Pool Deck",
-                "description": "Rooftop infinity pool with stunning night views."
-              },
-              {
-                "id": "subsub11",
-                "image": "assets/images/portfolio-9-sm.jpg",
-                "name": "Butler Service",
-                "description": "24/7 private butler ensuring a seamless stay."
-              }
+            "description": "Ultra-modern penthouse with panoramic city views and private pool.",
+            "roomDetails": {
+              "No. of Rooms": "4",
+              "Adults": "6",
+              "Floor": "Top Level"
+            },
+            "roomFeatures": [
+              "Private Pool",
+              "City View",
+              "Butler Service",
+              "Smart Home System",
+              "Gourmet Kitchen"
             ]
           },
           {
-            "id": "sub9",
-            "image": "assets/images/portfolio-3-sm.jpg",
-            "name": "Desert Dune Bashing",
-            "category": "Excursion",
-            "description": "High-octane drive through the Arabian dunes."
+            "id": "sub18",
+            "images": [
+              "assets/images/portfolio-3-sm.jpg",
+              "assets/images/portfolio-8-sm.jpg"
+            ],
+            "name": "Desert Safari Adventure",
+            "category": "Experience",
+            "description": "Thrilling dune bashing and traditional Bedouin dinner experience.",
+            "roomDetails": {
+              "Duration": "6 Hours",
+              "Transport": "4x4 Vehicle",
+              "Meal": "Included"
+            },
+            "roomFeatures": [
+              "Dune Bashing",
+              "Camel Ride",
+              "BBQ Dinner",
+              "Cultural Show"
+            ]
           }
         ]
       },
       {
         "id": "dest9",
-        "image": "assets/images/portfolio-5-sm.jpg",
+        "image": "assets/images/portfolio-2-sm.jpg",
         "name": "Amazon River Cruise",
         "category": "Ecotourism",
         "cardHeading": "The Lungs of the World",
         "cardParagraph": "Navigate the mighty Amazon, discovering incredible biodiversity, remote tribes, and the raw beauty of the rainforest.",
         "subCards": [
           {
-            "id": "sub10",
-            "image": "assets/images/portfolio-5-sm.jpg",
-            "name": "Jungle Canopy Zipline",
-            "category": "Activity",
-            "description": "Aerial tour high above the rainforest floor.",
-            "subSubCards": [
-              {
-                "id": "subsub12",
-                "image": "assets/images/portfolio-5-sm.jpg",
-                "name": "Safety Briefing",
-                "description": "Certified guides ensure maximum safety before your adventure."
-              }
+            "id": "sub19",
+            "images": [
+              "assets/images/portfolio-5-sm.jpg",
+              "assets/images/portfolio-9-sm.jpg"
+            ],
+            "name": "River View Cabin",
+            "category": "Accommodation",
+            "description": "Comfortable cabin on expedition boat with rainforest views.",
+            "roomDetails": {
+              "Cabin Type": "River View",
+              "Capacity": "2 People",
+              "Deck": "Main"
+            },
+            "roomFeatures": [
+              "Panoramic Windows",
+              "Air Conditioning",
+              "Private Bathroom",
+              "Observation Deck Access"
+            ]
+          },
+          {
+            "id": "sub20",
+            "images": [
+              "assets/images/portfolio-6-sm.jpg",
+              "assets/images/portfolio-12-sm.jpg",
+              "assets/images/portfolio-4-sm.jpg"
+            ],
+            "name": "Jungle Expedition",
+            "category": "Adventure",
+            "description": "Guided rainforest treks and canopy zipline adventures.",
+            "roomDetails": {
+              "Duration": "4 Hours",
+              "Difficulty": "Moderate",
+              "Guide": "Expert Naturalist"
+            },
+            "roomFeatures": [
+              "Canopy Zipline",
+              "Wildlife Spotting",
+              "Safety Equipment",
+              "Photography Opportunities"
             ]
           }
         ]
@@ -312,18 +656,67 @@
         "category": "Natural Wonders",
         "cardHeading": "Aurora Borealis Hunt",
         "cardParagraph": "Chase the celestial glow across Iceland's volcanic landscapes, combined with glacial hikes and hot spring visits.",
-        "subCards": []
+        "subCards": [
+          {
+            "id": "sub21",
+            "images": [
+              "assets/images/portfolio-8-sm.jpg",
+              "assets/images/portfolio-3-sm.jpg"
+            ],
+            "name": "Aurora Lodge Room",
+            "category": "Accommodation",
+            "description": "Cozy room with northern lights viewing windows and geothermal heating.",
+            "roomDetails": {
+              "No. of Rooms": "20",
+              "Adults": "2",
+              "View": "Aurora"
+            },
+            "roomFeatures": [
+              "Aurora View Window",
+              "Geothermal Heating",
+              "Wake-up Call Service",
+              "Hot Tub Access"
+            ]
+          },
+          {
+            "id": "sub22",
+            "images": [
+              "assets/images/portfolio-2-sm.jpg",
+              "assets/images/portfolio-9-sm.jpg",
+              "assets/images/portfolio-5-sm.jpg"
+            ],
+            "name": "Northern Lights Tour",
+            "category": "Experience",
+            "description": "Evening aurora hunting tour with expert guides and photography tips.",
+            "roomDetails": {
+              "Duration": "4 Hours",
+              "Season": "Sep-Apr",
+              "Guide": "Aurora Expert"
+            },
+            "roomFeatures": [
+              "Transportation",
+              "Photography Guidance",
+              "Hot Beverages",
+              "Warm Clothing Provided"
+            ]
+          }
+        ]
       }
     ]
   },
+
+  "_comment_contact": "========== CONTACT SECTION ==========",
+  "_comment_contact_desc": "Contact form and contact information",
+  "_comment_contact_note": "Phone number is used for WhatsApp integration in both contact form and modal inquiries",
   "contact": {
     "heading": "Contact Info:",
-    "info": "Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, conse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.",
-    "address": "10111 Santa Monica Boulevard, LA",
+    "info": "Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, esse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.",
     "phone": "+917561845352",
-    "email": "info@Example.com",
-    "fax": "+44 987 065 909"
+    "email": "info@Example.com"
   },
+
+  "_comment_footer": "========== FOOTER SECTION ==========",
+  "_comment_footer_desc": "Social media links and footer text",
   "footer": {
     "social": [
       {

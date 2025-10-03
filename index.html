@@ -23,6 +23,7 @@
         rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="assets/css/combined.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- END: Styles -->
 
@@ -164,6 +165,16 @@
         </div>
         <!-- END: Portfolio -->
 
+        <!-- SubDestination Section -->
+        <div class="nk-box bg-light" id="sub-destinations-section" style="display:none;">
+            <div class="nk-gap-4 mt-5"></div>
+            <h2 class="text-xs-center display-4" id="sub-dest-heading">Sub Destinations</h2>
+            <div class="nk-gap mnt-6"></div>
+            <div class="container">
+                <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols" id="sub-destinations-cards"></div>
+            </div>
+        </div>
+
         
         <!-- START: Features -->
         <div class="nk-box bg-dark-1 text-white">
@@ -221,16 +232,6 @@
             <div class="nk-gap-5 mnt-6"></div>
         </div>
         <!-- END: Features -->
-
-        <!-- SubDestination Section -->
-        <div class="nk-box bg-light" id="sub-destinations-section" style="display:none;">
-            <div class="nk-gap-4 mt-5"></div>
-            <h2 class="text-xs-center display-4" id="sub-dest-heading">Sub Destinations</h2>
-            <div class="nk-gap mnt-6"></div>
-            <div class="container">
-                <div class="nk-portfolio-list nk-isotope nk-isotope-3-cols" id="sub-destinations-cards"></div>
-            </div>
-        </div>
 
         <div class="container nk-portfolio-container" id="subsub-destinations-section"
             style="display: none; padding-top: 40px;">
@@ -329,10 +330,8 @@
                     <div class="nk-gap mnt-3"></div>
                     <p id="contact-info"></p>
                     <ul class="nk-contact-info">
-                        <li><strong>Address:</strong> <span id="contact-address"></span></li>
                         <li><strong>Phone:</strong> <span id="contact-phone"></span></li>
                         <li><strong>Email:</strong> <span id="contact-email"></span></li>
-                        <li><strong>Fax:</strong> <span id="contact-fax"></span></li>
                     </ul>
                 </div>
 
@@ -341,17 +340,36 @@
                     <form id="contact-form" class="nk-form">
                         <div class="row vertical-gap">
                             <div class="col-md-6">
-                                <input type="text" class="form-control required" name="name" placeholder="Your Name">
+                                <input type="text" class="form-control required" name="name" placeholder="NAME" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control required" name="email" placeholder="Your Email">
+                                <input type="number" class="form-control required" name="members" placeholder="MEMBERS" min="1" required>
                             </div>
                         </div>
                         <div class="nk-gap-1"></div>
-                        <input type="text" class="form-control required" name="title" placeholder="Your Title">
+                        <div class="row vertical-gap">
+                            <div class="col-md-6">
+                                <input type="date" class="form-control required" name="checkin" placeholder="CHECK-IN DATE" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control required" name="checkout" placeholder="CHECK-OUT DATE" required>
+                            </div>
+                        </div>
                         <div class="nk-gap-1"></div>
-                        <textarea class="form-control required" name="message" rows="8"
-                            placeholder="Your Comment"></textarea>
+                        <div class="row vertical-gap">
+                            <div class="col-md-6">
+                                <select class="form-control required" name="type" required>
+                                    <option value="">BACHELORS/FAMILY</option>
+                                    <option value="Bachelors">Bachelors</option>
+                                    <option value="Family">Family</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control required" name="location" placeholder="LOCATION" required>
+                            </div>
+                        </div>
+                        <div class="nk-gap-1"></div>
+                        <input type="text" class="form-control required" name="budget" placeholder="BUDGET" required>
                         <div class="nk-gap-1"></div>
                         <button type="submit" class="nk-btn">Send via WhatsApp</button>
                     </form>
