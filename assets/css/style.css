@@ -48,6 +48,31 @@ input[type="date"].form-control:focus {
         min-height: 50px;
         display: flex;
         align-items: center;
+        position: relative;
+        color: #858585 !important;
+    }
+    
+    /* Show placeholder text when date is empty */
+    input[type="date"].form-control:not(:focus):invalid {
+        color: transparent !important;
+    }
+    
+    input[type="date"].form-control:not(:focus):invalid:before {
+        content: attr(placeholder);
+        color: #858585;
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* Specific placeholders for check-in and check-out */
+    input[type="date"][name="checkin"].form-control:not(:focus):invalid:before {
+        content: "CHECK-IN DATE";
+    }
+    
+    input[type="date"][name="checkout"].form-control:not(:focus):invalid:before {
+        content: "CHECK-OUT DATE";
     }
     
     input[type="date"].form-control::-webkit-calendar-picker-indicator {
@@ -55,6 +80,17 @@ input[type="date"].form-control:focus {
         filter: invert(0.3);
         width: 20px;
         height: 20px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Alternative: Add background text using data attribute */
+    input[type="date"].form-control[value=""]:before {
+        content: attr(data-placeholder);
+        color: #858585;
+        position: absolute;
+        left: 18px;
+        pointer-events: none;
     }
     
     /* Select dropdown on mobile */

@@ -1204,6 +1204,56 @@ function renderContact(data) {
         const todayFormatted = `${year}-${month}-${day}`;
         
         checkinInput.setAttribute('min', todayFormatted);
+        
+        // Add placeholder behavior for mobile date inputs
+        function addDatePlaceholder(input, placeholderText) {
+            // Create wrapper if it doesn't exist
+            if (!input.parentElement.classList.contains('date-input-wrapper')) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'date-input-wrapper';
+                wrapper.style.position = 'relative';
+                input.parentNode.insertBefore(wrapper, input);
+                wrapper.appendChild(input);
+                
+                // Create placeholder label
+                const label = document.createElement('span');
+                label.className = 'date-placeholder';
+                label.textContent = placeholderText;
+                label.style.cssText = `
+                    position: absolute;
+                    left: 18px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #858585;
+                    pointer-events: none;
+                    font-size: 16px;
+                    transition: opacity 0.2s;
+                `;
+                wrapper.appendChild(label);
+                
+                // Hide/show placeholder based on input value
+                function updatePlaceholder() {
+                    if (input.value || document.activeElement === input) {
+                        label.style.opacity = '0';
+                    } else {
+                        label.style.opacity = '1';
+                    }
+                }
+                
+                input.addEventListener('focus', updatePlaceholder);
+                input.addEventListener('blur', updatePlaceholder);
+                input.addEventListener('change', updatePlaceholder);
+                input.addEventListener('input', updatePlaceholder);
+                
+                updatePlaceholder();
+            }
+        }
+        
+        // Add placeholders for date inputs on mobile
+        if (window.innerWidth <= 768) {
+            addDatePlaceholder(checkinInput, 'CHECK-IN DATE');
+            addDatePlaceholder(checkoutInput, 'CHECK-OUT DATE');
+        }
 
         // Update checkout minimum date when checkin changes
         checkinInput.addEventListener('change', function() {
