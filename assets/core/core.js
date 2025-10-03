@@ -795,9 +795,14 @@ function openModal(data) {
     let currentSlide = 0;
 
     // --- CRITICAL NEW LOGIC: Extract phone number and construct WhatsApp link ---
-    const rawPhoneNumber = (data.contact && data.contact.phone) ?
-        data.contact.phone.replace(/[\s-()]/g, '') :
-        ''; // Cleans number for wa.me
+    // Get first phone number from array or use string directly
+    let firstPhone = '';
+    if (data.contact && data.contact.phone) {
+        firstPhone = Array.isArray(data.contact.phone) 
+            ? data.contact.phone[0] 
+            : data.contact.phone;
+    }
+    const rawPhoneNumber = firstPhone.replace(/[\s-()]/g, ''); // Cleans number for wa.me
 
     // Construct professional WhatsApp message
     const propertyName = data.fullPathName || data.name || 'Property';
@@ -807,12 +812,6 @@ function openModal(data) {
     whatsappMessage += `  *PROPERTY DETAILS*\n`;
     whatsappMessage += `━━━━━━━━━━━━━━━━━━━━\n`;
     whatsappMessage += `  Property: *${propertyName}*\n`;
-    if (data.category) {
-        whatsappMessage += `  Category: *${data.category}*\n`;
-    }
-    if (data.price) {
-        whatsappMessage += `  Price: *${data.price}*\n`;
-    }
     whatsappMessage += `\n━━━━━━━━━━━━━━━━━━━━\n`;
     whatsappMessage += `  *INQUIRY MESSAGE*\n\n`;
     whatsappMessage += `Hello Team,\n\n`;
@@ -883,7 +882,6 @@ function openModal(data) {
                 </a>
             ` : ''}
         </div>
-        ${data.category ? `<span class="ios26-modal-category">${data.category}</span>` : ''}
     `;
 
     // 2. Location Section
@@ -1186,7 +1184,13 @@ function renderContact(data) {
     if (document.getElementById("contact-heading")) {
         document.getElementById("contact-heading").innerText = data.contact.heading;
         document.getElementById("contact-info").innerText = data.contact.info;
-        document.getElementById("contact-phone").innerText = data.contact.phone;
+        
+        // Handle phone as array or string
+        const phoneDisplay = Array.isArray(data.contact.phone) 
+            ? data.contact.phone.join(', ') 
+            : data.contact.phone;
+        document.getElementById("contact-phone").innerText = phoneDisplay;
+        
         document.getElementById("contact-email").innerText = data.contact.email;
     }
 
@@ -1352,7 +1356,11 @@ function renderContact(data) {
             whatsappMessage += `*${name}*\n`;
             whatsappMessage += `━━━━━━━━━━━━━━━━━━━━`;
 
-            const phoneNumber = data.contact.phone.replace(/\D/g, "");
+            // Get first phone number from array or use string directly
+            const firstPhone = Array.isArray(data.contact.phone) 
+                ? data.contact.phone[0] 
+                : data.contact.phone;
+            const phoneNumber = firstPhone.replace(/\D/g, "");
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
             window.open(whatsappURL, "_blank");
