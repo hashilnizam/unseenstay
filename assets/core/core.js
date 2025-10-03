@@ -19,25 +19,85 @@ function renderLogo(data) {
 
 // ---------------- NAVBAR ----------------
 function renderNavbar(data) {
-  const navContainer = document.getElementById("main-nav");
-  if (!navContainer) return;
+    const navContainer = document.getElementById("main-nav");
+    if (!navContainer) return;
 
-  navContainer.innerHTML = "";
-  data.navbar.menu.forEach(item => {
-    const li = document.createElement("li");
-    if (item.active) li.classList.add("active");
-    li.innerHTML = `<a href="${item.link}">${item.name}</a>`;
-    navContainer.appendChild(li);
-  });
+    navContainer.innerHTML = "";
+
+    data.navbar.menu.forEach((item) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = item.link;
+        a.textContent = item.name;
+
+        // handle click event -> set active
+        a.addEventListener("click", (e) => {
+            e.preventDefault(); // stop page reload
+            document.querySelectorAll("#main-nav li").forEach(li => li.classList.remove("active"));
+            li.classList.add("active");
+
+            // scroll to section smoothly
+            const id = item.link.includes("#") ? item.link.split("#")[1] : null;
+            if (id) {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+
+        li.appendChild(a);
+        navContainer.appendChild(li);
+    });
 }
+
 
 // ---------------- HEADER ----------------
 function renderHeader(data) {
-    if (document.getElementById("header-bg")) {
-        document.getElementById("header-bg").style.backgroundImage = `url('${data.header.backgroundImage}')`;
-        document.getElementById("header-subtitle").innerText = data.header.subtitle;
-        document.getElementById("header-title").innerHTML = data.header.title;
-        document.getElementById("header-paragraph").innerText = data.header.paragraph;
+    // Select the video element using its new ID
+    const videoElement = document.getElementById("header-bg-video");
+    
+    // Check if the video element exists before proceeding
+    if (videoElement) {
+        // Set the 'src' of the video element using the new 'backgroundVideo' key
+        videoElement.src = data.header.backgroundVideo; 
+        
+        // --- APPLY CENTERING AND COVERAGE CSS VIA JAVASCRIPT ---
+        // This ensures the video is perfectly centered and scaled to cover the entire area.
+        
+        // 1. Positioning and Centering
+        videoElement.style.position = 'absolute';
+        videoElement.style.top = '50%';
+        videoElement.style.left = '50%';
+        // Shifts the element back by half its own size to achieve true center alignment
+        videoElement.style.transform = 'translate(-50%, -50%)'; 
+        
+        // 2. Sizing and Coverage
+        videoElement.style.minWidth = '100%';
+        videoElement.style.minHeight = '100%';
+        videoElement.style.width = 'auto';
+        videoElement.style.height = 'auto';
+        // Ensures the video covers the area without distortion or black bars
+        videoElement.style.objectFit = 'cover'; 
+        
+        // FIX: Setting zIndex to -1 ensures the video stays behind the overlay shade.
+        videoElement.style.zIndex = '-1'; 
+
+        // Ensure the video is loaded and plays
+        videoElement.load();
+        videoElement.play().catch(error => {
+            // Handle potential autoplay blocking by browsers
+            console.warn("Video autoplay failed:", error);
+        });
+
+        // Update the text content for the other elements (assuming their IDs remain the same)
+        const subtitle = document.getElementById("header-subtitle");
+        const title = document.getElementById("header-title");
+        const paragraph = document.getElementById("header-paragraph");
+
+        if (subtitle) subtitle.innerText = data.header.subtitle;
+        if (title) title.innerHTML = data.header.title;
+        if (paragraph) paragraph.innerText = data.header.paragraph;
     }
 }
 
@@ -682,7 +742,7 @@ function createModalHTML() {
         }
         return;
     }
-    
+
     const modalHTML = `
         <div id="ios26-modal-overlay" class="ios26-modal-overlay"></div>
         <div id="ios26-modal" class="ios26-modal">
@@ -697,7 +757,7 @@ function createModalHTML() {
             <div class="ios26-modal-content" id="ios26-modal-content"></div>
         </div>
     `;
-    
+
     const container = document.createElement('div');
     container.id = 'ios26-modal-container';
     container.innerHTML = modalHTML;
@@ -714,28 +774,28 @@ let modalKeyboardHandler = null;
 function openModal(data) {
     injectStyles();
     createModalHTML();
-    
+
     const overlay = document.getElementById('ios26-modal-overlay');
     const modal = document.getElementById('ios26-modal');
     const slidesContainer = document.getElementById('ios26-modal-slides');
     const content = document.getElementById('ios26-modal-content');
     const indicators = document.getElementById('ios26-modal-indicators');
     const counter = document.getElementById('ios26-modal-counter');
-    
+
     let currentSlide = 0;
 
     // --- CRITICAL NEW LOGIC: Extract phone number and construct WhatsApp link ---
-    const rawPhoneNumber = (data.contact && data.contact.phone) ? 
-                           data.contact.phone.replace(/[\s-()]/g, '') : 
-                           ''; // Cleans number for wa.me
-    
+    const rawPhoneNumber = (data.contact && data.contact.phone) ?
+        data.contact.phone.replace(/[\s-()]/g, '') :
+        ''; // Cleans number for wa.me
+
     // Construct the detailed message using data.fullPathName for maximum detail
     const propertyName = data.fullPathName || data.name || 'a property';
     const messageText = encodeURIComponent(`Hello, I'm interested in the property: ${propertyName}. Could you provide more details?`);
-    const whatsappLink = rawPhoneNumber ? 
-                         `https://wa.me/${rawPhoneNumber}?text=${messageText}` : 
-                         '#'; // Fallback if no number is found
-    
+    const whatsappLink = rawPhoneNumber ?
+        `https://wa.me/${rawPhoneNumber}?text=${messageText}` :
+        '#'; // Fallback if no number is found
+
     // Get images array - support both 'images' and 'image' property
     let images = [];
     if (data.images && Array.isArray(data.images)) {
@@ -745,24 +805,24 @@ function openModal(data) {
     } else {
         images = ['https://via.placeholder.com/900x450?text=No+Image'];
     }
-    
+
     // Create slides
-    slidesContainer.innerHTML = images.map(img => 
+    slidesContainer.innerHTML = images.map(img =>
         `<div class="ios26-modal-slide" style="background-image: url('${img}');"></div>`
     ).join('');
-    
+
     // Update counter
     function updateCounter() {
         counter.textContent = `${currentSlide + 1} / ${images.length}`;
     }
     updateCounter();
-    
+
     // Create indicators
     if (images.length > 1) {
-        indicators.innerHTML = images.map((_, i) => 
+        indicators.innerHTML = images.map((_, i) =>
             `<div class="ios26-modal-indicator ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`
         ).join('');
-        
+
         indicators.querySelectorAll('.ios26-modal-indicator').forEach(ind => {
             ind.addEventListener('click', () => {
                 currentSlide = parseInt(ind.dataset.index);
@@ -772,7 +832,7 @@ function openModal(data) {
     } else {
         indicators.innerHTML = '';
     }
-    
+
     // --- START: MODAL CONTENT GENERATION ---
 
     // 1. Header with Title and Enquiry Button
@@ -823,7 +883,7 @@ function openModal(data) {
 
     // 5. Fallback/Original Meta (Optional, kept for flexibility)
     if (data.meta) {
-           contentHTML += `
+        contentHTML += `
              <div class="ios26-modal-meta">
                  ${Object.entries(data.meta).map(([key, value]) => `
                      <div class="ios26-modal-meta-item">
@@ -846,21 +906,21 @@ function openModal(data) {
         });
         updateCounter();
     }
-    
+
     // Navigation
     const prevBtn = document.getElementById('ios26-modal-prev');
     const nextBtn = document.getElementById('ios26-modal-next');
-    
+
     prevBtn.onclick = () => {
         currentSlide = (currentSlide - 1 + images.length) % images.length;
         updateSlider();
     };
-    
+
     nextBtn.onclick = () => {
         currentSlide = (currentSlide + 1) % images.length;
         updateSlider();
     };
-    
+
     // Hide nav buttons and counter if only one image
     if (images.length <= 1) {
         prevBtn.style.display = 'none';
@@ -871,38 +931,38 @@ function openModal(data) {
         nextBtn.style.display = 'flex';
         counter.style.display = 'block';
     }
-    
+
     // Close modal function
     function closeModal() {
         modal.classList.remove('active');
         overlay.classList.remove('active');
         document.body.style.overflow = '';
-        
+
         // Remove keyboard listener
         if (modalKeyboardHandler) {
             document.removeEventListener('keydown', modalKeyboardHandler);
             modalKeyboardHandler = null;
         }
     }
-    
+
     // Close button
     document.getElementById('ios26-modal-close').onclick = closeModal;
-    
+
     // Click overlay to close
     overlay.onclick = closeModal;
-    
+
     // Prevent modal content click from closing
     modal.onclick = (e) => {
         e.stopPropagation();
     };
-    
+
     // Open modal with animation
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
         overlay.classList.add('active');
         modal.classList.add('active');
     }, 10);
-    
+
     // Keyboard navigation
     modalKeyboardHandler = (e) => {
         if (e.key === 'Escape') {
@@ -917,7 +977,7 @@ function openModal(data) {
             updateSlider();
         }
     };
-    
+
     document.addEventListener('keydown', modalKeyboardHandler);
 }
 
@@ -1068,7 +1128,7 @@ function renderPortfolio(data) {
                                     ...subSub,
                                     contact: contactInfo, // Pass the top-level contact info
                                     // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
-                                    fullPathName: `${path3} in ${path2} in ${path1}` 
+                                    fullPathName: `${path3} in ${path2} in ${path1}`
                                 };
                                 openModal(modalData);
                             });
@@ -1088,7 +1148,7 @@ function renderPortfolio(data) {
                             ...sub,
                             contact: contactInfo, // Pass the top-level contact info
                             // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
-                            fullPathName: `${path2} in ${path1}` 
+                            fullPathName: `${path2} in ${path1}`
                         };
                         openModal(modalData);
                     }

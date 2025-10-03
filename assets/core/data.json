@@ -15,22 +15,17 @@
         "link": "index.html#about"
       },
       {
+        "name": "Portfolio",
+        "link": "index.html#projects"
+      },
+      {
         "name": "Contact",
         "link": "index.html#contact"
-      },
-      {
-        "name": "Portfolio",
-        "link": "index.html#contact",
-        "active": true
-      },
-      {
-        "name": "Blog",
-        "link": "blog.html"
       }
     ]
   },
   "header": {
-    "backgroundImage": "assets/images/home-7.jpg",
+    "backgroundVideo": "assets/banner/unseenstay.mp4",
     "subtitle": "New Branding Agency",
     "title": "We are about to change the way<br><em class='fw-400'>you publish on the web</em>",
     "paragraph": "Your adventure starts here. Discover breathtaking destinations and unique travel experiences curated just for you."
