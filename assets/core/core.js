@@ -19,24 +19,25 @@ function renderLogo(data) {
 
 // ---------------- NAVBAR ----------------
 function renderNavbar(data) {
-    const navContainer = document.getElementById("main-nav");
-    if (!navContainer) return;
+    const desktopNav = document.getElementById("main-nav");
+    const mobileNavContainer = document.querySelector("#nk-nav-mobile .nk-nav");
 
-    navContainer.innerHTML = "";
+    if (desktopNav) desktopNav.innerHTML = "";
+    if (mobileNavContainer) mobileNavContainer.innerHTML = "";
 
     data.navbar.menu.forEach((item) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = item.link;
-        a.textContent = item.name;
+        // -------- desktop li
+        const liDesktop = document.createElement("li");
+        const aDesktop = document.createElement("a");
+        aDesktop.href = item.link;
+        aDesktop.textContent = item.name;
 
-        // handle click event -> set active
-        a.addEventListener("click", (e) => {
-            e.preventDefault(); // stop page reload
+        // active + smooth scroll
+        aDesktop.addEventListener("click", (e) => {
+            e.preventDefault();
             document.querySelectorAll("#main-nav li").forEach(li => li.classList.remove("active"));
-            li.classList.add("active");
+            liDesktop.classList.add("active");
 
-            // scroll to section smoothly
             const id = item.link.includes("#") ? item.link.split("#")[1] : null;
             if (id) {
                 const section = document.getElementById(id);
@@ -46,8 +47,26 @@ function renderNavbar(data) {
             }
         });
 
-        li.appendChild(a);
-        navContainer.appendChild(li);
+        liDesktop.appendChild(aDesktop);
+        desktopNav?.appendChild(liDesktop);
+
+        // -------- mobile li
+        const liMobile = liDesktop.cloneNode(true);
+        // for mobile, also close the menu when you click
+        liMobile.querySelector("a").addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = item.link.includes("#") ? item.link.split("#")[1] : null;
+            if (id) {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+            // close mobile menu (toggle class provided by template)
+            document.querySelector(".nk-navbar-full-toggle")?.click();
+        });
+
+        mobileNavContainer?.appendChild(liMobile);
     });
 }
 
@@ -98,15 +117,6 @@ function renderHeader(data) {
         if (subtitle) subtitle.innerText = data.header.subtitle;
         if (title) title.innerHTML = data.header.title;
         if (paragraph) paragraph.innerText = data.header.paragraph;
-    }
-}
-
-// ---------------- ABOUT ----------------
-function renderAbout(data) {
-    if (document.getElementById("about-heading")) {
-        document.getElementById("about-heading").innerText = data.about.heading;
-        document.getElementById("about-paragraph").innerText = data.about.paragraph;
-        document.getElementById("about-image").src = data.about.image;
     }
 }
 
@@ -1224,7 +1234,6 @@ async function loadData() {
         renderLogo(data);
         renderNavbar(data);
         renderHeader(data);
-        renderAbout(data);
         renderDestinations(data);
         renderPortfolio(data);
         renderContact(data);

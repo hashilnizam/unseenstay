@@ -11,10 +11,6 @@
   "navbar": {
     "menu": [
       {
-        "name": "About",
-        "link": "index.html#about"
-      },
-      {
         "name": "Portfolio",
         "link": "index.html#projects"
       },
