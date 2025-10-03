@@ -17,6 +17,20 @@ function renderLogo(data) {
     }
 }
 
+// ---------------- NAVBAR ----------------
+function renderNavbar(data) {
+  const navContainer = document.getElementById("main-nav");
+  if (!navContainer) return;
+
+  navContainer.innerHTML = "";
+  data.navbar.menu.forEach(item => {
+    const li = document.createElement("li");
+    if (item.active) li.classList.add("active");
+    li.innerHTML = `<a href="${item.link}">${item.name}</a>`;
+    navContainer.appendChild(li);
+  });
+}
+
 // ---------------- HEADER ----------------
 function renderHeader(data) {
     if (document.getElementById("header-bg")) {
@@ -924,13 +938,13 @@ function renderPortfolio(data) {
     // Sub-Section References
     const subSection = document.getElementById("sub-destinations-section");
     const subHeading = document.getElementById("sub-dest-heading");
-    const subParagraph = document.getElementById("sub-dest-paragraph"); 
+    const subParagraph = document.getElementById("sub-dest-paragraph");
     const subContainer = document.getElementById("sub-destinations-cards");
-    
+
     // Sub-Sub-Section References
     const subSubSection = document.getElementById("subsub-destinations-section");
     const subSubHeading = document.getElementById("subsub-dest-heading");
-    const subSubParagraph = document.getElementById("subsub-dest-paragraph"); 
+    const subSubParagraph = document.getElementById("subsub-dest-paragraph");
     const subSubContainer = document.getElementById("subsub-destinations-cards");
 
     // --- Main Section Content ---
@@ -969,21 +983,21 @@ function renderPortfolio(data) {
 
             // Hide/clear subsub section when main card is clicked
             if (subSubSection) subSubSection.style.display = "none";
-            if (subSubParagraph) subSubParagraph.innerHTML = ''; 
-            
+            if (subSubParagraph) subSubParagraph.innerHTML = '';
+
             if (!mainCard || !mainCard.subCards) {
-                if(subSection) subSection.style.display = "none";
-                if(subParagraph) subParagraph.innerHTML = '';
+                if (subSection) subSection.style.display = "none";
+                if (subParagraph) subParagraph.innerHTML = '';
                 return;
             }
 
             // --- Sub Section Content Update (Heading and Paragraph) ---
             if (subHeading) subHeading.innerText = mainCard.name;
             const subSectionText = mainCard.paragraph || mainCard.description || '';
-            if (subParagraph) subParagraph.innerHTML = subSectionText; 
+            if (subParagraph) subParagraph.innerHTML = subSectionText;
 
-            if(subSection) subSection.style.display = "block";
-            if(subContainer) subContainer.innerHTML = "";
+            if (subSection) subSection.style.display = "block";
+            if (subContainer) subContainer.innerHTML = "";
 
             mainCard.subCards.forEach(sub => {
                 const subDiv = document.createElement("div");
@@ -1004,9 +1018,9 @@ function renderPortfolio(data) {
                 subContainer.appendChild(subDiv);
 
                 // Sub-card click handler
-                subDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
+                subDiv.querySelector(".nk-portfolio-item").addEventListener("click", function (e) {
                     e.stopPropagation();
-                    
+
                     // Path 1 name (e.g., "Maldives Atoll Retreat")
                     const path1 = mainCard.name;
 
@@ -1019,7 +1033,7 @@ function renderPortfolio(data) {
 
                         if (subSubSection) subSubSection.style.display = "block";
                         if (subSubContainer) subSubContainer.innerHTML = "";
-                        
+
                         sub.subSubCards.forEach(subSub => {
 
                             const subSubDiv = document.createElement("div");
@@ -1038,33 +1052,34 @@ function renderPortfolio(data) {
                                 </div>
                             `;
                             subSubContainer.appendChild(subSubDiv);
-                            
+
                             // SubSub-card click -> open modal with multiple images
-                            subSubDiv.querySelector(".nk-portfolio-item").addEventListener("click", function(e){
+                            subSubDiv.querySelector(".nk-portfolio-item").addEventListener("click", function (e) {
                                 e.stopPropagation();
-                                
+
                                 // Path 2 name (e.g., "Overwater Bungalows")
                                 const path2 = sub.name;
-                                
+
                                 // Path 3 name (e.g., "Sunset View Suite")
                                 const path3 = subSub.name;
-                                
+
                                 // Construct the data payload for the modal
                                 const modalData = {
                                     ...subSub,
                                     contact: contactInfo, // Pass the top-level contact info
-                                    fullPathName: `${path1} > ${path2} > ${path3}` // Full property name path
+                                    // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
+                                    fullPathName: `${path3} in ${path2} in ${path1}` 
                                 };
                                 openModal(modalData);
                             });
                         });
-                        
+
                         subSubSection.scrollIntoView({ behavior: "smooth" });
                     } else {
                         // Hide subsub section and clear text
                         if (subSubSection) subSubSection.style.display = "none";
-                        if (subSubParagraph) subSubParagraph.innerHTML = ''; 
-                        
+                        if (subSubParagraph) subSubParagraph.innerHTML = '';
+
                         // Path 2 name (final name)
                         const path2 = sub.name;
 
@@ -1072,7 +1087,8 @@ function renderPortfolio(data) {
                         const modalData = {
                             ...sub,
                             contact: contactInfo, // Pass the top-level contact info
-                            fullPathName: `${path1} > ${path2}` // Full property name path
+                            // *** UPDATED LOGIC HERE: Use 'in' instead of ' > ' ***
+                            fullPathName: `${path2} in ${path1}` 
                         };
                         openModal(modalData);
                     }
@@ -1146,6 +1162,7 @@ async function loadData() {
 
         renderTitle(data);
         renderLogo(data);
+        renderNavbar(data);
         renderHeader(data);
         renderAbout(data);
         renderDestinations(data);

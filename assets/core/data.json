@@ -8,6 +8,27 @@
     "width": 85,
     "alt": "Brand Logo"
   },
+  "navbar": {
+    "menu": [
+      {
+        "name": "About",
+        "link": "index.html#about"
+      },
+      {
+        "name": "Contact",
+        "link": "index.html#contact"
+      },
+      {
+        "name": "Portfolio",
+        "link": "index.html#contact",
+        "active": true
+      },
+      {
+        "name": "Blog",
+        "link": "blog.html"
+      }
+    ]
+  },
   "header": {
     "backgroundImage": "assets/images/home-7.jpg",
     "subtitle": "New Branding Agency",

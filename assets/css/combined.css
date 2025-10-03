@@ -7239,7 +7239,7 @@ h4 {
 }
 
 .nk-navbar-full .nk-nav-header {
-    padding: 33px 0;
+    padding: 20px 0;
     margin-right: -22px
 }
 
@@ -8932,7 +8932,8 @@ a:hover>.nk-icon-search:after {
 }
 
 .nk-isotope.nk-isotope-3-cols .nk-isotope-item {
-    width: 33.332%
+    width: 33.332%;
+    padding: 2px;
 }
 
 .nk-isotope.nk-isotope-3-cols .nk-isotope-item.nk-isotope-item-x2 {
