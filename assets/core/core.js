@@ -1077,6 +1077,7 @@ function renderPortfolio(data) {
     // Sub-Section References
     const subSection = document.getElementById("sub-destinations-section");
     const subHeading = document.getElementById("sub-dest-heading");
+    const subCategory = document.getElementById("sub-dest-category");
     const subParagraph = document.getElementById("sub-dest-paragraph");
     const subContainer = document.getElementById("sub-destinations-cards");
 
@@ -1130,9 +1131,10 @@ function renderPortfolio(data) {
                 return;
             }
 
-            // --- Sub Section Content Update (Heading and Paragraph) ---
+            // --- Sub Section Content Update (Heading, Category, and Paragraph) ---
             if (subHeading) subHeading.innerText = mainCard.name;
-            const subSectionText = mainCard.paragraph || mainCard.description || '';
+            if (subCategory) subCategory.innerText = mainCard.category || '';
+            const subSectionText = mainCard.cardParagraph || mainCard.paragraph || mainCard.description || '';
             if (subParagraph) subParagraph.innerHTML = subSectionText;
 
             if (subSection) subSection.style.display = "block";
