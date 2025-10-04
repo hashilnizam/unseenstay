@@ -349,10 +349,10 @@
                         <div class="nk-gap-1"></div>
                         <div class="row vertical-gap">
                             <div class="col-md-6">
-                                <input type="date" class="form-control required" name="checkin" placeholder="CHECK-IN DATE" required>
+                                <input type="date" class="form-control required" name="checkin" data-placeholder="CHECK-IN DATE" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="date" class="form-control required" name="checkout" placeholder="CHECK-OUT DATE" required>
+                                <input type="date" class="form-control required" name="checkout" data-placeholder="CHECK-OUT DATE" required>
                             </div>
                         </div>
                         <div class="nk-gap-1"></div>
@@ -411,6 +411,30 @@
 
     <script src="assets/js/combined.js"></script>
     <script src="assets/core/core.js"></script>
+    
+    <!-- Mobile form fixes for iOS -->
+    <script>
+        // Fix date input placeholder on iOS
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            
+            dateInputs.forEach(input => {
+                // Add has-value class when date is selected
+                input.addEventListener('change', function() {
+                    if (this.value) {
+                        this.classList.add('has-value');
+                    } else {
+                        this.classList.remove('has-value');
+                    }
+                });
+                
+                // Check initial value
+                if (input.value) {
+                    input.classList.add('has-value');
+                }
+            });
+        });
+    </script>
     <!-- END: Scripts -->
 
 
