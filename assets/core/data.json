@@ -8,9 +8,9 @@
   "_comment_logo": "========== LOGO SETTINGS ==========",
   "_comment_logo_desc": "Logo images for light/dark themes",
   "logo": {
-    "light": "assets/images/logo-light.svg",
-    "dark": "assets/images/logo.svg",
-    "width": 85,
+    "light": "assets/brand-logo/logo-white.png",
+    "dark": "assets/brand-logo/logo-black.png",
+    "width": 35,
     "alt": "Brand Logo"
   },
 

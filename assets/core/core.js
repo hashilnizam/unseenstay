@@ -7,15 +7,29 @@ function renderTitle(data) {
 
 // ---------------- LOGO ----------------
 function renderLogo(data) {
-    if (document.getElementById("logo-light") && document.getElementById("logo-dark")) {
-        document.getElementById("logo-light").src = data.logo.light;
-        document.getElementById("logo-dark").src = data.logo.dark;
-        document.getElementById("logo-light").width = data.logo.width;
-        document.getElementById("logo-dark").width = data.logo.width;
-        document.getElementById("logo-light").alt = data.logo.alt;
-        document.getElementById("logo-dark").alt = data.logo.alt;
+    const logoLight = document.getElementById("logo-light");
+    const logoDark = document.getElementById("logo-dark");
+    const mainLogo = document.getElementById("main-logo"); // ✅ new main header logo
+
+    if (logoLight && logoDark) {
+        logoLight.src = data.logo.light;
+        logoDark.src = data.logo.dark;
+
+        logoLight.width = data.logo.width;
+        logoDark.width = data.logo.width;
+
+        logoLight.alt = data.logo.alt;
+        logoDark.alt = data.logo.alt;
+    }
+
+    // ✅ dynamically load main (white) logo for header
+    if (mainLogo) {
+        mainLogo.src = data.logo.light;
+        mainLogo.width = data.logo.width;
+        mainLogo.alt = data.logo.alt;
     }
 }
+
 
 // ---------------- NAVBAR ----------------
 function renderNavbar(data) {
