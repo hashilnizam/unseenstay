@@ -4,7 +4,6 @@
   "site": {
     "title": "Snow | One Page Agency"
   },
-
   "_comment_logo": "========== LOGO SETTINGS ==========",
   "_comment_logo_desc": "Logo images for light/dark themes",
   "logo": {
@@ -13,7 +12,6 @@
     "width": 35,
     "alt": "Brand Logo"
   },
-
   "_comment_navbar": "========== NAVIGATION MENU ==========",
   "_comment_navbar_desc": "Top navigation menu items",
   "navbar": {
@@ -28,16 +26,14 @@
       }
     ]
   },
-
   "_comment_header": "========== HERO SECTION ==========",
   "_comment_header_desc": "Main banner with video background and hero text",
   "header": {
     "backgroundVideo": "assets/banner/unseenstay.mp4",
-    "subtitle": "New Branding Agency",
-    "title": "We are about to change the way<br><em class='fw-400'>you publish on the web</em>",
-    "paragraph": "Your adventure starts here. Discover breathtaking destinations and unique travel experiences curated just for you."
+    "subtitle": "Unseenstay",
+    "title": "Design your dream stay<br><em class='fw-400'>crafted for comfort and style</em>",
+    "paragraph": "Experience thoughtfully designed stays that blend comfort, elegance, and unforgettable moments."
   },
-
   "_comment_about": "========== ABOUT SECTION ==========",
   "_comment_about_desc": "About us section content",
   "about": {
@@ -45,7 +41,6 @@
     "paragraph": "We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps. Clever use of technology and lean processes enable us to work faster and smarter.",
     "image": "assets/images/about-me-signature.png"
   },
-
   "_comment_destinations": "========== DESTINATIONS / PORTFOLIO ==========",
   "_comment_destinations_desc": "Main portfolio section with destination cards and sub-properties",
   "_comment_destinations_structure": "Structure: Main Cards -> SubCards (click main card to show subcards, click subcard to open modal)",
@@ -704,7 +699,6 @@
       }
     ]
   },
-
   "_comment_contact": "========== CONTACT SECTION ==========",
   "_comment_contact_desc": "Contact form and contact information",
   "_comment_contact_note": "First phone number is used for WhatsApp integration. All numbers displayed in contact section.",
@@ -718,7 +712,6 @@
     ],
     "email": "info@Example.com"
   },
-
   "_comment_footer": "========== FOOTER SECTION ==========",
   "_comment_footer_desc": "Social media links and footer text",
   "footer": {
