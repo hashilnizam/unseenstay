@@ -51,72 +51,20 @@
       {
         "id": "dest1",
         "image": "assets/images/portfolio-3-sm.jpg",
-        "name": "Maldives Atoll Retreat",
-        "category": "Tropical Island",
-        "cardHeading": "The Ultimate Ocean Escape",
+        "name": "Wayanad ",
+        "category": "Resorts",
+        "cardHeading": "nill",
         "cardParagraph": "Experience paradise with crystalline waters and vibrant coral reefs. Our overwater bungalows offer unparalleled privacy and luxury.",
         "subCards": [
-          {
-            "id": "sub1",
-            "images": [
-              "assets/images/portfolio-5-sm.jpg",
-              "assets/images/portfolio-8-sm.jpg",
-              "assets/images/portfolio-12-sm.jpg"
-            ],
-            "name": "kalpetta Bungalows",
-            "category": "Accommodation",
-            "location": "Valliyakolli, Wayanad",
-            "propertyDetails": {
-              "BHK": "10 BHK",
-              "Resort": "Luxury Beach Resort",
-              "Max Guests": "6 People",
-              "Area": "2500 sq ft"
-            },
-            "inclusions": [
-              "Luxe Swimming Pool",
-              "Breakfast (2 Varieties)",
-              "Welcome Drink",
-              "Campfire (Chargeable)",
-              "Stream Hiking",
-              "Table Soccer",
-              "Chess",
-              "Barbeque Facility",
-              "Free Wi-Fi",
-              "Badminton",
-              "Carroms",
-              "Swing",
-              "Kids Play Area"
-            ],
-            "checkInOut": {
-              "Check-in": "2:00 PM - 3:00 PM",
-              "Check-out": "11:00 AM - 11:30AM",
-              "bhk": "9"
-            },
-            "addOnExperiences": [
-              "Campfire with music (Extra charge)",
-              "Customized BBQ options",
-              "Guided Plantation / Nature Walk",
-              "Celebration Add-ons (Cake, Decoration, Candle Light Dinner)",
-              "Pick-up & Drop Facility"
-            ],
-            "nearbyAttractions": [
-              "Banasura Sagar Dam",
-              "Meenmutty Waterfalls",
-              "Komachi Park",
-              "Kuruva Dweep",
-              "Karlad Lake",
-              "Chembra Peak"
-            ]
-          },
           {
             "id": "sub2",
             "images": [
               "assets/images/portfolio-9-sm.jpg",
               "assets/images/portfolio-4-sm.jpg"
             ],
-            "name": "Private Yacht Tour",
-            "category": "Experience",
-            "location": "Maldives Lagoon",
+            "name": "#01 unseenstay wayanad",
+            "category": "premium resort",
+            "location": "wayanad,meppadi",
             "propertyDetails": {
               "Duration": "4 Hours",
               "Capacity": "8 People",
@@ -144,7 +92,11 @@
               "Dolphin Watching Spots",
               "Sandbank Islands",
               "Marine Reserve"
-            ]
+            ],
+            "description": "private cottages",
+            "Duration": {},
+            "Capacity": {},
+            "Type": {}
           },
           {
             "id": "sub3",
