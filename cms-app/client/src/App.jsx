@@ -7,12 +7,12 @@ import { useAuthStore } from './store/authStore';
 
 function PrivateRoute({ children }) {
   const { isAuthenticated } = useAuthStore();
-  return isAuthenticated ? children : <Navigate to="/admin/login" />;
+  return isAuthenticated ? children : <Navigate to="/login" />;
 }
 
 function App() {
   return (
-    <Router basename="/admin">
+    <Router>
       <Toaster position="top-right" />
       <Routes>
         <Route path="/login" element={<Login />} />
