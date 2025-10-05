@@ -116,11 +116,14 @@ function renderHeader(data) {
         // FIX: Setting zIndex to -1 ensures the video stays behind the overlay shade.
         videoElement.style.zIndex = '-1'; 
 
-        // Ensure the video is loaded and plays
-        videoElement.load();
-        videoElement.play().catch(error => {
-            // Handle potential autoplay blocking by browsers
-            console.warn("Video autoplay failed:", error);
+        // Add event listener for when video is ready to play
+        videoElement.addEventListener('canplaythrough', () => {
+            videoElement.play().catch(error => {
+                console.warn('Video autoplay failed:', error);
+                // Fallback: Set a static background image if video fails
+                videoElement.style.backgroundImage = 'url(assets/images/bg-header.jpg)'; // Add a fallback image path
+                videoElement.style.display = 'none'; // Hide video if it fails
+            });
         });
 
         // Update the text content for the other elements (assuming their IDs remain the same)
