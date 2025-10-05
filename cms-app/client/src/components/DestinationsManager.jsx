@@ -286,13 +286,24 @@ function DestinationsManager() {
   };
 
   const handleObjectFieldChange = (objectField, key, value) => {
-    setPropertyForm(prev => ({
-      ...prev,
-      [objectField]: {
-        ...(prev[objectField] || {}),
-        [key]: value
+    console.log('handleObjectFieldChange:', { objectField, key, value });
+    setPropertyForm(prev => {
+      const updatedObject = { ...(prev[objectField] || {}) };
+      
+      if (value === undefined) {
+        // Delete the key
+        delete updatedObject[key];
+      } else {
+        // Add or update the key
+        updatedObject[key] = value;
       }
-    }));
+      
+      console.log('Updated object:', updatedObject);
+      return {
+        ...prev,
+        [objectField]: updatedObject
+      };
+    });
   };
 
   if (loading) {
@@ -751,7 +762,7 @@ function PropertyFormModal({
           {/* Property Details, Inclusions, etc. - Simplified for space */}
           <PropertyDetailsSection 
             details={propertyForm.propertyDetails}
-            onChange={onObjectFieldChange}
+            onChange={(key, value) => onObjectFieldChange('propertyDetails', key, value)}
           />
 
           <ArrayFieldSection
@@ -759,6 +770,7 @@ function PropertyFormModal({
             items={propertyForm.inclusions}
             onAdd={(value) => onArrayFieldAdd('inclusions', value)}
             onRemove={(index) => onArrayFieldRemove('inclusions', index)}
+            onUpdate={(items) => onFormChange('inclusions', items)}
             placeholder="e.g., Free Wi-Fi, Breakfast"
           />
 
@@ -773,6 +785,7 @@ function PropertyFormModal({
             items={propertyForm.addOnExperiences}
             onAdd={(value) => onArrayFieldAdd('addOnExperiences', value)}
             onRemove={(index) => onArrayFieldRemove('addOnExperiences', index)}
+            onUpdate={(items) => onFormChange('addOnExperiences', items)}
             placeholder="e.g., Campfire with music"
           />
 
@@ -781,6 +794,7 @@ function PropertyFormModal({
             items={propertyForm.nearbyAttractions}
             onAdd={(value) => onArrayFieldAdd('nearbyAttractions', value)}
             onRemove={(index) => onArrayFieldRemove('nearbyAttractions', index)}
+            onUpdate={(items) => onFormChange('nearbyAttractions', items)}
             placeholder="e.g., Banasura Sagar Dam"
           />
         </div>
@@ -810,13 +824,47 @@ function PropertyFormModal({
 function PropertyDetailsSection({ title = "Property Details", details, onChange }) {
   const [newKey, setNewKey] = useState('');
   const [newValue, setNewValue] = useState('');
+  const [editingKeys, setEditingKeys] = useState({});
+
+  console.log('PropertyDetailsSection render:', { title, details });
 
   const handleAdd = () => {
     if (newKey && newValue) {
+      console.log('Adding new property:', { newKey, newValue });
       onChange(newKey, newValue);
       setNewKey('');
       setNewValue('');
     }
+  };
+
+  const handleDelete = (keyToDelete) => {
+    console.log('Deleting property:', keyToDelete);
+    onChange(keyToDelete, undefined);
+  };
+
+  const handleKeyChange = (oldKey, newKeyValue) => {
+    console.log('Key changing:', { oldKey, newKeyValue });
+    setEditingKeys(prev => ({ ...prev, [oldKey]: newKeyValue }));
+  };
+
+  const handleKeyBlur = (oldKey, value) => {
+    const newKey = editingKeys[oldKey];
+    if (newKey && newKey !== oldKey) {
+      console.log('Key blur - renaming:', { oldKey, newKey });
+      // Delete old key and add new key
+      onChange(oldKey, undefined);
+      onChange(newKey, value);
+      setEditingKeys(prev => {
+        const updated = { ...prev };
+        delete updated[oldKey];
+        return updated;
+      });
+    }
+  };
+
+  const handleValueChange = (key, newValue) => {
+    console.log('Value changing:', { key, newValue });
+    onChange(key, newValue);
   };
 
   return (
@@ -827,16 +875,25 @@ function PropertyDetailsSection({ title = "Property Details", details, onChange 
         <div key={key} className="flex items-center gap-2">
           <input
             type="text"
-            value={key}
-            readOnly
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
+            value={editingKeys[key] !== undefined ? editingKeys[key] : key}
+            onChange={(e) => handleKeyChange(key, e.target.value)}
+            onBlur={() => handleKeyBlur(key, value)}
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Key (e.g., BHK)"
           />
           <input
             type="text"
             value={value}
-            onChange={(e) => onChange(key, e.target.value)}
+            onChange={(e) => handleValueChange(key, e.target.value)}
             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Value"
           />
+          <button
+            onClick={() => handleDelete(key)}
+            className="p-2 text-red-500 hover:bg-red-50 rounded-lg"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
         </div>
       ))}
 
@@ -845,6 +902,7 @@ function PropertyDetailsSection({ title = "Property Details", details, onChange 
           type="text"
           value={newKey}
           onChange={(e) => setNewKey(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
           placeholder="Key (e.g., BHK)"
           className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -852,6 +910,7 @@ function PropertyDetailsSection({ title = "Property Details", details, onChange 
           type="text"
           value={newValue}
           onChange={(e) => setNewValue(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
           placeholder="Value (e.g., 3 BHK)"
           className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
@@ -866,13 +925,23 @@ function PropertyDetailsSection({ title = "Property Details", details, onChange 
   );
 }
 
-function ArrayFieldSection({ title, items, onAdd, onRemove, placeholder }) {
+function ArrayFieldSection({ title, items, onAdd, onRemove, onUpdate, placeholder }) {
   const [newItem, setNewItem] = useState('');
 
   const handleAdd = () => {
     if (newItem.trim()) {
       onAdd(newItem);
       setNewItem('');
+    }
+  };
+
+  const handleUpdate = (index, value) => {
+    // Update existing item
+    const updatedItems = [...(items || [])];
+    updatedItems[index] = value;
+    // Call parent with the full updated array
+    if (onUpdate) {
+      onUpdate(updatedItems);
     }
   };
 
@@ -887,8 +956,9 @@ function ArrayFieldSection({ title, items, onAdd, onRemove, placeholder }) {
               <input
                 type="text"
                 value={item}
-                readOnly
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
+                onChange={(e) => handleUpdate(index, e.target.value)}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder={placeholder}
               />
               <button
                 onClick={() => onRemove(index)}
