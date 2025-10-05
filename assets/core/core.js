@@ -1406,7 +1406,7 @@ function renderFooter(data) {
 // ---------------- MAIN LOADER ----------------
 async function loadData() {
     try {
-        const response = await fetch("assets/core/data.json");
+        const response = await fetch("assets/data/content.json");
         const data = await response.json();
 
         renderTitle(data);

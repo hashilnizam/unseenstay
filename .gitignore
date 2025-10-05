@@ -1,0 +1,33 @@
+###########################################
+# UnseenStay Git Ignore - Minimal Secrets
+# Push everything except secrets/credentials
+###########################################
+
+# Environment variables (never commit)
+.env
+.env.*
+*/.env
+cms-app/.env
+
+# Credentials/keys (never commit)
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cert
+*.keystore
+*.asc
+*.gpg
+.git-credentials
+.npmrc
+
+# Editor/OS noise (safe to ignore)
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

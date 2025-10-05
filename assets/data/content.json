@@ -1,19 +1,29 @@
 {
-  "_comment_site": "========== SITE CONFIGURATION ==========",
-  "_comment_site_desc": "Basic site metadata and title",
   "site": {
-    "title": "Snow | One Page Agency"
+    "title": "UnseenStay - Luxury Resort Destinations & Vacation Rentals",
+    "description": "Discover luxury resort destinations worldwide. Book exclusive stays, villas, and unique travel experiences. From tropical islands to mountain retreats.",
+    "keywords": [
+      "luxury resorts",
+      "vacation rentals",
+      "travel destinations",
+      "villas",
+      "exclusive stays",
+      "resort booking",
+      "luxury accommodation",
+      "travel experiences"
+    ],
+    "url": "https://unseenstay.com",
+    "author": "UnseenStay Team",
+    "language": "en",
+    "region": "IN",
+    "ogImage": "assets/images/og-image.jpg"
   },
-  "_comment_logo": "========== LOGO SETTINGS ==========",
-  "_comment_logo_desc": "Logo images for light/dark themes",
   "logo": {
     "light": "assets/brand-logo/logo-white.png",
     "dark": "assets/brand-logo/logo-black.png",
     "width": 35,
     "alt": "Brand Logo"
   },
-  "_comment_navbar": "========== NAVIGATION MENU ==========",
-  "_comment_navbar_desc": "Top navigation menu items",
   "navbar": {
     "menu": [
       {
@@ -26,31 +36,17 @@
       }
     ]
   },
-  "_comment_header": "========== HERO SECTION ==========",
-  "_comment_header_desc": "Main banner with video background and hero text",
   "header": {
     "backgroundVideo": "assets/banner/unseenstay.mp4",
     "subtitle": "Unseenstay",
     "title": "Design your dream stay<br><em class='fw-400'>crafted for comfort and style</em>",
     "paragraph": "Experience thoughtfully designed stays that blend comfort, elegance, and unforgettable moments."
   },
-  "_comment_about": "========== ABOUT SECTION ==========",
-  "_comment_about_desc": "About us section content",
-  "about": {
-    "heading": "About Our Agency",
-    "paragraph": "We are a new design studio based in USA. We have over 20 years of combined experience, and know a thing or two about designing websites and mobile apps. Clever use of technology and lean processes enable us to work faster and smarter.",
-    "image": "assets/images/about-me-signature.png"
-  },
-  "_comment_destinations": "========== DESTINATIONS / PORTFOLIO ==========",
-  "_comment_destinations_desc": "Main portfolio section with destination cards and sub-properties",
-  "_comment_destinations_structure": "Structure: Main Cards -> SubCards (click main card to show subcards, click subcard to open modal)",
   "destinations": {
     "intro": {
       "heading": "Luxury Resort Destinations",
       "paragraph": "Explore our curated collection of exclusive resorts and unique travel experiences, from tropical escapes to mountain retreats. Donec orci sem, pretium ac dolor et, faucibus faucibus mauris. Etiam, pellentesque faucibus. Vestibulum gravida volutpat ipsum non ultrices."
     },
-    "_comment_cards": "---------- MAIN DESTINATION CARDS ----------",
-    "_comment_cards_desc": "Each card represents a main destination. Click to reveal subCards below",
     "cards": [
       {
         "id": "dest1",
@@ -59,21 +55,19 @@
         "category": "Tropical Island",
         "cardHeading": "The Ultimate Ocean Escape",
         "cardParagraph": "Experience paradise with crystalline waters and vibrant coral reefs. Our overwater bungalows offer unparalleled privacy and luxury.",
-        "_comment_subCards": "--- SubCards: Properties/Rooms within this destination (shown when main card is clicked) ---",
         "subCards": [
           {
-            "_comment": "SubCard properties: id, images (array), name, category, location, propertyDetails, inclusions, checkInOut, addOnExperiences, nearbyAttractions",
             "id": "sub1",
             "images": [
               "assets/images/portfolio-5-sm.jpg",
               "assets/images/portfolio-8-sm.jpg",
               "assets/images/portfolio-12-sm.jpg"
             ],
-            "name": "Overwater Bungalows",
+            "name": "kalpetta Bungalows",
             "category": "Accommodation",
             "location": "Valliyakolli, Wayanad",
             "propertyDetails": {
-              "BHK": "3 BHK",
+              "BHK": "10 BHK",
               "Resort": "Luxury Beach Resort",
               "Max Guests": "6 People",
               "Area": "2500 sq ft"
@@ -95,7 +89,8 @@
             ],
             "checkInOut": {
               "Check-in": "2:00 PM - 3:00 PM",
-              "Check-out": "11:00 AM - 11:30AM"
+              "Check-out": "11:00 AM - 11:30AM",
+              "bhk": "9"
             },
             "addOnExperiences": [
               "Campfire with music (Extra charge)",
@@ -696,12 +691,18 @@
             ]
           }
         ]
+      },
+      {
+        "id": "dest1759658360155",
+        "name": "Rattakolly Resort",
+        "category": "India",
+        "image": "assets/images/Screenshot-(2)-1759658381943-195223022.png",
+        "cardHeading": "Japan",
+        "cardParagraph": "USA",
+        "subCards": []
       }
     ]
   },
-  "_comment_contact": "========== CONTACT SECTION ==========",
-  "_comment_contact_desc": "Contact form and contact information",
-  "_comment_contact_note": "First phone number is used for WhatsApp integration. All numbers displayed in contact section.",
   "contact": {
     "heading": "Contact Info:",
     "info": "Praesent interdum congue mauris, et fringilla lacus pel vitae. Quisque nisl mauris, aliquam eu ultrices vel, esse vitae sapien at imperdiet risus. Quisque cursus risus id. fermentum, in auctor quam consectetur.",
@@ -712,27 +713,24 @@
     ],
     "email": "info@Example.com"
   },
-  "_comment_footer": "========== FOOTER SECTION ==========",
-  "_comment_footer_desc": "Social media links and footer text",
   "footer": {
     "social": [
       {
         "platform": "twitter",
-        "url": "https://twitter.com/nkdevv"
+        "url": "https://twitter.com/unseenstay",
+        "icon": ""
       },
       {
         "platform": "facebook",
-        "url": "https://www.facebook.com/unvabdesign/"
-      },
-      {
-        "platform": "dribbble",
-        "url": "https://dribbble.com/_nK"
+        "url": "https://www.facebook.com/unseenstay",
+        "icon": ""
       },
       {
         "platform": "instagram",
-        "url": "https://www.instagram.com/unvab/"
+        "url": "https://www.instagram.com/unseenstay",
+        "icon": ""
       }
     ],
-    "text": "2016 &copy; Design by Unvab. Code by nK"
+    "text": "© {year} UnseenStay. All rights reserved."
   }
 }
