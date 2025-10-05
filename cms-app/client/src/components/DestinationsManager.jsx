@@ -56,7 +56,7 @@ function DestinationsManager() {
     }
   };
 
-  const handleImageUpload = async (files, propertyName = null, isDestination = false) => {
+  const handleImageUpload = async (files) => {
     if (!files || files.length === 0) return [];
 
     setUploadingImages(true);
@@ -66,19 +66,8 @@ function DestinationsManager() {
       for (const file of files) {
         const formData = new FormData();
         formData.append('file', file);
-        
-        // Create folder based on context
-        if (isDestination) {
-          // Destination main images go to images folder
-          formData.append('folder', 'images');
-        } else if (propertyName) {
-          // Property images go to property-specific folder
-          const folderName = propertyName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-          formData.append('folder', `images/properties/${folderName}`);
-        } else {
-          // Default to images folder
-          formData.append('folder', 'images');
-        }
+        // All images saved to assets/images folder
+        formData.append('folder', 'images');
 
         const response = await api.post('/upload', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
@@ -557,7 +546,7 @@ function DestinationsManager() {
                   onChange={async (e) => {
                     const file = e.target.files[0];
                     if (file) {
-                      const paths = await handleImageUpload([file], null, true);
+                      const paths = await handleImageUpload([file]);
                       if (paths.length > 0) {
                         setDestinationForm(prev => ({ ...prev, image: paths[0] }));
                       }
@@ -723,9 +712,7 @@ function PropertyFormModal({
                 accept="image/*"
                 onChange={async (e) => {
                   const files = Array.from(e.target.files);
-                  // Use property name for folder if available
-                  const propertyName = propertyForm.name || 'temp';
-                  const paths = await onImageUpload(files, propertyName);
+                  const paths = await onImageUpload(files);
                   if (paths.length > 0) {
                     onFormChange('images', [...propertyForm.images, ...paths]);
                   }

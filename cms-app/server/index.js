@@ -19,10 +19,7 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
-// Serve static assets from main website
-app.use('/assets', express.static(path.join(__dirname, '../../assets')));
-
-// Serve main website static files
+// Serve static files from main website root (includes assets folder)
 app.use(express.static(path.join(__dirname, '../..')));
 
 // Serve CMS client build (production)

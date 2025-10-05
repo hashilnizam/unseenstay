@@ -10,9 +10,8 @@ const ASSETS_PATH = path.join(__dirname, process.env.ASSETS_PATH || '../../../as
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: async (req, file, cb) => {
-    // Support both uploadType and folder parameters
-    const folder = req.body.folder || req.body.uploadType || 'images';
-    const uploadPath = path.join(ASSETS_PATH, folder);
+    // Always save to assets/images folder only
+    const uploadPath = path.join(ASSETS_PATH, 'images');
     
     try {
       await fs.mkdir(uploadPath, { recursive: true });
@@ -54,8 +53,7 @@ router.post('/', authMiddleware, upload.single('file'), async (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const folder = req.body.folder || req.body.uploadType || 'images';
-    const relativePath = `assets/${folder}/${req.file.filename}`;
+    const relativePath = `assets/images/${req.file.filename}`;
 
     res.json({
       success: true,
@@ -81,8 +79,7 @@ router.post('/single', authMiddleware, upload.single('file'), async (req, res) =
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const folder = req.body.folder || req.body.uploadType || 'images';
-    const relativePath = `assets/${folder}/${req.file.filename}`;
+    const relativePath = `assets/images/${req.file.filename}`;
 
     res.json({
       success: true,
@@ -108,11 +105,10 @@ router.post('/multiple', authMiddleware, upload.array('files', 10), async (req, 
       return res.status(400).json({ error: 'No files uploaded' });
     }
 
-    const uploadType = req.body.uploadType || 'images';
     const files = req.files.map(file => ({
       filename: file.filename,
       originalName: file.originalname,
-      path: `assets/${uploadType}/${file.filename}`,
+      path: `assets/images/${file.filename}`,
       size: file.size,
       mimetype: file.mimetype
     }));
