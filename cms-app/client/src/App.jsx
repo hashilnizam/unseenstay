@@ -12,7 +12,7 @@ function PrivateRoute({ children }) {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/admin">
       <Toaster position="top-right" />
       <Routes>
         <Route path="/login" element={<Login />} />
