@@ -51,8 +51,6 @@ unseenstay/                                    # Git Repository
 - `.env` file configured with correct paths
 - Points to `../assets/data/content.json`
 - Credentials set:
-  - Username: `hashilnizam`
-  - Password: `unseenstay@admin`
 
 ### 3. ✅ Git Configuration
 - `.gitignore` properly excludes:
