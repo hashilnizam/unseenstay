@@ -82,9 +82,9 @@ function ContentEditor() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-800">Content Editor</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Content Editor</h1>
         <p className="text-gray-600 mt-2">Manage your website content sections</p>
       </div>
 
@@ -169,21 +169,21 @@ function SiteSection({ data, onSave, onChange, saving }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-100 rounded-lg">
             <Globe className="w-6 h-6 text-blue-600" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-gray-800">SEO & Site Configuration</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-800">SEO & Site Configuration</h2>
             <p className="text-sm text-gray-600">Optimize your website for search engines</p>
           </div>
         </div>
         <button
           onClick={handleSave}
           disabled={saving}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50 w-full sm:w-auto"
         >
           <Save className="w-4 h-4" />
           Save
@@ -249,14 +249,14 @@ function SiteSection({ data, onSave, onChange, saving }) {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
             <input
               type="text"
               value={localData.language || 'en'}
               onChange={(e) => setLocalData({ ...localData, language: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="en"
             />
           </div>
@@ -267,7 +267,7 @@ function SiteSection({ data, onSave, onChange, saving }) {
               type="text"
               value={localData.region || ''}
               onChange={(e) => setLocalData({ ...localData, region: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="IN"
             />
           </div>

@@ -117,29 +117,28 @@ function GitManager() {
   const hasChanges = status?.modified?.length > 0 || status?.created?.length > 0 || status?.deleted?.length > 0;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-800">Git Manager</h1>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Git Manager</h1>
         <button
           onClick={fetchGitData}
-          className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+          className="flex items-center justify-center gap-2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition w-full sm:w-auto"
         >
           <RefreshCw className="w-4 h-4" />
-          Refresh
         </button>
       </div>
 
       {/* Status */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-4">
           <GitBranch className="w-5 h-5 text-primary-500" />
-          <h2 className="text-xl font-semibold text-gray-800">Repository Status</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Repository Status</h2>
         </div>
 
         <div className="space-y-4">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <span className="text-sm font-medium text-gray-600">Current Branch:</span>
-            <span className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">
+            <span className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium w-fit">
               {status?.current || 'N/A'}
             </span>
           </div>
@@ -202,10 +201,10 @@ function GitManager() {
 
       {/* Commit */}
       {hasChanges && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
             <GitCommit className="w-5 h-5 text-primary-500" />
-            <h2 className="text-xl font-semibold text-gray-800">Commit Changes</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Commit Changes</h2>
           </div>
 
           <div className="space-y-4">
@@ -222,11 +221,11 @@ function GitManager() {
               />
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleCommit}
                 disabled={processing || !commitMessage.trim()}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <GitCommit className="w-4 h-4" />
                 {processing ? 'Processing...' : 'Commit'}
@@ -235,7 +234,7 @@ function GitManager() {
               <button
                 onClick={handleCommitAndPush}
                 disabled={processing || !commitMessage.trim()}
-                className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <PushIcon className="w-4 h-4" />
                 {processing ? 'Processing...' : 'Commit & Push'}
@@ -246,13 +245,13 @@ function GitManager() {
       )}
 
       {/* Push/Pull */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Sync with Remote</h2>
-        <div className="flex gap-3">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Sync with Remote</h2>
+        <div className="flex flex-col sm:flex-row gap-3">
           <button
             onClick={handlePush}
             disabled={processing}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
           >
             <PushIcon className="w-4 h-4" />
             {processing ? 'Processing...' : 'Push'}
@@ -261,7 +260,7 @@ function GitManager() {
           <button
             onClick={handlePull}
             disabled={processing}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition disabled:opacity-50"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition disabled:opacity-50"
           >
             <Download className="w-4 h-4" />
             {processing ? 'Processing...' : 'Pull'}
@@ -270,8 +269,8 @@ function GitManager() {
       </div>
 
       {/* Commit History */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Recent Commits</h2>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Recent Commits</h2>
         <div className="space-y-3">
           {commits.length === 0 ? (
             <p className="text-gray-500 text-sm">No commits found</p>
@@ -281,12 +280,12 @@ function GitManager() {
                 key={index}
                 className="border-l-4 border-primary-500 pl-4 py-2 hover:bg-gray-50 transition"
               >
-                <p className="text-sm font-medium text-gray-800">{commit.message}</p>
-                <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
-                  <span>{commit.author_name}</span>
-                  <span>•</span>
-                  <span>{new Date(commit.date).toLocaleString()}</span>
-                  <span>•</span>
+                <p className="text-sm font-medium text-gray-800 break-words">{commit.message}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs text-gray-500">
+                  <span className="break-words">{commit.author_name}</span>
+                  <span className="hidden sm:inline">•</span>
+                  <span className="break-words">{new Date(commit.date).toLocaleString()}</span>
+                  <span className="hidden sm:inline">•</span>
                   <span className="font-mono">{commit.hash.substring(0, 7)}</span>
                 </div>
               </div>

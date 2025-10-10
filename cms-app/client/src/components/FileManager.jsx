@@ -95,13 +95,13 @@ function FileManager() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-800">File Manager</h1>
-        <div className="flex gap-2">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">File Manager</h1>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <button
             onClick={fetchFiles}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition"
           >
             <RefreshCw className="w-4 h-4" />
             Refresh
@@ -109,7 +109,7 @@ function FileManager() {
           <button
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition disabled:opacity-50"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition disabled:opacity-50"
           >
             <Upload className="w-4 h-4" />
             {uploading ? 'Uploading...' : 'Upload Files'}
@@ -128,10 +128,10 @@ function FileManager() {
 
       {/* Type selector */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <button
             onClick={() => setUploadType('images')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+            className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition ${
               uploadType === 'images'
                 ? 'bg-primary-500 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -142,7 +142,7 @@ function FileManager() {
           </button>
           <button
             onClick={() => setUploadType('videos')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+            className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition ${
               uploadType === 'videos'
                 ? 'bg-primary-500 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -172,7 +172,7 @@ function FileManager() {
           <p className="text-gray-600">Upload some files to get started</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {files.map((file, index) => (
             <div
               key={index}
@@ -193,23 +193,24 @@ function FileManager() {
                   <Video className="w-12 h-12 text-gray-400" />
                 )}
               </div>
-              <div className="p-4">
+              <div className="p-3 sm:p-4">
                 <p className="text-sm font-medium text-gray-800 truncate mb-1">
                   {file.name}
                 </p>
                 <p className="text-xs text-gray-500 mb-3">{formatFileSize(file.size)}</p>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <button
                     onClick={() => copyToClipboard(file.path)}
-                    className="flex-1 px-3 py-1.5 text-xs font-medium text-primary-600 bg-primary-50 rounded hover:bg-primary-100 transition"
+                    className="flex-1 px-3 py-1.5 text-xs font-medium text-primary-600 bg-primary-50 rounded hover:bg-primary-100 transition text-center"
                   >
                     Copy Path
                   </button>
                   <button
                     onClick={() => handleDelete(file.path)}
-                    className="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded hover:bg-red-100 transition"
+                    className="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded hover:bg-red-100 transition flex items-center justify-center sm:w-auto w-full"
                   >
                     <Trash2 className="w-4 h-4" />
+                    <span className="ml-1 sm:hidden">Delete</span>
                   </button>
                 </div>
               </div>

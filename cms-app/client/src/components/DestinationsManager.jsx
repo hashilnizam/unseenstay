@@ -315,15 +315,15 @@ function DestinationsManager() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Destinations & Properties</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Destinations & Properties</h1>
           <p className="text-gray-600 mt-2">Manage your destinations and their properties</p>
         </div>
         <button
           onClick={handleAddDestination}
-          className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition shadow-md"
+          className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition shadow-md w-full sm:w-auto"
         >
           <Plus className="w-5 h-5" />
           Add Destination
@@ -335,59 +335,60 @@ function DestinationsManager() {
         {destinations.map((destination) => (
           <div key={`${destination.id}-${destination.image}`} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             {/* Destination Header */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 border-b border-gray-200">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-4 flex-1">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6 border-b border-gray-200">
+              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-start gap-4 flex-1">
                   {destination.image && (
                     <img 
                       src={`/${destination.image}`} 
                       alt={destination.name}
-                      className="w-24 h-24 object-cover rounded-lg shadow-sm"
+                      className="w-full sm:w-24 h-48 sm:h-24 object-cover rounded-lg shadow-sm"
                     />
                   )}
-                  <div className="flex-1">
-                    <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                      <MapPin className="w-6 h-6 text-blue-500" />
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center gap-2 break-words">
+                      <MapPin className="w-5 sm:w-6 h-5 sm:h-6 text-blue-500 flex-shrink-0" />
                       {destination.name}
                     </h2>
                     <p className="text-sm text-gray-600 mt-1">{destination.category}</p>
                     {destination.cardHeading && (
-                      <p className="text-md font-semibold text-gray-700 mt-2">{destination.cardHeading}</p>
+                      <p className="text-sm sm:text-md font-semibold text-gray-700 mt-2 break-words">{destination.cardHeading}</p>
                     )}
                     {destination.cardParagraph && (
-                      <p className="text-gray-600 mt-2">{destination.cardParagraph}</p>
+                      <p className="text-gray-600 mt-2 text-sm break-words">{destination.cardParagraph}</p>
                     )}
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
                   <button
                     onClick={() => handleEditDestination(destination)}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+                    className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition text-sm"
                   >
                     <Edit className="w-4 h-4" />
-                    Edit
+                    <span className="sm:inline">Edit</span>
                   </button>
                   <button
                     onClick={() => handleAddProperty(destination)}
-                    className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                    className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition text-sm"
                   >
                     <Plus className="w-4 h-4" />
-                    Add Property
+                    <span className="sm:inline">Add Property</span>
                   </button>
                   <button
                     onClick={() => handleDeleteDestination(destination.id)}
-                    className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                    className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm"
                   >
                     <Trash2 className="w-4 h-4" />
+                    <span className="sr-only">Delete</span>
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Properties Grid */}
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {destination.subCards && destination.subCards.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {destination.subCards.map((property) => (
                     <div key={property.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
                       {/* Property Images */}
@@ -395,19 +396,19 @@ function DestinationsManager() {
                         <img 
                           src={`/${property.images[0]}`} 
                           alt={property.name}
-                          className="w-full h-40 object-cover rounded-lg mb-3"
+                          className="w-full h-32 sm:h-40 object-cover rounded-lg mb-3"
                         />
                       )}
                       
                       {/* Property Info */}
                       <div className="flex items-start justify-between mb-2">
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-800">{property.name}</h3>
-                          <p className="text-sm text-gray-600">{property.category}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-800 break-words">{property.name}</h3>
+                          <p className="text-sm text-gray-600 break-words">{property.category}</p>
                           {property.location && (
-                            <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                              <MapPin className="w-3 h-3" />
-                              {property.location}
+                            <p className="text-xs text-gray-500 mt-1 flex items-center gap-1 break-words">
+                              <MapPin className="w-3 h-3 flex-shrink-0" />
+                              <span className="truncate">{property.location}</span>
                             </p>
                           )}
                         </div>
@@ -417,16 +418,16 @@ function DestinationsManager() {
                       {property.propertyDetails && (
                         <div className="text-xs text-gray-600 mb-3 space-y-1">
                           {Object.entries(property.propertyDetails).slice(0, 3).map(([key, value]) => (
-                            <div key={key} className="flex justify-between">
-                              <span className="font-medium">{key}:</span>
-                              <span>{value}</span>
+                            <div key={key} className="flex justify-between gap-2">
+                              <span className="font-medium truncate">{key}:</span>
+                              <span className="truncate text-right">{value}</span>
                             </div>
                           ))}
                         </div>
                       )}
 
                       {/* Actions */}
-                      <div className="flex gap-2 mt-3">
+                      <div className="flex flex-col sm:flex-row gap-2 mt-3">
                         <button
                           onClick={() => handleEditProperty(destination, property)}
                           className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition text-sm"
@@ -436,9 +437,10 @@ function DestinationsManager() {
                         </button>
                         <button
                           onClick={() => handleDeleteProperty(destination, property.id)}
-                          className="flex items-center justify-center gap-1 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm"
+                          className="flex items-center justify-center gap-1 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm sm:w-auto w-full"
                         >
                           <Trash2 className="w-4 h-4" />
+                          <span className="sm:hidden">Delete</span>
                         </button>
                       </div>
                     </div>
