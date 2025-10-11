@@ -26,61 +26,65 @@ if ! command_exists node || ! command_exists npm; then
     fi
 fi
 
-# Install root dependencies
-echo -e "${BLUE}[1/4] Installing root dependencies...${NC}"
+echo -e "${BLUE}[1/4] Installing backend dependencies...${NC}"
 npm install
 if [ $? -ne 0 ]; then
-    echo -e "${RED}❌ Failed to install root dependencies${NC}"
+    echo -e "${RED}❌ Failed to install backend dependencies${NC}"
     exit 1
 fi
+echo -e "${GREEN}✓ Backend dependencies installed${NC}\n"
 
 # Install client dependencies
 if [ -d "client" ]; then
-    echo -e "${BLUE}[2/4] Installing client dependencies...${NC}"
+    echo -e "${BLUE}[2/4] Installing frontend dependencies...${NC}"
     cd client
     npm install
     if [ $? -ne 0 ]; then
-        echo -e "${RED}❌ Failed to install client dependencies${NC}"
+        echo -e "${RED}❌ Failed to install frontend dependencies${NC}"
         exit 1
-    }
+    fi
     
     # Build the client
-    echo -e "${BLUE}[3/4] Building client...${NC}"
+    echo -e "\n${BLUE}[3/4] Building frontend...${NC}"
     npm run build
     if [ $? -ne 0 ]; then
-        echo -e "${RED}❌ Failed to build client${NC}"
+        echo -e "${RED}❌ Failed to build frontend${NC}"
         exit 1
-    }
+    fi
     cd ..
+    echo -e "${GREEN}✓ Frontend dependencies installed and built${NC}\n"
 else
-    echo -e "${BLUE}⚠️  Client directory not found, skipping client setup${NC}"
+    echo -e "${BLUE}⚠️  Client directory not found, skipping frontend setup${NC}"
 fi
 
 # Setup environment file
+echo -e "${BLUE}[4/4] Setting up environment file...${NC}"
 if [ ! -f ".env" ]; then
-    echo -e "${BLUE}[4/4] Creating .env file...${NC}"
     if [ -f ".env.example" ]; then
         cp .env.example .env
-        echo -e "✅ Created .env file from template"
-        echo -e "\n${GREEN}IMPORTANT: Please edit .env file with your settings:${NC}"
-        echo "  - Change JWT_SECRET to a random string"
-        echo "  - Update GIT_USER_NAME and GIT_USER_EMAIL"
-        echo "  - Add GITHUB_TOKEN for Git integration"
+        echo -e "${GREEN}✓ Created .env file from template"
     else
-        echo -e "${RED}❌ .env.example not found, please create it manually${NC}"
+        echo -e "${YELLOW}⚠️  .env.example not found, creating empty .env file"
         touch .env
     fi
 else
-    echo -e "${BLUE}✓ .env file already exists${NC}"
+    echo -e "${GREEN}✓ .env file already exists"
 fi
 
 echo -e "\n${GREEN}========================================${NC}"
-echo -e "${GREEN}  Setup completed successfully!${NC}"
+echo -e "${GREEN}  Setup complete!"
 echo -e "${GREEN}========================================${NC}"
-echo -e "\n${BLUE}Next steps:${NC}"
+echo -e "\n${BLUE}Next Steps:${NC}"
 echo "1. Edit .env file with your configuration"
-echo "2. Start the development server:"
-echo "   $ npm run dev"
-echo -e "\n${GREEN}Or in production:${NC}"
-echo "   $ npm start"
-echo -e "\n${GREEN}========================================${NC}"
+echo "   - Change JWT_SECRET to a random string"
+echo "   - Update GIT_USER_NAME and GIT_USER_EMAIL"
+echo "   - Add GITHUB_TOKEN for Git integration"
+echo "2. Run: npm run dev"
+echo "3. Open: http://localhost:3000"
+echo "4. Login with: admin / admin123"
+echo -e "\n${GREEN}For detailed instructions, see README.md${NC}"
+echo -e "${GREEN}========================================${NC}"
+
+echo -n "Press any key to continue..."
+read -n 1 -s -r
+echo
