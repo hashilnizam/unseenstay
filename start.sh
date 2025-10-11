@@ -54,6 +54,9 @@ if [ ! -d "node_modules" ]; then
     fi
 fi
 
+# Create logs directory if it doesn't exist
+mkdir -p logs
+
 # Start the application
 echo -e "\n${GREEN}🚀 Starting UnseenStay Application...${NC}"
 echo -e "\n${BLUE}Available Services:${NC}"
@@ -63,17 +66,50 @@ echo -e "\n${GREEN}Press Ctrl+C to stop the servers${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo
 
-# Start CMS server in the background
-cd cms-app
-npm start &
-
-# Go back to root directory
-cd ..
+# Check if cms-app exists and start it
+if [ -d "cms-app" ]; then
+    echo -e "${BLUE}Starting CMS Server...${NC}"
+    cd cms-app
+    # Install CMS dependencies if needed
+    if [ ! -d "node_modules" ]; then
+        echo -e "${BLUE}Installing CMS dependencies...${NC}"
+        npm install
+    fi
+    # Use nohup to prevent termination when the terminal closes
+    nohup npm start > ../logs/cms.log 2>&1 &
+    CMS_PID=$!
+    echo -e "✅ CMS Server started (PID: $CMS_PID) - Logs: logs/cms.log"
+    cd ..
+else
+    echo -e "${BLUE}⚠️  cms-app directory not found, skipping CMS server${NC}"
+fi
 
 # Start main application
-npm start
+echo -e "\n${BLUE}Starting Main Application...${NC}"
+nohup npm start > logs/app.log 2>&1 &
+APP_PID=$!
+echo -e "✅ Main Application started (PID: $APP_PID) - Logs: logs/app.log"
 
-# If using PM2, you can uncomment these lines:
-# echo -e "${BLUE}Starting services with PM2...${NC}"
-# pm2 start ecosystem.config.js
-# pm2 logs 0
+# Cleanup function
+cleanup() {
+    echo -e "\n${GREEN}Shutting down services...${NC}"
+    if [ ! -z "$CMS_PID" ]; then
+        echo -n "Stopping CMS Server... "
+        kill $CMS_PID 2>/dev/null
+        echo "✅"
+    fi
+    if [ ! -z "$APP_PID" ]; then
+        echo -n "Stopping Main Application... "
+        kill $APP_PID 2>/dev/null
+        echo "✅"
+    fi
+    exit 0
+}
+
+# Set up trap to catch Ctrl+C
+trap cleanup INT
+
+# Keep the script running and show logs
+echo -e "\n${GREEN}📝 Tailing logs (Ctrl+C to stop all services)...${NC}"
+echo -e "${GREEN}========================================${NC}"
+tail -f logs/*.log
