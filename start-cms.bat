@@ -19,4 +19,11 @@ echo ========================================
 echo.
 
 cd cms-app
-node server/index.js
+if exist server\index.js (
+    node server/index.js
+) else (
+    echo Error: Could not find server/index.js
+    echo Current directory: %cd%
+    echo.
+    pause
+)

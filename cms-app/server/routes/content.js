@@ -5,6 +5,49 @@ const authMiddleware = require('../middleware/auth');
 const router = express.Router();
 
 const DATA_JSON_PATH = path.join(__dirname, process.env.DATA_JSON_PATH || '../../../assets/core/data.json');
+const DESTINATIONS_PATH = path.join(__dirname, '../../../assets/data/destinations');
+
+// Helper function to read JSON file with error handling
+async function readJsonFile(filePath) {
+  try {
+    const data = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error(`Error reading file ${filePath}:`, error);
+    return null;
+  }
+}
+
+// Get all destinations with their properties
+router.get('/destinations', authMiddleware, async (req, res) => {
+  try {
+    const files = await fs.readdir(DESTINATIONS_PATH);
+    const destinations = [];
+
+    for (const file of files) {
+      if (file.endsWith('.json')) {
+        const filePath = path.join(DESTINATIONS_PATH, file);
+        const data = await readJsonFile(filePath);
+        if (data) {
+          destinations.push({
+            id: file.replace('.json', ''),
+            name: data.name || 'Unnamed Destination',
+            properties: data.properties || [],
+            image: data.coverImage || null
+          });
+        }
+      }
+    }
+
+    res.json(destinations);
+  } catch (error) {
+    console.error('Error fetching destinations:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch destinations', 
+      message: error.message 
+    });
+  }
+});
 
 // Get all content
 router.get('/', authMiddleware, async (req, res) => {
