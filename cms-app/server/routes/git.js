@@ -7,14 +7,48 @@ const router = express.Router();
 const REPO_PATH = path.join(__dirname, process.env.REPO_PATH || '../../../');
 const git = simpleGit(REPO_PATH);
 
-// Configure git user
+// Configure git user and authentication
 const configureGit = async () => {
   try {
+    // Set basic git config
     await git.addConfig('user.name', process.env.GIT_USER_NAME || 'CMS Admin');
     await git.addConfig('user.email', process.env.GIT_USER_EMAIL || 'admin@unseenstay.com');
+    
+    // Clean up any existing problematic remote URLs
+    const remotes = await git.getRemotes(true);
+    if (remotes.length > 0) {
+      const remoteName = remotes[0].name;
+      let remoteUrl = remotes[0].refs.push || remotes[0].refs.fetch;
+      
+      if (remoteUrl) {
+        // Clean up URL by removing any existing tokens
+        const cleanUrl = remoteUrl
+          .replace(/https?:\/\/[^@]+@/, 'https://')
+          .replace(/\/\/.*@github\.com\//, '//github.com/');
+        
+        // Only update if URL is different
+        if (cleanUrl !== remoteUrl) {
+          await git.remote(['set-url', remoteName, cleanUrl]);
+        }
+      }
+    }
   } catch (error) {
     console.error('Git config error:', error);
+    throw error; // Re-throw to handle in the route handlers
   }
+};
+
+// Helper function to get authenticated URL
+const getAuthenticatedUrl = (url) => {
+  if (!process.env.GITHUB_TOKEN) return url;
+  
+  // Clean the URL first
+  let cleanUrl = url
+    .replace(/https?:\/\/[^@]+@/, 'https://')
+    .replace(/\/\/.*@github\.com\//, '//github.com/');
+  
+  // Add the token
+  return cleanUrl.replace('https://', `https://${process.env.GITHUB_TOKEN}@`);
 };
 
 // Generate commit message based on changes
@@ -110,17 +144,15 @@ router.post('/push', authMiddleware, async (req, res) => {
     
     // Set up authentication if GitHub token is provided
     if (process.env.GITHUB_TOKEN) {
-      const remoteUrl = await git.getRemotes(true);
-      if (remoteUrl.length > 0) {
-        let url = remoteUrl[0].refs.push;
-        // Clean up any existing tokens in the URL
-        url = url.replace(/https?:\/\/[^@]+@/, 'https://');
-        // Add the token
-        const authenticatedUrl = url.replace(
-          'https://',
-          `https://${process.env.GITHUB_TOKEN}@`
-        );
-        await git.remote(['set-url', remote || 'origin', authenticatedUrl]);
+      const remotes = await git.getRemotes(true);
+      if (remotes.length > 0) {
+        const remoteName = remote || remotes[0].name;
+        let remoteUrl = remotes[0].refs.push || remotes[0].refs.fetch;
+        
+        if (remoteUrl && remoteUrl.includes('github.com')) {
+          const authenticatedUrl = getAuthenticatedUrl(remoteUrl);
+          await git.remote(['set-url', remoteName, authenticatedUrl]);
+        }
       }
     }
     
@@ -157,18 +189,14 @@ router.post('/commit-and-push', authMiddleware, async (req, res) => {
     
     // Set up authentication if GitHub token is provided
     if (process.env.GITHUB_TOKEN) {
-      const remoteUrl = await git.getRemotes(true);
-      if (remoteUrl.length > 0) {
-        let url = remoteUrl[0].refs.push;
-        if (url && url.includes('github.com')) {
-          // Clean up any existing tokens in the URL
-          url = url.replace(/https?:\/\/[^@]+@/, 'https://');
-          // Add the token
-          const authenticatedUrl = url.replace(
-            'https://',
-            `https://${process.env.GITHUB_TOKEN}@`
-          );
-          await git.remote(['set-url', remote || 'origin', authenticatedUrl]);
+      const remotes = await git.getRemotes(true);
+      if (remotes.length > 0) {
+        const remoteName = remote || remotes[0].name;
+        let remoteUrl = remotes[0].refs.push || remotes[0].refs.fetch;
+        
+        if (remoteUrl && remoteUrl.includes('github.com')) {
+          const authenticatedUrl = getAuthenticatedUrl(remoteUrl);
+          await git.remote(['set-url', remoteName, authenticatedUrl]);
         }
       }
     }
