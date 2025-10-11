@@ -3,6 +3,7 @@
 # Set colors for better output
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
+RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Function to check if a command exists
@@ -25,6 +26,52 @@ install_requirements() {
     fi
 }
 
+# Function to setup CMS
+setup_cms() {
+    echo -e "${BLUE}Setting up CMS...${NC}"
+    cd cms-app || return 1
+    
+    # Install root dependencies if needed
+    if [ ! -d "node_modules" ]; then
+        echo -e "${BLUE}Installing CMS root dependencies...${NC}"
+        npm install
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}❌ Failed to install CMS root dependencies${NC}"
+            return 1
+        fi
+    fi
+    
+    # Install and build client if it exists
+    if [ -d "client" ]; then
+        cd client || return 1
+        
+        # Install client dependencies if needed
+        if [ ! -d "node_modules" ]; then
+            echo -e "${BLUE}Installing CMS client dependencies...${NC}"
+            npm install
+            if [ $? -ne 0 ]; then
+                echo -e "${RED}❌ Failed to install CMS client dependencies${NC}"
+                return 1
+            fi
+        fi
+        
+        # Build the client
+        echo -e "${BLUE}Building CMS client...${NC}"
+        npm run build
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}❌ Failed to build CMS client${NC}"
+            return 1
+        fi
+        
+        cd ..  # Back to cms-app root
+    else
+        echo -e "${BLUE}⚠️  CMS client directory not found, skipping build${NC}"
+    fi
+    
+    cd ..  # Back to project root
+    return 0
+}
+
 # Main script
 clear
 echo -e "${GREEN}========================================${NC}"
@@ -40,18 +87,8 @@ fi
 
 # Check if we're in the correct directory
 if [ ! -f "package.json" ]; then
-    echo -e "${BLUE}Please run this script from the project root directory.${NC}"
+    echo -e "${RED}❌ Please run this script from the project root directory.${NC}"
     exit 1
-fi
-
-# Install dependencies if node_modules doesn't exist
-if [ ! -d "node_modules" ]; then
-    echo -e "${BLUE}Installing project dependencies...${NC}"
-    npm install
-    if [ $? -ne 0 ]; then
-        echo -e "❌ Failed to install dependencies. Please check the error above."
-        exit 1
-    fi
 fi
 
 # Create logs directory if it doesn't exist
@@ -59,23 +96,17 @@ mkdir -p logs
 
 # Start the application
 echo -e "\n${GREEN}🚀 Starting UnseenStay Application...${NC}"
-echo -e "\n${BLUE}Available Services:${NC}"
-echo -e "1. CMS Server (http://localhost:5000)"
-echo -e "2. Main Application"
-echo -e "\n${GREEN}Press Ctrl+C to stop the servers${NC}"
-echo -e "${GREEN}========================================${NC}"
-echo
 
-# Check if cms-app exists and start it
+# Setup and start CMS if it exists
 if [ -d "cms-app" ]; then
-    echo -e "${BLUE}Starting CMS Server...${NC}"
-    cd cms-app
-    # Install CMS dependencies if needed
-    if [ ! -d "node_modules" ]; then
-        echo -e "${BLUE}Installing CMS dependencies...${NC}"
-        npm install
+    setup_cms
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}❌ CMS setup failed. Check the errors above.${NC}"
+        exit 1
     fi
-    # Use nohup to prevent termination when the terminal closes
+    
+    echo -e "${BLUE}Starting CMS Server...${NC}"
+    cd cms-app || exit 1
     nohup npm start > ../logs/cms.log 2>&1 &
     CMS_PID=$!
     echo -e "✅ CMS Server started (PID: $CMS_PID) - Logs: logs/cms.log"
@@ -112,4 +143,4 @@ trap cleanup INT
 # Keep the script running and show logs
 echo -e "\n${GREEN}📝 Tailing logs (Ctrl+C to stop all services)...${NC}"
 echo -e "${GREEN}========================================${NC}"
-tail -f logs/*.log
+tail -f logs/*.log 2>/dev/null || echo -e "${BLUE}No log files found yet. Logs will appear here...${NC}"
