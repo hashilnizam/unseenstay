@@ -112,7 +112,10 @@ router.post('/push', authMiddleware, async (req, res) => {
     if (process.env.GITHUB_TOKEN) {
       const remoteUrl = await git.getRemotes(true);
       if (remoteUrl.length > 0) {
-        const url = remoteUrl[0].refs.push;
+        let url = remoteUrl[0].refs.push;
+        // Clean up any existing tokens in the URL
+        url = url.replace(/https?:\/\/[^@]+@/, 'https://');
+        // Add the token
         const authenticatedUrl = url.replace(
           'https://',
           `https://${process.env.GITHUB_TOKEN}@`
@@ -156,8 +159,11 @@ router.post('/commit-and-push', authMiddleware, async (req, res) => {
     if (process.env.GITHUB_TOKEN) {
       const remoteUrl = await git.getRemotes(true);
       if (remoteUrl.length > 0) {
-        const url = remoteUrl[0].refs.push;
+        let url = remoteUrl[0].refs.push;
         if (url && url.includes('github.com')) {
+          // Clean up any existing tokens in the URL
+          url = url.replace(/https?:\/\/[^@]+@/, 'https://');
+          // Add the token
           const authenticatedUrl = url.replace(
             'https://',
             `https://${process.env.GITHUB_TOKEN}@`
