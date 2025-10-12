@@ -67,8 +67,8 @@
             "location": "wayanad,meppadi",
             "propertyDetails": {
               "Duration": "4 Hours",
-              "Capacity": "8 People",
-              "Type": "Private Charter"
+              "Type": "Private Charter",
+              "Members": "8 People"
             },
             "inclusions": [
               "Professional Crew",
