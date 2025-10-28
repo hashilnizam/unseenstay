@@ -1429,12 +1429,36 @@ function renderContact(data) {
 }
 
 // ---------------- FOOTER ----------------
+function updateFooterTime() {
+    const now = new Date();
+    const options = { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    };
+    const formattedDateTime = now.toLocaleString(undefined, options);
+    const footerText = document.getElementById("footer-text");
+    if (footerText) {
+        footerText.innerHTML = `
+            <div class="footer-date" style="font-size: 0.9em; white-space: nowrap;">
+                <span>© ${formattedDateTime} UnseenStay. All rights reserved.</span>
+            </div>
+        `;
+    }
+}
+
 function renderFooter(data) {
     if (!data.footer) return;
 
-    if (document.getElementById("footer-text")) {
-        document.getElementById("footer-text").innerHTML = data.footer.text;
-    }
+    // Initial update
+    updateFooterTime();
+    
+    // Update time every second
+    setInterval(updateFooterTime, 1000);
 
     const socialList = document.getElementById("footer-social-list");
     if (socialList && data.footer.social && data.footer.social.length) {
