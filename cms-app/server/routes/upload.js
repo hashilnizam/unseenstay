@@ -174,4 +174,73 @@ router.get('/list/:type', authMiddleware, async (req, res) => {
   }
 });
 
+// Upload and process favicon
+router.post('/favicon', authMiddleware, upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    // Try to use sharp for image processing
+    let sharp;
+    try {
+      sharp = require('sharp');
+    } catch (err) {
+      // If sharp is not installed, just save the original file
+      console.warn('Sharp not installed. Favicon will not be resized. Install with: npm install sharp');
+      const relativePath = `assets/images/${req.file.filename}`;
+      return res.json({
+        success: true,
+        message: 'Favicon uploaded (not resized - install sharp for auto-resize)',
+        path: relativePath,
+        warning: 'Sharp not installed. Image not resized to favicon dimensions.'
+      });
+    }
+
+    // Process favicon to multiple sizes
+    const uploadPath = path.join(ASSETS_PATH, 'images');
+    const faviconName = 'favicon.png';
+    const faviconPath = path.join(uploadPath, faviconName);
+
+    // Create 32x32 favicon
+    await sharp(req.file.path)
+      .resize(32, 32, {
+        fit: 'cover',
+        position: 'center'
+      })
+      .png()
+      .toFile(faviconPath);
+
+    // Optional: Create additional sizes (16x16, 192x192)
+    const favicon16Path = path.join(uploadPath, 'favicon-16x16.png');
+    const favicon192Path = path.join(uploadPath, 'favicon-192x192.png');
+
+    await sharp(req.file.path)
+      .resize(16, 16, { fit: 'cover', position: 'center' })
+      .png()
+      .toFile(favicon16Path);
+
+    await sharp(req.file.path)
+      .resize(192, 192, { fit: 'cover', position: 'center' })
+      .png()
+      .toFile(favicon192Path);
+
+    // Delete the temporary uploaded file
+    await fs.unlink(req.file.path);
+
+    res.json({
+      success: true,
+      message: 'Favicon processed successfully',
+      path: `assets/images/${faviconName}`,
+      sizes: {
+        '32x32': `assets/images/${faviconName}`,
+        '16x16': `assets/images/favicon-16x16.png`,
+        '192x192': `assets/images/favicon-192x192.png`
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Favicon upload failed', message: error.message });
+  }
+});
+
 module.exports = router;

@@ -16,7 +16,8 @@
     "author": "UnseenStay Team",
     "language": "en",
     "region": "IN",
-    "ogImage": "assets/images/og-image.jpg"
+    "ogImage": "assets/images/og-image.jpg",
+    "favicon": "assets/images/favicon.png"
   },
   "logo": {
     "light": "assets/brand-logo/logo-white.png",
@@ -41,6 +42,30 @@
     "subtitle": "Unseenstay Wayanad ",
     "title": "Design your dream stay<br><em class='fw-400'>crafted for comfort and style</em>",
     "paragraph": "Experience thoughtfully designed stays that blend comfort, elegance, and unforgettable moments."
+  },
+  "features": {
+    "boxes": [
+      {
+        "icon": "pe-7s-home",
+        "value": "25",
+        "label": "Our Properties"
+      },
+      {
+        "icon": "pe-7s-map-2",
+        "value": "10",
+        "label": "Total Destinations"
+      },
+      {
+        "icon": "pe-7s-star",
+        "value": "612",
+        "label": "Positive Feedbacks"
+      },
+      {
+        "icon": "pe-7s-like",
+        "value": "735",
+        "label": "Happy Clients"
+      }
+    ]
   },
   "destinations": {
     "intro": {

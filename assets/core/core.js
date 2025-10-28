@@ -1,7 +1,68 @@
-// ---------------- TITLE ----------------
+// ---------------- SEO & META ----------------
 function renderTitle(data) {
-    if (data.site && data.site.title) {
+    if (!data.site) return;
+    
+    // Set page title
+    if (data.site.title) {
         document.title = data.site.title;
+    }
+    
+    // Set or update favicon
+    if (data.site.favicon) {
+        let faviconLink = document.querySelector('link[rel="icon"]');
+        if (!faviconLink) {
+            faviconLink = document.createElement('link');
+            faviconLink.rel = 'icon';
+            faviconLink.type = 'image/png';
+            document.head.appendChild(faviconLink);
+        }
+        // Add timestamp to force browser to reload favicon
+        const timestamp = new Date().getTime();
+        faviconLink.href = data.site.favicon + '?v=' + timestamp;
+    }
+    
+    // Set or update meta description
+    if (data.site.description) {
+        let metaDesc = document.querySelector('meta[name="description"]');
+        if (!metaDesc) {
+            metaDesc = document.createElement('meta');
+            metaDesc.name = 'description';
+            document.head.appendChild(metaDesc);
+        }
+        metaDesc.content = data.site.description;
+    }
+    
+    // Set or update meta keywords
+    if (data.site.keywords && data.site.keywords.length > 0) {
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+            metaKeywords = document.createElement('meta');
+            metaKeywords.name = 'keywords';
+            document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.content = data.site.keywords.join(', ');
+    }
+    
+    // Set or update meta author
+    if (data.site.author) {
+        let metaAuthor = document.querySelector('meta[name="author"]');
+        if (!metaAuthor) {
+            metaAuthor = document.createElement('meta');
+            metaAuthor.name = 'author';
+            document.head.appendChild(metaAuthor);
+        }
+        metaAuthor.content = data.site.author;
+    }
+    
+    // Set or update OG image
+    if (data.site.ogImage) {
+        let ogImage = document.querySelector('meta[property="og:image"]');
+        if (!ogImage) {
+            ogImage = document.createElement('meta');
+            ogImage.setAttribute('property', 'og:image');
+            document.head.appendChild(ogImage);
+        }
+        ogImage.content = data.site.ogImage;
     }
 }
 
@@ -86,55 +147,35 @@ function renderNavbar(data) {
 
 
 // ---------------- HEADER ----------------
-function renderHeader(data) {
-    // Select the video element using its new ID
-    const videoElement = document.getElementById("header-bg-video");
+// Header rendering moved to assets/core/header.js for better performance
+// This improves iOS loading speed by deferring video initialization
+
+// ---------------- FEATURES ----------------
+function renderFeatures(data) {
+    const featuresContainer = document.getElementById("features-container");
     
-    // Check if the video element exists before proceeding
-    if (videoElement) {
-        // Set the 'src' of the video element using the new 'backgroundVideo' key
-        videoElement.src = data.header.backgroundVideo; 
+    if (!featuresContainer || !data.features || !data.features.boxes) return;
+    
+    featuresContainer.innerHTML = "";
+    
+    data.features.boxes.forEach(box => {
+        const div = document.createElement("div");
+        div.className = "col-md-6 col-lg-3";
         
-        // --- APPLY CENTERING AND COVERAGE CSS VIA JAVASCRIPT ---
-        // This ensures the video is perfectly centered and scaled to cover the entire area.
+        div.innerHTML = `
+            <div class="nk-ibox-1">
+                <div class="nk-ibox-icon">
+                    <span class="${box.icon}"></span>
+                </div>
+                <div class="nk-ibox-cont">
+                    <div class="nk-ibox-title">${box.value}</div>
+                    <div class="nk-ibox-text">${box.label}</div>
+                </div>
+            </div>
+        `;
         
-        // 1. Positioning and Centering
-        videoElement.style.position = 'absolute';
-        videoElement.style.top = '50%';
-        videoElement.style.left = '50%';
-        // Shifts the element back by half its own size to achieve true center alignment
-        videoElement.style.transform = 'translate(-50%, -50%)'; 
-        
-        // 2. Sizing and Coverage
-        videoElement.style.minWidth = '100%';
-        videoElement.style.minHeight = '100%';
-        videoElement.style.width = 'auto';
-        videoElement.style.height = 'auto';
-        // Ensures the video covers the area without distortion or black bars
-        videoElement.style.objectFit = 'cover'; 
-        
-        // FIX: Setting zIndex to -1 ensures the video stays behind the overlay shade.
-        videoElement.style.zIndex = '-1'; 
-
-        // Add event listener for when video is ready to play
-        videoElement.addEventListener('canplaythrough', () => {
-            videoElement.play().catch(error => {
-                console.warn('Video autoplay failed:', error);
-                // Fallback: Set a static background image if video fails
-                videoElement.style.backgroundImage = 'url(assets/images/bg-header.jpg)'; // Add a fallback image path
-                videoElement.style.display = 'none'; // Hide video if it fails
-            });
-        });
-
-        // Update the text content for the other elements (assuming their IDs remain the same)
-        const subtitle = document.getElementById("header-subtitle");
-        const title = document.getElementById("header-title");
-        const paragraph = document.getElementById("header-paragraph");
-
-        if (subtitle) subtitle.innerText = data.header.subtitle;
-        if (title) title.innerHTML = data.header.title;
-        if (paragraph) paragraph.innerText = data.header.paragraph;
-    }
+        featuresContainer.appendChild(div);
+    });
 }
 
 // ---------------- DESTINATIONS (Index Page) ----------------
@@ -1415,8 +1456,17 @@ async function loadData() {
         renderTitle(data);
         renderLogo(data);
         renderNavbar(data);
-        renderHeader(data);
+        
+        // Initialize header module (loaded separately for performance)
+        if (window.HeaderModule) {
+            window.HeaderModule.init(data);
+        } else {
+            // Fallback: wait for header.js to load
+            window.headerDataReady = data;
+        }
+        
         renderDestinations(data);
+        renderFeatures(data);
         renderPortfolio(data);
         renderContact(data);
         renderFooter(data);
