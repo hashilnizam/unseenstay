@@ -1445,7 +1445,7 @@ function updateFooterTime() {
     if (footerText) {
         footerText.innerHTML = `
             <div class="footer-date" style="font-size: 0.9em; white-space: nowrap;">
-                <span>© ${formattedDateTime} UnseenStay. All rights reserved.</span>
+                <span>© UnseenStay, ${formattedDateTime}. All rights reserved.</span>
             </div>
         `;
     }

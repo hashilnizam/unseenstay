@@ -1,4 +1,16 @@
 /* ============================================
+   iOS SCROLL FIXES
+   ============================================ */
+.ios-device .nk-header-title-scroll-down {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+/* ============================================
    CONTACT FORM STYLING
    ============================================ */
 

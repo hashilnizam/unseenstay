@@ -830,18 +830,6 @@ function FooterSection({ data, onSave, saving }) {
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Footer Text</label>
-          <input
-            type="text"
-            value={localData.text}
-            onChange={(e) => setLocalData({ ...localData, text: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-            placeholder="© {year} Your Company. All rights reserved."
-          />
-          <p className="text-xs text-gray-500 mt-1">Use {'{year}'} for auto-updating year</p>
-        </div>
-
-        <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Social Media Links & Icons</label>
           {localData.social.map((item, index) => (
             <div key={index} className="p-4 bg-gray-50 rounded-lg mb-3">

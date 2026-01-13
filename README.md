@@ -1,35 +1,257 @@
-# Unseenstay - Travel Destination Portfolio Website
+# ✨ Unseenstay - Luxury Travel Destination Portfolio
 
-> A dynamic, single-page portfolio website for showcasing luxury travel destinations and accommodations with a hierarchical card-based navigation system.
+> A sophisticated, dynamic portfolio platform showcasing exclusive travel destinations and luxury accommodations with an intuitive card-based navigation system and powerful content management capabilities.
 
-## 👨‍💻 **Created & Developed by: [Hashil Nisam](https://github.com/hashilnizam)**
+<div align="center">
+  <a href="https://www.instagram.com/hashilnisam/" target="_blank">
+    <img src="https://img.shields.io/badge/Follow-@hashilnisam-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>
+  <a href="https://github.com/hashilnizam">
+    <img src="https://img.shields.io/badge/GitHub-hashilnizam-181717?style=for-the-badge&logo=github" alt="GitHub" />
+  </a>
+  <a href="mailto:hashilnizam@gmail.com">
+    <img src="https://img.shields.io/badge/Email-hashilnizam%40gmail.com-0078D4?style=for-the-badge&logo=gmail" alt="Email" />
+  </a>
+</div>
 
-**Core Architecture & Logic**: Hashil Nisam  
-**UI/UX Design & Implementation**: Hashil Nisam  
-**Mobile Optimization**: Hashil Nisam
+## 🚀 Project Overview
+
+Unseenstay is a comprehensive travel portfolio solution with two main components:
+1. **Frontend Website**: A beautiful, responsive showcase of travel destinations
+2. **CMS (Content Management System)**: Secure admin panel for managing all content
+
+### 🌟 Key Features
+
+#### Frontend Website
+- 🖼️ Dynamic card-based navigation system
+- 📱 Fully responsive design for all devices
+- ⚡ Optimized performance with lazy loading
+- 🎨 Smooth animations and transitions
+- 🔍 SEO optimized structure
+- 📱 Mobile-first approach with iOS optimizations
+- 🎯 Touch-optimized interface
+
+#### CMS Features
+- 🔐 Secure authentication with JWT
+- 📝 Content management for destinations, images, and metadata
+- 📱 Mobile-responsive admin interface
+- 🔄 Git integration for version control
+- 📊 Media library with image optimization
+- 🔄 Real-time preview of changes
+- 🔒 Role-based access control
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **Core**: HTML5, CSS3, JavaScript (ES6+)
+- **UI/UX**: 
+  - [Swiper.js](https://swiperjs.com/) for touch-enabled sliders
+  - [GSAP](https://greensock.com/gsap/) for smooth animations
+  - [LazySizes](https://github.com/aFarkas/lazysizes) for optimized loading
+  - Custom CSS Grid/Flexbox layouts
+
+### Backend (CMS)
+- **Runtime**: Node.js with Express.js
+- **Authentication**: JWT (JSON Web Tokens)
+- **Security**:
+  - Helmet.js for HTTP headers
+  - Rate limiting
+  - XSS protection
+  - CSRF protection
+- **File Handling**: 
+  - Multer for uploads
+  - Sharp for image optimization
+- **Version Control**: Git integration
+- **Version Control**: Git integration
+
+## 📁 Project Structure
+
+```
+unseenstay/
+├── assets/                  # Static assets
+│   ├── banner/             # Banner images
+│   ├── brand-logo/         # Brand assets
+│   ├── core/               # Core styles and scripts
+│   └── images/             # All website images
+├── cms-app/                # Admin panel application
+│   ├── client/             # React frontend
+│   │   ├── public/         # Static files
+│   │   └── src/            # React source code
+│   │       ├── components/ # Reusable UI components
+│   │       ├── context/    # React context providers
+│   │       ├── pages/      # Page components
+│   │       └── utils/      # Utility functions
+│   └── server/             # Node.js backend
+│       ├── config/         # Configuration files
+│       ├── controllers/    # Route controllers
+│       ├── middleware/     # Express middleware
+│       ├── models/         # Database models
+│       ├── routes/         # API routes
+│       ├── utils/          # Utility functions
+│       └── index.js        # Server entry point
+├── unseenstay-app/         # Main frontend application
+│   ├── css/               # Stylesheets
+│   ├── js/                # JavaScript files
+│   └── index.html         # Main HTML file
+├── .env-example           # Environment variables template
+├── README.md              # This file
+└── package.json           # Project dependencies
+```
+
+## 🔒 Security Features
+
+### Authentication & Authorization
+- JWT-based authentication with secure HTTP-only cookies
+- Session management with token expiration and refresh tokens
+- Role-based access control (RBAC) for admin panel
+- Rate limiting to prevent brute force attacks
+
+### Data Protection
+- Input validation and sanitization
+- XSS (Cross-Site Scripting) protection
+- CSRF (Cross-Site Request Forgery) protection
+- Secure HTTP headers via Helmet.js
+- Environment variable management
+- NoSQL injection prevention
+
+### Secure File Handling
+- File type validation
+- File size limits
+- Image optimization with Sharp
+- Secure file storage with proper permissions
+
+## 📱 Mobile Optimization
+
+### Performance
+- Responsive design with mobile-first approach
+- Optimized asset delivery
+- Lazy loading of images and components
+- Minimized main thread work
+
+### Touch Optimization
+- Touch-friendly UI elements
+- Smooth scrolling and momentum
+- Touch gestures support
+- Optimized form inputs for mobile
+
+### iOS Specific
+- Viewport configuration
+- Touch icons and splash screens
+- Safari-specific optimizations
+- Status bar customization
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 16+ and npm 8+ or yarn
+- Git
+- MongoDB (for CMS)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/hashilnizam/unseenstay.git
+   cd unseenstay
+   ```
+
+2. **Install dependencies**
+   ```bash
+   # Install root dependencies
+   npm install
+   
+   # Install CMS client dependencies
+   cd cms-app/client
+   npm install
+   
+   # Install CMS server dependencies
+   cd ../server
+   npm install
+   
+   # Return to project root
+   cd ../../
+   ```
+
+3. **Set up environment variables**
+   - Copy `.env-example` to `.env` in both root and `cms-app/server/`
+   - Update the environment variables with your configuration
+
+4. **Start the development servers**
+   ```bash
+   # Start main website (from project root)
+   npm run dev
+   
+   # In a new terminal, start CMS server
+   cd cms-app/server
+   npm run dev
+   
+   # In another terminal, start CMS client
+   cd ../client
+   npm start
+   ```
+
+## 🌐 Environment Variables
+
+### Main Application
+```env
+# Server
+PORT=3000
+NODE_ENV=development
+
+# Frontend
+API_BASE_URL=http://localhost:3000
+```
+
+### CMS Application
+```env
+# Server
+PORT=5000
+NODE_ENV=development
+JWT_SECRET=your_jwt_secret
+ADMIN_USERNAME=your_admin_username
+ADMIN_PASSWORD=your_secure_password
+
+# File Uploads
+MAX_FILE_SIZE=5242880  # 5MB
+UPLOAD_DIR=./uploads
+
+- XSS protection
+- CSRF protection
+- Secure session management
+- Input validation and sanitization
+- Secure file upload handling
+
+## 📱 Mobile Optimization
+
+- Responsive design using CSS Grid and Flexbox
+- Touch-optimized navigation
+- Adaptive image loading
+- Performance optimizations for mobile devices
+- Offline capabilities with service workers
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- All contributors who helped in testing and feedback
+- Open source libraries that made this project possible
+- The travel and design communities for inspiration
+
+## 📬 Contact
+
+For inquiries, collaborations, or support:
+- 📧 Email: [your.email@example.com](mailto:your.email@example.com)
+- 📱 Instagram: [@hashilnisam](https://www.instagram.com/hashilnisam/)
+- 💼 LinkedIn: [Hashil Nisam](https://www.linkedin.com/in/hashilnisam/)
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Technology Stack](#technology-stack)
-- [Folder Structure](#folder-structure)
-- [Data Architecture](#data-architecture)
-- [Code Architecture](#code-architecture)
-- [Workflow & Navigation](#workflow--navigation)
-- [UI Effects & Features](#ui-effects--features)
-- [Configuration Guide](#configuration-guide)
-- [Mobile Optimizations](#mobile-optimizations)
-- [Developer Notes](#developer-notes)
-
----
-
-## 🌟 Overview
-
-Unseenstay is a modern, responsive travel portfolio website featuring:
-
-### Key Features
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/hashilnizam">Hashil Nisam</a>
+</div>
 - ✅ **Zero Framework Architecture** - Pure vanilla JavaScript, no dependencies
 - ✅ **JSON-Driven CMS** - Complete content management through single JSON file
 - ✅ **Three-Tier Navigation System** - Hierarchical destination browsing
@@ -64,11 +286,34 @@ Unseenstay is a modern, responsive travel portfolio website featuring:
 |---------|---------|-------|
 | **Swiper.js** | Touch-enabled image slider | Modal image galleries |
 | **Font Awesome** | Icon library | Social media icons, UI elements |
-| **Google Fonts** | Typography | Playfair Display, Work Sans |
-| **Nano Scroller** | Custom scrollbar | Mobile navigation menu |
+## 📝 License
 
-### Browser Compatibility
-- ✅ Chrome 90+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Swiper.js](https://swiperjs.com/) for touch-enabled sliders
+- [GSAP](https://greensock.com/gsap/) for smooth animations
+- [LazySizes](https://github.com/aFarkas/lazysizes) for optimized image loading
+- The travel and design communities for inspiration
+
+## 📬 Contact
+
+For inquiries, collaborations, or support:
+
+- **Email**: [hashilnizam@gmail.com](mailto:hashilnizam@gmail.com)
+- **GitHub**: [@hashilnizam](https://github.com/hashilnizam)
+- **Instagram**: [@hashilnisam](https://www.instagram.com/hashilnisam/)
+
+---
+
+<div align="center">
+  Made with ❤️ by Hashil Nisam
+  <br>
+  <a href="https://www.instagram.com/hashilnisam/" target="_blank">
+    <img src="https://img.shields.io/badge/Follow-@hashilnisam-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>
+</div>
 - ✅ Firefox 88+
 - ✅ Safari 14+ (iOS optimized)
 - ✅ Edge 90+
@@ -873,7 +1118,7 @@ For issues or questions:
 ### Contact Developer
 - **Developer**: Hashil Nisam
 - **GitHub**: [@hashilnizam](https://github.com/hashilnizam)
-- **Email**: [Contact via GitHub](https://github.com/hashilnizam)
+- **Email**: [Mail](hashilnizam@gmail.com)
 
 ---
 
